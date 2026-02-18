@@ -188,78 +188,7 @@
 <div class="tabs" id="tab-bar"></div>
 
 <div class="content">
-  <!-- OVERVIEW -->
-  <div id="tab-overview" class="tab-content">
-    <div class="stats">
-      <div class="stat" onclick="jumpTab('overlaps')">
-        <div class="stat-label">🎯 Overlaps (API + Research)</div>
-        <div class="stat-value green" id="stat-overlaps">0</div>
-        <div class="stat-sub">Highest confidence — click to view</div>
-      </div>
-      <div class="stat" onclick="jumpTab('research')">
-        <div class="stat-label">🔬 Research-Confirmed</div>
-        <div class="stat-value" id="stat-research" style="color:var(--purple)">0</div>
-        <div class="stat-sub">Verified by trend sources</div>
-      </div>
-      <div class="stat" onclick="jumpTab('emerging')">
-        <div class="stat-label">🔮 Emerging Signals</div>
-        <div class="stat-value" id="stat-emerging" style="color:var(--orange)">0</div>
-        <div class="stat-sub">Pre-mainstream</div>
-      </div>
-      <div class="stat">
-        <div class="stat-label">📊 Total Trends</div>
-        <div class="stat-value" id="stat-total">0</div>
-        <div class="stat-sub">Across all sources</div>
-      </div>
-    </div>
-
-    <div class="filters" id="filter-bar">
-      <button class="filter-btn active" onclick="filterTrends('all',this)">All</button>
-      <button class="filter-btn" onclick="filterTrends('overlap',this)">🎯 Overlaps</button>
-      <button class="filter-btn" onclick="filterTrends('tiktok',this)">TikTok</button>
-      <button class="filter-btn" onclick="filterTrends('instagram',this)">Instagram</button>
-      <button class="filter-btn" onclick="filterTrends('angle',this)">Has FG Angle</button>
-    </div>
-
-    <div class="trends-grid" id="overview-grid"></div>
-
-    <!-- Removed trends transparency -->
-    <details class="removed-panel">
-      <summary>🗑️ Removed Trends — Transparency Log</summary>
-      <div class="removed-list">
-        <div>#grammys / #grammyawards — <span class="removed-reason">promoted=true + event expired (Feb 2)</span></div>
-        <div>#royalrumble — <span class="removed-reason">promoted=true + event expired</span></div>
-        <div>#superbowlsunday — <span class="removed-reason">event expired (Feb 9)</span></div>
-        <div>#groundhogday / #groundhog / #punxsutawneyphil — <span class="removed-reason">event expired (Feb 2)</span></div>
-        <div>#valentinesdayhint — <span class="removed-reason">event expired (Feb 14)</span></div>
-        <div>#winterformal / #seniornight — <span class="removed-reason">niche US school events, not mainstream viral</span></div>
-        <div>#dacademy7indosiar / #indosiarbawadangdut... — <span class="removed-reason">regional (Indonesia), not mainstream</span></div>
-        <div>#erupsisemeruhariiniv — <span class="removed-reason">regional (Indonesia)</span></div>
-        <div>милананекрасова — <span class="removed-reason">regional (Russia)</span></div>
-        <div>#needohnicecube — <span class="removed-reason">dangerous trend (burns), brand safety risk</span></div>
-        <div>#petpivot — <span class="removed-reason">unverifiable, no research confirmation found</span></div>
-        <div>#lulalahfah — <span class="removed-reason">unverifiable, no research confirmation found</span></div>
-        <div>#donlemon / #ilhanomar / #melania — <span class="removed-reason">political, brand safety risk</span></div>
-        <div>#teofimolopez / #alexandervolkanovski / #ufc325 / #shakurstevenson — <span class="removed-reason">combat sports events, expired or niche</span></div>
-        <div>#homealone / #beetlejuice / #schittscreek / #catherineohara — <span class="removed-reason">declining (API ↓), past peak</span></div>
-        <div>#zerotohero / #teamworkmakesthedreamwork / #makefriendslive — <span class="removed-reason">generic/promotional hashtags, declining</span></div>
-        <div>#snow2026 / #snowday2026 — <span class="removed-reason">weather event, expired</span></div>
-        <div>#gasparilla — <span class="removed-reason">regional US festival, niche</span></div>
-        <div>#aspenkartier / #tracycortez — <span class="removed-reason">person-specific, declining</span></div>
-        <div>#bobbyshmurda — <span class="removed-reason">declining, no research match</span></div>
-        <div>#hablandohuevadas — <span class="removed-reason">regional Spanish podcast/show, niche</span></div>
-        <div>#estilodevidasaludable — <span class="removed-reason">declining, generic wellness</span></div>
-        <div>#schoolspirits / #markiplier / #ironlungmovie — <span class="removed-reason">declining per API</span></div>
-        <div>#autoscooper — <span class="removed-reason">high API score (0.95) but product-specific TikTok Shop item, not a content format trend</span></div>
-        <div>#tiktokshopstockup — <span class="removed-reason">commercial shopping hashtag, not a creative content trend</span></div>
-        <div>#hiperpigmentacion — <span class="removed-reason">skincare niche, not mainstream viral format</span></div>
-        <div>#aquariusszn — <span class="removed-reason">zodiac season ending Feb 18, expired by tomorrow</span></div>
-        <div>#birthdaymonth — <span class="removed-reason">generic, stable not trending</span></div>
-        <div>#singlesinferno — <span class="removed-reason">API score dropped to 0.00 (Feb 18), 0 views/posts — trend dead on TikTok</span></div>
-        <div>#blackhistorymonth / #bhm — <span class="removed-reason">downgraded from overlap to research — API zeroed out but culturally valid through Feb 28</span></div>
-      </div>
-    </details>
-  </div>
+  <!-- Overview removed -->
 
   <!-- RECOMMENDED -->
   <div id="tab-recommended" class="tab-content active">
@@ -677,7 +606,6 @@ const TAB_CONFIG = [
   {id:'overlaps',label:'🎯 Overlaps'},
   {id:'research',label:'🔬 Research'},
   {id:'emerging',label:'🔮 Emerging'},
-  {id:'overview',label:'📋 Overview'},
 ];
 
 function buildTabs() {
@@ -686,7 +614,6 @@ function buildTabs() {
     overlaps: TRENDS.filter(t=>t.confidence==='overlap').length,
     research: TRENDS.filter(t=>t.confidence==='research').length,
     emerging: TRENDS.filter(t=>t.confidence==='emerging').length,
-    overview: TRENDS.length,
   };
   document.getElementById('tab-bar').innerHTML = TAB_CONFIG.map((tc,i) =>
     `<button class="tab ${i===0?'active':''}" onclick="switchTab('${tc.id}',this)">${tc.label}<span class="tab-count">${counts[tc.id]}</span></button>`
@@ -830,8 +757,9 @@ const HOT_THIS_WEEK = TRENDS.filter(t => {
   // Must not be declining fast
   if (t.proof.api.includes('↓↓')) return false;
   // Brand-safe filter: exclude trends a fabric company can't use
-  const unsafe = ['#shutupmom','#euphoriamakeup','#blackhistorymonth'];
-  if (unsafe.some(u => t.name.toLowerCase().includes(u.replace('#','')))) return false;
+  const unsafe = ['shutupmom','euphoriamakeup','blackhistorymonth','thermostat','callmysister','shutup'];
+  const nameLower = t.name.toLowerCase();
+  if (unsafe.some(u => nameLower.includes(u))) return false;
   return true;
 });
 
@@ -863,12 +791,6 @@ function init() {
     return (freshOrder[a.freshness]||2)-(freshOrder[b.freshness]||2);
   });
 
-  // Stats
-  document.getElementById('stat-overlaps').textContent = TRENDS.filter(t=>t.confidence==='overlap').length;
-  document.getElementById('stat-research').textContent = TRENDS.filter(t=>t.confidence==='research').length;
-  document.getElementById('stat-emerging').textContent = TRENDS.filter(t=>t.confidence==='emerging').length;
-  document.getElementById('stat-total').textContent = TRENDS.length;
-
   // Recommended grid with Top Picks separator
   const topPicks = RECOMMENDED.filter(r=>r.topPick);
   const morePicks = RECOMMENDED.filter(r=>!r.topPick);
@@ -882,7 +804,6 @@ function init() {
   document.getElementById('overlaps-grid').innerHTML = sorted.filter(t=>t.confidence==='overlap').map(renderCard).join('');
   document.getElementById('research-grid').innerHTML = sorted.filter(t=>t.confidence==='research').map(renderCard).join('');
   document.getElementById('emerging-grid').innerHTML = sorted.filter(t=>t.confidence==='emerging').map(renderCard).join('');
-  document.getElementById('overview-grid').innerHTML = sorted.map(renderCard).join('');
 
   buildTabs();
   buildPriorityQueue();
