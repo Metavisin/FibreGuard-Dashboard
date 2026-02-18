@@ -110,6 +110,27 @@
   .hashtag { font-size:11px; padding:3px 10px; border-radius:20px; background:var(--bg2); color:var(--text2); cursor:pointer; transition:all 0.15s; }
   .hashtag:hover { background:var(--accent-bg); color:var(--accent2); }
 
+  /* Recommended cards */
+  .rec-card { background:var(--card); border:1px solid var(--card-border); border-radius:14px; padding:20px; box-shadow:var(--shadow); margin-bottom:12px; position:relative; overflow:hidden; transition:all 0.2s; }
+  .rec-card:hover { transform:translateY(-1px); box-shadow:0 4px 20px rgba(0,0,0,0.12); }
+  .rec-card.fit-perfect { border-left:3px solid var(--accent); background:var(--overlap-bg); }
+  .rec-card.fit-strong { border-left:3px solid #ff9f0a; }
+  .rec-card.fit-natural { border-left:3px solid var(--blue); }
+  .rec-rank { position:absolute; top:14px; right:16px; font-size:24px; font-weight:800; color:rgba(255,255,255,0.06); }
+  .rec-header { display:flex; align-items:center; gap:8px; margin-bottom:6px; flex-wrap:wrap; padding-right:40px; }
+  .rec-name { font-size:16px; font-weight:700; }
+  .fit-badge { font-size:10px; font-weight:700; padding:2px 10px; border-radius:20px; letter-spacing:0.3px; text-transform:uppercase; }
+  .fit-badge.perfect { background:rgba(3,252,123,0.15); color:var(--accent); }
+  .fit-badge.strong { background:rgba(255,159,0,0.12); color:#ff9f0a; }
+  .fit-badge.natural { background:rgba(0,122,255,0.1); color:var(--blue); }
+  .rec-why { font-size:14px; color:var(--text); line-height:1.6; margin-bottom:8px; }
+  .rec-desc { font-size:12px; color:var(--text3); margin-bottom:8px; }
+  .rec-proof { font-size:11px; color:var(--text3); padding:4px 8px; background:var(--bg2); border-radius:6px; display:inline-block; margin-bottom:8px; }
+  .rec-meta { display:flex; gap:12px; font-size:12px; color:var(--text3); flex-wrap:wrap; }
+  .rec-examples { margin-top:8px; display:flex; gap:6px; flex-wrap:wrap; }
+  .rec-examples a { font-size:11px; color:var(--accent2); text-decoration:none; padding:3px 10px; border-radius:16px; background:rgba(3,252,123,0.06); border:1px solid rgba(3,252,123,0.1); transition:all 0.2s; }
+  .rec-examples a:hover { background:rgba(3,252,123,0.15); }
+
   .trend-examples { margin-top:10px; display:flex; gap:8px; flex-wrap:wrap; }
   .trend-examples a { font-size:12px; color:var(--accent2); text-decoration:none; padding:4px 12px; border-radius:20px; background:rgba(3,252,123,0.06); border:1px solid rgba(3,252,123,0.12); transition:all 0.2s; }
   .trend-examples a:hover { background:rgba(3,252,123,0.15); }
@@ -238,8 +259,15 @@
     </details>
   </div>
 
+  <!-- RECOMMENDED -->
+  <div id="tab-recommended" class="tab-content active">
+    <div class="section-title">⭐ Recommended for FibreGuard</div>
+    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Curated trends with a natural fit for a fabric brand. Ranked by brand relevance — only trends where FibreGuard can join authentically without looking forced or risky.</p>
+    <div id="recommended-grid"></div>
+  </div>
+
   <!-- OVERLAPS -->
-  <div id="tab-overlaps" class="tab-content active">
+  <div id="tab-overlaps" class="tab-content">
     <div class="section-title">🎯 Confirmed Overlaps — API × Research</div>
     <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">These trends appear in BOTH Apify API data AND at least one independent research source. This is the highest confidence signal.</p>
     <div class="trends-grid" id="overlaps-grid"></div>
@@ -265,6 +293,145 @@
 <div class="toast" id="toast">Copied!</div>
 
 <script>
+// ═══════════════════════════════════════════
+// RECOMMENDED — Curated for FibreGuard
+// Only trends with a natural brand fit.
+// Fabric · Home · Lifestyle · Durability · Stain-proof
+// ═══════════════════════════════════════════
+const RECOMMENDED = [
+  {
+    rank: 1,
+    name: "Liquid Assets / Rich Girl (Gwen Stefani)",
+    platform: "instagram", confidence: "research", freshness: "hot",
+    fit: "perfect",
+    why: "The trend is literally about pouring liquids. Wine, coffee, juice poured on FibreGuard — and it all wipes clean. Satisfying content that IS the product demo. This is the best trend fit we've seen in weeks.",
+    desc: "Combining economics with literal liquids — skincare, beverages, anything pourable. 164K Reels. Business-friendly.",
+    proof: { research: "Scott Social (Feb 17, 164K Reels), business-friendly confirmed" },
+    meta: { posts: "164K Reels" },
+    examples: [
+      { label: "Scott Social — trend breakdown + audio link", url: "https://www.scottsocialmarketing.com/blog/trending-reels-audio-this-week-on-instagram" },
+    ],
+  },
+  {
+    rank: 2,
+    name: "'You Have to Believe Me'",
+    platform: "instagram", confidence: "research", freshness: "hot",
+    fit: "perfect",
+    why: "The audio is made for us. 'You HAVE to believe me — this fabric is actually stain-proof.' Then you show the proof. It's literally a convincing format. FibreGuard's whole pitch in one Reel.",
+    desc: "Convince your audience about something they doubt. 1K Reels (early!). Business-friendly. Perfect for proof-of-concept content.",
+    proof: { research: "Scott Social (1K Reels, Feb 17)" },
+    meta: { posts: "1K Reels (early — get in now)" },
+    examples: [
+      { label: "Scott Social — audio + trend details", url: "https://www.scottsocialmarketing.com/blog/trending-reels-audio-this-week-on-instagram" },
+    ],
+  },
+  {
+    rank: 3,
+    name: "#shutupmom",
+    platform: "tiktok", confidence: "overlap", freshness: "hot",
+    fit: "strong",
+    why: "Family humor that fits perfectly: 'My mom said I'd ruin the couch in a week.' Show kids, pets, spills — then reveal it still looks brand new. Relatable, funny, brand-safe.",
+    desc: "Comedic format: things you did/bought that horrified your parents but turned out great. 98.7M views, 4K organic posts.",
+    proof: { api: "#shutupmom — score 0.74 ↑, 98.7M views, 4K organic posts", research: "NewEngen (Feb 2026 trends report)" },
+    meta: { views: "98.7M", posts: "4K", score: "0.74 ↑" },
+    examples: [
+      { label: "TikTok — #shutupmom discover", url: "https://www.tiktok.com/tag/shutupmom?lang=en" },
+    ],
+  },
+  {
+    rank: 4,
+    name: "#everlong / Foo Fighters — 'Things That Last Forever'",
+    platform: "tiktok", confidence: "overlap", freshness: "hot",
+    fit: "strong",
+    why: "Durability is FibreGuard's core message. 'Things that last forever' set to this nostalgic anthem = emotional storytelling about fabric that lasts. On-brand without feeling forced.",
+    desc: "Foo Fighters 'Everlong' resurgence — nostalgia content, emotional reveals, things that last forever. Still climbing.",
+    proof: { api: "#everlong — score 0.59 ↑, 15.8M views, 4.1K posts", research: "2026=2016 nostalgia wave (Dash Social, Scott Social)" },
+    meta: { views: "15.8M", posts: "4.1K", score: "0.59 ↑" },
+    examples: [
+      { label: "TikTok — #everlong discover", url: "https://www.tiktok.com/tag/everlong?lang=en" },
+    ],
+  },
+  {
+    rank: 5,
+    name: "CleanTok / Spring Cleaning Spike",
+    platform: "both", confidence: "emerging", freshness: "warm",
+    fit: "strong",
+    why: "Cleaning content IS FibreGuard content. Flip the script: 'POV: you have FibreGuard and cleaning day takes 5 seconds.' Satisfying wipe-clean ASMR. The audience is already looking for this.",
+    desc: "Decluttering/cleaning content surging for spring. 'Get rid of 10 things a day' format. #CleanTok spiking again.",
+    proof: { research: "Bustle, TikTok — ongoing + fresh spike" },
+    meta: {},
+    examples: [
+      { label: "TikTok — #cleantok discover", url: "https://www.tiktok.com/tag/cleantok?lang=en" },
+    ],
+  },
+  {
+    rank: 6,
+    name: "Hopelessly Devoted To You",
+    platform: "instagram", confidence: "research", freshness: "hot",
+    fit: "natural",
+    why: "Morning routine / cozy lifestyle audio. Fluffing pillows, styling the couch, satisfying home content. 'Hopelessly devoted to this fabric.' Soft, warm, brand-safe. 62K Reels already.",
+    desc: "Versatile audio for morning routines, lifestyle, product drops. 62K Reels. Business-friendly.",
+    proof: { research: "Scott Social (62K Reels, Feb 17)" },
+    meta: { posts: "62K Reels" },
+    examples: [
+      { label: "Scott Social — audio link + examples", url: "https://www.scottsocialmarketing.com/blog/trending-reels-audio-this-week-on-instagram" },
+    ],
+  },
+  {
+    rank: 7,
+    name: "Highlight Switch (The Desperados)",
+    platform: "instagram", confidence: "research", freshness: "hot",
+    fit: "natural",
+    why: "Product features synced to beat drops. Switch between FibreGuard features: colors, stain-proof demo, texture close-up, pet test. Clean, rhythmic, satisfying product showcase.",
+    desc: "Product features synced to beat drops. Clean rhythmic transitions. 26K Reels.",
+    proof: { research: "Later (Feb 13, 26K Reels)" },
+    meta: { posts: "26K Reels" },
+    examples: [
+      { label: "Later — trend breakdown + audio", url: "https://later.com/blog/instagram-reels-trends/" },
+    ],
+  },
+  {
+    rank: 8,
+    name: "'She Don't See Us' — Hidden Features",
+    platform: "instagram", confidence: "research", freshness: "hot",
+    fit: "natural",
+    why: "Everyone knows FibreGuard = stain-proof. But the UV resistance, the softness, the color range? This trend spotlights underrated features. Educational + entertaining.",
+    desc: "Spotlight underrated offerings while one product steals the show. 1.8K Reels. Business-friendly.",
+    proof: { research: "Scott Social (Feb 18, 1.8K Reels)" },
+    meta: { posts: "1.8K Reels" },
+    examples: [
+      { label: "Scott Social — trend + audio", url: "https://www.scottsocialmarketing.com/blog/trending-reels-audio-this-week-on-instagram" },
+    ],
+  },
+  {
+    rank: 9,
+    name: "Bridgerton Season 4 — Elegant Interiors",
+    platform: "both", confidence: "overlap", freshness: "warm",
+    fit: "natural",
+    why: "Regencycore aesthetic → elegant FibreGuard interiors. Works best on IG where momentum still holds. Fading on TikTok so act fast if using it.",
+    desc: "'Make it Bridgerton' edits, regencycore aesthetics. Massive on IG (700K Reels) but declining on TikTok.",
+    proof: { api: "#bridgertonedit (0.31 ↓)", research: "Later, Scott Social, HeyOrca" },
+    meta: { posts: "700K+ IG Reels", score: "Declining on TikTok" },
+    examples: [
+      { label: "Instagram — #bridgertonedit Reels", url: "https://www.instagram.com/explore/tags/bridgertonedit/" },
+      { label: "Audio: Archer Marsh - Give Me Everything", url: "https://www.instagram.com/reels/audio/2219751965068779/" },
+    ],
+  },
+  {
+    rank: 10,
+    name: "Forever Your Girl (Paula Abdul) — Netflix tie-in",
+    platform: "instagram", confidence: "research", freshness: "hot",
+    fit: "natural",
+    why: "'Forever your girl' but it's your couch. Lifestyle montage of cozy moments, styled rooms, pet cuddles. Feel-good, warm, and brand-safe. Netflix cultural moment driving the audio.",
+    desc: "Netflix rom-com 'People We Meet on Vacation' brought Paula Abdul's song back. 5.1K Reels. Business-friendly.",
+    proof: { research: "Scott Social (Feb 18, 5.1K Reels)" },
+    meta: { posts: "5.1K Reels" },
+    examples: [
+      { label: "Scott Social — audio + examples", url: "https://www.scottsocialmarketing.com/blog/trending-reels-audio-this-week-on-instagram" },
+    ],
+  },
+];
+
 // ═══════════════════════════════════════════
 // TREND DATA — Updated Feb 18, 2026 07:30 CET
 // Ad-boost filtered. Cross-referenced.
@@ -515,6 +682,7 @@ const TRENDS = [
 // Dark mode only — no toggle needed
 
 const TAB_CONFIG = [
+  {id:'recommended',label:'⭐ Recommended'},
   {id:'overlaps',label:'🎯 Overlaps'},
   {id:'research',label:'🔬 Research'},
   {id:'emerging',label:'🔮 Emerging'},
@@ -523,6 +691,7 @@ const TAB_CONFIG = [
 
 function buildTabs() {
   const counts = {
+    recommended: RECOMMENDED.length,
     overlaps: TRENDS.filter(t=>t.confidence==='overlap').length,
     research: TRENDS.filter(t=>t.confidence==='research').length,
     emerging: TRENDS.filter(t=>t.confidence==='emerging').length,
@@ -629,6 +798,39 @@ function showToast(msg) {
   setTimeout(()=>t.classList.remove('show'),2000);
 }
 
+function renderRecCard(r) {
+  const fitClass = r.fit;
+  const fitLabel = {perfect:'🎯 Perfect Fit',strong:'💪 Strong Fit',natural:'🌿 Natural Fit'}[r.fit]||'';
+  const pLabel = r.platform==='both'?'TikTok + IG':r.platform==='tiktok'?'TikTok':'Instagram';
+
+  let proofText = '';
+  if(r.proof) {
+    if(r.proof.api) proofText += '📊 '+r.proof.api+' ';
+    if(r.proof.research) proofText += '🔬 '+r.proof.research;
+  }
+
+  const exHtml = (r.examples||[]).map(e=>`<a href="${e.url}" target="_blank" rel="noopener">▶ ${e.label}</a>`).join('');
+
+  return `
+    <div class="rec-card fit-${fitClass}">
+      <div class="rec-rank">#${r.rank}</div>
+      <div class="rec-header">
+        <span class="rec-name">${r.name}</span>
+        <span class="fit-badge ${fitClass}">${fitLabel}</span>
+        <span class="badge ${r.platform==='both'?'both':r.platform}">${pLabel}</span>
+      </div>
+      <div class="rec-why">${r.why}</div>
+      <div class="rec-desc">${r.desc}</div>
+      ${proofText?`<div class="rec-proof">${proofText}</div>`:''}
+      <div class="rec-meta">
+        ${r.meta.views?`<span>👁️ ${r.meta.views}</span>`:''}
+        ${r.meta.posts?`<span>📊 ${r.meta.posts}</span>`:''}
+        ${r.meta.score?`<span>📈 ${r.meta.score}</span>`:''}
+      </div>
+      ${exHtml?`<div class="rec-examples">${exHtml}</div>`:''}
+    </div>`;
+}
+
 function buildPriorityQueue() {
   const top = TRENDS.filter(t=>t.confidence==='overlap'&&t.freshness==='hot').slice(0,3);
   document.getElementById('priority-grid').innerHTML = top.map((t,i) => `
@@ -659,6 +861,9 @@ function init() {
   document.getElementById('stat-research').textContent = TRENDS.filter(t=>t.confidence==='research').length;
   document.getElementById('stat-emerging').textContent = TRENDS.filter(t=>t.confidence==='emerging').length;
   document.getElementById('stat-total').textContent = TRENDS.length;
+
+  // Recommended grid
+  document.getElementById('recommended-grid').innerHTML = RECOMMENDED.map(renderRecCard).join('');
 
   // Grids
   document.getElementById('overlaps-grid').innerHTML = sorted.filter(t=>t.confidence==='overlap').map(renderCard).join('');
