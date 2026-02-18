@@ -6,20 +6,13 @@
 <title>FibreGuard Trend Spotter</title>
 <style>
   :root {
-    --bg: #ffffff; --bg2: #f5f5f7; --bg3: #e8e8ed;
-    --text: #1d1d1f; --text2: #6e6e73; --text3: #86868b;
-    --accent: #03fc7b; --accent2: #02d468; --accent-bg: rgba(3,252,123,0.08);
-    --red: #ff3b30; --orange: #ff9500; --blue: #007aff; --purple: #af52de;
-    --card: #ffffff; --card-border: rgba(0,0,0,0.06);
-    --shadow: 0 2px 12px rgba(0,0,0,0.06);
-    --overlap-bg: rgba(3,252,123,0.12);
-  }
-  [data-theme="dark"] {
     --bg: #0a0a0a; --bg2: #141414; --bg3: #1c1c1e;
     --text: #f5f5f7; --text2: #98989d; --text3: #6e6e73;
+    --accent: #03fc7b; --accent2: #02d468; --accent-bg: rgba(3,252,123,0.06);
+    --red: #ff3b30; --orange: #ff9500; --blue: #007aff; --purple: #af52de;
     --card: #1c1c1e; --card-border: rgba(255,255,255,0.08);
     --shadow: 0 2px 12px rgba(0,0,0,0.3);
-    --accent-bg: rgba(3,252,123,0.06); --overlap-bg: rgba(3,252,123,0.1);
+    --overlap-bg: rgba(3,252,123,0.1);
   }
   * { margin:0; padding:0; box-sizing:border-box; }
   body { font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif; background:var(--bg); color:var(--text); line-height:1.5; }
@@ -155,20 +148,13 @@
     <div class="last-update">Last updated: <span id="updateTime"></span></div>
   </div>
   <div class="header-right">
-    <button class="theme-toggle" onclick="toggleTheme()">☀️</button>
   </div>
 </div>
 
-<div class="methodology">
-  <strong>Methodology:</strong> Ad-boosted trends filtered out (is_promoted OR views/post >100K with <5K posts). Only mainstream viral trends included. "Overlap" = confirmed in BOTH Apify API AND independent research (Later, HeyOrca, Scott Social, NewEngen, Dash Social). Expired event trends removed.
-</div>
-
-<div class="search-bar">
-  <input type="text" class="search-input" placeholder="Search trends, hashtags, angles..." oninput="searchTrends(this.value)" />
-</div>
+<!-- methodology and search removed -->
 
 <div class="priority-queue">
-  <div class="pq-title">🚨 Act This Week — Highest Confidence</div>
+  <div class="pq-title">🔥 Hot This Week</div>
   <div class="pq-grid" id="priority-grid"></div>
 </div>
 
@@ -176,7 +162,7 @@
 
 <div class="content">
   <!-- OVERVIEW -->
-  <div id="tab-overview" class="tab-content active">
+  <div id="tab-overview" class="tab-content">
     <div class="stats">
       <div class="stat" onclick="jumpTab('overlaps')">
         <div class="stat-label">🎯 Overlaps (API + Research)</div>
@@ -193,10 +179,10 @@
         <div class="stat-value" id="stat-emerging" style="color:var(--orange)">0</div>
         <div class="stat-sub">Pre-mainstream</div>
       </div>
-      <div class="stat" onclick="jumpTab('ideas')">
-        <div class="stat-label">💡 FibreGuard Angles</div>
-        <div class="stat-value green" id="stat-angles">0</div>
-        <div class="stat-sub">Ready for content</div>
+      <div class="stat">
+        <div class="stat-label">📊 Total Trends</div>
+        <div class="stat-value" id="stat-total">0</div>
+        <div class="stat-sub">Across all sources</div>
       </div>
     </div>
 
@@ -249,7 +235,7 @@
   </div>
 
   <!-- OVERLAPS -->
-  <div id="tab-overlaps" class="tab-content">
+  <div id="tab-overlaps" class="tab-content active">
     <div class="section-title">🎯 Confirmed Overlaps — API × Research</div>
     <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">These trends appear in BOTH Apify API data AND at least one independent research source. This is the highest confidence signal.</p>
     <div class="trends-grid" id="overlaps-grid"></div>
@@ -269,12 +255,7 @@
     <div class="trends-grid" id="emerging-grid"></div>
   </div>
 
-  <!-- IDEAS -->
-  <div id="tab-ideas" class="tab-content">
-    <div class="section-title">💡 FibreGuard Content Ideas</div>
-    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Trend-backed content angles. Click "Copy" to grab any angle.</p>
-    <div class="trends-grid" id="ideas-grid"></div>
-  </div>
+  <!-- Ideas tab removed -->
 </div>
 
 <div class="toast" id="toast">Copied!</div>
@@ -510,28 +491,21 @@ const TRENDS = [
 ];
 
 // ──── ENGINE ────
-function toggleTheme() {
-  const t = document.body.dataset.theme === 'dark' ? 'light' : 'dark';
-  document.body.dataset.theme = t;
-  document.querySelector('.theme-toggle').textContent = t==='dark'?'☀️':'🌙';
-  localStorage.setItem('fg-theme', t);
-}
+// Dark mode only — no toggle needed
 
 const TAB_CONFIG = [
-  {id:'overview',label:'Overview'},
   {id:'overlaps',label:'🎯 Overlaps'},
   {id:'research',label:'🔬 Research'},
   {id:'emerging',label:'🔮 Emerging'},
-  {id:'ideas',label:'💡 Ideas'},
+  {id:'overview',label:'📋 Overview'},
 ];
 
 function buildTabs() {
   const counts = {
-    overview: TRENDS.length,
     overlaps: TRENDS.filter(t=>t.confidence==='overlap').length,
     research: TRENDS.filter(t=>t.confidence==='research').length,
     emerging: TRENDS.filter(t=>t.confidence==='emerging').length,
-    ideas: TRENDS.filter(t=>t.angle).length,
+    overview: TRENDS.length,
   };
   document.getElementById('tab-bar').innerHTML = TAB_CONFIG.map((tc,i) =>
     `<button class="tab ${i===0?'active':''}" onclick="switchTab('${tc.id}',this)">${tc.label}<span class="tab-count">${counts[tc.id]}</span></button>`
@@ -640,15 +614,12 @@ function buildPriorityQueue() {
       <div class="pq-rank">#${i+1}</div>
       <div class="pq-name">${t.name}</div>
       <div class="pq-conf overlap">🎯 API + Research confirmed</div>
-      <div class="pq-angle">${(t.angle||'').substring(0,100)}${(t.angle||'').length>100?'...':''}</div>
+      <div class="pq-angle">${(t.desc||'').substring(0,120)}${(t.desc||'').length>120?'...':''}</div>
     </div>
   `).join('');
 }
 
 function init() {
-  const saved = localStorage.getItem('fg-theme');
-  if(saved) { document.body.dataset.theme=saved; document.querySelector('.theme-toggle').textContent=saved==='dark'?'☀️':'🌙'; }
-
   document.getElementById('updateTime').textContent = new Date().toLocaleString('en-GB',{
     timeZone:'Europe/Madrid',weekday:'short',day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'
   })+' CET';
@@ -665,14 +636,13 @@ function init() {
   document.getElementById('stat-overlaps').textContent = TRENDS.filter(t=>t.confidence==='overlap').length;
   document.getElementById('stat-research').textContent = TRENDS.filter(t=>t.confidence==='research').length;
   document.getElementById('stat-emerging').textContent = TRENDS.filter(t=>t.confidence==='emerging').length;
-  document.getElementById('stat-angles').textContent = TRENDS.filter(t=>t.angle).length;
+  document.getElementById('stat-total').textContent = TRENDS.length;
 
   // Grids
-  document.getElementById('overview-grid').innerHTML = sorted.map(renderCard).join('');
   document.getElementById('overlaps-grid').innerHTML = sorted.filter(t=>t.confidence==='overlap').map(renderCard).join('');
   document.getElementById('research-grid').innerHTML = sorted.filter(t=>t.confidence==='research').map(renderCard).join('');
   document.getElementById('emerging-grid').innerHTML = sorted.filter(t=>t.confidence==='emerging').map(renderCard).join('');
-  document.getElementById('ideas-grid').innerHTML = sorted.filter(t=>t.angle).map(renderCard).join('');
+  document.getElementById('overview-grid').innerHTML = sorted.map(renderCard).join('');
 
   buildTabs();
   buildPriorityQueue();
