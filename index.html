@@ -181,7 +181,7 @@
 <!-- methodology and search removed -->
 
 <div class="priority-queue">
-  <div class="pq-title">🔥 Hot This Week</div>
+  <div class="pq-title">🔥 Hot This Week — API-Confirmed & Brand-Safe</div>
   <div class="pq-grid" id="priority-grid"></div>
 </div>
 
@@ -822,13 +822,29 @@ function renderRecCard(r) {
     </div>`;
 }
 
+// Hot This Week: API-confirmed trends that are brand-safe for FibreGuard
+// Filtered: no personal humor, no edgy/dangerous, no political, usable by a company account
+const HOT_THIS_WEEK = TRENDS.filter(t => {
+  // Must have API data
+  if (!t.proof || !t.proof.api) return false;
+  // Must not be declining fast
+  if (t.proof.api.includes('↓↓')) return false;
+  // Brand-safe filter: exclude trends a fabric company can't use
+  const unsafe = ['#shutupmom','#euphoriamakeup','#blackhistorymonth'];
+  if (unsafe.some(u => t.name.toLowerCase().includes(u.replace('#','')))) return false;
+  return true;
+});
+
 function buildPriorityQueue() {
-  const top = TRENDS.filter(t=>t.confidence==='overlap'&&t.freshness==='hot').slice(0,3);
-  document.getElementById('priority-grid').innerHTML = top.map((t,i) => `
+  if (HOT_THIS_WEEK.length === 0) {
+    document.getElementById('priority-grid').innerHTML = '<div style="color:var(--text3);font-size:13px;padding:12px 0;">No brand-safe API trends this week. Check the ⭐ Recommended tab for curated picks.</div>';
+    return;
+  }
+  document.getElementById('priority-grid').innerHTML = HOT_THIS_WEEK.map((t,i) => `
     <div class="pq-card" onclick="jumpTab('overlaps')">
       <div class="pq-rank">#${i+1}</div>
       <div class="pq-name">${t.name}</div>
-      <div class="pq-conf overlap">🎯 API + Research confirmed</div>
+      <div class="pq-conf overlap">📊 ${t.proof.api.substring(0,80)}${t.proof.api.length>80?'...':''}</div>
       <div class="pq-angle">${(t.desc||'').substring(0,120)}${(t.desc||'').length>120?'...':''}</div>
     </div>
   `).join('');
