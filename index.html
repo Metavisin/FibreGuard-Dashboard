@@ -110,6 +110,10 @@
   .hashtag { font-size:11px; padding:3px 10px; border-radius:20px; background:var(--bg2); color:var(--text2); cursor:pointer; transition:all 0.15s; }
   .hashtag:hover { background:var(--accent-bg); color:var(--accent2); }
 
+  .trend-examples { margin-top:10px; display:flex; gap:8px; flex-wrap:wrap; }
+  .trend-examples a { font-size:12px; color:var(--accent2); text-decoration:none; padding:4px 12px; border-radius:20px; background:rgba(3,252,123,0.06); border:1px solid rgba(3,252,123,0.12); transition:all 0.2s; }
+  .trend-examples a:hover { background:rgba(3,252,123,0.15); }
+
   .trend-angle { margin-top:10px; padding:10px 14px; background:var(--accent-bg); border-radius:10px; font-size:13px; position:relative; }
   .trend-angle strong { color:var(--accent2); }
   .copy-btn { position:absolute; top:8px; right:8px; background:var(--accent); color:#000; border:none; border-radius:8px; padding:4px 10px; font-size:11px; font-weight:600; cursor:pointer; opacity:0; transition:opacity 0.2s; }
@@ -274,6 +278,10 @@ const TRENDS = [
     proof: { api: "#shutupmom — score 0.74 ↑ (up from 0.72), 98.7M views, 4K organic posts — still growing", research: "NewEngen (Feb 2026 trends report)" },
     meta: { views: "98.7M", posts: "4K", score: "0.74 ↑" },
     hashtags: ["#shutupmom"],
+    examples: [
+      { label: "TikTok — #shutupmom discover", url: "https://www.tiktok.com/tag/shutupmom?lang=en" },
+      { label: "TikTok — Shut Up Mom Challenge trend", url: "https://www.tiktok.com/discover/shut-up-mom-trend-original" },
+    ],
     angle: "'My mom said I'd ruin the couch in a week' — comedic montage of spills, pets, kids attacking FibreGuard fabric → reveal it still looks brand new.",
   },
   {
@@ -283,6 +291,11 @@ const TRENDS = [
     proof: { api: "#bridgertonseason4 (0.17 ↓↓), #bridgertonedit (0.31 ↓), #benedictbridgerton (0.26 ↓) — ALL declining further", research: "Later (Feb 6+13), Scott Social (Feb 17+18), HeyOrca" },
     meta: { views: "604M combined TikTok", posts: "700K+ IG Reels", score: "0.17-0.31 ↓↓ fading fast" },
     hashtags: ["#bridgertonseason4", "#bridgertonedit", "#regencycore"],
+    examples: [
+      { label: "Later — 'Make it Bridgerton' Reels trend breakdown", url: "https://later.com/blog/instagram-reels-trends/" },
+      { label: "Instagram — #bridgertonedit Reels", url: "https://www.instagram.com/explore/tags/bridgertonedit/" },
+      { label: "Audio: Archer Marsh - Give Me Everything", url: "https://www.instagram.com/reels/audio/2219751965068779/" },
+    ],
     angle: "Still works on IG where momentum holds. 'Everyday life, but make it Bridgerton' — elegant FibreGuard interiors. Use audio: Archer Marsh - Give Me Everything. ⚠️ Act fast, TikTok window closing.",
   },
   {
@@ -292,6 +305,10 @@ const TRENDS = [
     proof: { api: "#euphoriamakeup — score 0.38 ↓ (was 0.40), 53M views, 6.9K posts — declining", research: "NewEngen (Feb 2026 trends)" },
     meta: { views: "53M", posts: "6.9K", score: "0.38 ↓" },
     hashtags: ["#euphoriamakeup", "#euphoriavibes"],
+    examples: [
+      { label: "TikTok — #euphoriamakeup discover", url: "https://www.tiktok.com/tag/euphoriamakeup?lang=en" },
+      { label: "TikTok — Euphoria makeup transitions", url: "https://www.tiktok.com/discover/euphoria-makeup-transition" },
+    ],
     angle: "Euphoria room makeover transition — messy room → glam FibreGuard-styled space. Bold colors, dramatic lighting.",
   },
   {
@@ -310,6 +327,10 @@ const TRENDS = [
     proof: { api: "#everlong — score 0.59 ↑ (up from 0.58), 15.8M views, 4.1K posts — still climbing", research: "Part of broader 2026=2016 nostalgia wave (Dash Social, Scott Social)" },
     meta: { views: "15.8M", posts: "4.1K", score: "0.59 ↑" },
     hashtags: ["#everlong", "#foofighters", "#nostalgia"],
+    examples: [
+      { label: "TikTok — #everlong discover", url: "https://www.tiktok.com/tag/everlong?lang=en" },
+      { label: "Article — Why Everlong is trending on TikTok", url: "https://vocal.media/beat/how-come-everlong-by-the-foo-fighters-is-trending-on-tik-tok-other-socials" },
+    ],
     angle: "'Things that last forever' set to Everlong — FibreGuard durability reveal. Emotional + nostalgic tone. Very on-brand.",
   },
 
@@ -588,6 +609,7 @@ function renderCard(t) {
         ${t.meta.score?`<span>📈 Score: ${t.meta.score}</span>`:''}
       </div>
       ${hashHtml?`<div class="trend-hashtags">${hashHtml}</div>`:''}
+      ${(t.examples&&t.examples.length)?`<div class="trend-examples">${t.examples.map(e=>`<a href="${e.url}" target="_blank" rel="noopener">▶ ${e.label}</a>`).join('')}</div>`:''}
       ${t.angle?`<div class="trend-angle" id="${angleId}"><strong>FibreGuard angle:</strong> ${t.angle}<button class="copy-btn" onclick="event.stopPropagation();copyAngle('${angleId}',this)">📋 Copy</button></div>`:''}
     </div>`;
 }
