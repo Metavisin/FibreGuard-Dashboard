@@ -130,6 +130,8 @@
   .rec-examples { margin-top:8px; display:flex; gap:6px; flex-wrap:wrap; }
   .rec-examples a { font-size:11px; color:var(--accent2); text-decoration:none; padding:3px 10px; border-radius:16px; background:rgba(3,252,123,0.06); border:1px solid rgba(3,252,123,0.1); transition:all 0.2s; }
   .rec-examples a:hover { background:rgba(3,252,123,0.15); }
+  .top-picks-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:var(--accent); margin-bottom:12px; padding-bottom:0; }
+  .more-label { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:var(--text3); margin:24px 0 12px; padding-top:16px; border-top:1px solid var(--card-border); }
 
   .trend-examples { margin-top:10px; display:flex; gap:8px; flex-wrap:wrap; }
   .trend-examples a { font-size:12px; color:var(--accent2); text-decoration:none; padding:4px 12px; border-radius:20px; background:rgba(3,252,123,0.06); border:1px solid rgba(3,252,123,0.12); transition:all 0.2s; }
@@ -262,7 +264,7 @@
   <!-- RECOMMENDED -->
   <div id="tab-recommended" class="tab-content active">
     <div class="section-title">⭐ Recommended for FibreGuard</div>
-    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Curated trends with a natural fit for a fabric brand. Ranked by brand relevance — only trends where FibreGuard can join authentically without looking forced or risky.</p>
+    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Only trends a fabric brand can authentically join. Personal humor, edgy challenges, and person-only formats are filtered out. Every trend here has been used by brands already.</p>
     <div id="recommended-grid"></div>
   </div>
 
@@ -299,56 +301,59 @@
 // Fabric · Home · Lifestyle · Durability · Stain-proof
 // ═══════════════════════════════════════════
 const RECOMMENDED = [
+  // ──── TOP PICKS — Best brand fit this week ────
   {
-    rank: 1,
+    rank: 1, topPick: true,
     name: "Liquid Assets / Rich Girl (Gwen Stefani)",
     platform: "instagram", confidence: "research", freshness: "hot",
     fit: "perfect",
-    why: "The trend is literally about pouring liquids. Wine, coffee, juice poured on FibreGuard — and it all wipes clean. Satisfying content that IS the product demo. This is the best trend fit we've seen in weeks.",
-    desc: "Combining economics with literal liquids — skincare, beverages, anything pourable. 164K Reels. Business-friendly.",
-    proof: { research: "Scott Social (Feb 17, 164K Reels), business-friendly confirmed" },
+    why: "The trend is literally about pouring liquids. Brands are doing this already — pour wine, coffee, juice on FibreGuard fabric and it all wipes clean. The product demo IS the trend. 164K Reels and growing.",
+    desc: "Combining economics with literal liquids — skincare, beverages, anything pourable. 164K Reels. Brands actively using it.",
+    proof: { research: "Scott Social (Feb 17, 164K Reels), confirmed business-friendly" },
     meta: { posts: "164K Reels" },
     examples: [
       { label: "Scott Social — trend breakdown + audio link", url: "https://www.scottsocialmarketing.com/blog/trending-reels-audio-this-week-on-instagram" },
     ],
   },
   {
-    rank: 2,
+    rank: 2, topPick: true,
     name: "'You Have to Believe Me'",
     platform: "instagram", confidence: "research", freshness: "hot",
     fit: "perfect",
-    why: "The audio is made for us. 'You HAVE to believe me — this fabric is actually stain-proof.' Then you show the proof. It's literally a convincing format. FibreGuard's whole pitch in one Reel.",
-    desc: "Convince your audience about something they doubt. 1K Reels (early!). Business-friendly. Perfect for proof-of-concept content.",
+    why: "Audio-driven format where brands prove a bold claim. 'You HAVE to believe me — this fabric is actually stain-proof.' Then show the proof. Brands are already using this to demo products. Only 1K Reels = early mover advantage.",
+    desc: "Convince your audience about something they doubt. 1K Reels (early!). Brands and businesses jumping on it.",
     proof: { research: "Scott Social (1K Reels, Feb 17)" },
-    meta: { posts: "1K Reels (early — get in now)" },
+    meta: { posts: "1K Reels (early — first mover window)" },
     examples: [
       { label: "Scott Social — audio + trend details", url: "https://www.scottsocialmarketing.com/blog/trending-reels-audio-this-week-on-instagram" },
     ],
   },
   {
-    rank: 3,
-    name: "#shutupmom",
-    platform: "tiktok", confidence: "overlap", freshness: "hot",
-    fit: "strong",
-    why: "Family humor that fits perfectly: 'My mom said I'd ruin the couch in a week.' Show kids, pets, spills — then reveal it still looks brand new. Relatable, funny, brand-safe.",
-    desc: "Comedic format: things you did/bought that horrified your parents but turned out great. 98.7M views, 4K organic posts.",
-    proof: { api: "#shutupmom — score 0.74 ↑, 98.7M views, 4K organic posts", research: "NewEngen (Feb 2026 trends report)" },
-    meta: { views: "98.7M", posts: "4K", score: "0.74 ↑" },
+    rank: 3, topPick: true,
+    name: "Highlight Switch (The Desperados)",
+    platform: "instagram", confidence: "research", freshness: "hot",
+    fit: "perfect",
+    why: "Product features synced to beat drops — this is literally a product showcase format. Brands use it to flash through features, colors, textures. Switch between: stain-proof demo → color range → pet test → texture close-up. Clean and professional.",
+    desc: "Product features synced to beat drops. Clean rhythmic transitions. 26K Reels. Used heavily by product brands.",
+    proof: { research: "Later (Feb 13, 26K Reels)" },
+    meta: { posts: "26K Reels" },
     examples: [
-      { label: "TikTok — #shutupmom discover", url: "https://www.tiktok.com/tag/shutupmom?lang=en" },
+      { label: "Later — trend breakdown + audio", url: "https://later.com/blog/instagram-reels-trends/" },
     ],
   },
+
+  // ──── MORE RECOMMENDATIONS ────
   {
     rank: 4,
-    name: "#everlong / Foo Fighters — 'Things That Last Forever'",
-    platform: "tiktok", confidence: "overlap", freshness: "hot",
+    name: "'She Don't See Us' — Spotlight Hidden Features",
+    platform: "instagram", confidence: "research", freshness: "hot",
     fit: "strong",
-    why: "Durability is FibreGuard's core message. 'Things that last forever' set to this nostalgic anthem = emotional storytelling about fabric that lasts. On-brand without feeling forced.",
-    desc: "Foo Fighters 'Everlong' resurgence — nostalgia content, emotional reveals, things that last forever. Still climbing.",
-    proof: { api: "#everlong — score 0.59 ↑, 15.8M views, 4.1K posts", research: "2026=2016 nostalgia wave (Dash Social, Scott Social)" },
-    meta: { views: "15.8M", posts: "4.1K", score: "0.59 ↑" },
+    why: "Format built for brands showcasing underrated product features. Everyone knows stain-proof, but UV resistance? Softness? Color range? This audio lets you spotlight what people miss. 1.8K Reels.",
+    desc: "Spotlight underrated offerings while one product steals the show. 1.8K Reels. Business-friendly format.",
+    proof: { research: "Scott Social (Feb 18, 1.8K Reels)" },
+    meta: { posts: "1.8K Reels" },
     examples: [
-      { label: "TikTok — #everlong discover", url: "https://www.tiktok.com/tag/everlong?lang=en" },
+      { label: "Scott Social — trend + audio", url: "https://www.scottsocialmarketing.com/blog/trending-reels-audio-this-week-on-instagram" },
     ],
   },
   {
@@ -356,9 +361,9 @@ const RECOMMENDED = [
     name: "CleanTok / Spring Cleaning Spike",
     platform: "both", confidence: "emerging", freshness: "warm",
     fit: "strong",
-    why: "Cleaning content IS FibreGuard content. Flip the script: 'POV: you have FibreGuard and cleaning day takes 5 seconds.' Satisfying wipe-clean ASMR. The audience is already looking for this.",
-    desc: "Decluttering/cleaning content surging for spring. 'Get rid of 10 things a day' format. #CleanTok spiking again.",
-    proof: { research: "Bustle, TikTok — ongoing + fresh spike" },
+    why: "Cleaning and home care content = FibreGuard's natural territory. Satisfying wipe-clean ASMR, before/after stain removal, 'cleaning day but it takes 5 seconds.' The audience for this IS your target audience.",
+    desc: "Decluttering/cleaning content surging for spring. #CleanTok spiking on both platforms.",
+    proof: { research: "Bustle, TikTok — ongoing + fresh spring spike" },
     meta: {},
     examples: [
       { label: "TikTok — #cleantok discover", url: "https://www.tiktok.com/tag/cleantok?lang=en" },
@@ -368,9 +373,9 @@ const RECOMMENDED = [
     rank: 6,
     name: "Hopelessly Devoted To You",
     platform: "instagram", confidence: "research", freshness: "hot",
-    fit: "natural",
-    why: "Morning routine / cozy lifestyle audio. Fluffing pillows, styling the couch, satisfying home content. 'Hopelessly devoted to this fabric.' Soft, warm, brand-safe. 62K Reels already.",
-    desc: "Versatile audio for morning routines, lifestyle, product drops. 62K Reels. Business-friendly.",
+    fit: "strong",
+    why: "Lifestyle/product showcase audio used by home and interior brands. Styled rooms, fabric close-ups, cozy setups. 62K Reels. Warm and aspirational — fits a premium fabric brand naturally.",
+    desc: "Versatile audio for lifestyle content and product drops. 62K Reels. Business-friendly.",
     proof: { research: "Scott Social (62K Reels, Feb 17)" },
     meta: { posts: "62K Reels" },
     examples: [
@@ -379,55 +384,41 @@ const RECOMMENDED = [
   },
   {
     rank: 7,
-    name: "Highlight Switch (The Desperados)",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    fit: "natural",
-    why: "Product features synced to beat drops. Switch between FibreGuard features: colors, stain-proof demo, texture close-up, pet test. Clean, rhythmic, satisfying product showcase.",
-    desc: "Product features synced to beat drops. Clean rhythmic transitions. 26K Reels.",
-    proof: { research: "Later (Feb 13, 26K Reels)" },
-    meta: { posts: "26K Reels" },
+    name: "We Belong Together (Harry Styles — Aperture)",
+    platform: "instagram", confidence: "research", freshness: "warm",
+    fit: "strong",
+    why: "Quick clips of 'all your favorite things' — brands use it to show product range. Flash through fabric swatches, room setups, color combinations. 98K Reels, very brand-friendly format.",
+    desc: "Quick clips of favorite things paired together. 98K Reels. Product showcase format.",
+    proof: { research: "Scott Social (98.3K Reels), Later (86K, Jan 30)" },
+    meta: { posts: "98K Reels" },
     examples: [
-      { label: "Later — trend breakdown + audio", url: "https://later.com/blog/instagram-reels-trends/" },
+      { label: "Scott Social — audio + examples", url: "https://www.scottsocialmarketing.com/blog/trending-reels-audio-this-week-on-instagram" },
     ],
   },
   {
     rank: 8,
-    name: "'She Don't See Us' — Hidden Features",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    fit: "natural",
-    why: "Everyone knows FibreGuard = stain-proof. But the UV resistance, the softness, the color range? This trend spotlights underrated features. Educational + entertaining.",
-    desc: "Spotlight underrated offerings while one product steals the show. 1.8K Reels. Business-friendly.",
-    proof: { research: "Scott Social (Feb 18, 1.8K Reels)" },
-    meta: { posts: "1.8K Reels" },
-    examples: [
-      { label: "Scott Social — trend + audio", url: "https://www.scottsocialmarketing.com/blog/trending-reels-audio-this-week-on-instagram" },
-    ],
-  },
-  {
-    rank: 9,
-    name: "Bridgerton Season 4 — Elegant Interiors",
-    platform: "both", confidence: "overlap", freshness: "warm",
-    fit: "natural",
-    why: "Regencycore aesthetic → elegant FibreGuard interiors. Works best on IG where momentum still holds. Fading on TikTok so act fast if using it.",
-    desc: "'Make it Bridgerton' edits, regencycore aesthetics. Massive on IG (700K Reels) but declining on TikTok.",
-    proof: { api: "#bridgertonedit (0.31 ↓)", research: "Later, Scott Social, HeyOrca" },
-    meta: { posts: "700K+ IG Reels", score: "Declining on TikTok" },
-    examples: [
-      { label: "Instagram — #bridgertonedit Reels", url: "https://www.instagram.com/explore/tags/bridgertonedit/" },
-      { label: "Audio: Archer Marsh - Give Me Everything", url: "https://www.instagram.com/reels/audio/2219751965068779/" },
-    ],
-  },
-  {
-    rank: 10,
     name: "Forever Your Girl (Paula Abdul) — Netflix tie-in",
     platform: "instagram", confidence: "research", freshness: "hot",
     fit: "natural",
-    why: "'Forever your girl' but it's your couch. Lifestyle montage of cozy moments, styled rooms, pet cuddles. Feel-good, warm, and brand-safe. Netflix cultural moment driving the audio.",
-    desc: "Netflix rom-com 'People We Meet on Vacation' brought Paula Abdul's song back. 5.1K Reels. Business-friendly.",
+    why: "Feel-good lifestyle montage audio driven by Netflix cultural moment. Styled rooms, cozy home content. Works for aspirational brand content without any edge. 5.1K Reels.",
+    desc: "Netflix rom-com 'People We Meet on Vacation' brought this audio back. 5.1K Reels. Business-friendly.",
     proof: { research: "Scott Social (Feb 18, 5.1K Reels)" },
     meta: { posts: "5.1K Reels" },
     examples: [
       { label: "Scott Social — audio + examples", url: "https://www.scottsocialmarketing.com/blog/trending-reels-audio-this-week-on-instagram" },
+    ],
+  },
+  {
+    rank: 9,
+    name: "Raye Remix (Hypaton)",
+    platform: "instagram", confidence: "research", freshness: "hot",
+    fit: "natural",
+    why: "High-energy audio for fast-paced montages. Rapid-fire product shots, stain test compilations, fabric close-ups with punchy editing. 40K Reels. Clean energy, no risk.",
+    desc: "High-energy remix — 40K Reels. Works for fast-paced, energetic brand content.",
+    proof: { research: "Later (Feb 6, 40K Reels)" },
+    meta: { posts: "40K Reels" },
+    examples: [
+      { label: "Later — audio + trend", url: "https://later.com/blog/instagram-reels-trends/" },
     ],
   },
 ];
@@ -862,8 +853,14 @@ function init() {
   document.getElementById('stat-emerging').textContent = TRENDS.filter(t=>t.confidence==='emerging').length;
   document.getElementById('stat-total').textContent = TRENDS.length;
 
-  // Recommended grid
-  document.getElementById('recommended-grid').innerHTML = RECOMMENDED.map(renderRecCard).join('');
+  // Recommended grid with Top Picks separator
+  const topPicks = RECOMMENDED.filter(r=>r.topPick);
+  const morePicks = RECOMMENDED.filter(r=>!r.topPick);
+  document.getElementById('recommended-grid').innerHTML =
+    '<div class="top-picks-label">🏆 Top Picks This Week</div>' +
+    topPicks.map(renderRecCard).join('') +
+    '<div class="more-label">More Recommendations</div>' +
+    morePicks.map(renderRecCard).join('');
 
   // Grids
   document.getElementById('overlaps-grid').innerHTML = sorted.filter(t=>t.confidence==='overlap').map(renderCard).join('');
