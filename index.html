@@ -37,7 +37,7 @@
   /* Priority Queue */
   .priority-queue { padding:20px 40px 0; }
   .pq-title { font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--red); margin-bottom:12px; }
-  .pq-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:12px; }
+  .pq-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
   .pq-card { background:linear-gradient(135deg, rgba(255,59,48,0.05), rgba(255,149,0,0.03)); border:1px solid rgba(255,59,48,0.12); border-radius:14px; padding:16px; cursor:pointer; transition:all 0.2s; position:relative; }
   .pq-card:hover { transform:translateY(-2px); box-shadow:0 4px 16px rgba(255,59,48,0.1); }
   .pq-rank { position:absolute; top:10px; right:12px; font-size:22px; font-weight:800; color:rgba(255,59,48,0.12); }
@@ -930,7 +930,29 @@ const HOT_THIS_WEEK = (() => {
     const sb = (confScore[b.confidence]||0)*10 + (freshScore[b.freshness]||0);
     return sb - sa;
   });
-  return brandSafe.slice(0, 3);
+  const top3 = brandSafe.slice(0, 3);
+
+  // Add top EU pick (highest-view relevant trend)
+  const euAll = [];
+  for (const [country, tags] of Object.entries(EU_TRENDS)) {
+    const flag = country.split(' ')[0];
+    tags.filter(t=>t.relevant).forEach(t => euAll.push({...t, flag, country}));
+  }
+  euAll.sort((a,b) => parseViews(b.views) - parseViews(a.views));
+  if (euAll.length > 0) {
+    const best = euAll[0];
+    top3.push({
+      name: `${best.flag} ${best.tag}`,
+      confidence: 'eu',
+      freshness: 'hot',
+      angle: best.note || '',
+      desc: `${best.views} views · ${best.posts} posts · Trending in ${best.country}`,
+      proof: {},
+      _isEU: true,
+    });
+  }
+
+  return top3;
 })();
 
 function buildPriorityQueue() {
@@ -938,8 +960,8 @@ function buildPriorityQueue() {
     document.getElementById('priority-grid').innerHTML = '<div style="color:var(--text3);font-size:13px;padding:12px 0;">No brand-safe trends this week with strong FibreGuard angles.</div>';
     return;
   }
-  const confLabel = {overlap:'✅ Confirmed',research:'🔭 Exploratory',emerging:'📡 Other Platforms'};
-  const confTab = {overlap:'overlaps',research:'research',emerging:'emerging'};
+  const confLabel = {overlap:'✅ Confirmed',research:'🔭 Exploratory',emerging:'📡 Other Platforms',eu:'🇪🇺 EU Top Pick'};
+  const confTab = {overlap:'overlaps',research:'research',emerging:'emerging',eu:'eu'};
   document.getElementById('priority-grid').innerHTML = HOT_THIS_WEEK.map((t,i) => `
     <div class="pq-card" onclick="jumpTab('${confTab[t.confidence]||'overlaps'}')">
       <div class="pq-rank">#${i+1}</div>
