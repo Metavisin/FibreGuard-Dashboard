@@ -1042,11 +1042,18 @@ function init() {
     });
   }
 
-  // API Data tab: all trends with API proof, sorted by views descending
-  const apiTrends = TRENDS.filter(t=>t.proof&&t.proof.api).sort((a,b) => {
-    return parseViews(b.meta?.views) - parseViews(a.meta?.views);
-  });
-  document.getElementById('apidata-grid').innerHTML = apiTrends.map(renderCard).join('');
+  // API Data tab: active first (sorted by views), declining at bottom
+  const apiAll = TRENDS.filter(t=>t.proof&&t.proof.api);
+  const apiActive = apiAll.filter(t=>!isDeclining(t)).sort((a,b) => parseViews(b.meta?.views) - parseViews(a.meta?.views));
+  const apiFading = apiAll.filter(t=>isDeclining(t)).sort((a,b) => parseViews(b.meta?.views) - parseViews(a.meta?.views));
+  let apiHtml = apiActive.map(renderCard).join('');
+  if (apiFading.length > 0) {
+    apiHtml += `<div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--card-border);">
+      <div style="font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">📉 Fading — Declining momentum</div>
+      ${apiFading.map(renderCard).join('')}
+    </div>`;
+  }
+  document.getElementById('apidata-grid').innerHTML = apiHtml;
 
   // Confirmed Trends: split active vs fading
   const overlaps = sortTrends(TRENDS.filter(t=>t.confidence==='overlap'));
