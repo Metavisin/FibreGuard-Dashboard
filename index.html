@@ -400,7 +400,7 @@ const TRENDS = [
   // ──── OVERLAPS: API + Research confirmed ────
   {
     name: "#shutupmom",
-    platform: "tiktok", confidence: "overlap", freshness: "hot",
+    platform: "tiktok", confidence: "overlap", freshness: "hot", brandSafe: false,
     desc: "Comedic format: things you did/bought that horrified your parents but turned out great. ⚠️ Dropping fast (0.74→0.55 in 24h). Window may be closing.",
     proof: { api: "#shutupmom — score 0.55 ↓↓ (was 0.74), 101M views, 4K posts — dropping fast", research: "NewEngen (Feb 2026 trends report)" },
     meta: { views: "101M", posts: "4K", score: "0.55 ↓↓" },
@@ -440,7 +440,7 @@ const TRENDS = [
   },
   {
     name: "#blackhistorymonth / #bhm",
-    platform: "both", confidence: "overlap", freshness: "warm",
+    platform: "both", confidence: "overlap", freshness: "warm", brandSafe: false,
     desc: "Black History Month content — storytelling, cultural celebration, heritage. Valid through Feb 28. API shows renewed activity: #blackhistorymonth 0.54 ↑, #bhm 0.57.",
     proof: { api: "#blackhistorymonth 0.54 ↑, #bhm 0.57, 600M+89M views combined", research: "Cultural calendar — valid through Feb 28. API confirms renewed activity." },
     meta: { posts: "Valid through Feb 28" },
@@ -1071,15 +1071,25 @@ function init() {
     });
   }
 
-  // Confirmed Trends: split active vs fading
-  const overlaps = sortTrends(TRENDS.filter(t=>t.confidence==='overlap'));
-  const activeOverlaps = overlaps.filter(t=>!isDeclining(t));
-  const fadingOverlaps = overlaps.filter(t=>isDeclining(t));
+  // Confirmed Trends: brand-safe only, split active vs fading
+  const overlapsAll = sortTrends(TRENDS.filter(t=>t.confidence==='overlap'));
+  const overlapsSafe = overlapsAll.filter(t=>t.brandSafe !== false);
+  const overlapsUnsafe = overlapsAll.filter(t=>t.brandSafe === false);
+  const activeOverlaps = overlapsSafe.filter(t=>!isDeclining(t));
+  const fadingOverlaps = overlapsSafe.filter(t=>isDeclining(t));
   let overlapsHtml = activeOverlaps.map(renderCard).join('');
   if (fadingOverlaps.length > 0) {
     overlapsHtml += `<div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--card-border);">
       <div style="font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">📉 Fading — May still work on some platforms</div>
       ${fadingOverlaps.map(renderCard).join('')}
+    </div>`;
+  }
+  if (overlapsUnsafe.length > 0) {
+    overlapsHtml += `<div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--card-border);">
+      <div style="font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">⚠️ Confirmed viral but not relevant for FibreGuard</div>
+      <div style="display:flex;flex-wrap:wrap;gap:8px;">${overlapsUnsafe.map(t =>
+        `<span style="background:var(--bg2);border:1px solid var(--card-border);border-radius:8px;padding:6px 12px;font-size:12px;color:var(--text3);">${t.name}</span>`
+      ).join('')}</div>
     </div>`;
   }
   document.getElementById('overlaps-grid').innerHTML = overlapsHtml;
