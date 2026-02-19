@@ -965,37 +965,39 @@ const HOT_THIS_WEEK = (() => {
     if (!t.angle || t.angle.length < 10) return false;
     return true;
   });
-  // Prioritize: overlap first, then hot freshness, then research
-  const confScore = {overlap:3, research:2, emerging:1};
+  // Ranking priority: Confirmed (overlap) → EU → Exploratory (research) → Emerging
   const freshScore = {hot:2, warm:1, evergreen:0};
-  brandSafe.sort((a,b) => {
-    const sa = (confScore[a.confidence]||0)*10 + (freshScore[a.freshness]||0);
-    const sb = (confScore[b.confidence]||0)*10 + (freshScore[b.freshness]||0);
-    return sb - sa;
-  });
-  const top3 = brandSafe.slice(0, 3);
+  const byFreshness = (a,b) => (freshScore[b.freshness]||0) - (freshScore[a.freshness]||0);
 
-  // Add top EU pick (highest-view relevant trend)
+  const confirmed = brandSafe.filter(t=>t.confidence==='overlap').sort(byFreshness);
+  const exploratory = brandSafe.filter(t=>t.confidence==='research').sort(byFreshness);
+  const emerging = brandSafe.filter(t=>t.confidence==='emerging').sort(byFreshness);
+
+  // Build EU pick
   const euAll = [];
   for (const [country, tags] of Object.entries(EU_TRENDS)) {
     const flag = country.split(' ')[0];
     tags.filter(t=>t.relevant).forEach(t => euAll.push({...t, flag, country}));
   }
   euAll.sort((a,b) => parseViews(b.views) - parseViews(a.views));
-  if (euAll.length > 0) {
-    const best = euAll[0];
-    top3.push({
-      name: `${best.flag} ${best.tag}`,
-      confidence: 'eu',
-      freshness: 'hot',
-      angle: best.note || '',
-      desc: `${best.views} views · ${best.posts} posts · Trending in ${best.country}`,
-      proof: {},
-      _isEU: true,
-    });
-  }
+  const euPick = euAll.length > 0 ? {
+    name: `${euAll[0].flag} ${euAll[0].tag}`,
+    confidence: 'eu',
+    freshness: 'hot',
+    angle: euAll[0].note || '',
+    desc: `${euAll[0].views} views · ${euAll[0].posts} posts · Trending in ${euAll[0].country}`,
+    proof: {},
+    _isEU: true,
+  } : null;
 
-  return top3;
+  // Pick best from each tier in order: confirmed → EU → exploratory → emerging
+  const picks = [];
+  if (confirmed.length > 0) picks.push(confirmed[0]);
+  if (euPick) picks.push(euPick);
+  if (exploratory.length > 0) picks.push(exploratory[0]);
+  if (emerging.length > 0) picks.push(emerging[0]);
+
+  return picks.slice(0, 4);
 })();
 
 function buildPriorityQueue() {
