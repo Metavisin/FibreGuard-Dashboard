@@ -979,38 +979,60 @@ function init() {
   renderEU();
 }
 
+function parseViews(v) {
+  if (!v) return 0;
+  const s = v.toString().replace(/,/g,'');
+  if (s.endsWith('B')) return parseFloat(s)*1e9;
+  if (s.endsWith('M')) return parseFloat(s)*1e6;
+  if (s.endsWith('K')) return parseFloat(s)*1e3;
+  return parseFloat(s)||0;
+}
+
 function renderEU() {
-  let html = `<p style="color:var(--text3);font-size:12px;margin-bottom:20px;">Last updated: ${EU_TRENDS_UPDATED} · Source: TikTok Trending API (Apify) · Top 6 EU markets</p>`;
+  // Flatten all tags with country info, then sort by views descending
+  const all = [];
   for (const [country, tags] of Object.entries(EU_TRENDS)) {
-    const relevant = tags.filter(t=>t.relevant);
-    const other = tags.filter(t=>!t.relevant);
-    html += `<div style="margin-bottom:28px;">`;
-    html += `<h3 style="font-size:16px;font-weight:600;color:var(--text1);margin-bottom:12px;">${country}</h3>`;
-    if (relevant.length > 0) {
-      html += `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:12px;">`;
-      relevant.forEach(t => {
-        html += `<div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;">
-          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
-            <a href="https://www.tiktok.com/tag/${t.tag.replace('#','')}\?lang=en" target="_blank" rel="noopener" style="font-weight:600;color:var(--accent);font-size:14px;text-decoration:none;">${t.tag} ↗</a>
-            <span style="background:#34c75922;color:#34c759;font-size:10px;padding:2px 8px;border-radius:6px;font-weight:600;">FG FIT</span>
-          </div>
-          <div style="display:flex;gap:16px;font-size:12px;color:var(--text3);margin-bottom:8px;">
-            <span>👀 ${t.views} views</span><span>📹 ${t.posts} posts</span>
-          </div>
-          ${t.note ? `<p style="font-size:12px;color:var(--text2);line-height:1.4;">💡 ${t.note}</p>` : ''}
-        </div>`;
-      });
-      html += `</div>`;
-    }
-    if (other.length > 0) {
-      html += `<div style="display:flex;flex-wrap:wrap;gap:8px;">`;
-      other.forEach(t => {
-        html += `<a href="https://www.tiktok.com/tag/${t.tag.replace('#','')}\?lang=en" target="_blank" rel="noopener" style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:12px;color:var(--text3);text-decoration:none;display:inline-block;">${t.tag} ↗ <span style="color:var(--text4);">${t.views}</span></a>`;
-      });
-      html += `</div>`;
-    }
+    const flag = country.split(' ')[0]; // emoji flag
+    tags.forEach(t => all.push({...t, country, flag}));
+  }
+  all.sort((a,b) => parseViews(b.views) - parseViews(a.views));
+
+  const relevant = all.filter(t=>t.relevant);
+  const other = all.filter(t=>!t.relevant);
+
+  let html = `<p style="color:var(--text3);font-size:12px;margin-bottom:20px;">Last updated: ${EU_TRENDS_UPDATED} · Source: TikTok Trending API (Apify) · Top 6 EU markets · Ranked by views</p>`;
+
+  // FibreGuard-relevant trends (ranked)
+  if (relevant.length > 0) {
+    html += `<h3 style="font-size:15px;font-weight:600;color:var(--accent);margin-bottom:14px;">✅ FibreGuard-Relevant Trends</h3>`;
+    html += `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-bottom:28px;">`;
+    relevant.forEach((t, i) => {
+      html += `<div style="background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:18px;position:relative;">
+        <div style="position:absolute;top:10px;right:14px;font-size:20px;font-weight:800;color:rgba(3,252,123,0.12);">#${i+1}</div>
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
+          <span style="font-size:18px;">${t.flag}</span>
+          <a href="https://www.tiktok.com/tag/${t.tag.replace('#','')}\?lang=en" target="_blank" rel="noopener" style="font-weight:700;color:var(--accent);font-size:15px;text-decoration:none;">${t.tag} ↗</a>
+          <span style="background:#34c75922;color:#34c759;font-size:10px;padding:2px 8px;border-radius:6px;font-weight:600;">FG FIT</span>
+        </div>
+        <div style="display:flex;gap:16px;font-size:12px;color:var(--text3);margin-bottom:8px;">
+          <span>👀 ${t.views} views</span><span>📹 ${t.posts} posts</span>
+        </div>
+        ${t.note ? `<p style="font-size:12px;color:var(--text2);line-height:1.4;">💡 ${t.note}</p>` : ''}
+      </div>`;
+    });
     html += `</div>`;
   }
+
+  // Other trending (not relevant)
+  if (other.length > 0) {
+    html += `<h3 style="font-size:14px;font-weight:600;color:var(--text3);margin-bottom:12px;">Other Trending (not FG-relevant)</h3>`;
+    html += `<div style="display:flex;flex-wrap:wrap;gap:8px;">`;
+    other.forEach(t => {
+      html += `<a href="https://www.tiktok.com/tag/${t.tag.replace('#','')}\?lang=en" target="_blank" rel="noopener" style="background:var(--card);border:1px solid var(--card-border);border-radius:8px;padding:6px 12px;font-size:12px;color:var(--text3);text-decoration:none;display:inline-flex;align-items:center;gap:4px;">${t.flag} ${t.tag} ↗ <span style="color:var(--text3);opacity:0.6;">${t.views}</span></a>`;
+    });
+    html += `</div>`;
+  }
+
   document.getElementById('eu-grid').innerHTML = html;
 }
 
