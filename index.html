@@ -139,8 +139,28 @@
 
   .trend-angle { margin-top:10px; padding:10px 14px; background:var(--accent-bg); border-radius:10px; font-size:13px; position:relative; }
   .trend-angle strong { color:var(--accent2); }
+
+  /* Prominent angle (moved up, right under header) */
+  .trend-angle-top { margin:8px 0 12px; padding:12px 16px; background:linear-gradient(135deg, rgba(3,252,123,0.08), rgba(3,252,123,0.03)); border:1px solid rgba(3,252,123,0.15); border-radius:12px; font-size:14px; line-height:1.5; color:var(--text); position:relative; }
+  .trend-angle-top .angle-label { color:var(--accent); font-weight:700; }
+
   .copy-btn { position:absolute; top:8px; right:8px; background:var(--accent); color:#000; border:none; border-radius:8px; padding:4px 10px; font-size:11px; font-weight:600; cursor:pointer; opacity:0; transition:opacity 0.2s; }
-  .trend-angle:hover .copy-btn { opacity:1; }
+  .trend-angle:hover .copy-btn, .trend-angle-top:hover .copy-btn { opacity:1; }
+
+  /* Declining/fading trends */
+  .trend-card.declining { opacity:0.5; border-left-color:var(--text3) !important; }
+  .trend-card.declining:hover { opacity:0.75; }
+  .badge-declining { font-size:10px; padding:2px 8px; border-radius:20px; font-weight:700; background:rgba(255,59,48,0.1); color:var(--red); }
+
+  /* New trend badge */
+  .badge-new { font-size:10px; padding:2px 8px; border-radius:20px; font-weight:700; background:rgba(0,122,255,0.12); color:var(--blue); animation:pulse-new 2s ease-in-out infinite; }
+  @keyframes pulse-new { 0%,100%{opacity:1} 50%{opacity:0.6} }
+
+  /* Show more toggle */
+  .show-more-btn { display:block; width:100%; padding:12px; margin-top:12px; background:var(--bg2); border:1px solid var(--card-border); border-radius:12px; color:var(--text2); font-size:13px; font-weight:600; cursor:pointer; text-align:center; transition:all 0.2s; }
+  .show-more-btn:hover { background:var(--bg3); color:var(--text); }
+  .hidden-trends { display:none; }
+  .hidden-trends.show { display:block; }
 
   .section-title { font-size:18px; font-weight:700; margin-bottom:14px; }
 
@@ -816,14 +836,35 @@ function filterTrends(filter, btn) {
   });
 }
 
+function isDeclining(t) {
+  return t.proof?.api?.includes('↓↓') || t.proof?.api?.includes('fading');
+}
+function isNew(t) {
+  // Check dateAdded field if present
+  if (t.dateAdded) {
+    const added = new Date(t.dateAdded);
+    const now = new Date();
+    return (now - added) < 48 * 60 * 60 * 1000;
+  }
+  // Auto-detect from proof text: "Feb 19" or "🆕" in desc
+  const proofText = (t.proof?.research||'') + (t.proof?.api||'') + (t.desc||'');
+  // Match today's date or yesterday's in "Feb DD" format
+  const now = new Date();
+  const today = `Feb ${now.getDate()}`;
+  const yesterday = `Feb ${now.getDate()-1}`;
+  return proofText.includes('🆕') || proofText.includes(today) || proofText.includes(yesterday);
+}
+
 function renderCard(t) {
   const pClass = t.platform==='both'?'both':t.platform;
   const pLabel = t.platform==='both'?'TikTok + IG':t.platform==='tiktok'?'TikTok':'Instagram';
   const confClass = t.confidence+'-badge';
-  const confLabel = {overlap:'🎯 API + RESEARCH',research:'🔬 RESEARCH',emerging:'🔮 EMERGING'}[t.confidence]||'';
+  const confLabel = {overlap:'✅ CONFIRMED',research:'🔭 EXPLORATORY',emerging:'📡 OTHER PLATFORMS'}[t.confidence]||'';
   const cardClass = t.confidence==='overlap'?'overlap':t.confidence==='research'?'research-only':t.confidence==='emerging'?'emerging-card':'';
   const freshLabels = {hot:'🔥 THIS WEEK',warm:'⚡ ACTIVE',evergreen:'🌿 EVERGREEN'};
   const freshClass = t.freshness||'warm';
+  const declining = isDeclining(t);
+  const isNewTrend = isNew(t);
 
   // Proof block
   let proofHtml = '';
@@ -841,13 +882,16 @@ function renderCard(t) {
   const angleId = 'a-'+Math.random().toString(36).substr(2,6);
 
   return `
-    <div class="trend-card ${cardClass}" data-confidence="${t.confidence}" data-platform="${t.platform}" data-angle="${t.angle?'yes':'no'}">
+    <div class="trend-card ${cardClass}${declining?' declining':''}" data-confidence="${t.confidence}" data-platform="${t.platform}" data-angle="${t.angle?'yes':'no'}">
       <span class="confidence-badge ${confClass}">${confLabel}</span>
       <div class="trend-header">
         <span class="trend-name">${t.name}</span>
+        ${isNewTrend?'<span class="badge-new">🆕 NEW</span>':''}
         <span class="badge ${pClass}">${pLabel}</span>
         <span class="badge ${freshClass}">${freshLabels[freshClass]||''}</span>
+        ${declining?'<span class="badge-declining">📉 FADING</span>':''}
       </div>
+      ${t.angle?`<div class="trend-angle-top" id="${angleId}"><span class="angle-label">💡 FibreGuard angle:</span> ${t.angle}<button class="copy-btn" onclick="event.stopPropagation();copyAngle('${angleId}',this)">📋 Copy</button></div>`:''}
       ${proofHtml}
       <div class="trend-desc">${t.desc}</div>
       <div class="trend-meta">
@@ -857,7 +901,6 @@ function renderCard(t) {
       </div>
       ${hashHtml?`<div class="trend-hashtags">${hashHtml}</div>`:''}
       ${(t.examples&&t.examples.length)?`<div class="trend-examples">${t.examples.map(e=>`<a href="${e.url}" target="_blank" rel="noopener">▶ ${e.label}</a>`).join('')}</div>`:''}
-      ${t.angle?`<div class="trend-angle" id="${angleId}"><strong>FibreGuard angle:</strong> ${t.angle}<button class="copy-btn" onclick="event.stopPropagation();copyAngle('${angleId}',this)">📋 Copy</button></div>`:''}
     </div>`;
 }
 
@@ -977,18 +1020,45 @@ function init() {
     timeZone:'Europe/Madrid',weekday:'short',day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'
   })+' CET';
 
-  // Sort: overlaps first, then research, then emerging
-  const confOrder = {overlap:0,research:1,emerging:2};
+  // Sort within each tier: hot first, declining/fading last
   const freshOrder = {hot:0,warm:1,evergreen:2};
-  const sorted = [...TRENDS].sort((a,b) => {
-    if(confOrder[a.confidence]!==confOrder[b.confidence]) return confOrder[a.confidence]-confOrder[b.confidence];
-    return (freshOrder[a.freshness]||2)-(freshOrder[b.freshness]||2);
-  });
+  function sortTrends(arr) {
+    return [...arr].sort((a,b) => {
+      const aDecl = isDeclining(a) ? 1 : 0;
+      const bDecl = isDeclining(b) ? 1 : 0;
+      if (aDecl !== bDecl) return aDecl - bDecl; // declining goes last
+      return (freshOrder[a.freshness]||2) - (freshOrder[b.freshness]||2);
+    });
+  }
 
-  // Grids
-  document.getElementById('overlaps-grid').innerHTML = sorted.filter(t=>t.confidence==='overlap').map(renderCard).join('');
-  document.getElementById('research-grid').innerHTML = sorted.filter(t=>t.confidence==='research').map(renderCard).join('');
-  document.getElementById('emerging-grid').innerHTML = sorted.filter(t=>t.confidence==='emerging').map(renderCard).join('');
+  // Confirmed Trends: split active vs fading
+  const overlaps = sortTrends(TRENDS.filter(t=>t.confidence==='overlap'));
+  const activeOverlaps = overlaps.filter(t=>!isDeclining(t));
+  const fadingOverlaps = overlaps.filter(t=>isDeclining(t));
+  let overlapsHtml = activeOverlaps.map(renderCard).join('');
+  if (fadingOverlaps.length > 0) {
+    overlapsHtml += `<div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--card-border);">
+      <div style="font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">📉 Fading — May still work on some platforms</div>
+      ${fadingOverlaps.map(renderCard).join('')}
+    </div>`;
+  }
+  document.getElementById('overlaps-grid').innerHTML = overlapsHtml;
+
+  // Exploratory Trends: cap at 8, show-more for rest
+  const research = sortTrends(TRENDS.filter(t=>t.confidence==='research'));
+  const CAP = 8;
+  if (research.length > CAP) {
+    const visible = research.slice(0, CAP).map(renderCard).join('');
+    const hidden = research.slice(CAP).map(renderCard).join('');
+    document.getElementById('research-grid').innerHTML = visible +
+      `<div class="hidden-trends" id="more-research">${hidden}</div>` +
+      `<button class="show-more-btn" onclick="document.getElementById('more-research').classList.toggle('show');this.textContent=this.textContent.includes('Show')?'Show less':'Show ${research.length - CAP} more trends'">Show ${research.length - CAP} more trends</button>`;
+  } else {
+    document.getElementById('research-grid').innerHTML = research.map(renderCard).join('');
+  }
+
+  // Other Platforms
+  document.getElementById('emerging-grid').innerHTML = sortTrends(TRENDS.filter(t=>t.confidence==='emerging')).map(renderCard).join('');
 
   buildTabs();
   buildPriorityQueue();
