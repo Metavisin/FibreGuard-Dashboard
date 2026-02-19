@@ -210,18 +210,18 @@
 <div class="content">
   <!-- Overview removed -->
 
-  <!-- API DATA -->
-  <div id="tab-apidata" class="tab-content active">
-    <div class="section-title">📊 API Data — Raw Numbers</div>
-    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Pure TikTok API data ranked by views and posts. No editorial filter — just the numbers.</p>
-    <div class="trends-grid" id="apidata-grid"></div>
-  </div>
-
   <!-- CONFIRMED -->
-  <div id="tab-overlaps" class="tab-content">
+  <div id="tab-overlaps" class="tab-content active">
     <div class="section-title">✅ Confirmed Trends — API × Research</div>
     <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Cross-verified in both Apify API data and independent research sources. Highest confidence.</p>
     <div class="trends-grid" id="overlaps-grid"></div>
+  </div>
+
+  <!-- API DATA -->
+  <div id="tab-apidata" class="tab-content">
+    <div class="section-title">📊 API Data — Raw Numbers</div>
+    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Pure TikTok API data ranked by views and posts. No editorial filter — just the numbers.</p>
+    <div class="trends-grid" id="apidata-grid"></div>
   </div>
 
   <!-- EXPLORATORY -->
@@ -747,8 +747,8 @@ const TRENDS = [
 // Dark mode only — no toggle needed
 
 const TAB_CONFIG = [
-  {id:'apidata',label:'📊 API Data'},
   {id:'overlaps',label:'✅ Confirmed Trends'},
+  {id:'apidata',label:'📊 API Data'},
   {id:'research',label:'🔭 Exploratory Trends'},
   {id:'emerging',label:'📡 Trends on Other Platforms'},
   {id:'eu',label:'🇪🇺 EU Trends'},
