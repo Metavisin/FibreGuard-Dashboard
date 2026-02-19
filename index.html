@@ -224,6 +224,13 @@
     <div class="trends-grid" id="apidata-grid"></div>
   </div>
 
+  <!-- TRENDING NOW -->
+  <div id="tab-trending" class="tab-content">
+    <div class="section-title">🔴 Trending Now — TikTok Creative Center (US)</div>
+    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Real-time trending hashtags from TikTok's Creative Center. These are spiking right now — ranked by views. Updated daily.</p>
+    <div id="trending-grid"></div>
+  </div>
+
   <!-- EXPLORATORY -->
   <div id="tab-research" class="tab-content">
     <div class="section-title">🔭 Exploratory Trends</div>
@@ -743,12 +750,42 @@ const TRENDS = [
   },
 ];
 
+// ──── TRENDING NOW — TikTok Creative Center (US) ────
+const TRENDING_NOW_UPDATED = "2026-02-19";
+const TRENDING_NOW = [
+  {rank:1,tag:"#home",views:"168.3M",views_raw:168333599,posts:"43.1K",posts_raw:43123,industry:"Home Improvement",direction:"↑"},
+  {rank:2,tag:"#teamworkmakesthedreamwork",views:"20.6M",views_raw:20602097,posts:"18.9K",posts_raw:18933,industry:"",direction:"→"},
+  {rank:3,tag:"#epstein",views:"900.5M",views_raw:900500806,posts:"53.3K",posts_raw:53330,industry:"News & Entertainment",direction:"→"},
+  {rank:5,tag:"#makefriendslive",views:"24.2M",views_raw:24186054,posts:"2.3K",posts_raw:2333,industry:"",direction:"↓"},
+  {rank:7,tag:"#epsteinfiles",views:"488.8M",views_raw:488827225,posts:"21.5K",posts_raw:21474,industry:"News & Entertainment",direction:"↓"},
+  {rank:8,tag:"#blackhistory",views:"40.4M",views_raw:40419182,posts:"14.2K",posts_raw:14222,industry:"Education",direction:"↑"},
+  {rank:9,tag:"#epsteinisland",views:"276.3M",views_raw:276250969,posts:"10.8K",posts_raw:10819,industry:"News & Entertainment",direction:"→"},
+  {rank:10,tag:"#ukweather",views:"121.6M",views_raw:121648375,posts:"14.8K",posts_raw:14810,industry:"",direction:"→"},
+  {rank:11,tag:"#stormgoretti",views:"123.2M",views_raw:123226548,posts:"14.8K",posts_raw:14750,industry:"News & Entertainment",direction:"→"},
+  {rank:12,tag:"#alexwarren",views:"45.2M",views_raw:45212574,posts:"2.4K",posts_raw:2425,industry:"News & Entertainment",direction:"↓"},
+  {rank:16,tag:"#tracycortez",views:"13.5M",views_raw:13521030,posts:"4.9K",posts_raw:4902,industry:"Sports & Outdoor",direction:"↑"},
+  {rank:18,tag:"#ufc322",views:"11.7M",views_raw:11665184,posts:"4.1K",posts_raw:4074,industry:"Sports & Outdoor",direction:"↓"},
+  {rank:19,tag:"#zavala",views:"196.8M",views_raw:196771518,posts:"6.1K",posts_raw:6073,industry:"News & Entertainment",direction:"↑"},
+  {rank:23,tag:"#sunsetvibes",views:"3.5M",views_raw:3469404,posts:"3.1K",posts_raw:3051,industry:"",direction:"→"},
+  {rank:24,tag:"#cmpunk",views:"12.0M",views_raw:12020043,posts:"1.7K",posts_raw:1748,industry:"Sports & Outdoor",direction:"↑"},
+  {rank:26,tag:"#copadelrey",views:"32.2M",views_raw:32185515,posts:"3.3K",posts_raw:3317,industry:"Sports & Outdoor",direction:"↓"},
+  {rank:27,tag:"#benitobowl",views:"108.8M",views_raw:108813244,posts:"8.5K",posts_raw:8548,industry:"Apparel & Accessories",direction:"↓"},
+  {rank:30,tag:"#superbowllx",views:"147.8M",views_raw:147817593,posts:"4.2K",posts_raw:4214,industry:"Sports & Outdoor",direction:"↓"},
+  {rank:32,tag:"#primadonnagirl",views:"5.0M",views_raw:5030009,posts:"2.0K",posts_raw:1968,industry:"",direction:"→"},
+  {rank:38,tag:"#amorproprio",views:"9.8M",views_raw:9762018,posts:"7.6K",posts_raw:7559,industry:"",direction:"→"},
+  {rank:41,tag:"#giftedinlove",views:"53.0M",views_raw:53031576,posts:"27.5K",posts_raw:27519,industry:"Apparel & Accessories",direction:"→"},
+  {rank:46,tag:"#winterolympics",views:"843.1M",views_raw:843143346,posts:"10.6K",posts_raw:10551,industry:"Sports & Outdoor",direction:"→"},
+  {rank:48,tag:"#tuesdayvibes",views:"1.6M",views_raw:1554782,posts:"3.0K",posts_raw:2971,industry:"",direction:"↑"},
+  {rank:49,tag:"#wrestlemania",views:"18.0M",views_raw:18029486,posts:"2.0K",posts_raw:2044,industry:"Sports & Outdoor",direction:"→"},
+];
+
 // ──── ENGINE ────
 // Dark mode only — no toggle needed
 
 const TAB_CONFIG = [
   {id:'overlaps',label:'✅ Confirmed Trends'},
   {id:'apidata',label:'📊 API Data'},
+  {id:'trending',label:'🔴 Trending Now'},
   {id:'research',label:'🔭 Exploratory Trends'},
   {id:'emerging',label:'📡 Trends on Other Platforms'},
   {id:'eu',label:'🇪🇺 EU Trends'},
@@ -799,6 +836,7 @@ function buildTabs() {
   const euTotal = Object.values(EU_TRENDS).reduce((s,arr)=>s+arr.length, 0);
   const counts = {
     apidata: TRENDS.filter(t=>t.proof&&t.proof.api).length,
+    trending: TRENDING_NOW.length,
     overlaps: TRENDS.filter(t=>t.confidence==='overlap').length,
     research: TRENDS.filter(t=>t.confidence==='research').length,
     emerging: TRENDS.filter(t=>t.confidence==='emerging').length,
@@ -1086,7 +1124,48 @@ function init() {
 
   buildTabs();
   buildPriorityQueue();
+  renderTrendingNow();
   renderEU();
+}
+
+function renderTrendingNow() {
+  const sorted = [...TRENDING_NOW].sort((a,b) => b.views_raw - a.views_raw);
+  const rising = sorted.filter(t => t.direction === '↑');
+  const stable = sorted.filter(t => t.direction === '→');
+  const falling = sorted.filter(t => t.direction === '↓');
+
+  function renderTNCard(t) {
+    const dirColor = t.direction === '↑' ? 'var(--accent)' : t.direction === '↓' ? 'var(--red)' : 'var(--text3)';
+    const dirLabel = t.direction === '↑' ? '📈 Rising' : t.direction === '↓' ? '📉 Falling' : '→ Stable';
+    return `<div style="background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:16px;display:flex;justify-content:space-between;align-items:center;gap:12px;">
+      <div style="flex:1;min-width:0;">
+        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;flex-wrap:wrap;">
+          <a href="https://www.tiktok.com/tag/${t.tag.replace('#','')}" target="_blank" rel="noopener" style="font-weight:700;font-size:15px;color:var(--text);text-decoration:none;">${t.tag} ↗</a>
+          <span style="font-size:11px;color:${dirColor};font-weight:600;">${dirLabel}</span>
+          ${t.industry ? `<span style="font-size:10px;color:var(--text3);background:var(--bg2);padding:2px 8px;border-radius:6px;">${t.industry}</span>` : ''}
+        </div>
+        <div style="display:flex;gap:16px;font-size:12px;color:var(--text3);">
+          <span>👀 ${t.views} views</span><span>📹 ${t.posts} posts</span><span style="color:var(--text3);opacity:0.5;">CC Rank #${t.rank}</span>
+        </div>
+      </div>
+    </div>`;
+  }
+
+  let html = `<p style="color:var(--text3);font-size:12px;margin-bottom:20px;">Last updated: ${TRENDING_NOW_UPDATED} · Source: TikTok Creative Center via Apify · US market · Ad-boosted filtered out</p>`;
+
+  if (rising.length > 0) {
+    html += `<h3 style="font-size:14px;font-weight:600;color:var(--accent);margin-bottom:12px;">📈 Rising</h3>`;
+    html += `<div style="display:grid;gap:8px;margin-bottom:24px;">${rising.map(renderTNCard).join('')}</div>`;
+  }
+  if (stable.length > 0) {
+    html += `<h3 style="font-size:14px;font-weight:600;color:var(--text2);margin-bottom:12px;">→ Holding Steady</h3>`;
+    html += `<div style="display:grid;gap:8px;margin-bottom:24px;">${stable.map(renderTNCard).join('')}</div>`;
+  }
+  if (falling.length > 0) {
+    html += `<h3 style="font-size:14px;font-weight:600;color:var(--text3);margin-bottom:12px;">📉 Cooling Down</h3>`;
+    html += `<div style="display:grid;gap:8px;margin-bottom:24px;">${falling.map(renderTNCard).join('')}</div>`;
+  }
+  document.getElementById('trending-grid').innerHTML = html;
 }
 
 function parseViews(v) {
