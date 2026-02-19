@@ -759,20 +759,20 @@ const EU_TRENDS_UPDATED = "2026-02-19";
 const EU_TRENDS = {
   "🇩🇪 Germany": [
     {tag:"#valentinstagsdeals", views:"44.7M", posts:"4.0K", relevant:false},
-    {tag:"#loveisintheair", views:"32.4M", posts:"2.7K", relevant:true, note:"Love/lifestyle — could pair with cozy fabric content"},
-    {tag:"#damenhoodie", views:"2.0M", posts:"3.4K", relevant:true, note:"Fashion/textile — hoodie fabric showcase"},
+    {tag:"#loveisintheair", views:"32.4M", posts:"2.7K", relevant:true, note:"Love/lifestyle — cozy living room setup", idea:"💡 'Date night in on a FibreGuard sofa' — wine, candles, cozy couple moments. Spill the wine? No stress. Wipe clean."},
+    {tag:"#damenhoodie", views:"2.0M", posts:"3.4K", relevant:false},
     {tag:"#streng", views:"1.0M", posts:"224", relevant:false},
   ],
   "🇫🇷 France": [
     {tag:"#coupedefrance", views:"2.1M", posts:"133", relevant:false},
-    {tag:"#sportwear", views:"919K", posts:"307", relevant:true, note:"Activewear fabric — performance textile angle"},
-    {tag:"#tracksuit", views:"1.3M", posts:"231", relevant:true, note:"Tracksuit fabrics — durability + style"},
-    {tag:"#highwaistsportswear", views:"875K", posts:"1.1K", relevant:true, note:"Sportswear fabric tech"},
+    {tag:"#sportwear", views:"919K", posts:"307", relevant:false},
+    {tag:"#tracksuit", views:"1.3M", posts:"231", relevant:false},
+    {tag:"#highwaistsportswear", views:"875K", posts:"1.1K", relevant:false},
     {tag:"#offresdelasaintvalentin", views:"44.3M", posts:"7.1K", relevant:false},
   ],
   "🇪🇸 Spain": [
     {tag:"#copadelrey", views:"50.6M", posts:"2.8K", relevant:false},
-    {tag:"#loveisintheair", views:"44.8M", posts:"4.5K", relevant:true, note:"Love/lifestyle — cozy home fabric angle"},
+    {tag:"#loveisintheair", views:"44.8M", posts:"4.5K", relevant:true, note:"Love/lifestyle — cozy home interiors", idea:"💡 Romantic living room transformation — styled FibreGuard sofa with throws, cushions, mood lighting. 'Love is in the air… and so is red wine on the couch.'"},
     {tag:"#ofertasdesanvalentín", views:"52.6M", posts:"5.4K", relevant:false},
     {tag:"#redessociales", views:"6.2M", posts:"512", relevant:false},
   ],
@@ -782,11 +782,11 @@ const EU_TRENDS = {
     {tag:"#grok", views:"392K", posts:"171", relevant:false},
   ],
   "🇮🇹 Italy": [
-    {tag:"#milanocortina2026", views:"463M", posts:"9.0K", relevant:true, note:"Winter Olympics — athleisure/performance fabric tie-in"},
-    {tag:"#olympics", views:"274M", posts:"3.7K", relevant:true, note:"Olympics content — athletic fabric showcase"},
-    {tag:"#workwearforstylists", views:"1.2M", posts:"3.1K", relevant:true, note:"🔥 Workwear fabric — direct FibreGuard fit"},
-    {tag:"#modestfashion", views:"889K", posts:"389", relevant:true, note:"Fashion/textile — fabric showcase"},
-    {tag:"#luxuryfashion", views:"949K", posts:"474", relevant:true, note:"Luxury fabric positioning"},
+    {tag:"#milanocortina2026", views:"463M", posts:"9.0K", relevant:true, note:"Winter Olympics — cozy viewing party at home", idea:"💡 'Olympics watch party but the sofa survives' — friends, snacks, drinks, cheering on the couch. Show the mess → FibreGuard wipe-clean reveal."},
+    {tag:"#olympics", views:"274M", posts:"3.7K", relevant:true, note:"Olympics — home viewing content", idea:"💡 'Your sofa is the real MVP' — before/after of a watch party on FibreGuard upholstery. Nachos, beer, celebrations → spotless sofa."},
+    {tag:"#workwearforstylists", views:"1.2M", posts:"3.1K", relevant:false},
+    {tag:"#modestfashion", views:"889K", posts:"389", relevant:false},
+    {tag:"#luxuryfashion", views:"949K", posts:"474", relevant:true, note:"Luxury interiors positioning", idea:"💡 'Luxury you can actually live on' — high-end styled room with FibreGuard upholstery. Kids jump on it, pets nap on it, wine gets spilled → still looks designer."},
   ],
   "🇬🇧 United Kingdom": [
     {tag:"#chelsea", views:"51.9M", posts:"4.9K", relevant:false},
@@ -1120,7 +1120,8 @@ function renderEU() {
         <div style="display:flex;gap:16px;font-size:12px;color:var(--text3);margin-bottom:8px;">
           <span>👀 ${t.views} views</span><span>📹 ${t.posts} posts</span>
         </div>
-        ${t.note ? `<p style="font-size:12px;color:var(--text2);line-height:1.4;">💡 ${t.note}</p>` : ''}
+        ${t.note ? `<p style="font-size:12px;color:var(--text2);line-height:1.4;">📌 ${t.note}</p>` : ''}
+        ${t.idea ? `<div style="margin-top:8px;padding:10px 12px;background:linear-gradient(135deg, rgba(3,252,123,0.08), rgba(3,252,123,0.03));border:1px solid rgba(3,252,123,0.15);border-radius:10px;font-size:12px;line-height:1.5;color:var(--text);">${t.idea}</div>` : ''}
       </div>`;
     });
     html += `</div>`;
