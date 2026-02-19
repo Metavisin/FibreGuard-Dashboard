@@ -212,36 +212,29 @@
 
   <!-- CONFIRMED -->
   <div id="tab-overlaps" class="tab-content active">
-    <div class="section-title">✅ Confirmed Trends — API × Research</div>
-    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Cross-verified in both Apify API data and independent research sources. Highest confidence.</p>
+    <div class="section-title">✅ Confirmed Trends</div>
+    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Viral across multiple signals — hashtag data AND independent sources (blogs, trend reports, news) both confirm these. Highest confidence for content creation.</p>
     <div class="trends-grid" id="overlaps-grid"></div>
-  </div>
-
-  <!-- API DATA -->
-  <div id="tab-apidata" class="tab-content">
-    <div class="section-title">📊 API Data — Raw Numbers</div>
-    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Pure TikTok API data ranked by views and posts. No editorial filter — just the numbers.</p>
-    <div class="trends-grid" id="apidata-grid"></div>
   </div>
 
   <!-- TRENDING NOW -->
   <div id="tab-trending" class="tab-content">
-    <div class="section-title">🔴 Trending Now — TikTok Creative Center (US)</div>
-    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Real-time trending hashtags from TikTok's Creative Center. These are spiking right now — ranked by views. Updated daily.</p>
+    <div class="section-title">🔴 Trending Now — Hashtag Velocity</div>
+    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">What hashtags are getting views and posts right now. Raw TikTok Creative Center data (US). Updated daily — pure numbers, no editorial filter.</p>
     <div id="trending-grid"></div>
   </div>
 
   <!-- EXPLORATORY -->
   <div id="tab-research" class="tab-content">
-    <div class="section-title">🔭 Exploratory Trends</div>
-    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Spotted by Later, HeyOrca, Scott Social, NewEngen, or Dash Social. Single-source — worth watching but not yet cross-verified.</p>
+    <div class="section-title">🔭 Exploratory Trends — Formats & Concepts</div>
+    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Viral formats, audio trends, and concepts that go beyond hashtags. Spotted by trend scouts (Later, HeyOrca, Scott Social, NewEngen). Not everything viral has a hashtag — these capture the creative formats brands are riding.</p>
     <div class="trends-grid" id="research-grid"></div>
   </div>
 
   <!-- OTHER PLATFORMS -->
   <div id="tab-emerging" class="tab-content">
-    <div class="section-title">📡 Trends on Other Platforms</div>
-    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Spotted on X, YouTube, news, or niche communities before hitting TikTok/IG mainstream. Early signals.</p>
+    <div class="section-title">📡 Early Signals — Other Platforms</div>
+    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Viral on X, YouTube, or news but hasn't fully hit TikTok/IG yet. Early-mover opportunities — catch these before they peak on short-form video.</p>
     <div class="trends-grid" id="emerging-grid"></div>
   </div>
 
@@ -784,7 +777,6 @@ const TRENDING_NOW = [
 
 const TAB_CONFIG = [
   {id:'overlaps',label:'✅ Confirmed Trends'},
-  {id:'apidata',label:'📊 API Data'},
   {id:'trending',label:'🔴 Trending Now'},
   {id:'research',label:'🔭 Exploratory Trends'},
   {id:'emerging',label:'📡 Trends on Other Platforms'},
@@ -835,7 +827,6 @@ const EU_TRENDS = {
 function buildTabs() {
   const euTotal = Object.values(EU_TRENDS).reduce((s,arr)=>s+arr.length, 0);
   const counts = {
-    apidata: TRENDS.filter(t=>t.proof&&t.proof.api).length,
     trending: TRENDING_NOW.length,
     overlaps: TRENDS.filter(t=>t.confidence==='overlap').length,
     research: TRENDS.filter(t=>t.confidence==='research').length,
@@ -1079,19 +1070,6 @@ function init() {
       return (freshOrder[a.freshness]||2) - (freshOrder[b.freshness]||2);
     });
   }
-
-  // API Data tab: active first (sorted by views), declining at bottom
-  const apiAll = TRENDS.filter(t=>t.proof&&t.proof.api);
-  const apiActive = apiAll.filter(t=>!isDeclining(t)).sort((a,b) => parseViews(b.meta?.views) - parseViews(a.meta?.views));
-  const apiFading = apiAll.filter(t=>isDeclining(t)).sort((a,b) => parseViews(b.meta?.views) - parseViews(a.meta?.views));
-  let apiHtml = apiActive.map(renderCard).join('');
-  if (apiFading.length > 0) {
-    apiHtml += `<div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--card-border);">
-      <div style="font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">📉 Fading — Declining momentum</div>
-      ${apiFading.map(renderCard).join('')}
-    </div>`;
-  }
-  document.getElementById('apidata-grid').innerHTML = apiHtml;
 
   // Confirmed Trends: split active vs fading
   const overlaps = sortTrends(TRENDS.filter(t=>t.confidence==='overlap'));
