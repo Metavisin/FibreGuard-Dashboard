@@ -218,6 +218,13 @@
     <div class="trends-grid" id="emerging-grid"></div>
   </div>
 
+  <!-- EU TRENDS -->
+  <div id="tab-eu" class="tab-content">
+    <div class="section-title">🇪🇺 EU Trending Hashtags</div>
+    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Top TikTok trends in leading EU markets. Updated weekly. Filtered for brand safety &amp; FibreGuard relevance.</p>
+    <div id="eu-grid"></div>
+  </div>
+
   <!-- Ideas tab removed -->
 </div>
 
@@ -647,14 +654,58 @@ const TAB_CONFIG = [
   {id:'overlaps',label:'🎯 Overlaps'},
   {id:'research',label:'🔬 Research'},
   {id:'emerging',label:'🔮 Emerging'},
+  {id:'eu',label:'🇪🇺 EU Trends'},
 ];
 
+// ──── EU TRENDING DATA (updated weekly) ────
+const EU_TRENDS_UPDATED = "2026-02-19";
+const EU_TRENDS = {
+  "🇩🇪 Germany": [
+    {tag:"#valentinstagsdeals", views:"44.7M", posts:"4.0K", relevant:false},
+    {tag:"#loveisintheair", views:"32.4M", posts:"2.7K", relevant:true, note:"Love/lifestyle — could pair with cozy fabric content"},
+    {tag:"#damenhoodie", views:"2.0M", posts:"3.4K", relevant:true, note:"Fashion/textile — hoodie fabric showcase"},
+    {tag:"#streng", views:"1.0M", posts:"224", relevant:false},
+  ],
+  "🇫🇷 France": [
+    {tag:"#coupedefrance", views:"2.1M", posts:"133", relevant:false},
+    {tag:"#sportwear", views:"919K", posts:"307", relevant:true, note:"Activewear fabric — performance textile angle"},
+    {tag:"#tracksuit", views:"1.3M", posts:"231", relevant:true, note:"Tracksuit fabrics — durability + style"},
+    {tag:"#highwaistsportswear", views:"875K", posts:"1.1K", relevant:true, note:"Sportswear fabric tech"},
+    {tag:"#offresdelasaintvalentin", views:"44.3M", posts:"7.1K", relevant:false},
+  ],
+  "🇪🇸 Spain": [
+    {tag:"#copadelrey", views:"50.6M", posts:"2.8K", relevant:false},
+    {tag:"#loveisintheair", views:"44.8M", posts:"4.5K", relevant:true, note:"Love/lifestyle — cozy home fabric angle"},
+    {tag:"#ofertasdesanvalentín", views:"52.6M", posts:"5.4K", relevant:false},
+    {tag:"#redessociales", views:"6.2M", posts:"512", relevant:false},
+  ],
+  "🇳🇱 Netherlands": [
+    {tag:"#newwave", views:"14.3M", posts:"883", relevant:false},
+    {tag:"#badbunny", views:"44.5M", posts:"1.3K", relevant:false},
+    {tag:"#grok", views:"392K", posts:"171", relevant:false},
+  ],
+  "🇮🇹 Italy": [
+    {tag:"#milanocortina2026", views:"463M", posts:"9.0K", relevant:true, note:"Winter Olympics — athleisure/performance fabric tie-in"},
+    {tag:"#olympics", views:"274M", posts:"3.7K", relevant:true, note:"Olympics content — athletic fabric showcase"},
+    {tag:"#workwearforstylists", views:"1.2M", posts:"3.1K", relevant:true, note:"🔥 Workwear fabric — direct FibreGuard fit"},
+    {tag:"#modestfashion", views:"889K", posts:"389", relevant:true, note:"Fashion/textile — fabric showcase"},
+    {tag:"#luxuryfashion", views:"949K", posts:"474", relevant:true, note:"Luxury fabric positioning"},
+  ],
+  "🇬🇧 United Kingdom": [
+    {tag:"#chelsea", views:"51.9M", posts:"4.9K", relevant:false},
+    {tag:"#beautycrush", views:"35.0M", posts:"12.1K", relevant:false},
+    {tag:"#alexwarren", views:"11.6M", posts:"1.3K", relevant:false},
+  ],
+};
+
 function buildTabs() {
+  const euTotal = Object.values(EU_TRENDS).reduce((s,arr)=>s+arr.length, 0);
   const counts = {
     recommended: RECOMMENDED.length,
     overlaps: TRENDS.filter(t=>t.confidence==='overlap').length,
     research: TRENDS.filter(t=>t.confidence==='research').length,
     emerging: TRENDS.filter(t=>t.confidence==='emerging').length,
+    eu: euTotal,
   };
   document.getElementById('tab-bar').innerHTML = TAB_CONFIG.map((tc,i) =>
     `<button class="tab ${i===0?'active':''}" onclick="switchTab('${tc.id}',this)">${tc.label}<span class="tab-count">${counts[tc.id]}</span></button>`
@@ -848,7 +899,44 @@ function init() {
 
   buildTabs();
   buildPriorityQueue();
+  renderEU();
 }
+
+function renderEU() {
+  let html = `<p style="color:var(--text3);font-size:12px;margin-bottom:20px;">Last updated: ${EU_TRENDS_UPDATED} · Source: TikTok Trending API (Apify) · Top 6 EU markets</p>`;
+  for (const [country, tags] of Object.entries(EU_TRENDS)) {
+    const relevant = tags.filter(t=>t.relevant);
+    const other = tags.filter(t=>!t.relevant);
+    html += `<div style="margin-bottom:28px;">`;
+    html += `<h3 style="font-size:16px;font-weight:600;color:var(--text1);margin-bottom:12px;">${country}</h3>`;
+    if (relevant.length > 0) {
+      html += `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:12px;margin-bottom:12px;">`;
+      relevant.forEach(t => {
+        html += `<div style="background:var(--card);border:1px solid var(--border);border-radius:12px;padding:16px;">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+            <span style="font-weight:600;color:var(--accent);font-size:14px;">${t.tag}</span>
+            <span style="background:#34c75922;color:#34c759;font-size:10px;padding:2px 8px;border-radius:6px;font-weight:600;">FG FIT</span>
+          </div>
+          <div style="display:flex;gap:16px;font-size:12px;color:var(--text3);margin-bottom:8px;">
+            <span>👀 ${t.views} views</span><span>📹 ${t.posts} posts</span>
+          </div>
+          ${t.note ? `<p style="font-size:12px;color:var(--text2);line-height:1.4;">💡 ${t.note}</p>` : ''}
+        </div>`;
+      });
+      html += `</div>`;
+    }
+    if (other.length > 0) {
+      html += `<div style="display:flex;flex-wrap:wrap;gap:8px;">`;
+      other.forEach(t => {
+        html += `<span style="background:var(--card);border:1px solid var(--border);border-radius:8px;padding:6px 12px;font-size:12px;color:var(--text3);">${t.tag} <span style="color:var(--text4);">${t.views}</span></span>`;
+      });
+      html += `</div>`;
+    }
+    html += `</div>`;
+  }
+  document.getElementById('eu-grid').innerHTML = html;
+}
+
 init();
 </script>
 </body>
