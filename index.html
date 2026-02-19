@@ -181,7 +181,7 @@
 <!-- methodology and search removed -->
 
 <div class="priority-queue">
-  <div class="pq-title">🔥 Hot This Week — API-Confirmed & Brand-Safe</div>
+  <div class="pq-title">🔥 Best FibreGuard Fits This Week</div>
   <div class="pq-grid" id="priority-grid"></div>
 </div>
 
@@ -190,31 +190,24 @@
 <div class="content">
   <!-- Overview removed -->
 
-  <!-- RECOMMENDED -->
-  <div id="tab-recommended" class="tab-content active">
-    <div class="section-title">⭐ Recommended for FibreGuard</div>
-    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Only trends a fabric brand can authentically join. Personal humor, edgy challenges, and person-only formats are filtered out. Every trend here has been used by brands already.</p>
-    <div id="recommended-grid"></div>
-  </div>
-
-  <!-- OVERLAPS -->
-  <div id="tab-overlaps" class="tab-content">
-    <div class="section-title">🎯 Confirmed Overlaps — API × Research</div>
-    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">These trends appear in BOTH Apify API data AND at least one independent research source. This is the highest confidence signal.</p>
+  <!-- CONFIRMED -->
+  <div id="tab-overlaps" class="tab-content active">
+    <div class="section-title">✅ Confirmed Trends — API × Research</div>
+    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Cross-verified in both Apify API data and independent research sources. Highest confidence.</p>
     <div class="trends-grid" id="overlaps-grid"></div>
   </div>
 
-  <!-- RESEARCH -->
+  <!-- EXPLORATORY -->
   <div id="tab-research" class="tab-content">
-    <div class="section-title">🔬 Research-Confirmed Trends</div>
-    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Confirmed by Later, HeyOrca, Scott Social, NewEngen, or Dash Social. No API match (TikTok-specific API may not capture IG-first trends).</p>
+    <div class="section-title">🔭 Exploratory Trends</div>
+    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Spotted by Later, HeyOrca, Scott Social, NewEngen, or Dash Social. Single-source — worth watching but not yet cross-verified.</p>
     <div class="trends-grid" id="research-grid"></div>
   </div>
 
-  <!-- EMERGING -->
+  <!-- OTHER PLATFORMS -->
   <div id="tab-emerging" class="tab-content">
-    <div class="section-title">🔮 Emerging Signals</div>
-    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Spotted on X, YouTube, news before hitting TikTok/IG mainstream. High-risk, high-reward.</p>
+    <div class="section-title">📡 Trends on Other Platforms</div>
+    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Spotted on X, YouTube, news, or niche communities before hitting TikTok/IG mainstream. Early signals.</p>
     <div class="trends-grid" id="emerging-grid"></div>
   </div>
 
@@ -727,7 +720,6 @@ const TRENDS = [
 // Dark mode only — no toggle needed
 
 const TAB_CONFIG = [
-  {id:'recommended',label:'⭐ Recommended Trends'},
   {id:'overlaps',label:'✅ Confirmed Trends'},
   {id:'research',label:'🔭 Exploratory Trends'},
   {id:'emerging',label:'📡 Trends on Other Platforms'},
@@ -778,7 +770,6 @@ const EU_TRENDS = {
 function buildTabs() {
   const euTotal = Object.values(EU_TRENDS).reduce((s,arr)=>s+arr.length, 0);
   const counts = {
-    recommended: RECOMMENDED.length,
     overlaps: TRENDS.filter(t=>t.confidence==='overlap').length,
     research: TRENDS.filter(t=>t.confidence==='research').length,
     emerging: TRENDS.filter(t=>t.confidence==='emerging').length,
@@ -918,31 +909,43 @@ function renderRecCard(r) {
     </div>`;
 }
 
-// Hot This Week: API-confirmed trends that are brand-safe for FibreGuard
-// Filtered: no personal humor, no edgy/dangerous, no political, usable by a company account
-const HOT_THIS_WEEK = TRENDS.filter(t => {
-  // Must have API data
-  if (!t.proof || !t.proof.api) return false;
-  // Must not be declining fast
-  if (t.proof.api.includes('↓↓')) return false;
-  // Brand-safe filter: exclude trends a fabric company can't use
+// Hot This Week: Best FibreGuard fits from ALL trends (any confidence tier)
+// Brand-safe filter: no personal humor, edgy, political, person-only formats
+const HOT_THIS_WEEK = (() => {
   const unsafe = ['shutupmom','euphoriamakeup','blackhistorymonth','thermostat','callmysister','shutup'];
-  const nameLower = t.name.toLowerCase();
-  if (unsafe.some(u => nameLower.includes(u))) return false;
-  return true;
-});
+  const brandSafe = TRENDS.filter(t => {
+    const nameLower = t.name.toLowerCase();
+    if (unsafe.some(u => nameLower.includes(u))) return false;
+    // Skip fast-declining
+    if (t.proof?.api?.includes('↓↓')) return false;
+    // Must have a FibreGuard angle
+    if (!t.angle || t.angle.length < 10) return false;
+    return true;
+  });
+  // Prioritize: overlap first, then hot freshness, then research
+  const confScore = {overlap:3, research:2, emerging:1};
+  const freshScore = {hot:2, warm:1, evergreen:0};
+  brandSafe.sort((a,b) => {
+    const sa = (confScore[a.confidence]||0)*10 + (freshScore[a.freshness]||0);
+    const sb = (confScore[b.confidence]||0)*10 + (freshScore[b.freshness]||0);
+    return sb - sa;
+  });
+  return brandSafe.slice(0, 3);
+})();
 
 function buildPriorityQueue() {
   if (HOT_THIS_WEEK.length === 0) {
-    document.getElementById('priority-grid').innerHTML = '<div style="color:var(--text3);font-size:13px;padding:12px 0;">No brand-safe API trends this week. Check the ⭐ Recommended tab for curated picks.</div>';
+    document.getElementById('priority-grid').innerHTML = '<div style="color:var(--text3);font-size:13px;padding:12px 0;">No brand-safe trends this week with strong FibreGuard angles.</div>';
     return;
   }
+  const confLabel = {overlap:'✅ Confirmed',research:'🔭 Exploratory',emerging:'📡 Other Platforms'};
+  const confTab = {overlap:'overlaps',research:'research',emerging:'emerging'};
   document.getElementById('priority-grid').innerHTML = HOT_THIS_WEEK.map((t,i) => `
-    <div class="pq-card" onclick="jumpTab('overlaps')">
+    <div class="pq-card" onclick="jumpTab('${confTab[t.confidence]||'overlaps'}')">
       <div class="pq-rank">#${i+1}</div>
       <div class="pq-name">${t.name}</div>
-      <div class="pq-conf overlap">📊 ${t.proof.api.substring(0,80)}${t.proof.api.length>80?'...':''}</div>
-      <div class="pq-angle">${(t.desc||'').substring(0,120)}${(t.desc||'').length>120?'...':''}</div>
+      <div class="pq-conf overlap">${confLabel[t.confidence]||''}</div>
+      <div class="pq-angle">${(t.angle||t.desc||'').substring(0,140)}${(t.angle||t.desc||'').length>140?'...':''}</div>
     </div>
   `).join('');
 }
@@ -959,15 +962,6 @@ function init() {
     if(confOrder[a.confidence]!==confOrder[b.confidence]) return confOrder[a.confidence]-confOrder[b.confidence];
     return (freshOrder[a.freshness]||2)-(freshOrder[b.freshness]||2);
   });
-
-  // Recommended grid with Top Picks separator
-  const topPicks = RECOMMENDED.filter(r=>r.topPick);
-  const morePicks = RECOMMENDED.filter(r=>!r.topPick);
-  document.getElementById('recommended-grid').innerHTML =
-    '<div class="top-picks-label">🏆 Top Picks This Week</div>' +
-    topPicks.map(renderRecCard).join('') +
-    '<div class="more-label">More Recommendations</div>' +
-    morePicks.map(renderRecCard).join('');
 
   // Grids
   document.getElementById('overlaps-grid').innerHTML = sorted.filter(t=>t.confidence==='overlap').map(renderCard).join('');
