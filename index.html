@@ -210,8 +210,15 @@
 <div class="content">
   <!-- Overview removed -->
 
+  <!-- API DATA -->
+  <div id="tab-apidata" class="tab-content active">
+    <div class="section-title">📊 API Data — Raw Numbers</div>
+    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Pure TikTok API data ranked by views and posts. No editorial filter — just the numbers.</p>
+    <div class="trends-grid" id="apidata-grid"></div>
+  </div>
+
   <!-- CONFIRMED -->
-  <div id="tab-overlaps" class="tab-content active">
+  <div id="tab-overlaps" class="tab-content">
     <div class="section-title">✅ Confirmed Trends — API × Research</div>
     <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Cross-verified in both Apify API data and independent research sources. Highest confidence.</p>
     <div class="trends-grid" id="overlaps-grid"></div>
@@ -740,6 +747,7 @@ const TRENDS = [
 // Dark mode only — no toggle needed
 
 const TAB_CONFIG = [
+  {id:'apidata',label:'📊 API Data'},
   {id:'overlaps',label:'✅ Confirmed Trends'},
   {id:'research',label:'🔭 Exploratory Trends'},
   {id:'emerging',label:'📡 Trends on Other Platforms'},
@@ -790,6 +798,7 @@ const EU_TRENDS = {
 function buildTabs() {
   const euTotal = Object.values(EU_TRENDS).reduce((s,arr)=>s+arr.length, 0);
   const counts = {
+    apidata: TRENDS.filter(t=>t.proof&&t.proof.api).length,
     overlaps: TRENDS.filter(t=>t.confidence==='overlap').length,
     research: TRENDS.filter(t=>t.confidence==='research').length,
     emerging: TRENDS.filter(t=>t.confidence==='emerging').length,
@@ -1032,6 +1041,12 @@ function init() {
       return (freshOrder[a.freshness]||2) - (freshOrder[b.freshness]||2);
     });
   }
+
+  // API Data tab: all trends with API proof, sorted by views descending
+  const apiTrends = TRENDS.filter(t=>t.proof&&t.proof.api).sort((a,b) => {
+    return parseViews(b.meta?.views) - parseViews(a.meta?.views);
+  });
+  document.getElementById('apidata-grid').innerHTML = apiTrends.map(renderCard).join('');
 
   // Confirmed Trends: split active vs fading
   const overlaps = sortTrends(TRENDS.filter(t=>t.confidence==='overlap'));
