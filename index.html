@@ -343,8 +343,7 @@ h+='<table class="tbl"><thead><tr><th>#</th><th>Hashtag</th><th>Status</th>';
 if(showEU) h+='<th class="'+thClass('eu')+'" onclick="doSort(\''+sid+'\',\'eu\')">EU % '+arrow('eu')+'</th><th>Top Countries</th>';
 h+='<th class="'+thClass('v')+'" onclick="doSort(\''+sid+'\',\'v\')">Views '+arrow('v')+'</th>';
 h+='<th class="'+thClass('p')+'" onclick="doSort(\''+sid+'\',\'p\')">Posts '+arrow('p')+'</th>';
-h+='<th class="'+thClass('s')+' hide-m" onclick="doSort(\''+sid+'\',\'s\')">Score '+arrow('s')+'</th>';
-h+='<th class="hide-m">7d Trend</th><th class="hide-m">Audience</th></tr></thead><tbody>';
+h+='<th class="hide-m">Audience</th></tr></thead><tbody>';
 sorted.forEach((t,i)=>{
 const dc=DC[t.d];
 const euPills=t.et.slice(0,4).map(e=>'<span class="ep">'+(FL[e.c]||'')+' '+e.c+'</span>').join('');
@@ -359,8 +358,7 @@ h+='<td><div class="eu-pills">'+euPills+'</div></td>';
 }
 h+='<td class="num"><span class="vw">'+fv(t.v)+'</span></td>';
 h+='<td class="num"><span class="ps">'+fp(t.p)+'</span></td>';
-h+='<td class="num hide-m"><span class="score-wrap"><span class="sc">'+t.s.toFixed(2)+'</span><span class="score-tip"><strong style="color:var(--text)">Trend Score (0–1)</strong><br>Measures current momentum relative to peak. Calculated from the TikTok API\'s 30-day activity curve:<br>• <strong>1.0</strong> = at peak right now<br>• <strong>0.5</strong> = half of peak activity<br>• <strong>&lt;0.1</strong> = trend has cooled significantly<br><br>Based on normalized daily engagement data (views + posts velocity) from Apify\'s TikTok scraper.</span></span></td>';
-h+='<td class="hide-m">'+spark(t.sp,dc.col)+'</td>';
+/* score+sparkline removed */
 h+='<td class="hide-m"><div>'+ageP+'</div><div class="tags" style="margin-top:2px">'+intP+'</div></td>';
 h+='</tr>';
 });
