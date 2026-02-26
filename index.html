@@ -223,7 +223,11 @@ const XP_TRENDS = [
     desc: "Creators are editing everyday content like a reality TV show — dramatic zoom-ins, confessional-style cuts, \"next time on…\" cliffhangers, and cinematic sound effects. 3.5M+ posts on TikTok. Works for any behind-the-scenes content. CapCut templates are everywhere for this.",
     fg_idea: "Edit a \"day at the FibreGuard lab\" like a reality show. Stain test drama with confessional cuts: \"I didn't think red wine stood a chance…\" Dramatic zoom on the fabric. Cut to black. \"Next episode: ketchup.\" The format makes product demos entertaining.",
     meta: "3.5M+ TikTok posts · Trending IG audio · CapCut templates available",
-    sources: "Later, Epidemic Sound, TikTok Discover"
+    links: [
+      {label:"TikTok Discover",url:"https://www.tiktok.com/discover/how-to-make-the-reality-show-trend"},
+      {label:"IG Audio",url:"https://www.instagram.com/reels/audio/25459784500359604/"},
+      {label:"Epidemic Sound guide",url:"https://www.epidemicsound.com/blog/latest-tiktok-trends/"}
+    ]
   },
   {
     name: "Highlight Switch / Beat Sync",
@@ -232,7 +236,11 @@ const XP_TRENDS = [
     desc: "Using \"The Desperados - Let's Have Some Fun\" audio to sync product features, outfit details, or key moments to each beat for clean, satisfying switch-ups. 26K+ posts on Instagram and growing. Simple concept, elite execution — the audio does the heavy lifting.",
     fg_idea: "Sync fabric swatches or colorways to the beat — each beat reveals a new texture or pattern. Clean, minimal, satisfying. Could also do: \"One fabric. Every stain. Zero damage.\" with beat-synced stain/clean reveals.",
     meta: "26K+ IG posts · Business-friendly audio ✅ · Rising fast",
-    sources: "Later, Scott Social Marketing"
+    links: [
+      {label:"IG Audio — The Desperados",url:"https://www.instagram.com/reels/audio/1336013760489689"},
+      {label:"Later trend breakdown",url:"https://later.com/blog/instagram-reels-trends/"},
+      {label:"Scott Social examples",url:"https://www.scottsocialmarketing.com/blog/trending-reels-audio-this-week-on-instagram"}
+    ]
   },
   {
     name: "Fashion Week Runway Content (LFW/NYFW)",
@@ -241,7 +249,12 @@ const XP_TRENDS = [
     desc: "Fashion Month is peaking — NYFW just wrapped, LFW ongoing. King Charles at London Fashion Week front row went viral. Romeo Beckham walked Burberry. Texture-heavy collections trending: chunky knits, layered fabrics, tactile materials are dominating runway commentary across all platforms.",
     fg_idea: "\"Fashion Week fabrics vs. FibreGuard fabrics\" — side-by-side of runway textures vs. your stain-proof equivalents. Or: trend report format showing AW26 fabric trends (chunky textures, rich darks) and how FibreGuard fits in. Rides the fashion conversation.",
     meta: "Cross-platform · NYFW 175M TikTok views · LFW viral moments",
-    sources: "British Vogue, Zoe Report, TikTok #nyfw"
+    links: [
+      {label:"TikTok #nyfw",url:"https://www.tiktok.com/tag/nyfw"},
+      {label:"Vogue — LFW viral moments",url:"https://www.vogue.co.uk/article/aw26-viral-moments"},
+      {label:"LFW YouTube Short",url:"https://www.youtube.com/shorts/fdq1qVKwKaM"},
+      {label:"Zoe Report — LFW trends",url:"https://www.thezoereport.com/fashion/london-fashion-week-fall-winter-2026-trends"}
+    ]
   },
   {
     name: "\"Reason To Stay\" Audio Trend",
@@ -250,7 +263,11 @@ const XP_TRENDS = [
     desc: "Olivia Dean's \"Reason To Stay\" is the #1 trending business-friendly audio on Instagram right now. 39K+ posts. Universal — works for product reveals, lifestyle content, team content, anything with warm/aspirational vibes. Perfect for polished brand content.",
     fg_idea: "Lifestyle Reel: slow pans across beautifully styled rooms with FibreGuard fabrics. Each shot is a \"reason to stay\" — comfort, style, durability. Warm lighting, aspirational interiors. The audio carries the emotion, the visuals sell the product.",
     meta: "39K+ IG posts · Business-friendly ✅ · #1 trending audio this week",
-    sources: "Scott Social Marketing, Dash Social"
+    links: [
+      {label:"IG Audio — Reason To Stay",url:"https://www.instagram.com/reels/audio/2420330858178667/"},
+      {label:"Dash Social trend report",url:"https://www.dashsocial.com/blog/trending-instagram-reels-songs"},
+      {label:"Scott Social examples",url:"https://www.scottsocialmarketing.com/blog/trending-reels-audio-this-week-on-instagram"}
+    ]
   },
   {
     name: "Phonk / Doomscroll Aesthetic",
@@ -259,7 +276,11 @@ const XP_TRENDS = [
     desc: "Phonk music is dominating YouTube Shorts and TikTok — NYT just profiled it as \"the soundtrack of the doomscroll generation.\" Fast-cut, high-energy edits with bass-heavy beats. Works for product showcases, satisfying reveals, and anything with visual punch. Massive Shorts algorithm boost.",
     fg_idea: "High-energy fabric durability montage set to phonk — rapid cuts of stains hitting fabric, instant wipe-clean, repeat. Satisfying, punchy, viral format. Think \"oddly satisfying meets product demo.\" The aggressive audio + clean visuals = contrast that hooks.",
     meta: "NYT feature · YouTube Shorts algorithm favorite · Gen Z dominant",
-    sources: "New York Times, YouTube Music Trends"
+    links: [
+      {label:"NYT — Phonk feature",url:"https://www.nytimes.com/2026/02/23/arts/music/phonk-youtube-tiktok-music.html"},
+      {label:"TikTok #phonk",url:"https://www.tiktok.com/tag/phonk"},
+      {label:"YouTube Shorts trending",url:"https://www.youtube.com/hashtag/phonk"}
+    ]
   }
 ];
 
@@ -278,12 +299,19 @@ return '<div class="sts"><div class="st"><div class="l">📈 Rising</div><div cl
 
 // ──── SORTABLE TABLE LOGIC ────
 let sortState = {}; // key: panelId, value: {col, asc}
+let filterState = {}; // key: panelId, value: 'all'|'rising'|'neutral'|'declining'
+
+function setFilter(panelId,f){
+  filterState[panelId]=f;
+  render();
+}
 
 function tbl(trends,showEU,panelId){
 const sid = panelId||'default';
 const st = sortState[sid] || {col:'v',asc:false};
-// Sort the trends array
-const sorted = [...trends].sort((a,b)=>{
+// Filter then sort
+const filt = (filterState[sid]&&filterState[sid]!=='all') ? trends.filter(t=>t.d===filterState[sid]) : trends;
+const sorted = [...filt].sort((a,b)=>{
   let va,vb;
   switch(st.col){
     case 'v': va=a.v;vb=b.v;break;
@@ -298,7 +326,17 @@ const sorted = [...trends].sort((a,b)=>{
 function thClass(col){return 'num sortable'+(st.col===col?' sorted':'');}
 function arrow(col){return '<span class="arrow">'+(st.col===col?(st.asc?'▲':'▼'):'⇅')+'</span>';}
 
-let h='<table class="tbl"><thead><tr><th>#</th><th>Hashtag</th><th>Status</th>';
+let h='<div style="display:flex;gap:6px;margin-bottom:12px;align-items:center;flex-wrap:wrap"><span style="font-size:11px;color:var(--text3);font-weight:600">Filter status:</span>';
+['all','rising','neutral','declining'].forEach(f=>{
+  const labels={all:'All',rising:'↑ Rising',neutral:'→ Stable',declining:'↓ Declining'};
+  const colors={all:'var(--text2)',rising:'var(--green)',neutral:'var(--blue)',declining:'var(--red)'};
+  const active=(filterState[panelId]||'all')===f;
+  h+='<button onclick="setFilter(\''+panelId+'\',\''+f+'\')" style="padding:4px 12px;font-size:11px;font-weight:600;border:1px solid '+(active?colors[f]:'var(--border)');
+  h+=';background:'+(active?colors[f]+'20':'var(--bg)')+';color:'+(active?colors[f]:'var(--text3)')+';border-radius:6px;cursor:pointer">'+labels[f]+'</button>';
+});
+h+='</div>';
+
+h+='<table class="tbl"><thead><tr><th>#</th><th>Hashtag</th><th>Status</th>';
 if(showEU) h+='<th class="'+thClass('eu')+'" onclick="doSort(\''+sid+'\',\'eu\')">EU % '+arrow('eu')+'</th><th>Top Countries</th>';
 h+='<th class="'+thClass('v')+'" onclick="doSort(\''+sid+'\',\'v\')">Views '+arrow('v')+'</th>';
 h+='<th class="'+thClass('p')+'" onclick="doSort(\''+sid+'\',\'p\')">Posts '+arrow('p')+'</th>';
@@ -397,6 +435,13 @@ function renderXP(){
     html += '<div class="xp-desc" style="margin-top:8px">'+t.desc+'</div>';
     html += '<div class="xp-idea"><strong>🎬 FibreGuard idea:</strong> '+t.fg_idea+'</div>';
     html += '<div class="xp-meta"><span>'+t.meta+'</span></div>';
+    if(t.links&&t.links.length){
+      html += '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">';
+      t.links.forEach(l=>{
+        html += '<a href="'+l.url+'" target="_blank" rel="noopener" style="font-size:10px;color:var(--purple);text-decoration:none;padding:2px 8px;border:1px solid rgba(168,85,247,.25);border-radius:4px;transition:all .15s" onmouseover="this.style.background=\'rgba(168,85,247,.1)\'" onmouseout="this.style.background=\'none\'">'+l.label+' ↗</a>';
+      });
+      html += '</div>';
+    }
     html += '</div>';
   });
 
