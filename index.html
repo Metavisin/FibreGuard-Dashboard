@@ -1,1436 +1,438 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FibreGuard Trend Spotter</title>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>FibreGuard Trend Spotter v3</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
-  :root {
-    --bg: #0a0a0a; --bg2: #141414; --bg3: #1c1c1e;
-    --text: #f5f5f7; --text2: #98989d; --text3: #6e6e73;
-    --accent: #03fc7b; --accent2: #02d468; --accent-bg: rgba(3,252,123,0.06);
-    --red: #ff3b30; --orange: #ff9500; --blue: #007aff; --purple: #af52de;
-    --card: #1c1c1e; --card-border: rgba(255,255,255,0.08);
-    --shadow: 0 2px 12px rgba(0,0,0,0.3);
-    --overlap-bg: rgba(3,252,123,0.1);
-  }
-  * { margin:0; padding:0; box-sizing:border-box; }
-  body { font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','Segoe UI',sans-serif; background:var(--bg); color:var(--text); line-height:1.5; }
-  .header { padding:28px 40px 20px; display:flex; justify-content:space-between; align-items:center; border-bottom:1px solid var(--card-border); }
-  .header h1 { font-size:26px; font-weight:700; letter-spacing:-0.5px; }
-  .header h1 span { color:var(--accent); }
-  .header-right { display:flex; gap:12px; align-items:center; }
-  .last-update { font-size:12px; color:var(--text3); }
-  .theme-toggle { width:36px; height:36px; border-radius:50%; border:1px solid var(--card-border); background:var(--card); cursor:pointer; font-size:16px; display:flex; align-items:center; justify-content:center; transition:all 0.2s; }
-  .theme-toggle:hover { transform:scale(1.1); }
-
-  /* Methodology banner */
-  .methodology { padding:12px 40px; background:var(--bg2); border-bottom:1px solid var(--card-border); font-size:12px; color:var(--text3); }
-  .methodology strong { color:var(--text2); }
-
-  /* Search */
-  .search-bar { padding:16px 40px 0; }
-  .search-input { width:100%; max-width:480px; padding:10px 16px 10px 40px; border-radius:12px; border:1px solid var(--card-border); background:var(--card); color:var(--text); font-size:14px; outline:none; transition:border-color 0.2s; background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' fill='%2386868b' viewBox='0 0 16 16'%3E%3Cpath d='M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85zm-5.242.656a5 5 0 1 1 0-10 5 5 0 0 1 0 10z'/%3E%3C/svg%3E"); background-repeat:no-repeat; background-position:14px center; }
-  .search-input:focus { border-color:var(--accent); }
-  .search-input::placeholder { color:var(--text3); }
-
-  /* Priority Queue */
-  .priority-queue { padding:20px 40px 0; }
-  .pq-title { font-size:13px; font-weight:700; text-transform:uppercase; letter-spacing:1px; color:var(--red); margin-bottom:12px; }
-  .pq-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:12px; }
-  .pq-card { background:linear-gradient(135deg, rgba(255,59,48,0.05), rgba(255,149,0,0.03)); border:1px solid rgba(255,59,48,0.12); border-radius:14px; padding:16px; cursor:pointer; transition:all 0.2s; position:relative; }
-  .pq-card:hover { transform:translateY(-2px); box-shadow:0 4px 16px rgba(255,59,48,0.1); }
-  .pq-rank { position:absolute; top:10px; right:12px; font-size:22px; font-weight:800; color:rgba(255,59,48,0.12); }
-  .pq-name { font-size:14px; font-weight:700; margin-bottom:4px; }
-  .pq-conf { font-size:11px; margin-bottom:4px; }
-  .pq-conf.overlap { color:var(--accent2); }
-  .pq-conf.research { color:var(--purple); }
-  .pq-angle { font-size:12px; color:var(--text2); }
-
-  /* Tabs */
-  .tabs { display:flex; gap:4px; padding:16px 40px 0; border-bottom:1px solid var(--card-border); overflow-x:auto; }
-  .tab { padding:10px 18px; font-size:13px; font-weight:500; cursor:pointer; border:none; background:none; color:var(--text2); border-bottom:2px solid transparent; transition:all 0.2s; white-space:nowrap; }
-  .tab.active { color:var(--accent); border-bottom-color:var(--accent); }
-  .tab:hover { color:var(--text); }
-  .tab-count { font-size:11px; background:var(--bg3); color:var(--text3); padding:1px 6px; border-radius:10px; margin-left:4px; }
-  .tab.active .tab-count { background:var(--accent-bg); color:var(--accent2); }
-
-  .content { padding:24px 40px; max-width:1400px; margin:0 auto; }
-  .tab-content { display:none; animation:fadeIn 0.2s ease; }
-  .tab-content.active { display:block; }
-  @keyframes fadeIn { from{opacity:0;transform:translateY(6px)} to{opacity:1;transform:translateY(0)} }
-
-  /* Stats */
-  .stats { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-bottom:24px; }
-  .stat { background:var(--card); border:1px solid var(--card-border); border-radius:14px; padding:18px; box-shadow:var(--shadow); cursor:pointer; transition:all 0.2s; }
-  .stat:hover { transform:translateY(-2px); }
-  .stat-label { font-size:11px; color:var(--text3); text-transform:uppercase; letter-spacing:0.5px; margin-bottom:4px; }
-  .stat-value { font-size:28px; font-weight:700; }
-  .stat-value.green { color:var(--accent2); }
-  .stat-sub { font-size:11px; color:var(--text3); margin-top:2px; }
-
-  /* Filters */
-  .filters { display:flex; gap:8px; margin-bottom:20px; flex-wrap:wrap; }
-  .filter-btn { padding:6px 14px; border-radius:20px; border:1px solid var(--card-border); background:var(--card); color:var(--text2); font-size:12px; cursor:pointer; transition:all 0.2s; }
-  .filter-btn.active { background:var(--accent); color:#000; border-color:var(--accent); font-weight:600; }
-  .filter-btn:hover:not(.active) { border-color:var(--accent); }
-
-  /* Trend cards */
-  .trends-grid { display:grid; grid-template-columns:1fr; gap:12px; }
-  .trend-card { background:var(--card); border:1px solid var(--card-border); border-radius:14px; padding:20px; box-shadow:var(--shadow); transition:all 0.2s; position:relative; overflow:hidden; }
-  .trend-card:hover { transform:translateY(-1px); box-shadow:0 4px 20px rgba(0,0,0,0.08); }
-  .trend-card.overlap { border-left:3px solid var(--accent); background:var(--overlap-bg); }
-  .trend-card.research-only { border-left:3px solid var(--purple); }
-  .trend-card.emerging-card { border-left:3px solid var(--orange); }
-  .trend-card.hidden { display:none; }
-
-  .confidence-badge { position:absolute; top:12px; right:12px; font-size:10px; font-weight:700; padding:2px 10px; border-radius:20px; letter-spacing:0.3px; }
-  .confidence-badge.overlap-badge { background:var(--accent); color:#000; }
-  .confidence-badge.research-badge { background:var(--purple); color:#fff; }
-  .confidence-badge.api-badge { background:var(--blue); color:#fff; }
-  .confidence-badge.emerging-badge { background:var(--orange); color:#fff; }
-
-  .trend-header { display:flex; align-items:center; gap:8px; margin-bottom:8px; flex-wrap:wrap; padding-right:120px; }
-  .trend-name { font-size:17px; font-weight:700; }
-  .badge { font-size:10px; padding:2px 8px; border-radius:20px; font-weight:600; }
-  .badge.tiktok { background:rgba(255,0,80,0.1); color:#ff0050; }
-  .badge.instagram { background:rgba(225,48,108,0.1); color:#e1306c; }
-  .badge.both { background:var(--accent-bg); color:var(--accent2); }
-  .badge.hot { background:rgba(255,59,48,0.1); color:var(--red); }
-  .badge.warm { background:rgba(255,149,0,0.1); color:var(--orange); }
-  .badge.evergreen { background:rgba(0,122,255,0.1); color:var(--blue); }
-
-  .trend-proof { font-size:12px; color:var(--text3); margin-bottom:6px; padding:6px 10px; background:var(--bg2); border-radius:8px; }
-  .trend-proof .src-api { color:var(--blue); font-weight:600; }
-  .trend-proof .src-research { color:var(--purple); font-weight:600; }
-  .trend-desc { font-size:14px; color:var(--text2); margin-bottom:8px; }
-  .trend-meta { display:flex; gap:14px; font-size:12px; color:var(--text3); flex-wrap:wrap; }
-
-  .trend-hashtags { margin-top:8px; display:flex; gap:6px; flex-wrap:wrap; }
-  .hashtag { font-size:11px; padding:3px 10px; border-radius:20px; background:var(--bg2); color:var(--text2); cursor:pointer; transition:all 0.15s; }
-  .hashtag:hover { background:var(--accent-bg); color:var(--accent2); }
-
-  /* Recommended cards */
-  .rec-card { background:var(--card); border:1px solid var(--card-border); border-radius:14px; padding:20px; box-shadow:var(--shadow); margin-bottom:12px; position:relative; overflow:hidden; transition:all 0.2s; }
-  .rec-card:hover { transform:translateY(-1px); box-shadow:0 4px 20px rgba(0,0,0,0.12); }
-  .rec-card.fit-perfect { border-left:3px solid var(--accent); background:var(--overlap-bg); }
-  .rec-card.fit-strong { border-left:3px solid #ff9f0a; }
-  .rec-card.fit-natural { border-left:3px solid var(--blue); }
-  .rec-rank { position:absolute; top:14px; right:16px; font-size:24px; font-weight:800; color:rgba(255,255,255,0.06); }
-  .rec-header { display:flex; align-items:center; gap:8px; margin-bottom:6px; flex-wrap:wrap; padding-right:40px; }
-  .rec-name { font-size:16px; font-weight:700; }
-  .fit-badge { font-size:10px; font-weight:700; padding:2px 10px; border-radius:20px; letter-spacing:0.3px; text-transform:uppercase; }
-  .fit-badge.perfect { background:rgba(3,252,123,0.15); color:var(--accent); }
-  .fit-badge.strong { background:rgba(255,159,0,0.12); color:#ff9f0a; }
-  .fit-badge.natural { background:rgba(0,122,255,0.1); color:var(--blue); }
-  .rec-why { font-size:14px; color:var(--text); line-height:1.6; margin-bottom:8px; }
-  .rec-desc { font-size:12px; color:var(--text3); margin-bottom:8px; }
-  .rec-proof { font-size:11px; color:var(--text3); padding:4px 8px; background:var(--bg2); border-radius:6px; display:inline-block; margin-bottom:8px; }
-  .rec-meta { display:flex; gap:12px; font-size:12px; color:var(--text3); flex-wrap:wrap; }
-  .rec-examples { margin-top:8px; display:flex; gap:6px; flex-wrap:wrap; }
-  .rec-examples a { font-size:11px; color:var(--accent2); text-decoration:none; padding:3px 10px; border-radius:16px; background:rgba(3,252,123,0.06); border:1px solid rgba(3,252,123,0.1); transition:all 0.2s; }
-  .rec-examples a:hover { background:rgba(3,252,123,0.15); }
-  .top-picks-label { font-size:11px; font-weight:700; text-transform:uppercase; letter-spacing:1.5px; color:var(--accent); margin-bottom:12px; padding-bottom:0; }
-  .more-label { font-size:11px; font-weight:600; text-transform:uppercase; letter-spacing:1.5px; color:var(--text3); margin:24px 0 12px; padding-top:16px; border-top:1px solid var(--card-border); }
-
-  .trend-examples { margin-top:10px; display:flex; gap:8px; flex-wrap:wrap; }
-  .trend-examples a { font-size:12px; color:var(--accent2); text-decoration:none; padding:4px 12px; border-radius:20px; background:rgba(3,252,123,0.06); border:1px solid rgba(3,252,123,0.12); transition:all 0.2s; }
-  .trend-examples a:hover { background:rgba(3,252,123,0.15); }
-
-  .trend-angle { margin-top:10px; padding:10px 14px; background:var(--accent-bg); border-radius:10px; font-size:13px; position:relative; }
-  .trend-angle strong { color:var(--accent2); }
-
-  /* Prominent angle (moved up, right under header) */
-  .trend-angle-top { margin:8px 0 12px; padding:12px 16px; background:linear-gradient(135deg, rgba(3,252,123,0.08), rgba(3,252,123,0.03)); border:1px solid rgba(3,252,123,0.15); border-radius:12px; font-size:14px; line-height:1.5; color:var(--text); position:relative; }
-  .trend-angle-top .angle-label { color:var(--accent); font-weight:700; }
-
-  .copy-btn { position:absolute; top:8px; right:8px; background:var(--accent); color:#000; border:none; border-radius:8px; padding:4px 10px; font-size:11px; font-weight:600; cursor:pointer; opacity:0; transition:opacity 0.2s; }
-  .trend-angle:hover .copy-btn, .trend-angle-top:hover .copy-btn { opacity:1; }
-
-  /* Declining/fading trends */
-  .trend-card.declining { opacity:0.5; border-left-color:var(--text3) !important; }
-  .trend-card.declining:hover { opacity:0.75; }
-  .badge-declining { font-size:10px; padding:2px 8px; border-radius:20px; font-weight:700; background:rgba(255,59,48,0.1); color:var(--red); }
-
-  /* New trend badge */
-  .badge-new { font-size:10px; padding:2px 8px; border-radius:20px; font-weight:700; background:rgba(0,122,255,0.12); color:var(--blue); animation:pulse-new 2s ease-in-out infinite; }
-  @keyframes pulse-new { 0%,100%{opacity:1} 50%{opacity:0.6} }
-
-  /* Show more toggle */
-  .show-more-btn { display:block; width:100%; padding:12px; margin-top:12px; background:var(--bg2); border:1px solid var(--card-border); border-radius:12px; color:var(--text2); font-size:13px; font-weight:600; cursor:pointer; text-align:center; transition:all 0.2s; }
-  .show-more-btn:hover { background:var(--bg3); color:var(--text); }
-  .hidden-trends { display:none; }
-  .hidden-trends.show { display:block; }
-
-  .section-title { font-size:18px; font-weight:700; margin-bottom:14px; }
-
-  /* Removed trends panel */
-  .removed-panel { margin-top:32px; padding:16px; background:var(--bg2); border-radius:12px; }
-  .removed-panel summary { font-size:13px; font-weight:600; color:var(--text3); cursor:pointer; }
-  .removed-list { margin-top:10px; font-size:12px; color:var(--text3); }
-  .removed-list div { padding:3px 0; }
-  .removed-reason { color:var(--red); font-weight:500; }
-
-  /* Toast */
-  .toast { position:fixed; bottom:24px; right:24px; background:var(--accent); color:#000; padding:10px 20px; border-radius:12px; font-size:13px; font-weight:600; opacity:0; transform:translateY(10px); transition:all 0.3s; pointer-events:none; z-index:100; }
-  .toast.show { opacity:1; transform:translateY(0); }
-
-  @media (max-width:900px) {
-    .header,.tabs,.content,.search-bar,.priority-queue,.methodology { padding-left:16px; padding-right:16px; }
-    .stats { grid-template-columns:repeat(2,1fr); }
-    .pq-grid { grid-template-columns:1fr; }
-  }
-  @media (max-width:600px) {
-    .stats { grid-template-columns:1fr; }
-    .trend-header { padding-right:0; flex-direction:column; align-items:flex-start; }
-    .confidence-badge { position:static; margin-bottom:6px; }
-  }
-</style>
-</head>
-<body data-theme="dark">
-
-<div class="header">
-  <div>
-    <h1>🎯 FibreGuard <span>Trend Spotter</span></h1>
-    <div class="last-update">Last updated: <span id="updateTime"></span></div>
-  </div>
-  <div class="header-right">
-  </div>
+:root{--bg:#09090b;--bg2:#18181b;--bg3:#27272a;--bg4:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;
+--green:#22c55e;--green-d:rgba(34,197,94,.12);--blue:#3b82f6;--blue-d:rgba(59,130,246,.12);
+--red:#ef4444;--red-d:rgba(239,68,68,.12);--yellow:#eab308;--yellow-d:rgba(234,179,8,.1);
+--purple:#a855f7;--purple-d:rgba(168,85,247,.12);--orange:#f97316;--orange-d:rgba(249,115,22,.12);
+--border:#27272a;--card:#18181b;--r:12px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+a{color:inherit;text-decoration:none}
+.sh{max-width:1280px;margin:0 auto;padding:0 24px}
+header{padding:28px 0 20px;border-bottom:1px solid var(--border)}
+header h1{font-size:22px;font-weight:800;letter-spacing:-.5px}
+header h1 em{font-style:normal;color:var(--green)}
+.meta{display:flex;gap:10px;margin-top:6px;font-size:11px;color:var(--text3);flex-wrap:wrap;align-items:center}
+.meta .p{padding:2px 8px;border-radius:5px;background:var(--bg3);color:var(--text2);font-weight:500}
+.meta .live{color:var(--green);display:flex;align-items:center;gap:4px}
+.meta .live::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green);animation:p 2s infinite}
+@keyframes p{0%,100%{opacity:1}50%{opacity:.3}}
+.tabs{display:flex;gap:2px;padding-top:20px;flex-wrap:wrap}
+.tab{padding:8px 18px;font-size:13px;font-weight:600;cursor:pointer;border:none;background:none;color:var(--text3);
+border-radius:8px 8px 0 0;transition:all .15s}
+.tab:hover{color:var(--text2);background:var(--bg2)}
+.tab.on{color:var(--text);background:var(--bg2)}
+.tab .c{font-size:10px;padding:1px 5px;border-radius:4px;background:var(--bg3);color:var(--text3);margin-left:5px}
+.tab.on .c{background:var(--green-d);color:var(--green)}
+.pnl{background:var(--bg2);border-radius:0 var(--r) var(--r) var(--r);padding:20px;min-height:300px}
+.pnl[hidden]{display:none}
+.sts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.st{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:14px}
+.st .l{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--text3);margin-bottom:2px}
+.st .v{font-size:26px;font-weight:800}.st .sb{font-size:10px;color:var(--text3);margin-top:1px}
+.ds{margin-bottom:24px}
+.dh{display:flex;align-items:center;gap:8px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.dd{width:8px;height:8px;border-radius:50%}
+.dd.r{background:var(--green)}.dd.n{background:var(--blue)}.dd.d{background:var(--red)}
+.dl{font-size:13px;font-weight:700}.dc{font-size:11px;color:var(--text3)}
+.tbl{width:100%;border-collapse:separate;border-spacing:0 4px}
+.tbl th{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--text3);font-weight:600;
+padding:4px 10px;text-align:left;position:sticky;top:0;background:var(--bg2);user-select:none}
+.tbl th.sortable{cursor:pointer}.tbl th.sortable:hover{color:var(--text2)}
+.tbl th .arrow{font-size:8px;margin-left:2px;opacity:0.4}
+.tbl th.sorted .arrow{opacity:1;color:var(--green)}
+.tbl th.num{text-align:right}
+.tbl td{padding:10px;background:var(--bg);vertical-align:middle}
+.tbl tr td:first-child{border-radius:var(--r) 0 0 var(--r)}
+.tbl tr td:last-child{border-radius:0 var(--r) var(--r) 0}
+.tbl tr{transition:all .1s}
+.tbl tr:hover td{background:var(--bg3)}
+.rank{font-size:11px;color:var(--text3);font-weight:700;width:32px;text-align:center}
+.ht a{font-size:14px;font-weight:700;color:var(--green);transition:opacity .15s}
+.ht a:hover{opacity:.7}
+.ht .lnk{font-size:10px;color:var(--text3);margin-left:6px;opacity:0;transition:opacity .15s}
+.tbl tr:hover .ht .lnk{opacity:1}
+.dir{font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;text-transform:uppercase;letter-spacing:.3px;white-space:nowrap}
+.dir.r{background:var(--green-d);color:var(--green)}
+.dir.n{background:var(--blue-d);color:var(--blue)}
+.dir.d{background:var(--red-d);color:var(--red)}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.vw{font-size:14px;font-weight:700}
+.ps{font-size:12px;color:var(--text2)}
+.sc{font-size:11px;color:var(--text3)}
+.tags{display:flex;gap:3px;flex-wrap:wrap;margin-top:3px}
+.tg{font-size:9px;padding:1px 6px;border-radius:3px;background:var(--bg2);color:var(--text3);border:1px solid var(--border)}
+.eu-pills{display:flex;gap:3px;flex-wrap:wrap}
+.ep{font-size:9px;padding:1px 6px;border-radius:3px;background:var(--blue-d);color:var(--blue);font-weight:600}
+.eu-pct{font-size:12px;font-weight:700;color:var(--blue)}
+.age{font-size:9px;padding:1px 5px;border-radius:3px;background:var(--yellow-d);color:var(--yellow)}
+svg.sp{display:block}
+/* FG Picks */
+.picks{padding:20px 0 0}
+.picks-title{font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--green);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.picks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pick{background:linear-gradient(135deg,rgba(34,197,94,.06),rgba(34,197,94,.02));border:1px solid rgba(34,197,94,.2);border-radius:var(--r);padding:16px;position:relative;transition:all .15s}
+.pick:hover{border-color:rgba(34,197,94,.4);transform:translateY(-1px)}
+.pick-rank{position:absolute;top:10px;right:12px;font-size:24px;font-weight:800;color:rgba(34,197,94,.15)}
+.pick-name{font-size:15px;font-weight:700;margin-bottom:4px}
+.pick-name a{color:var(--green)}
+.pick-why{font-size:11px;color:var(--text2);margin-bottom:6px;line-height:1.4}
+.pick-idea{font-size:11px;color:var(--text);background:rgba(34,197,94,.08);padding:6px 10px;border-radius:8px;margin-top:8px;line-height:1.4}
+.pick-idea strong{color:var(--green)}
+.pick-stats{font-size:10px;color:var(--text3);display:flex;gap:8px;margin-top:6px}
+/* Cross-platform */
+.xp-grid{display:grid;grid-template-columns:1fr;gap:12px}
+.xp-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:18px;transition:all .15s;position:relative;overflow:hidden}
+.xp-card:hover{border-color:var(--bg4);transform:translateY(-1px)}
+.xp-rank{position:absolute;top:12px;right:16px;font-size:36px;font-weight:800;color:rgba(255,255,255,.04)}
+.xp-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.xp-name{font-size:16px;font-weight:800}
+.xp-plat{display:flex;gap:4px;flex-wrap:wrap}
+.xp-pill{font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:.3px}
+.xp-pill.tt{background:rgba(255,0,80,.12);color:#ff0050}
+.xp-pill.ig{background:rgba(225,48,108,.12);color:#e1306c}
+.xp-pill.yt{background:rgba(255,0,0,.12);color:#ff4444}
+.xp-pill.x{background:rgba(255,255,255,.08);color:var(--text2)}
+.xp-desc{font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:8px}
+.xp-idea{font-size:11px;color:var(--text);background:rgba(168,85,247,.08);padding:8px 12px;border-radius:8px;line-height:1.4;border-left:2px solid var(--purple)}
+.xp-idea strong{color:var(--purple)}
+.xp-meta{font-size:10px;color:var(--text3);margin-top:8px;display:flex;gap:12px;flex-wrap:wrap}
+.xp-dir{font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px}
+.xp-dir.hot{background:var(--orange-d);color:var(--orange)}
+.xp-dir.peak{background:var(--green-d);color:var(--green)}
+.xp-dir.rising{background:var(--purple-d);color:var(--purple)}
+.xp-updated{font-size:11px;color:var(--text3);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+@media(max-width:768px){
+.sh{padding:0 10px}.sts{grid-template-columns:1fr}
+.picks-grid{grid-template-columns:1fr}
+.tbl{font-size:12px}.hide-m{display:none}
+}
+</style></head>
+<body>
+<div class="sh">
+<header>
+<h1>🎯 FibreGuard <em>Trend Spotter</em> v3</h1>
+<div class="meta">
+<span class="live">Live TikTok API</span>
+<span class="p" id="ts"></span>
+<span class="p">77 TikTok hashtags + Cross-Platform</span>
+<span class="p">Updated daily</span>
 </div>
-
-<!-- methodology and search removed -->
-
-<div class="priority-queue">
-  <div class="pq-title">🔥 Best FibreGuard Fits This Week</div>
-  <div class="pq-grid" id="priority-grid"></div>
+</header>
+<div id="fg-picks"></div>
+<div class="tabs">
+<button class="tab on" onclick="sw('us',this)">🇺🇸 US Market<span class="c" id="us-c"></span></button>
+<button class="tab" onclick="sw('eu',this)">🇪🇺 EU Region<span class="c" id="eu-c"></span></button>
+<button class="tab" onclick="sw('xp',this)">🔥 Cross-Platform<span class="c">5</span></button>
 </div>
-
-<div class="tabs" id="tab-bar"></div>
-
-<div class="content">
-  <!-- Overview removed -->
-
-  <!-- CONFIRMED -->
-  <div id="tab-overlaps" class="tab-content active">
-    <div class="section-title">✅ Confirmed Trends</div>
-    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Viral across multiple signals — hashtag data AND independent sources (blogs, trend reports, news) both confirm these. Highest confidence for content creation.</p>
-    <div class="trends-grid" id="overlaps-grid"></div>
-  </div>
-
-  <!-- TRENDING NOW -->
-  <div id="tab-trending" class="tab-content">
-    <div class="section-title">Data Based Trends — Hashtag Velocity</div>
-    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">What hashtags are getting views and posts right now. Raw TikTok Creative Center data (US). Updated daily — pure numbers, no editorial filter.</p>
-    <div id="trending-grid"></div>
-  </div>
-
-  <!-- EXPLORATORY -->
-  <div id="tab-research" class="tab-content">
-    <div class="section-title">🔭 Research Based Trends — Formats & Concepts</div>
-    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Viral formats, audio trends, and concepts that go beyond hashtags. Spotted by trend scouts (Later, HeyOrca, Scott Social, NewEngen). Not everything viral has a hashtag — these capture the creative formats brands are riding.</p>
-    <div class="trends-grid" id="research-grid"></div>
-  </div>
-
-  <!-- OTHER PLATFORMS -->
-  <div id="tab-emerging" class="tab-content">
-    <div class="section-title">📡 Early Signals</div>
-    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Viral topics spotted across X, YouTube, news outlets, Reddit, and other platforms. These haven't fully hit TikTok/IG yet — early-mover opportunities to create content before the wave peaks.</p>
-    <div class="trends-grid" id="emerging-grid"></div>
-  </div>
-
-  <!-- EU TRENDS -->
-  <div id="tab-eu" class="tab-content">
-    <div class="section-title">🇪🇺 EU Trending Hashtags</div>
-    <p style="color:var(--text2);margin-bottom:20px;font-size:13px;">Top TikTok trends in leading EU markets. Updated weekly. Filtered for brand safety &amp; FibreGuard relevance.</p>
-    <div id="eu-grid"></div>
-  </div>
-
-  <!-- Ideas tab removed -->
+<div class="pnl" id="p-us"></div>
+<div class="pnl" id="p-eu" hidden></div>
+<div class="pnl" id="p-xp" hidden></div>
 </div>
-
-<div class="toast" id="toast">Copied!</div>
-
 <script>
-// ═══════════════════════════════════════════
-// RECOMMENDED — Curated for FibreGuard
-// Only trends with a natural brand fit.
-// Fabric · Home · Lifestyle · Durability · Stain-proof
-// ═══════════════════════════════════════════
-const RECOMMENDED = [
-  // ──── TOP PICKS — Best brand fit this week ────
-  {
-    rank: 1, topPick: true,
-    name: "Liquid Assets / Rich Girl (Gwen Stefani)",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    fit: "perfect",
-    why: "The trend is literally about pouring liquids. Brands are doing this already — pour wine, coffee, juice on FibreGuard fabric and it all wipes clean. The product demo IS the trend. 164K Reels and growing.",
-    desc: "Combining economics with literal liquids — skincare, beverages, anything pourable. 164K Reels. Brands actively using it.",
-    proof: { research: "Scott Social (Feb 17+23, 164K Reels), confirmed business-friendly" },
-    meta: { posts: "164K Reels" },
-    examples: [
-      { label: "Scott Social — trend breakdown + audio link", url: "https://www.scottsocialmarketing.com/blog/trending-reels-audio-this-week-on-instagram" },
-    ],
-  },
-  {
-    rank: 2, topPick: true,
-    name: "'Googled My Symptoms' 🆕",
-    platform: "tiktok", confidence: "research", freshness: "hot",
-    fit: "perfect",
-    why: "168K TikToks already! 'Googled my symptoms... turns out I just needed a stain-proof sofa.' Build suspense, then reveal the FibreGuard product. The format is literally made for product reveals with drama. Massive momentum right now.",
-    desc: "Build suspense with a 'diagnosis' then reveal your product as the cure. 168K posts. Later confirmed Feb 20.",
-    proof: { research: "Later TikTok (Feb 20, 168K posts)" },
-    meta: { posts: "168K TikToks" },
-    examples: [
-      { label: "Later — trend breakdown", url: "https://later.com/blog/tiktok-trends/" },
-    ],
-  },
-  {
-    rank: 3, topPick: true,
-    name: "'You Have to Believe Me'",
-    platform: "both", confidence: "research", freshness: "hot",
-    fit: "perfect",
-    why: "Audio-driven format where brands prove a bold claim. 'You HAVE to believe me — this fabric is actually stain-proof.' Then show the proof. Now confirmed on both TikTok (58K) AND Instagram (1K). Cross-platform winner.",
-    desc: "Convince your audience about something they doubt. 58K TikToks + 1K Reels. Cross-platform confirmed.",
-    proof: { research: "Scott Social (1K Reels), Later TikTok (Jan 23 — 58.4K TikToks, still growing Feb 20)" },
-    meta: { posts: "58K TikToks + 1K Reels" },
-    examples: [
-      { label: "Scott Social — audio + trend details", url: "https://www.scottsocialmarketing.com/blog/trending-reels-audio-this-week-on-instagram" },
-      { label: "Later TikTok — trend breakdown", url: "https://later.com/blog/tiktok-trends/" },
-    ],
-  },
-
-  // ──── MORE RECOMMENDATIONS ────
-  {
-    rank: 4,
-    name: "Highlight Switch (The Desperados)",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    fit: "perfect",
-    why: "Product features synced to beat drops — this is literally a product showcase format. Brands use it to flash through features, colors, textures. Switch between: stain-proof demo → color range → pet test → texture close-up. Clean and professional.",
-    desc: "Product features synced to beat drops. Clean rhythmic transitions. 26K Reels. Used heavily by product brands.",
-    proof: { research: "Later (Feb 13, 26K Reels)" },
-    meta: { posts: "26K Reels" },
-    examples: [
-      { label: "Later — trend breakdown + audio", url: "https://later.com/blog/instagram-reels-trends/" },
-    ],
-  },
-  {
-    rank: 5,
-    name: "'It's Always Warm Right Here' 🆕",
-    platform: "tiktok", confidence: "research", freshness: "warm",
-    fit: "perfect",
-    why: "Cozy content with loved ones and pets on the sofa. 109K TikToks. 'It's always warm right here' — show family/pets cuddling on a FibreGuard couch. The audio is warm, emotional, perfect for home/comfort content. Natural FibreGuard territory.",
-    desc: "Warm, cozy content with friends, family, or pets. 109K TikToks. Later confirmed Feb 6, still trending Feb 20.",
-    proof: { research: "Later TikTok (Feb 6, 109.9K posts — still active)" },
-    meta: { posts: "109K TikToks" },
-    examples: [
-      { label: "Later TikTok — trend breakdown", url: "https://later.com/blog/tiktok-trends/" },
-    ],
-  },
-  {
-    rank: 6,
-    name: "'She Don't See Us' — Spotlight Hidden Features",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    fit: "strong",
-    why: "Format built for brands showcasing underrated product features. Everyone knows stain-proof, but UV resistance? Softness? Color range? This audio lets you spotlight what people miss. 1.8K Reels.",
-    desc: "Spotlight underrated offerings while one product steals the show. 1.8K Reels. Business-friendly format.",
-    proof: { research: "Scott Social (Feb 18, 1.8K Reels)" },
-    meta: { posts: "1.8K Reels" },
-    examples: [
-      { label: "Scott Social — trend + audio", url: "https://www.scottsocialmarketing.com/blog/trending-reels-audio-this-week-on-instagram" },
-    ],
-  },
-  {
-    rank: 7,
-    name: "CleanTok / Spring Cleaning Spike",
-    platform: "both", confidence: "emerging", freshness: "warm",
-    fit: "strong",
-    why: "Cleaning and home care content = FibreGuard's natural territory. Satisfying wipe-clean ASMR, before/after stain removal, 'cleaning day but it takes 5 seconds.' The audience for this IS your target audience.",
-    desc: "Decluttering/cleaning content surging for spring. #CleanTok spiking on both platforms.",
-    proof: { research: "Bustle, TikTok — ongoing + fresh spring spike" },
-    meta: {},
-    examples: [
-      { label: "TikTok — #cleantok discover", url: "https://www.tiktok.com/tag/cleantok?lang=en" },
-    ],
-  },
-  {
-    rank: 8,
-    name: "Hopelessly Devoted To You",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    fit: "strong",
-    why: "Lifestyle/product showcase audio used by home and interior brands. Styled rooms, fabric close-ups, cozy setups. 62K Reels. Warm and aspirational — fits a premium fabric brand naturally.",
-    desc: "Versatile audio for lifestyle content and product drops. 62K Reels. Business-friendly.",
-    proof: { research: "Scott Social (62K Reels, Feb 17+23)" },
-    meta: { posts: "62K Reels" },
-    examples: [
-      { label: "Scott Social — audio link + examples", url: "https://www.scottsocialmarketing.com/blog/trending-reels-audio-this-week-on-instagram" },
-    ],
-  },
-  {
-    rank: 9,
-    name: "On Screen Reunions 🆕",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    fit: "natural",
-    why: "Duo/pairing format — perfect for 'product pairings.' Show FibreGuard fabric + wine glass, fabric + pet, fabric + toddler as 'on-screen reunions.' The format celebrates chemistry between two things. 1.6K Reels, early mover window.",
-    desc: "Bestie fit checks, team intros, product pairings. 1.6K Reels. Later confirmed Feb 20.",
-    proof: { research: "Later (Feb 20, 1.6K Reels)" },
-    meta: { posts: "1.6K Reels" },
-    examples: [
-      { label: "Later — trend + audio", url: "https://later.com/blog/instagram-reels-trends/" },
-    ],
-  },
-  {
-    rank: 10,
-    name: "We Belong Together (Harry Styles — Aperture)",
-    platform: "instagram", confidence: "research", freshness: "warm",
-    fit: "strong",
-    why: "Quick clips of 'all your favorite things' — brands use it to show product range. Flash through fabric swatches, room setups, color combinations. 98K Reels, very brand-friendly format.",
-    desc: "Quick clips of favorite things paired together. 98K Reels. Product showcase format.",
-    proof: { research: "Scott Social (98.3K Reels), Later (86K, Jan 30)" },
-    meta: { posts: "98K Reels" },
-    examples: [
-      { label: "Scott Social — audio + examples", url: "https://www.scottsocialmarketing.com/blog/trending-reels-audio-this-week-on-instagram" },
-    ],
-  },
+const FL={NL:'🇳🇱',IT:'🇮🇹',CZ:'🇨🇿',LV:'🇱🇻',SK:'🇸🇰',SE:'🇸🇪',IS:'🇮🇸',FI:'🇫🇮',NO:'🇳🇴',DK:'🇩🇰',IE:'🇮🇪',GB:'🇬🇧',RO:'🇷🇴',GR:'🇬🇷',BG:'🇧🇬',HU:'🇭🇺',EE:'🇪🇪',LT:'🇱🇹',DE:'🇩🇪',AT:'🇦🇹',CH:'🇨🇭',ES:'🇪🇸',PT:'🇵🇹',FR:'🇫🇷',PL:'🇵🇱',HR:'🇭🇷',LU:'🇱🇺',BE:'🇧🇪'};
+const D=[
+{n:"halftimeshow",url:"https://www.tiktok.com/tag/halftimeshow",v:1651052794,p:86199,s:0.03,d:"neutral",us:16,eu:41,et:[{c:"IS",n:"Iceland"},{c:"DK",n:"Denmark"},{c:"IE",n:"Ireland"},{c:"CH",n:"Switzerland"},{c:"LU",n:"Luxembourg"}],int:["Sports News","Social News","Entertainment News"],ages:[{r:"25-34",s:57},{r:"35-44",s:25},{r:"45-54",s:18}],sp:[0.03,0.03,0.03,0.03,0.04,0.04,0.04,0.05,0.06,0.08,0.1,0.12,0.17,0.35,1,0.42,0.27,0.2,0.15,0.12,0.09,0.08,0.06,0.06,0.05,0.05,0.04,0.03,0.03,0.03]},
+{n:"superbowlhalftimeshow",url:"https://www.tiktok.com/tag/superbowlhalftimeshow",v:623341751,p:18592,s:0.04,d:"declining",us:13,eu:69,et:[{c:"IS",n:"Iceland"},{c:"CH",n:"Switzerland"},{c:"DK",n:"Denmark"},{c:"ES",n:"Spain"},{c:"IE",n:"Ireland"},{c:"LU",n:"Luxembourg"}],int:["Entertainment News","Social News","Dance"],ages:[{r:"25-34",s:62},{r:"35-44",s:23},{r:"45-54",s:15}],sp:[0.05,0.05,0.06,0.06,0.06,0.07,0.06,0.05,0.08,0.09,0.11,0.13,0.16,0.19,0.37,1,0.47,0.31,0.23,0.19,0.15,0.11,0.1,0.08,0.07,0.07,0.06,0.06,0.05,0.04]},
+{n:"sanvalentin",url:"https://www.tiktok.com/tag/sanvalentin",v:572653264,p:110078,s:0.05,d:"declining",us:2,eu:25,et:[{c:"ES",n:"Spain"},{c:"IT",n:"Italy"},{c:"PT",n:"Portugal"},{c:"CH",n:"Switzerland"},{c:"RO",n:"Romania"}],int:["Scripted Drama","Advertisement","Selfies"],ages:[{r:"25-34",s:45},{r:"35-44",s:32},{r:"45-54",s:23}],sp:[0.1,0.13,0.15,0.16,0.16,0.17,0.18,0.19,0.2,0.22,0.23,0.24,0.24,0.24,0.23,0.24,0.29,0.32,0.39,0.51,1,0.78,0.37,0.21,0.14,0.1,0.08,0.07,0.06,0.05]},
+{n:"wutheringheights",url:"https://www.tiktok.com/tag/wutheringheights",v:518002363,p:33394,s:0.8,d:"neutral",us:0,eu:82,et:[{c:"IE",n:"Ireland"},{c:"GB",n:"United Kingdom"},{c:"IS",n:"Iceland"},{c:"DK",n:"Denmark"},{c:"LV",n:"Latvia"},{c:"NO",n:"Norway"}],int:["Theatre & Stage","Beauty","Travel"],ages:[{r:"25-34",s:74},{r:"35-44",s:19},{r:"45-54",s:7}],sp:[0.13,0.19,0.2,0.19,0.3,0.3,0.21,0.21,0.21,0.21,0.2,0.22,0.31,0.27,0.22,0.21,0.27,0.27,0.33,0.58,0.82,0.96,1,0.93,0.94,0.84,0.79,0.81,0.83,0.8]},
+{n:"galentines",url:"https://www.tiktok.com/tag/galentines",v:456718806,p:94487,s:0.32,d:"rising",us:13,eu:52,et:[{c:"IE",n:"Ireland"},{c:"GB",n:"United Kingdom"},{c:"HR",n:"Croatia"},{c:"NO",n:"Norway"},{c:"FI",n:"Finland"},{c:"IS",n:"Iceland"}],int:["Nail Art","Family","Photography"],ages:[{r:"25-34",s:67},{r:"35-44",s:24},{r:"45-54",s:9}],sp:[0.11,0.18,0.18,0.18,0.18,0.19,0.23,0.3,0.3,0.26,0.25,0.26,0.3,0.55,0.85,0.65,0.55,0.49,0.5,0.66,1,0.85,0.69,0.44,0.3,0.24,0.21,0.27,0.36,0.32]},
+{n:"iliamalinin",url:"https://www.tiktok.com/tag/iliamalinin",v:380642646,p:6322,s:0.66,d:"rising",us:0,eu:72,et:[{c:"LV",n:"Latvia"},{c:"IT",n:"Italy"},{c:"EE",n:"Estonia"},{c:"LT",n:"Lithuania"},{c:"FI",n:"Finland"},{c:"IS",n:"Iceland"}],int:["Theatre & Stage","Extreme Sports","Sports News"],ages:[{r:"25-34",s:74},{r:"35-44",s:17},{r:"45-54",s:10}],sp:[0.03,0.03,0.05,0.04,0.04,0.04,0.07,0.06,0.08,0.08,0.08,0.07,0.1,0.18,0.3,0.32,0.37,0.41,0.35,0.59,1,0.73,0.58,0.5,0.46,0.41,0.49,0.55,0.66,0.66]},
+{n:"applemusichalftime",url:"https://www.tiktok.com/tag/applemusichalftime",v:329180330,p:2938,s:0.1,d:"rising",us:12,eu:39,et:[{c:"IS",n:"Iceland"},{c:"ES",n:"Spain"},{c:"PT",n:"Portugal"},{c:"CH",n:"Switzerland"},{c:"LU",n:"Luxembourg"}],int:["Sports News","Non-Video Games","Video Games"],ages:[{r:"25-34",s:63},{r:"35-44",s:24},{r:"45-54",s:13}],sp:[0.03,0.02,0.03,0.02,0.03,0.03,0.04,0.02,0.04,0.04,0.11,0.13,0.12,0.2,1,0.54,0.5,0.39,0.33,0.2,0.12,0.15,0.07,0.12,0.1,0.11,0.07,0.06,0.07,0.1]},
+{n:"curling",url:"https://www.tiktok.com/tag/curling",v:324445655,p:4740,s:0.49,d:"declining",us:0,eu:100,et:[{c:"SE",n:"Sweden"},{c:"IT",n:"Italy"},{c:"IS",n:"Iceland"},{c:"FI",n:"Finland"},{c:"NO",n:"Norway"},{c:"DK",n:"Denmark"}],int:["Sports News","Extreme Sports","Social News"],ages:[{r:"25-34",s:58},{r:"35-44",s:25},{r:"45-54",s:17}],sp:[0.11,0.12,0.17,0.14,0.16,0.14,0.18,0.16,0.16,0.16,0.2,0.36,0.38,0.56,0.62,0.62,0.86,0.71,0.7,0.72,0.85,0.96,1,0.97,0.84,0.82,0.81,0.72,0.63,0.49]},
+{n:"nbaallstar",url:"https://www.tiktok.com/tag/nbaallstar",v:317484679,p:7213,s:0.14,d:"declining",us:13,eu:35,et:[{c:"IS",n:"Iceland"},{c:"GR",n:"Greece"},{c:"LT",n:"Lithuania"},{c:"HR",n:"Croatia"}],int:["Sports News","Traditional Sports","Extreme Sports"],ages:[{r:"25-34",s:68},{r:"35-44",s:22},{r:"45-54",s:10}],sp:[0.05,0.07,0.08,0.1,0.08,0.08,0.1,0.22,0.17,0.14,0.12,0.12,0.16,0.17,0.17,0.17,0.18,0.24,0.39,0.72,0.95,1,0.5,0.36,0.26,0.21,0.16,0.14,0.1,0.14]},
+{n:"halftime",url:"https://www.tiktok.com/tag/halftime",v:288685361,p:13728,s:0.04,d:"declining",us:16,eu:49,et:[{c:"IS",n:"Iceland"},{c:"DK",n:"Denmark"},{c:"IE",n:"Ireland"},{c:"CH",n:"Switzerland"},{c:"NO",n:"Norway"},{c:"LU",n:"Luxembourg"}],int:["Sports News","Scripted Comedy","Traditional Sports"],ages:[{r:"25-34",s:61},{r:"35-44",s:23},{r:"45-54",s:16}],sp:[0.02,0.03,0.02,0.03,0.02,0.03,0.04,0.03,0.04,0.06,0.07,0.08,0.11,0.17,0.32,1,0.41,0.26,0.18,0.13,0.11,0.09,0.08,0.07,0.07,0.06,0.05,0.05,0.04,0.04]},
+{n:"mikaylanogueira",url:"https://www.tiktok.com/tag/mikaylanogueira",v:253018794,p:4333,s:0.44,d:"rising",us:13,eu:58,et:[{c:"IS",n:"Iceland"},{c:"IE",n:"Ireland"},{c:"GB",n:"United Kingdom"},{c:"DK",n:"Denmark"},{c:"FI",n:"Finland"},{c:"NO",n:"Norway"}],int:["Beauty","Family","Mukbangs & Tasting"],ages:[{r:"25-34",s:72},{r:"35-44",s:19},{r:"45-54",s:9}],sp:[0.09,0.11,0.12,0.12,0.12,0.12,0.1,0.11,0.12,0.13,0.14,0.12,0.2,0.27,0.19,0.17,0.15,0.23,1,0.84,0.94,0.94,0.9,0.7,0.56,0.47,0.37,0.36,0.43,0.44]},
+{n:"loveisblind",url:"https://www.tiktok.com/tag/loveisblind",v:252801651,p:12132,s:0.65,d:"declining",us:9,eu:79,et:[{c:"SE",n:"Sweden"},{c:"DE",n:"Germany"},{c:"AT",n:"Austria"},{c:"IS",n:"Iceland"},{c:"CH",n:"Switzerland"},{c:"DK",n:"Denmark"}],int:["Social News","Entertainment News","Family"],ages:[{r:"25-34",s:59},{r:"35-44",s:32},{r:"45-54",s:9}],sp:[0.07,0.12,0.14,0.18,0.16,0.13,0.11,0.14,0.13,0.14,0.13,0.11,0.11,0.12,0.12,0.11,0.13,0.24,0.43,0.45,0.43,0.46,0.55,0.57,0.69,1,0.95,0.78,0.67,0.65]},
+{n:"kidrock",url:"https://www.tiktok.com/tag/kidrock",v:231988046,p:13390,s:0.1,d:"neutral",us:26,eu:39,et:[{c:"IS",n:"Iceland"},{c:"IE",n:"Ireland"},{c:"DK",n:"Denmark"},{c:"FI",n:"Finland"},{c:"NO",n:"Norway"},{c:"SE",n:"Sweden"}],int:["Social News","Humanities","Social Issues"],ages:[{r:"25-34",s:51},{r:"45-54",s:27},{r:"35-44",s:22}],sp:[0.04,0.05,0.05,0.08,0.07,0.06,0.06,0.07,0.14,0.2,0.22,0.27,0.29,0.45,1,0.51,0.38,0.26,0.21,0.18,0.14,0.14,0.12,0.17,0.16,0.13,0.12,0.11,0.11,0.1]},
+{n:"iheartmemphis",url:"https://www.tiktok.com/tag/iheartmemphis",v:208197744,p:4395,s:0.06,d:"declining",us:39,eu:33,et:[{c:"GB",n:"United Kingdom"},{c:"IE",n:"Ireland"},{c:"DK",n:"Denmark"},{c:"SE",n:"Sweden"},{c:"IS",n:"Iceland"},{c:"NO",n:"Norway"}],int:["Entertainment News","Babies","Family"],ages:[{r:"25-34",s:75},{r:"35-44",s:19},{r:"45-54",s:6}],sp:[0.01,0.01,0.02,0.02,0.02,0.01,0.02,0.01,0.02,0.02,0.02,0.02,0.1,0.18,0.34,1,0.55,0.33,0.2,0.18,0.15,0.17,0.23,0.25,0.15,0.11,0.1,0.1,0.08,0.06]},
+{n:"speedskating",url:"https://www.tiktok.com/tag/speedskating",v:194860922,p:3201,s:0.55,d:"rising",us:0,eu:100,et:[{c:"NL",n:"Netherlands"},{c:"IT",n:"Italy"},{c:"CZ",n:"Czech Republic"},{c:"LV",n:"Latvia"},{c:"SK",n:"Slovakia"},{c:"HU",n:"Hungary"}],int:["Sports News","Extreme Sports","Other Art"],ages:[{r:"25-34",s:57},{r:"35-44",s:25},{r:"45-54",s:18}],sp:[0.07,0.11,0.15,0.18,0.21,0.2,0.2,0.14,0.22,0.24,0.27,0.28,0.28,0.49,0.38,0.64,1,0.9,0.76,0.74,0.73,0.62,0.56,0.45,0.37,0.34,0.36,0.4,0.51,0.55]},
+{n:"juttaleerdam",url:"https://www.tiktok.com/tag/juttaleerdam",v:191001756,p:3506,s:0.39,d:"rising",us:0,eu:100,et:[{c:"NL",n:"Netherlands"},{c:"LV",n:"Latvia"},{c:"CZ",n:"Czech Republic"},{c:"SK",n:"Slovakia"},{c:"HU",n:"Hungary"},{c:"IT",n:"Italy"}],int:["Fishing, Hunting & Camping","Extreme Sports","Sports News"],ages:[{r:"25-34",s:58},{r:"35-44",s:24},{r:"45-54",s:18}],sp:[0.05,0.09,0.11,0.15,0.17,0.17,0.18,0.08,0.18,0.2,0.21,0.23,0.22,0.36,0.2,0.54,1,1,0.82,0.82,0.71,0.55,0.4,0.34,0.28,0.3,0.21,0.23,0.29,0.39]},
+{n:"nyfw",url:"https://www.tiktok.com/tag/nyfw",v:175794427,p:18290,s:0.31,d:"neutral",us:18,eu:45,et:[{c:"IS",n:"Iceland"},{c:"GB",n:"United Kingdom"},{c:"DK",n:"Denmark"},{c:"IE",n:"Ireland"},{c:"CH",n:"Switzerland"},{c:"HR",n:"Croatia"}],int:["Entertainment News","Photography","Food Tour & Recommendations"],ages:[{r:"25-34",s:71},{r:"35-44",s:20},{r:"45-54",s:9}],sp:[0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.16,0.17,0.19,0.19,0.2,0.19,0.23,0.25,0.33,0.5,0.81,1,0.99,1,0.95,0.8,0.64,0.53,0.48,0.38,0.36,0.35,0.31]},
+{n:"happyvalentinesday",url:"https://www.tiktok.com/tag/happyvalentinesday",v:170870688,p:121303,s:0.02,d:"declining",us:8,eu:0,et:[],int:["Selfies","Nail Art","Babies"],ages:[{r:"25-34",s:56},{r:"35-44",s:25},{r:"45-54",s:19}],sp:[0.02,0.03,0.03,0.03,0.03,0.03,0.04,0.04,0.04,0.04,0.05,0.05,0.05,0.06,0.06,0.07,0.09,0.12,0.24,1,0.8,0.24,0.11,0.07,0.04,0.04,0.03,0.03,0.02,0.02]},
+{n:"jessicaalba",url:"https://www.tiktok.com/tag/jessicaalba",v:159388178,p:1636,s:0.29,d:"neutral",us:10,eu:55,et:[{c:"CH",n:"Switzerland"},{c:"AT",n:"Austria"},{c:"DK",n:"Denmark"},{c:"IS",n:"Iceland"},{c:"NO",n:"Norway"},{c:"SK",n:"Slovakia"}],int:["Scenery & Plants","Entertainment News","Beauty"],ages:[{r:"25-34",s:75},{r:"35-44",s:18},{r:"45-54",s:7}],sp:[0.23,0.28,0.25,0.24,0.23,0.31,0.3,0.27,0.25,0.19,0.26,0.23,0.25,0.25,1,0.85,0.95,0.81,0.64,0.57,0.49,0.36,0.33,0.33,0.32,0.27,0.36,0.33,0.31,0.29]},
+{n:"justgolive",url:"https://www.tiktok.com/tag/justgolive",v:139842840,p:101627,s:0.06,d:"declining",us:5,eu:0,et:[],int:["Scripted Drama","Advertisement","Selfies"],ages:[{r:"25-34",s:46},{r:"35-44",s:28},{r:"45-54",s:26}],sp:[0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.02,0.02,0.01,0.01,0.56,0.87,0.97,1,0.97,0.93,0.89,0.5,0.13,0.1,0.09,0.09,0.09,0.07,0.07,0.06]},
+{n:"badbunnysuperbowl",url:"https://www.tiktok.com/tag/badbunnysuperbowl",v:134328339,p:10909,s:0.04,d:"declining",us:12,eu:26,et:[{c:"ES",n:"Spain"},{c:"IS",n:"Iceland"},{c:"GR",n:"Greece"},{c:"CH",n:"Switzerland"}],int:["Software & APPs","Entertainment News","Professional & Personal Development"],ages:[{r:"25-34",s:61},{r:"35-44",s:24},{r:"45-54",s:15}],sp:[0.08,0.07,0.07,0.07,0.09,0.07,0.08,0.12,0.11,0.12,0.15,0.19,0.21,0.45,1,0.45,0.3,0.24,0.19,0.15,0.12,0.11,0.09,0.09,0.07,0.07,0.06,0.06,0.06,0.04]},
+{n:"needohs",url:"https://www.tiktok.com/tag/needohs",v:127559677,p:8354,s:0.67,d:"declining",us:21,eu:49,et:[{c:"GB",n:"United Kingdom"},{c:"IE",n:"Ireland"},{c:"IS",n:"Iceland"},{c:"DK",n:"Denmark"},{c:"NO",n:"Norway"},{c:"EE",n:"Estonia"}],int:["Toys & Collectables","Oddly Satisfying","Nail Art"],ages:[{r:"25-34",s:80},{r:"35-44",s:13},{r:"45-54",s:7}],sp:[0.28,0.25,0.22,0.2,0.24,0.32,0.37,0.3,0.25,0.24,0.35,0.39,0.48,0.58,0.44,0.46,0.48,0.48,0.55,0.69,0.78,0.91,0.85,0.85,0.72,0.77,0.87,1,0.78,0.67]},
+{n:"wideawake",url:"https://www.tiktok.com/tag/wideawake",v:121270804,p:4313,s:0.35,d:"neutral",us:7,eu:45,et:[{c:"DK",n:"Denmark"},{c:"IE",n:"Ireland"},{c:"IS",n:"Iceland"},{c:"GB",n:"United Kingdom"},{c:"NO",n:"Norway"}],int:["Singing & Instruments","Non-Video Games","Dance"],ages:[{r:"25-34",s:71},{r:"35-44",s:22},{r:"45-54",s:7}],sp:[0.06,0.1,0.1,0.09,0.09,0.13,0.18,0.17,0.19,0.25,0.41,0.52,0.64,0.71,0.67,0.74,0.86,1,1,0.92,0.73,0.65,0.57,0.54,0.48,0.48,0.44,0.38,0.37,0.35]},
+{n:"pambondi",url:"https://www.tiktok.com/tag/pambondi",v:117679655,p:9836,s:0.11,d:"declining",us:13,eu:46,et:[{c:"IS",n:"Iceland"},{c:"IE",n:"Ireland"},{c:"NO",n:"Norway"},{c:"DK",n:"Denmark"},{c:"CH",n:"Switzerland"},{c:"AT",n:"Austria"}],int:["Social News","Humanities","Social Issues"],ages:[{r:"25-34",s:47},{r:"45-54",s:27},{r:"35-44",s:26}],sp:[0.09,0.09,0.07,0.05,0.04,0.09,0.08,0.08,0.07,0.07,0.05,0.04,0.07,0.06,0.06,0.07,0.09,0.57,1,0.83,0.58,0.46,0.38,0.3,0.22,0.21,0.19,0.14,0.12,0.11]},
+{n:"charlieputh",url:"https://www.tiktok.com/tag/charlieputh",v:113241098,p:2731,s:0.27,d:"neutral",us:13,eu:34,et:[{c:"IE",n:"Ireland"},{c:"IS",n:"Iceland"},{c:"DK",n:"Denmark"}],int:["Singing & Instruments","Music","Entertainment News"],ages:[{r:"25-34",s:73},{r:"35-44",s:18},{r:"45-54",s:9}],sp:[0.17,0.18,0.22,0.22,0.23,0.23,0.24,0.2,0.2,0.19,0.21,0.2,0.26,0.27,0.66,1,0.79,0.83,0.7,0.59,0.5,0.48,0.44,0.36,0.37,0.35,0.32,0.33,0.29,0.27]},
+{n:"rickymartin",url:"https://www.tiktok.com/tag/rickymartin",v:111265966,p:3899,s:0.07,d:"declining",us:10,eu:39,et:[{c:"ES",n:"Spain"},{c:"IT",n:"Italy"},{c:"GR",n:"Greece"},{c:"PT",n:"Portugal"},{c:"CH",n:"Switzerland"}],int:["Entertainment News","Social News","Professional & Personal Development"],ages:[{r:"25-34",s:63},{r:"35-44",s:22},{r:"45-54",s:15}],sp:[0.03,0.03,0.04,0.04,0.04,0.05,0.04,0.04,0.04,0.05,0.05,0.04,0.05,0.05,1,0.49,0.36,0.33,0.25,0.23,0.2,0.13,0.11,0.11,0.11,0.07,0.09,0.08,0.07,0.07]},
+{n:"titimepregunto",url:"https://www.tiktok.com/tag/titimepregunto",v:102625944,p:3161,s:0.19,d:"declining",us:16,eu:49,et:[{c:"IS",n:"Iceland"},{c:"DK",n:"Denmark"},{c:"CH",n:"Switzerland"},{c:"GR",n:"Greece"},{c:"LU",n:"Luxembourg"},{c:"PT",n:"Portugal"}],int:["Music","Singing & Instruments","Dance"],ages:[{r:"25-34",s:60},{r:"35-44",s:26},{r:"45-54",s:14}],sp:[0.06,0.03,0.05,0.05,0.04,0.05,0.08,0.09,0.08,0.09,0.14,0.16,0.21,0.45,1,0.58,0.55,0.51,0.52,0.5,0.45,0.39,0.3,0.29,0.24,0.23,0.25,0.26,0.22,0.19]},
+{n:"daytona500",url:"https://www.tiktok.com/tag/daytona500",v:97228589,p:8043,s:0.13,d:"declining",us:28,eu:55,et:[{c:"IS",n:"Iceland"},{c:"HU",n:"Hungary"},{c:"LV",n:"Latvia"},{c:"FI",n:"Finland"},{c:"IE",n:"Ireland"},{c:"LT",n:"Lithuania"}],int:["Social News","Sports News","Other Transportation"],ages:[{r:"25-34",s:57},{r:"35-44",s:22},{r:"45-54",s:21}],sp:[0.08,0.07,0.07,0.06,0.06,0.07,0.07,0.07,0.08,0.08,0.08,0.09,0.1,0.12,0.16,0.18,0.22,0.29,0.37,0.39,0.74,1,0.64,0.47,0.33,0.25,0.22,0.18,0.13,0.13]},
+{n:"amithedrama",url:"https://www.tiktok.com/tag/amithedrama",v:94514971,p:4890,s:0.66,d:"neutral",us:27,eu:23,et:[{c:"IE",n:"Ireland"},{c:"LU",n:"Luxembourg"},{c:"GB",n:"United Kingdom"},{c:"IS",n:"Iceland"},{c:"GR",n:"Greece"}],int:["Entertainment News","Babies","Family"],ages:[{r:"25-34",s:65},{r:"35-44",s:26},{r:"45-54",s:9}],sp:[0.25,0.27,0.25,0.26,0.25,0.26,0.36,0.32,0.27,0.23,0.22,0.22,0.24,0.27,0.29,0.29,0.31,0.92,0.94,0.97,0.72,0.99,1,0.79,0.61,0.74,0.69,0.61,0.74,0.66]},
+{n:"livecareer",url:"https://www.tiktok.com/tag/livecareer",v:83715805,p:53218,s:0.07,d:"declining",us:3,eu:5,et:[{c:"ES",n:"Spain"}],int:["Scripted Drama","Selfies","Software & APPs"],ages:[{r:"25-34",s:35},{r:"35-44",s:33},{r:"45-54",s:32}],sp:[0.01,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.01,0.02,0.81,1,0.93,0.9,0.83,0.81,0.79,0.4,0.13,0.1,0.1,0.09,0.08,0.07,0.07]},
+{n:"atleticodemadrid",url:"https://www.tiktok.com/tag/atleticodemadrid",v:80768301,p:5566,s:0.31,d:"rising",us:0,eu:49,et:[{c:"ES",n:"Spain"},{c:"GR",n:"Greece"},{c:"PT",n:"Portugal"},{c:"CH",n:"Switzerland"},{c:"LU",n:"Luxembourg"}],int:["Sports News","Traditional Sports","Video Games"],ages:[{r:"25-34",s:62},{r:"35-44",s:28},{r:"45-54",s:10}],sp:[0.08,0.07,0.1,0.08,0.08,0.08,0.11,0.11,0.14,0.1,0.25,0.38,0.21,0.21,0.17,0.18,0.26,0.92,1,0.57,0.51,0.34,0.21,0.25,0.23,0.18,0.18,0.15,0.14,0.31]},
+{n:"livestory",url:"https://www.tiktok.com/tag/livestory",v:77604217,p:23985,s:0.94,d:"rising",us:3,eu:6,et:[{c:"ES",n:"Spain"}],int:["Scripted Drama","Selfies","Social News"],ages:[{r:"25-34",s:45},{r:"35-44",s:29},{r:"45-54",s:26}],sp:[0.14,0.19,0.18,0.17,0.16,0.16,0.15,0.15,0.15,0.16,0.16,0.15,0.15,0.15,0.14,0.15,0.13,0.14,0.13,1,0.89,0.22,0.21,0.16,0.16,0.16,0.15,0.14,0.14,0.94]},
+{n:"lowcortisol",url:"https://www.tiktok.com/tag/lowcortisol",v:77384778,p:9236,s:0.9,d:"neutral",us:0,eu:76,et:[{c:"LT",n:"Lithuania"},{c:"EE",n:"Estonia"},{c:"FI",n:"Finland"},{c:"IS",n:"Iceland"},{c:"LV",n:"Latvia"},{c:"CZ",n:"Czech Republic"}],int:["Science","Scenery & Plants","Video Games"],ages:[{r:"25-34",s:77},{r:"35-44",s:16},{r:"45-54",s:7}],sp:[0.06,0.05,0.07,0.1,0.14,0.16,0.17,0.18,0.19,0.2,0.2,0.27,0.28,0.29,0.31,0.3,0.36,0.39,0.4,0.51,0.66,0.7,0.67,0.7,0.74,0.81,1,1,0.92,0.9]},
+{n:"jamesvanderbeek",url:"https://www.tiktok.com/tag/jamesvanderbeek",v:74855851,p:6513,s:0.07,d:"declining",us:11,eu:64,et:[{c:"IT",n:"Italy"},{c:"IE",n:"Ireland"},{c:"IS",n:"Iceland"},{c:"FR",n:"France"},{c:"ES",n:"Spain"},{c:"GB",n:"United Kingdom"}],int:["Health & Wellness","Social News","Entertainment News"],ages:[{r:"45-54",s:38},{r:"25-34",s:37},{r:"35-44",s:25}],sp:[0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.8,1,0.56,0.34,0.21,0.18,0.13,0.11,0.1,0.13,0.09,0.07,0.07]},
+{n:"superbowlhalftime",url:"https://www.tiktok.com/tag/superbowlhalftime",v:69652487,p:2780,s:0.08,d:"rising",us:19,eu:56,et:[{c:"IS",n:"Iceland"},{c:"DK",n:"Denmark"},{c:"IE",n:"Ireland"},{c:"FI",n:"Finland"},{c:"CH",n:"Switzerland"},{c:"NO",n:"Norway"}],int:["Entertainment News","Social News","Dance"],ages:[{r:"25-34",s:66},{r:"35-44",s:20},{r:"45-54",s:14}],sp:[0.04,0.06,0.09,0.07,0.07,0.06,0.06,0.06,0.11,0.09,0.12,0.15,0.21,0.35,1,0.48,0.34,0.26,0.21,0.15,0.12,0.09,0.09,0.08,0.08,0.07,0.06,0.05,0.07,0.08]},
+{n:"debitirarmasfotos",url:"https://www.tiktok.com/tag/debitirarmasfotos",v:64770348,p:3307,s:0.15,d:"neutral",us:5,eu:25,et:[{c:"ES",n:"Spain"},{c:"PT",n:"Portugal"},{c:"CH",n:"Switzerland"},{c:"LU",n:"Luxembourg"}],int:["Entertainment News","Travel","Social News"],ages:[{r:"25-34",s:71},{r:"35-44",s:19},{r:"45-54",s:10}],sp:[0.17,0.16,0.12,0.11,0.09,0.09,0.09,0.33,0.26,0.24,0.33,0.36,0.47,0.66,1,0.77,0.58,0.47,0.42,0.33,0.29,0.26,0.21,0.19,0.16,0.17,0.17,0.15,0.14,0.15]},
+{n:"baileinolvidable",url:"https://www.tiktok.com/tag/baileinolvidable",v:64261262,p:7102,s:0.23,d:"neutral",us:6,eu:29,et:[{c:"ES",n:"Spain"},{c:"PT",n:"Portugal"},{c:"IT",n:"Italy"},{c:"CH",n:"Switzerland"},{c:"LU",n:"Luxembourg"}],int:["Dance","Recreation Facilities","Campus Life"],ages:[{r:"25-34",s:72},{r:"35-44",s:18},{r:"45-54",s:10}],sp:[0.17,0.22,0.21,0.23,0.2,0.2,0.24,0.22,0.29,0.29,0.31,0.34,0.36,0.46,0.66,1,0.71,0.68,0.52,0.48,0.51,0.44,0.37,0.33,0.29,0.27,0.24,0.26,0.25,0.23]},
+{n:"livewithlessfollowers",url:"https://www.tiktok.com/tag/livewithlessfollowers",v:63342984,p:21783,s:0.14,d:"declining",us:0,eu:5,et:[{c:"ES",n:"Spain"}],int:["Selfies","Other Talent","Health & Wellness"],ages:[{r:"45-54",s:39},{r:"35-44",s:34},{r:"25-34",s:27}],sp:[0.1,0.1,0.1,0.1,0.1,0.1,0.11,0.1,0.1,0.1,0.09,0.09,0.09,0.09,1,0.85,0.18,0.14,0.12,0.12,0.11,0.11,0.1,0.1,0.09,0.1,0.96,0.84,0.16,0.14]},
+{n:"turningpoint",url:"https://www.tiktok.com/tag/turningpoint",v:60247159,p:2984,s:0.1,d:"neutral",us:17,eu:14,et:[{c:"IS",n:"Iceland"},{c:"IE",n:"Ireland"}],int:["Social News","Entertainment News","Humanities"],ages:[{r:"25-34",s:48},{r:"45-54",s:28},{r:"35-44",s:24}],sp:[0.03,0.09,0.08,0.13,0.13,0.12,0.12,0.1,0.13,0.2,0.24,0.23,0.28,0.25,0.41,1,0.43,0.29,0.24,0.23,0.18,0.16,0.14,0.13,0.12,0.1,0.12,0.11,0.1,0.1]},
+{n:"filmedit",url:"https://www.tiktok.com/tag/filmedit",v:57326867,p:10526,s:0.75,d:"neutral",us:0,eu:91,et:[{c:"RO",n:"Romania"},{c:"GR",n:"Greece"},{c:"LV",n:"Latvia"},{c:"BG",n:"Bulgaria"},{c:"CZ",n:"Czech Republic"},{c:"HU",n:"Hungary"}],int:["Scenery & Plants","Graphic Art","Extreme Sports"],ages:[{r:"25-34",s:81},{r:"35-44",s:13},{r:"45-54",s:6}],sp:[0.32,0.4,0.38,0.4,0.4,0.39,0.36,0.39,0.36,0.34,0.38,0.37,0.45,0.39,0.83,0.83,0.88,0.88,0.92,1,0.98,0.98,0.84,0.89,0.9,0.89,0.85,0.75,0.76,0.75]},
+{n:"valentinesday2026",url:"https://www.tiktok.com/tag/valentinesday2026",v:55618932,p:21807,s:0.07,d:"declining",us:9,eu:42,et:[{c:"LV",n:"Latvia"},{c:"GR",n:"Greece"},{c:"RO",n:"Romania"},{c:"GB",n:"United Kingdom"},{c:"IE",n:"Ireland"}],int:["DIY & Handicrafts","Photography","Nail Art"],ages:[{r:"25-34",s:57},{r:"35-44",s:25},{r:"45-54",s:18}],sp:[0.11,0.16,0.17,0.17,0.18,0.17,0.18,0.2,0.22,0.22,0.23,0.23,0.23,0.24,0.24,0.24,0.27,0.29,0.33,0.45,1,0.88,0.42,0.27,0.2,0.13,0.11,0.1,0.08,0.07]},
+{n:"fridaythe13th",url:"https://www.tiktok.com/tag/fridaythe13th",v:53372191,p:14935,s:0.07,d:"neutral",us:10,eu:43,et:[{c:"IE",n:"Ireland"},{c:"EE",n:"Estonia"},{c:"LT",n:"Lithuania"},{c:"LV",n:"Latvia"},{c:"IS",n:"Iceland"},{c:"FI",n:"Finland"}],int:["Supernatural & Horror","Cosplay","Other Fashion"],ages:[{r:"25-34",s:61},{r:"35-44",s:24},{r:"45-54",s:15}],sp:[0.05,0.06,0.06,0.06,0.06,0.06,0.07,0.06,0.07,0.08,0.08,0.1,0.09,0.09,0.1,0.14,0.15,0.21,1,0.7,0.22,0.16,0.12,0.11,0.1,0.09,0.08,0.07,0.06,0.07]},
+{n:"halftimeshow2026",url:"https://www.tiktok.com/tag/halftimeshow2026",v:50374399,p:4127,s:0.02,d:"declining",us:17,eu:66,et:[{c:"CH",n:"Switzerland"},{c:"IS",n:"Iceland"},{c:"LU",n:"Luxembourg"},{c:"DK",n:"Denmark"},{c:"GR",n:"Greece"},{c:"BE",n:"Belgium"}],int:["Video Games","Science","Comics & Cartoon, Anime"],ages:[{r:"25-34",s:72},{r:"35-44",s:18},{r:"45-54",s:10}],sp:[0.03,0.03,0.02,0.02,0.03,0.02,0.02,0.05,0.05,0.08,0.09,0.11,0.12,0.29,1,0.36,0.24,0.17,0.13,0.08,0.08,0.06,0.05,0.04,0.05,0.04,0.04,0.03,0.02,0.02]},
+{n:"momsoftikok",url:"https://www.tiktok.com/tag/momsoftikok",v:44440009,p:14467,s:0.73,d:"neutral",us:20,eu:52,et:[{c:"IE",n:"Ireland"},{c:"IS",n:"Iceland"},{c:"DK",n:"Denmark"},{c:"NO",n:"Norway"},{c:"GB",n:"United Kingdom"},{c:"HR",n:"Croatia"}],int:["Family","Babies","DIY & Handicrafts"],ages:[{r:"25-34",s:60},{r:"35-44",s:29},{r:"45-54",s:11}],sp:[0.2,0.22,0.18,0.15,0.16,0.15,0.12,0.26,0.29,0.3,0.31,0.24,0.3,0.62,0.74,0.81,0.8,0.85,1,0.77,0.78,0.81,0.74,0.84,0.73,0.75,0.68,0.68,0.76,0.73]},
+{n:"draculaura",url:"https://www.tiktok.com/tag/draculaura",v:39874139,p:3956,s:0.29,d:"neutral",us:0,eu:45,et:[{c:"CZ",n:"Czech Republic"},{c:"EE",n:"Estonia"},{c:"LT",n:"Lithuania"},{c:"FI",n:"Finland"},{c:"LV",n:"Latvia"},{c:"PL",n:"Poland"}],int:["Cosplay","Oddly Satisfying","Toys & Collectables"],ages:[{r:"25-34",s:81},{r:"35-44",s:13},{r:"45-54",s:6}],sp:[0.16,0.24,0.17,0.17,0.19,0.17,0.2,0.24,0.21,0.21,0.2,0.2,0.18,0.23,0.24,0.22,0.21,0.2,0.21,0.29,1,0.8,0.34,0.28,0.27,0.27,0.23,0.26,0.26,0.29]},
+{n:"dtmfbadbunny",url:"https://www.tiktok.com/tag/dtmfbadbunny",v:39125012,p:2752,s:0.15,d:"declining",us:6,eu:25,et:[{c:"ES",n:"Spain"},{c:"PT",n:"Portugal"},{c:"CH",n:"Switzerland"},{c:"LU",n:"Luxembourg"},{c:"IT",n:"Italy"}],int:["Entertainment News","Dance","Music"],ages:[{r:"25-34",s:76},{r:"35-44",s:17},{r:"45-54",s:7}],sp:[0.15,0.14,0.13,0.12,0.11,0.12,0.11,0.34,0.27,0.25,0.32,0.38,0.5,0.65,1,0.69,0.48,0.42,0.38,0.35,0.3,0.29,0.25,0.22,0.19,0.18,0.19,0.18,0.15,0.15]},
+{n:"valentineday",url:"https://www.tiktok.com/tag/valentineday",v:37951062,p:10802,s:0.09,d:"neutral",us:0,eu:65,et:[{c:"RO",n:"Romania"},{c:"GR",n:"Greece"},{c:"LV",n:"Latvia"},{c:"HR",n:"Croatia"},{c:"CZ",n:"Czech Republic"},{c:"BG",n:"Bulgaria"}],int:["DIY & Handicrafts","Scripted Drama","Nail Art"],ages:[{r:"25-34",s:59},{r:"35-44",s:24},{r:"45-54",s:17}],sp:[0.13,0.16,0.17,0.17,0.17,0.16,0.16,0.18,0.22,0.19,0.22,0.23,0.24,0.25,0.24,0.25,0.29,0.34,0.35,0.52,1,0.82,0.39,0.22,0.17,0.13,0.1,0.1,0.09,0.09]},
+{n:"noahkahanmusic",url:"https://www.tiktok.com/tag/noahkahanmusic",v:37798109,p:4170,s:0.3,d:"neutral",us:15,eu:45,et:[{c:"IE",n:"Ireland"},{c:"GB",n:"United Kingdom"},{c:"IS",n:"Iceland"},{c:"DK",n:"Denmark"},{c:"NO",n:"Norway"},{c:"NL",n:"Netherlands"}],int:["Travel","Campus Life","Drinks"],ages:[{r:"25-34",s:78},{r:"35-44",s:17},{r:"45-54",s:5}],sp:[0.15,0.19,0.19,0.36,0.36,0.77,0.53,0.45,0.7,0.62,0.54,0.44,0.46,0.35,0.34,0.38,1,0.96,0.87,0.68,0.54,0.52,0.54,0.44,0.36,0.37,0.4,0.36,0.38,0.3]},
+{n:"chivasdelguadalajara",url:"https://www.tiktok.com/tag/chivasdelguadalajara",v:35696357,p:4213,s:0.22,d:"rising",us:9,eu:1,et:[{c:"ES",n:"Spain"},{c:"CZ",n:"Czech Republic"}],int:["Selfies","Traditional Sports","Sports News"],ages:[{r:"25-34",s:54},{r:"35-44",s:27},{r:"45-54",s:19}],sp:[0.09,0.12,0.14,0.11,0.14,0.15,0.17,0.32,0.18,0.15,0.14,0.14,0.17,0.35,0.27,0.22,0.21,0.22,0.24,0.29,0.47,1,0.48,0.31,0.26,0.23,0.23,0.29,0.43,0.22]},
+{n:"cheersport",url:"https://www.tiktok.com/tag/cheersport",v:33600643,p:6744,s:0.11,d:"declining",us:11,eu:40,et:[{c:"FI",n:"Finland"},{c:"GB",n:"United Kingdom"},{c:"IS",n:"Iceland"},{c:"AT",n:"Austria"},{c:"DK",n:"Denmark"},{c:"IE",n:"Ireland"}],int:["Dance","Recreation Facilities","Nail Art"],ages:[{r:"25-34",s:74},{r:"35-44",s:17},{r:"45-54",s:9}],sp:[0.04,0.08,0.07,0.05,0.04,0.04,0.05,0.04,0.06,0.06,0.07,0.07,0.07,0.08,0.1,0.13,0.11,0.15,0.24,0.43,0.88,1,0.92,0.52,0.32,0.24,0.17,0.16,0.14,0.11]},
+{n:"diadesanvalentin",url:"https://www.tiktok.com/tag/diadesanvalentin",v:33431260,p:5980,s:0.05,d:"declining",us:7,eu:7,et:[{c:"ES",n:"Spain"},{c:"PT",n:"Portugal"},{c:"IT",n:"Italy"},{c:"CH",n:"Switzerland"}],int:["Scripted Drama","Selfies","DIY & Handicrafts"],ages:[{r:"25-34",s:44},{r:"35-44",s:34},{r:"45-54",s:22}],sp:[0.11,0.12,0.13,0.15,0.15,0.13,0.16,0.18,0.18,0.19,0.19,0.23,0.2,0.19,0.19,0.2,0.22,0.25,0.3,0.44,1,0.82,0.39,0.21,0.13,0.08,0.07,0.05,0.04,0.05]},
+{n:"benitomartinezocasio",url:"https://www.tiktok.com/tag/benitomartinezocasio",v:32419462,p:3598,s:0.11,d:"neutral",us:16,eu:36,et:[{c:"PT",n:"Portugal"},{c:"ES",n:"Spain"},{c:"GR",n:"Greece"},{c:"CH",n:"Switzerland"},{c:"LU",n:"Luxembourg"}],int:["Babies","Dance","Photography"],ages:[{r:"25-34",s:73},{r:"35-44",s:20},{r:"45-54",s:7}],sp:[0.05,0.06,0.05,0.04,0.05,0.06,0.07,0.2,0.16,0.15,0.14,0.14,0.2,0.36,1,0.55,0.4,0.29,0.24,0.23,0.2,0.18,0.22,0.17,0.16,0.14,0.12,0.12,0.11,0.11]},
+{n:"liveaccess",url:"https://www.tiktok.com/tag/liveaccess",v:31172103,p:17000,s:1,d:"rising",us:3,eu:4,et:[{c:"ES",n:"Spain"}],int:["Selfies","Work & Jobs","Other Talent"],ages:[{r:"25-34",s:35},{r:"35-44",s:34},{r:"45-54",s:31}],sp:[0.04,0.06,0.06,0.06,0.05,0.05,0.05,0.04,0.05,0.05,0.05,0.05,0.04,0.04,0.04,0.04,0.05,0.92,0.85,0.15,0.12,0.1,0.08,0.08,0.08,0.07,0.07,0.07,0.06,1]},
+{n:"livecanbeeasy",url:"https://www.tiktok.com/tag/livecanbeeasy",v:29853928,p:9784,s:0.06,d:"neutral",us:4,eu:4,et:[{c:"ES",n:"Spain"}],int:["Scripted Drama","Selfies","Work & Jobs"],ages:[{r:"45-54",s:37},{r:"35-44",s:35},{r:"25-34",s:28}],sp:[0.05,0.07,0.06,0.06,0.06,0.06,0.07,0.06,0.04,0.05,0.05,0.05,0.06,0.05,0.05,0.05,0.05,0.05,0.06,0.05,1,0.88,0.14,0.1,0.09,0.09,0.08,0.08,0.08,0.06]},
+{n:"nello",url:"https://www.tiktok.com/tag/nello",v:29743167,p:8070,s:0.76,d:"rising",us:77,eu:4,et:[{c:"IT",n:"Italy"},{c:"CZ",n:"Czech Republic"},{c:"IE",n:"Ireland"}],int:["Health & Wellness","Other Talent","Other Beauty"],ages:[{r:"25-34",s:52},{r:"35-44",s:26},{r:"45-54",s:22}],sp:[0.31,0.47,0.65,0.63,0.62,0.56,0.59,0.67,0.69,0.77,0.69,0.68,0.67,0.66,0.72,0.88,0.97,1,0.93,0.81,0.81,0.93,0.82,0.71,0.72,0.72,0.59,0.62,0.74,0.76]},
+{n:"jasonvoorhees",url:"https://www.tiktok.com/tag/jasonvoorhees",v:28112201,p:3400,s:0.14,d:"neutral",us:5,eu:22,et:[{c:"LT",n:"Lithuania"},{c:"LV",n:"Latvia"},{c:"EE",n:"Estonia"},{c:"CZ",n:"Czech Republic"}],int:["Supernatural & Horror","Video Games","Cosplay"],ages:[{r:"25-34",s:61},{r:"35-44",s:25},{r:"45-54",s:14}],sp:[0.14,0.14,0.13,0.13,0.14,0.11,0.15,0.14,0.13,0.13,0.12,0.14,0.15,0.14,0.14,0.17,0.19,0.26,1,0.7,0.24,0.21,0.18,0.19,0.18,0.19,0.16,0.17,0.16,0.14]},
+{n:"valentinesbasket",url:"https://www.tiktok.com/tag/valentinesbasket",v:27221263,p:3516,s:0.07,d:"declining",us:36,eu:24,et:[{c:"GB",n:"United Kingdom"},{c:"IE",n:"Ireland"},{c:"DK",n:"Denmark"},{c:"SE",n:"Sweden"},{c:"EE",n:"Estonia"}],int:["DIY & Handicrafts","Family","Home & Garden"],ages:[{r:"25-34",s:71},{r:"35-44",s:20},{r:"45-54",s:9}],sp:[0.21,0.19,0.21,0.18,0.25,0.26,0.29,0.28,0.28,0.3,0.31,0.31,0.36,0.35,0.39,0.42,0.46,0.57,0.75,1,0.54,0.29,0.17,0.15,0.12,0.06,0.07,0.06,0.03,0.07]},
+{n:"amoryamistad",url:"https://www.tiktok.com/tag/amoryamistad",v:26447926,p:7989,s:0.05,d:"neutral",us:4,eu:7,et:[{c:"ES",n:"Spain"},{c:"IT",n:"Italy"},{c:"PT",n:"Portugal"},{c:"CH",n:"Switzerland"}],int:["Selfies","Other Talent","Work & Jobs"],ages:[{r:"35-44",s:36},{r:"45-54",s:34},{r:"25-34",s:30}],sp:[0.07,0.1,0.1,0.11,0.12,0.12,0.11,0.15,0.16,0.15,0.16,0.17,0.18,0.17,0.18,0.19,0.23,0.24,0.28,0.4,1,0.63,0.25,0.13,0.09,0.07,0.07,0.05,0.06,0.05]},
+{n:"valetinesday",url:"https://www.tiktok.com/tag/valetinesday",v:25900585,p:7771,s:0.06,d:"declining",us:9,eu:53,et:[{c:"HU",n:"Hungary"},{c:"GB",n:"United Kingdom"},{c:"IE",n:"Ireland"},{c:"RO",n:"Romania"},{c:"SK",n:"Slovakia"},{c:"AT",n:"Austria"}],int:["DIY & Handicrafts","Nail Art","Photography"],ages:[{r:"25-34",s:71},{r:"35-44",s:20},{r:"45-54",s:9}],sp:[0.1,0.15,0.15,0.15,0.14,0.17,0.19,0.2,0.23,0.21,0.23,0.24,0.24,0.28,0.27,0.26,0.3,0.32,0.38,0.53,1,0.85,0.43,0.24,0.16,0.12,0.08,0.08,0.07,0.06]},
+{n:"giftexchange",url:"https://www.tiktok.com/tag/giftexchange",v:25773048,p:4210,s:0.35,d:"declining",us:12,eu:16,et:[{c:"IS",n:"Iceland"},{c:"DK",n:"Denmark"},{c:"LU",n:"Luxembourg"}],int:["Family","DIY & Handicrafts","Photography"],ages:[{r:"25-34",s:68},{r:"35-44",s:23},{r:"45-54",s:9}],sp:[0.28,0.26,0.24,0.24,0.21,0.35,0.52,0.42,0.33,0.25,0.24,0.3,0.61,0.98,0.73,0.57,0.53,0.53,0.65,1,1,0.84,0.54,0.42,0.35,0.36,0.46,0.66,0.54,0.35]},
+{n:"nikepro",url:"https://www.tiktok.com/tag/nikepro",v:24301209,p:5598,s:0.7,d:"neutral",us:0,eu:78,et:[{c:"FI",n:"Finland"},{c:"HR",n:"Croatia"},{c:"PL",n:"Poland"},{c:"LT",n:"Lithuania"},{c:"EE",n:"Estonia"},{c:"BG",n:"Bulgaria"}],int:["Other Transportation","Cosplay","Fishing, Hunting & Camping"],ages:[{r:"25-34",s:66},{r:"35-44",s:20},{r:"45-54",s:14}],sp:[0.16,0.24,0.22,0.23,0.28,0.31,0.42,0.4,0.71,0.85,0.67,0.79,0.83,0.65,0.76,0.59,0.79,0.94,1,0.93,0.89,0.78,0.93,0.88,0.69,0.51,0.64,0.62,0.68,0.7]},
+{n:"fridaythe13",url:"https://www.tiktok.com/tag/fridaythe13",v:23333279,p:10562,s:0.06,d:"neutral",us:17,eu:56,et:[{c:"NO",n:"Norway"},{c:"FI",n:"Finland"},{c:"SE",n:"Sweden"},{c:"IE",n:"Ireland"},{c:"LT",n:"Lithuania"},{c:"EE",n:"Estonia"}],int:["Other Fashion","Supernatural & Horror","Cosplay"],ages:[{r:"25-34",s:60},{r:"35-44",s:24},{r:"45-54",s:16}],sp:[0.05,0.06,0.05,0.05,0.05,0.06,0.07,0.07,0.07,0.07,0.07,0.09,0.09,0.09,0.09,0.12,0.19,0.25,1,0.79,0.25,0.17,0.12,0.1,0.07,0.08,0.06,0.07,0.06,0.06]},
+{n:"14february",url:"https://www.tiktok.com/tag/14february",v:22515916,p:3993,s:0.04,d:"declining",us:0,eu:0,et:[],int:["Selfies","Cosplay","Street Interviews & Social Experiments"],ages:[{r:"25-34",s:66},{r:"35-44",s:22},{r:"45-54",s:12}],sp:[0.05,0.08,0.08,0.08,0.08,0.09,0.09,0.11,0.12,0.14,0.15,0.16,0.15,0.19,0.18,0.28,0.26,0.25,0.33,0.53,1,0.55,0.28,0.17,0.12,0.09,0.07,0.07,0.06,0.04]},
+{n:"february14th",url:"https://www.tiktok.com/tag/february14th",v:19926060,p:4260,s:0.08,d:"neutral",us:0,eu:69,et:[{c:"HU",n:"Hungary"},{c:"LT",n:"Lithuania"},{c:"SK",n:"Slovakia"},{c:"RO",n:"Romania"},{c:"BG",n:"Bulgaria"},{c:"LV",n:"Latvia"}],int:["Selfies","Dance","Food Display"],ages:[{r:"25-34",s:72},{r:"35-44",s:18},{r:"45-54",s:10}],sp:[0.14,0.13,0.15,0.16,0.17,0.19,0.29,0.25,0.25,0.21,0.24,0.26,0.25,0.26,0.22,0.27,0.31,0.35,0.47,1,0.77,0.27,0.16,0.12,0.09,0.07,0.08,0.08,0.07,0.08]},
+{n:"valintinesday",url:"https://www.tiktok.com/tag/valintinesday",v:18743229,p:8332,s:0.06,d:"declining",us:7,eu:0,et:[],int:["Other Transportation","Fishing, Hunting & Camping","Cars, Trucks & Motorcycles"],ages:[{r:"25-34",s:67},{r:"35-44",s:20},{r:"45-54",s:13}],sp:[0.06,0.11,0.1,0.1,0.11,0.1,0.13,0.15,0.14,0.16,0.15,0.17,0.16,0.19,0.2,0.18,0.23,0.27,0.32,0.52,1,0.73,0.33,0.17,0.12,0.08,0.07,0.07,0.05,0.06]},
+{n:"liverecognition",url:"https://www.tiktok.com/tag/liverecognition",v:16167773,p:16100,s:0.79,d:"rising",us:4,eu:5,et:[{c:"ES",n:"Spain"}],int:["Selfies","Work & Jobs","Other Talent"],ages:[{r:"35-44",s:35},{r:"25-34",s:33},{r:"45-54",s:32}],sp:[0.03,0.04,0.03,0.03,0.04,0.03,0.04,0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.02,0.02,1,0.8,0.14,0.11,0.08,0.07,0.07,0.06,0.05,0.05,0.05,0.05,0.79]},
+{n:"loveday",url:"https://www.tiktok.com/tag/loveday",v:15771498,p:10900,s:0.06,d:"declining",us:7,eu:38,et:[{c:"LT",n:"Lithuania"},{c:"GR",n:"Greece"},{c:"IE",n:"Ireland"},{c:"LV",n:"Latvia"},{c:"BG",n:"Bulgaria"},{c:"RO",n:"Romania"}],int:["Selfies","Photography","Nail Art"],ages:[{r:"25-34",s:59},{r:"35-44",s:25},{r:"45-54",s:16}],sp:[0.06,0.06,0.07,0.07,0.07,0.07,0.08,0.09,0.08,0.1,0.11,0.1,0.1,0.12,0.12,0.14,0.15,0.19,0.31,0.9,1,0.53,0.31,0.19,0.13,0.11,0.09,0.08,0.08,0.06]},
+{n:"diadelamor",url:"https://www.tiktok.com/tag/diadelamor",v:13918970,p:5168,s:0.03,d:"rising",us:2,eu:4,et:[{c:"ES",n:"Spain"},{c:"DK",n:"Denmark"},{c:"IT",n:"Italy"},{c:"BE",n:"Belgium"}],int:["Selfies","Other Talent","Work & Jobs"],ages:[{r:"35-44",s:36},{r:"25-34",s:33},{r:"45-54",s:31}],sp:[0.08,0.11,0.11,0.11,0.13,0.12,0.11,0.14,0.13,0.15,0.17,0.16,0.16,0.17,0.17,0.24,0.25,0.35,0.44,1,0.68,0.26,0.15,0.09,0.06,0.05,0.03,0.03,0.05,0.03]},
+{n:"friday13",url:"https://www.tiktok.com/tag/friday13",v:13745499,p:6213,s:0.05,d:"declining",us:0,eu:76,et:[{c:"HU",n:"Hungary"},{c:"LT",n:"Lithuania"},{c:"SE",n:"Sweden"},{c:"LV",n:"Latvia"},{c:"FI",n:"Finland"},{c:"SK",n:"Slovakia"}],int:["Other Fashion","Tech Products & Infos","Graphic Art"],ages:[{r:"25-34",s:60},{r:"35-44",s:25},{r:"45-54",s:15}],sp:[0.01,0.03,0.03,0.04,0.05,0.05,0.04,0.06,0.05,0.06,0.06,0.06,0.08,0.06,0.06,0.09,0.11,0.16,0.24,1,0.78,0.22,0.14,0.11,0.08,0.07,0.06,0.06,0.04,0.05]},
+{n:"sanvalentin2026",url:"https://www.tiktok.com/tag/sanvalentin2026",v:13353156,p:5357,s:0.08,d:"declining",us:2,eu:24,et:[{c:"ES",n:"Spain"},{c:"IT",n:"Italy"},{c:"PT",n:"Portugal"},{c:"GR",n:"Greece"},{c:"IS",n:"Iceland"}],int:["Selfies","Other Beauty","Home & Garden"],ages:[{r:"35-44",s:37},{r:"45-54",s:34},{r:"25-34",s:29}],sp:[0.1,0.16,0.16,0.2,0.19,0.2,0.19,0.21,0.22,0.26,0.29,0.26,0.24,0.27,0.27,0.28,0.3,0.35,0.41,0.53,1,0.86,0.44,0.28,0.17,0.14,0.15,0.13,0.09,0.08]},
+{n:"felizsanvalentin",url:"https://www.tiktok.com/tag/felizsanvalentin",v:13110708,p:8966,s:0.06,d:"neutral",us:2,eu:13,et:[{c:"ES",n:"Spain"},{c:"IT",n:"Italy"},{c:"PT",n:"Portugal"},{c:"RO",n:"Romania"},{c:"GR",n:"Greece"}],int:["Selfies","Work & Jobs","Finger Dance & Basic Dance"],ages:[{r:"45-54",s:45},{r:"35-44",s:36},{r:"25-34",s:19}],sp:[0.04,0.06,0.06,0.06,0.07,0.1,0.25,0.23,0.16,0.12,0.1,0.09,0.08,0.07,0.09,0.11,0.11,0.13,0.22,1,0.43,0.15,0.1,0.08,0.06,0.06,0.06,0.06,0.06,0.06]},
+{n:"loveisintheair",url:"https://www.tiktok.com/tag/loveisintheair",v:13070890,p:7313,s:0.15,d:"neutral",us:0,eu:99,et:[{c:"ES",n:"Spain"},{c:"IT",n:"Italy"},{c:"DE",n:"Germany"},{c:"IE",n:"Ireland"},{c:"HU",n:"Hungary"},{c:"CZ",n:"Czech Republic"}],int:["Selfies","Nail Art","Other Beauty"],ages:[{r:"25-34",s:57},{r:"35-44",s:25},{r:"45-54",s:18}],sp:[0.12,0.18,0.2,0.22,0.19,0.22,0.21,0.25,0.29,0.25,0.26,0.25,0.27,0.27,0.31,0.32,0.4,0.4,0.45,0.57,1,0.74,0.39,0.24,0.2,0.19,0.17,0.17,0.18,0.15]},
+{n:"happyvalentine",url:"https://www.tiktok.com/tag/happyvalentine",v:10582329,p:9901,s:0.03,d:"neutral",us:5,eu:21,et:[{c:"GR",n:"Greece"},{c:"DK",n:"Denmark"}],int:["Selfies","Nail Art","Other Beauty"],ages:[{r:"25-34",s:52},{r:"35-44",s:25},{r:"45-54",s:23}],sp:[0.02,0.03,0.03,0.02,0.03,0.03,0.03,0.03,0.05,0.04,0.04,0.04,0.06,0.06,0.07,0.08,0.1,0.11,0.15,0.29,1,0.67,0.19,0.13,0.06,0.05,0.03,0.03,0.03,0.03]},
+{n:"diadelamoryamistad",url:"https://www.tiktok.com/tag/diadelamoryamistad",v:9984911,p:4508,s:0.05,d:"neutral",us:10,eu:4,et:[{c:"ES",n:"Spain"},{c:"GB",n:"United Kingdom"},{c:"RO",n:"Romania"}],int:["Selfies","Food Tour & Recommendations","Work & Jobs"],ages:[{r:"25-34",s:37},{r:"35-44",s:36},{r:"45-54",s:27}],sp:[0.06,0.1,0.11,0.11,0.11,0.13,0.13,0.18,0.18,0.19,0.17,0.19,0.19,0.17,0.15,0.17,0.26,0.25,0.32,0.45,1,0.69,0.28,0.15,0.07,0.05,0.05,0.05,0.04,0.05]},
+{n:"streetwearvibes",url:"https://www.tiktok.com/tag/streetwearvibes",v:9949704,p:5471,s:0.67,d:"neutral",us:8,eu:85,et:[{c:"LT",n:"Lithuania"},{c:"HR",n:"Croatia"},{c:"SK",n:"Slovakia"},{c:"LV",n:"Latvia"},{c:"EE",n:"Estonia"},{c:"CZ",n:"Czech Republic"}],int:["Video Games","Non-Video Games","Cosplay"],ages:[{r:"25-34",s:37},{r:"35-44",s:34},{r:"45-54",s:29}],sp:[0.12,0.15,0.15,0.22,0.21,0.21,0.26,0.29,0.54,0.65,0.5,0.61,0.76,0.67,0.79,0.68,0.87,1,1,0.92,0.88,0.8,0.95,0.86,0.71,0.51,0.6,0.6,0.62,0.67]},
+{n:"happyvalentines",url:"https://www.tiktok.com/tag/happyvalentines",v:9283263,p:6031,s:0.02,d:"declining",us:0,eu:59,et:[{c:"GR",n:"Greece"},{c:"SK",n:"Slovakia"},{c:"CZ",n:"Czech Republic"},{c:"NO",n:"Norway"},{c:"IE",n:"Ireland"},{c:"HU",n:"Hungary"}],int:["Dance","Babies","Selfies"],ages:[{r:"25-34",s:60},{r:"35-44",s:24},{r:"45-54",s:16}],sp:[0.02,0.02,0.03,0.02,0.02,0.03,0.03,0.04,0.06,0.06,0.05,0.06,0.07,0.07,0.06,0.1,0.11,0.13,0.29,1,0.75,0.23,0.12,0.08,0.05,0.04,0.04,0.02,0.03,0.02]},
+{n:"aiimage",url:"https://www.tiktok.com/tag/aiimage",v:6201262,p:26308,s:0.45,d:"declining",us:0,eu:0,et:[],int:["Selfies","Other Talent","Scenery & Plants"],ages:[{r:"45-54",s:57},{r:"35-44",s:26},{r:"25-34",s:17}],sp:[0.11,0.14,0.13,0.13,0.14,0.17,0.18,0.22,0.29,0.32,0.36,0.36,0.36,0.33,0.35,0.37,0.37,0.42,0.66,0.65,0.51,0.45,0.42,0.4,0.38,0.41,1,0.8,0.53,0.45]}
 ];
 
-// ═══════════════════════════════════════════
-// TREND DATA — Updated Feb 23, 2026 08:45 CET
-// Ad-boost filtered. Cross-referenced.
-// ⚠️ Apify API subscription expired — no fresh hashtag data today.
-// Using last API pull (Feb 20) + research sources (Feb 20-23).
-// ═══════════════════════════════════════════
-const TRENDS = [
-  // ──── OVERLAPS: API + Research confirmed ────
-  // #shutupmom — REMOVED Feb 20: API score dropped to 0.00 (was 0.55). Trend is dead.
+// ──── CROSS-PLATFORM TRENDS (Updated 2026-02-26) ────
+const XP_TRENDS = [
   {
-    name: "Bridgerton Season 4",
-    platform: "both", confidence: "overlap", freshness: "warm",
-    desc: "'Make it Bridgerton' edits, regencycore aesthetics, elegant lifestyle content. Massive on IG (700K Reels). Note: API shows declining momentum — peaked ~Feb 6, now fading on TikTok.",
-    proof: { api: "#bridgertonseason4 (0.15 →), #bridgertonnetflix (0.23 ↓), #bridgertonedit (0.32 ↑) — mixed signals", research: "Later (Feb 6+13+20), Scott Social (Feb 17+18+19), HeyOrca" },
-    meta: { views: "674M combined TikTok", posts: "700K+ IG Reels", score: "0.15-0.32 — edit uptick, core fading" },
-    hashtags: ["#bridgertonseason4", "#bridgertonedit", "#regencycore"],
-    examples: [
-      { label: "Later — 'Make it Bridgerton' Reels trend breakdown", url: "https://later.com/blog/instagram-reels-trends/" },
-      { label: "Instagram — #bridgertonedit Reels", url: "https://www.instagram.com/explore/tags/bridgertonedit/" },
-      { label: "Audio: Archer Marsh - Give Me Everything", url: "https://www.instagram.com/reels/audio/2219751965068779/" },
-    ],
-    angle: "Still works on IG where momentum holds. 'Everyday life, but make it Bridgerton' — elegant FibreGuard interiors. Use audio: Archer Marsh - Give Me Everything. ⚠️ Act fast, TikTok window closing.",
+    name: "Reality TV Show Edit",
+    platforms: ["tt","ig","yt"],
+    status: "hot",
+    desc: "Creators are editing everyday content like a reality TV show — dramatic zoom-ins, confessional-style cuts, \"next time on…\" cliffhangers, and cinematic sound effects. 3.5M+ posts on TikTok. Works for any behind-the-scenes content. CapCut templates are everywhere for this.",
+    fg_idea: "Edit a \"day at the FibreGuard lab\" like a reality show. Stain test drama with confessional cuts: \"I didn't think red wine stood a chance…\" Dramatic zoom on the fabric. Cut to black. \"Next episode: ketchup.\" The format makes product demos entertaining.",
+    meta: "3.5M+ TikTok posts · Trending IG audio · CapCut templates available",
+    sources: "Later, Epidemic Sound, TikTok Discover"
   },
   {
-    name: "#euphoriamakeup / Euphoria Glam Transitions",
-    platform: "both", confidence: "overlap", freshness: "warm",
-    desc: "Euphoria-inspired glam transitions crossing from beauty into room reveals and aesthetic content. Dramatic before/after format.",
-    proof: { api: "#euphoriamakeup — score 0.35 ↑ (slight uptick from 0.34), 52.8M views, 7.1K posts", research: "NewEngen (Feb 2026 trends)" },
-    meta: { views: "52.8M", posts: "7.1K", score: "0.35 ↑" },
-    hashtags: ["#euphoriamakeup", "#euphoriavibes"],
-    examples: [
-      { label: "TikTok — #euphoriamakeup discover", url: "https://www.tiktok.com/tag/euphoriamakeup?lang=en" },
-      { label: "TikTok — Euphoria makeup transitions", url: "https://www.tiktok.com/discover/euphoria-makeup-transition" },
-    ],
-    angle: "Euphoria room makeover transition — messy room → glam FibreGuard-styled space. Bold colors, dramatic lighting.",
+    name: "Highlight Switch / Beat Sync",
+    platforms: ["ig","tt"],
+    status: "peak",
+    desc: "Using \"The Desperados - Let's Have Some Fun\" audio to sync product features, outfit details, or key moments to each beat for clean, satisfying switch-ups. 26K+ posts on Instagram and growing. Simple concept, elite execution — the audio does the heavy lifting.",
+    fg_idea: "Sync fabric swatches or colorways to the beat — each beat reveals a new texture or pattern. Clean, minimal, satisfying. Could also do: \"One fabric. Every stain. Zero damage.\" with beat-synced stain/clean reveals.",
+    meta: "26K+ IG posts · Business-friendly audio ✅ · Rising fast",
+    sources: "Later, Scott Social Marketing"
   },
   {
-    name: "#blackhistorymonth / #bhm",
-    platform: "both", confidence: "overlap", freshness: "warm", brandSafe: false,
-    desc: "Black History Month content — storytelling, cultural celebration, heritage. Valid through Feb 28. API shows renewed activity: #blackhistorymonth 0.54 ↑, #bhm 0.57.",
-    proof: { api: "#blackhistorymonth (flat), #bhm 0.57 ↓ (was 0.59) — slowly fading", research: "Cultural calendar — valid through Feb 28. 5 days left." },
-    meta: { posts: "Valid through Feb 28 (5 days left)" },
-    hashtags: ["#blackhistorymonth", "#bhm"],
-    examples: [
-      { label: "TikTok — #blackhistorymonth", url: "https://www.tiktok.com/tag/blackhistorymonth" },
-      { label: "Instagram — #bhm", url: "https://www.instagram.com/explore/tags/bhm/" },
-    ],
-    angle: "Celebrate Black designers/creators in textile & interior space. 'The fabric of culture' — heritage homes with FibreGuard. Storytelling format. ⏳ 5 days left.",
+    name: "Fashion Week Runway Content (LFW/NYFW)",
+    platforms: ["ig","tt","yt","x"],
+    status: "hot",
+    desc: "Fashion Month is peaking — NYFW just wrapped, LFW ongoing. King Charles at London Fashion Week front row went viral. Romeo Beckham walked Burberry. Texture-heavy collections trending: chunky knits, layered fabrics, tactile materials are dominating runway commentary across all platforms.",
+    fg_idea: "\"Fashion Week fabrics vs. FibreGuard fabrics\" — side-by-side of runway textures vs. your stain-proof equivalents. Or: trend report format showing AW26 fabric trends (chunky textures, rich darks) and how FibreGuard fits in. Rides the fashion conversation.",
+    meta: "Cross-platform · NYFW 175M TikTok views · LFW viral moments",
+    sources: "British Vogue, Zoe Report, TikTok #nyfw"
   },
   {
-    name: "#everlong / Foo Fighters Nostalgia",
-    platform: "tiktok", confidence: "overlap", freshness: "warm",
-    desc: "Foo Fighters 'Everlong' resurgence — nostalgia content, emotional reveals, things that last forever. ⚠️ Declining (0.59→0.48, holding).",
-    proof: { api: "#everlong — score 0.48 → (holding at 0.48), 15.9M views, 4.1K posts — plateaued low", research: "Part of broader 2026=2016 nostalgia wave (Dash Social, Scott Social)" },
-    meta: { views: "15.9M", posts: "4.1K", score: "0.48 →" },
-    hashtags: ["#everlong", "#foofighters", "#nostalgia"],
-    examples: [
-      { label: "TikTok — #everlong discover", url: "https://www.tiktok.com/tag/everlong?lang=en" },
-      { label: "Article — Why Everlong is trending on TikTok", url: "https://vocal.media/beat/how-come-everlong-by-the-foo-fighters-is-trending-on-tik-tok-other-socials" },
-    ],
-    angle: "'Things that last forever' set to Everlong — FibreGuard durability reveal. Emotional + nostalgic tone. Very on-brand.",
-  },
-
-  // ──── RESEARCH-CONFIRMED (multiple sources, no API match) ────
-  {
-    name: "Liquid Assets / Rich Girl (Gwen Stefani)",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    desc: "Combining economics with literal liquids — skincare, beverages, anything pourable. 164K Reels. Business-friendly ✅.",
-    proof: { research: "Scott Social (Feb 17, 164K Reels), business-friendly confirmed" },
-    meta: { posts: "164K Reels" },
-    hashtags: ["#liquidassets", "#richgirl"],
-    examples: [
-      { label: "TikTok — Rich Girl trend", url: "https://www.tiktok.com/search?q=rich%20girl%20gwen%20stefani%20trend" },
-      { label: "Instagram — #liquidassets Reels", url: "https://www.instagram.com/explore/tags/liquidassets/" },
-    ],
-    angle: "🔥 AMAZING FIT: 'Liquid assets' but it's wine, coffee, juice poured on FibreGuard — and it all wipes clean. Literal liquid + economic wordplay. Satisfying content gold.",
+    name: "\"Reason To Stay\" Audio Trend",
+    platforms: ["ig"],
+    status: "rising",
+    desc: "Olivia Dean's \"Reason To Stay\" is the #1 trending business-friendly audio on Instagram right now. 39K+ posts. Universal — works for product reveals, lifestyle content, team content, anything with warm/aspirational vibes. Perfect for polished brand content.",
+    fg_idea: "Lifestyle Reel: slow pans across beautifully styled rooms with FibreGuard fabrics. Each shot is a \"reason to stay\" — comfort, style, durability. Warm lighting, aspirational interiors. The audio carries the emotion, the visuals sell the product.",
+    meta: "39K+ IG posts · Business-friendly ✅ · #1 trending audio this week",
+    sources: "Scott Social Marketing, Dash Social"
   },
   {
-    name: "Fever Dream — Alex Warren",
-    platform: "both", confidence: "research", freshness: "hot",
-    desc: "Currently #1 trending audio on Instagram per HeyOrca. Versatile — transitions, action shots, dramatic reveals. Going cross-platform.",
-    proof: { research: "HeyOrca (#1 trending this week), cross-platform" },
-    meta: { posts: "Trending #1 on IG" },
-    hashtags: ["#feverdream", "#alexwarren"],
-    examples: [
-      { label: "TikTok — Fever Dream trend", url: "https://www.tiktok.com/search?q=fever%20dream%20alex%20warren" },
-    ],
-    angle: "Dramatic FibreGuard product reveal — slow-mo stain test with cinematic energy. The audio builds intensity perfectly for a 'will it stain?' moment.",
-  },
-  {
-    name: "'You're So Hard to Please' (Pink × Get Down On It)",
-    platform: "tiktok", confidence: "research", freshness: "hot",
-    desc: "Creators showing small things that make them happy. Cozy, lifestyle, feel-good format. Trending on TikTok this week per HeyOrca.",
-    proof: { research: "HeyOrca (TikTok trending this week)" },
-    meta: {},
-    hashtags: [],
-    examples: [
-      { label: "TikTok — Hard to Please trend", url: "https://www.tiktok.com/search?q=you%27re%20so%20hard%20to%20please%20trend" },
-    ],
-    angle: "'Actually I'm easy to please' — coffee, blanket, FibreGuard couch. Simple lifestyle content showing product in daily comfort moments.",
-  },
-  {
-    name: "We Belong Together (Harry Styles — Aperture)",
-    platform: "instagram", confidence: "research", freshness: "warm",
-    desc: "Quick clips of all your favorite things. 98K Reels. Business-friendly ✅. Works perfectly for product showcases.",
-    proof: { research: "Scott Social (98.3K Reels), Later (86K, Jan 30)" },
-    meta: { posts: "98K Reels" },
-    hashtags: ["#aperture", "#harrystyles"],
-    examples: [
-      { label: "TikTok — Aperture trend", url: "https://www.tiktok.com/search?q=aperture%20harry%20styles%20trend" },
-      { label: "Instagram — #aperture Reels", url: "https://www.instagram.com/explore/tags/aperture/" },
-    ],
-    angle: "Rapid cuts of FibreGuard fabrics paired with homes they belong in. Style-matching format — colors, textures, rooms.",
-  },
-  {
-    name: "Hopelessly Devoted To You",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    desc: "Versatile audio for morning routines, lifestyle, product drops. 62K Reels. Business-friendly ✅.",
-    proof: { research: "Scott Social (62K Reels, Feb 17)" },
-    meta: { posts: "62K Reels" },
-    hashtags: ["#hopelesslydevoted"],
-    examples: [
-      { label: "TikTok — Hopelessly Devoted trend", url: "https://www.tiktok.com/search?q=hopelessly%20devoted%20to%20you%20trend" },
-    ],
-    angle: "Morning living room routine — fluffing pillows, styling the couch, satisfying home content. 'Hopelessly devoted to this fabric.'",
-  },
-  {
-    name: "Raye Remix (Hypaton)",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    desc: "High-energy remix — 40K Reels. Works for fast-paced, energetic content. Business-friendly.",
-    proof: { research: "Later (Feb 6, 40K Reels)" },
-    meta: { posts: "40K Reels" },
-    hashtags: [],
-    examples: [
-      { label: "TikTok — Raye Hypaton remix", url: "https://www.tiktok.com/search?q=raye%20hypaton%20remix%20trend" },
-    ],
-    angle: "Fast-paced stain test montage — rapid-fire spills and cleanups. Punchy, satisfying, high energy.",
-  },
-  {
-    name: "2026 is the New 2016 / Black Beatles",
-    platform: "both", confidence: "research", freshness: "warm",
-    desc: "Massive nostalgia wave — recreating 2016 moments. Mannequin Challenge resurging. 32K IG Reels. Cross-platform phenomenon.",
-    proof: { research: "Scott Social (32K Reels), Dash Social (Jan 2026 trends)" },
-    meta: { posts: "32K Reels" },
-    hashtags: ["#2026isthe2016", "#blackbeatles", "#mannequinchallenge"],
-    examples: [
-      { label: "TikTok — #2026isthenew2016", url: "https://www.tiktok.com/tag/2026isthe2016" },
-      { label: "TikTok — Mannequin Challenge 2026", url: "https://www.tiktok.com/search?q=mannequin%20challenge%202026" },
-    ],
-    angle: "'2016 vs 2026 living rooms' — show how home style evolved. Or: Mannequin Challenge in the FibreGuard showroom while someone spills wine in slow-mo.",
-  },
-  {
-    name: "Highlight Switch (The Desperados)",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    desc: "Product features synced to beat drops. Clean rhythmic transitions. 26K Reels.",
-    proof: { research: "Later (Feb 13, 26K Reels)" },
-    meta: { posts: "26K Reels" },
-    hashtags: ["#highlightswitch"],
-    examples: [
-      { label: "TikTok — Highlight Switch trend", url: "https://www.tiktok.com/search?q=highlight%20switch%20trend" },
-      { label: "Instagram — #highlightswitch", url: "https://www.instagram.com/explore/tags/highlightswitch/" },
-    ],
-    angle: "Switch between FibreGuard features on each beat — colors, stain-proof demo, texture, pet test. Satisfying product showcase format.",
-  },
-  {
-    name: "'You Have to Believe Me'",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    desc: "Convince your audience about something they doubt. 1K Reels. Business-friendly ✅. Perfect for proof-of-concept content.",
-    proof: { research: "Scott Social (1K Reels, Feb 17)" },
-    meta: { posts: "1K Reels" },
-    hashtags: [],
-    examples: [
-      { label: "TikTok — You Have to Believe Me", url: "https://www.tiktok.com/search?q=you%20have%20to%20believe%20me%20trend" },
-    ],
-    angle: "'You HAVE to believe me — this fabric is actually stain-proof' → dramatic stain test reveal. The audio is literally made for this.",
-  },
-  {
-    name: "Bad Bunny Homeland Dreams",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    desc: "Transformation/journey content — 'how it started vs how it's going'. Everything Bad Bunny is trending right now.",
-    proof: { research: "HeyOrca (IG trending this week)" },
-    meta: {},
-    hashtags: [],
-    examples: [
-      { label: "TikTok — Bad Bunny Homeland Dreams", url: "https://www.tiktok.com/search?q=bad%20bunny%20homeland%20dreams" },
-    ],
-    angle: "Before/after transformation — old stained sofa → new FibreGuard setup. Journey format.",
-  },
-  {
-    name: "'Z as in the Letter Z' Trend",
-    platform: "tiktok", confidence: "research", freshness: "hot",
-    desc: "Phonetic alphabet humor — forgetting basic things at work. Confidence + comedy. Easy for brands to join.",
-    proof: { research: "HeyOrca (TikTok trending this week)" },
-    meta: {},
-    hashtags: [],
-    examples: [
-      { label: "TikTok — Z as in the Letter Z", url: "https://www.tiktok.com/search?q=z%20as%20in%20the%20letter%20z%20trend" },
-    ],
-    angle: "'S as in... stain-proof. F as in... FibreGuard. Yeah, that's the whole pitch.' Workplace humor format.",
-  },
-  {
-    name: "Reality TV Show Format",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    desc: "Edit workplace/daily life like reality TV — dramatic zooms, confessionals, 'next week on...' energy. 913 Reels (early!).",
-    proof: { research: "Later (Feb 13, 913 Reels — early stage)" },
-    meta: { posts: "913 Reels (early)" },
-    hashtags: ["#realitytvshow"],
-    examples: [
-      { label: "TikTok — Reality TV edit trend", url: "https://www.tiktok.com/search?q=reality%20tv%20show%20edit%20trend" },
-      { label: "Instagram — #realitytvshow", url: "https://www.instagram.com/explore/tags/realitytvshow/" },
-    ],
-    angle: "Edit the FibreGuard office like a reality TV show. Drama over fabric choices, confessionals about stain incidents, cliffhangers.",
-  },
-
-  {
-    name: "Forever Your Girl (Paula Abdul) — Netflix tie-in",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    desc: "Netflix rom-com 'People We Meet on Vacation' brought Paula Abdul's Forever Your Girl back. Lifestyle clips, feel-good montages. 5.1K Reels. Business-friendly ✅.",
-    proof: { research: "Scott Social (Feb 18, 5.1K Reels), Netflix cultural moment" },
-    meta: { posts: "5.1K Reels" },
-    hashtags: ["#foreveryourgirl", "#peoplewemeetonvacation"],
-    examples: [
-      { label: "TikTok — Forever Your Girl trend", url: "https://www.tiktok.com/search?q=forever%20your%20girl%20paula%20abdul%20trend" },
-    ],
-    angle: "'Forever your girl' but it's your FibreGuard couch — lifestyle montage of cozy moments, styled rooms, pet cuddles. Feel-good format, very on-brand.",
-  },
-  {
-    name: "'Call My Sister' Trend",
-    platform: "tiktok", confidence: "research", freshness: "hot",
-    desc: "Simple text-overlay format — relatable moments about calling your sister (or anyone). Easy for brands to adapt. Trending on TikTok this week.",
-    proof: { research: "HeyOrca (TikTok trending this week, Feb 18)" },
-    meta: {},
-    hashtags: [],
-    examples: [
-      { label: "TikTok — Call My Sister trend", url: "https://www.tiktok.com/search?q=call%20my%20sister%20trend" },
-    ],
-    angle: "'When I spill wine on my new couch and don't even call my sister because FibreGuard' — relatable humor, minimal production needed.",
-  },
-  {
-    name: "'She Don't See Us' — Underrated Products",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    desc: "Spotlight underrated offerings while one product steals the show. 1.8K Reels. Business-friendly ✅. Great for product range showcases.",
-    proof: { research: "Scott Social (Feb 18, 1.8K Reels)" },
-    meta: { posts: "1.8K Reels" },
-    hashtags: [],
-    examples: [
-      { label: "TikTok — She Don't See Us trend", url: "https://www.tiktok.com/search?q=she%20don%27t%20see%20us%20trend" },
-    ],
-    angle: "Everyone knows FibreGuard is stain-proof, but 'she don't see' the UV resistance, the softness, the color range — spotlight hidden features.",
-  },
-  {
-    name: "Thermostat Game — Couples Challenge",
-    platform: "tiktok", confidence: "research", freshness: "hot",
-    desc: "Couples challenge format — thermostat wars and household debates. Massive engagement on TikTok. Fun, relatable content.",
-    proof: { research: "NewEngen (Feb 2026 — listed as top trend alongside Grammys glambot and Euphoria)" },
-    meta: {},
-    hashtags: ["#thermostatgame"],
-    examples: [
-      { label: "TikTok — #thermostatgame", url: "https://www.tiktok.com/tag/thermostatgame" },
-    ],
-    angle: "'My partner sets the thermostat to 30° and then MELTS on the couch — good thing it's FibreGuard.' Couples humor + product durability.",
-  },
-
-  {
-    name: "'Telling Everyone You're a ______'",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    desc: "Show the glamorous claim of your profession vs the chaotic behind-the-scenes reality. 61 Reels (very early!). Business-friendly ✅. 🆕 NEW today.",
-    proof: { research: "Scott Social (Feb 19, 61 Reels — very early stage)" },
-    meta: { posts: "61 Reels (early — first mover window)" },
-    hashtags: [],
-    examples: [
-      { label: "TikTok — Telling Everyone trend", url: "https://www.tiktok.com/search?q=telling%20everyone%20you%27re%20a%20trend" },
-    ],
-    angle: "'Telling everyone you make stain-proof fabric' → cut to: wine spill tests, kids with chocolate, dogs on couches, the daily chaos of product testing.",
-  },
-  // 'Googled My Symptoms' moved to Feb 23 batch above with updated data
-  {
-    name: "'It's Always Warm Right Here'",
-    platform: "tiktok", confidence: "research", freshness: "warm",
-    desc: "Cozy content with friends, family, or fur babies. 109.9K TikToks. Warm fuzzy vibes. Later confirmed Feb 6, still active Feb 20. 🆕 NEW.",
-    proof: { research: "Later TikTok (Feb 6, 109.9K posts — still active)" },
-    meta: { posts: "109K TikToks" },
-    hashtags: [],
-    examples: [
-      { label: "Later TikTok — trend breakdown", url: "https://later.com/blog/tiktok-trends/" },
-    ],
-    angle: "'It's always warm right here' — family/pets cuddled up on a FibreGuard couch. The audio is warm and emotional, perfect for cozy home content. Natural FibreGuard territory.",
-  },
-  {
-    name: "On Screen Reunions",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    desc: "Duo/pairing format — bestie fit checks, team intros, product pairings. 1.6K Reels. Later confirmed Feb 20. 🆕 NEW.",
-    proof: { research: "Later (Feb 20, 1.6K Reels)" },
-    meta: { posts: "1.6K Reels" },
-    hashtags: [],
-    examples: [
-      { label: "Later — trend + audio", url: "https://later.com/blog/instagram-reels-trends/" },
-    ],
-    angle: "The ultimate product reunion: FibreGuard fabric + wine glass, fabric + pet, fabric + toddler. 'The on-screen duo you didn't know you needed.' Chemistry between product and chaos.",
-  },
-  {
-    name: "Photo Booth Imagery",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    desc: "Nostalgic photo booth strip format — throwbacks, brand evolution, fun recaps. 16K Reels. Later confirmed Feb 20. 🆕 NEW.",
-    proof: { research: "Later (Feb 20, 16K Reels)" },
-    meta: { posts: "16K Reels" },
-    hashtags: [],
-    examples: [
-      { label: "Later — trend + audio", url: "https://later.com/blog/instagram-reels-trends/" },
-    ],
-    angle: "FibreGuard brand evolution photo booth: stain test → color range → styled room → happy customer. Nostalgia format, clean execution.",
-  },
-  {
-    name: "'What Year Were You Born?' — Office Culture",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    desc: "Fun office culture trend — team reveals what year they were born. Funny sound effects. Business-friendly ✅. Scott Social confirmed Feb 23. 🆕 NEW.",
-    proof: { research: "Scott Social (Feb 23, business-friendly)" },
-    meta: {},
-    hashtags: [],
-    examples: [
-      { label: "Scott Social — trend + audio", url: "https://www.scottsocialmarketing.com/blog/trending-reels-audio-this-week-on-instagram" },
-    ],
-    angle: "'What year were you born?' at the FibreGuard office — fun team culture content, humanize the brand. Light, easy production.",
-  },
-  {
-    name: "Orange Juice — Team Bonding Audio",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    desc: "Audio for showcasing tight-knit team personality and bonds. 32 Reels (ultra early!). Business-friendly ✅. 🆕 NEW today.",
-    proof: { research: "Scott Social (Feb 19, 32 Reels — ultra early)" },
-    meta: { posts: "32 Reels (ultra early)" },
-    hashtags: [],
-    examples: [
-      { label: "TikTok — Orange Juice team audio", url: "https://www.tiktok.com/search?q=orange%20juice%20team%20bonding%20audio" },
-    ],
-    angle: "Show the FibreGuard team's personality — lab testing moments, office banter, behind-the-scenes of fabric development. Humanize the brand.",
-  },
-
-  // ──── EMERGING SIGNALS ────
-  // ──── NEW Feb 23 — from Later, SocialPilot, SocialBee, Passionbits ────
-  {
-    name: "'Googled My Symptoms' — Product Reveal (TikTok Mega)",
-    platform: "tiktok", confidence: "research", freshness: "hot",
-    desc: "Build suspense with 'Googled my symptoms' then reveal your product/solution as the cure. 168K TikToks and growing fast. Later confirmed Feb 20. Perfect product reveal format.",
-    proof: { research: "Later TikTok (Feb 20, 168.1K posts), Audio: Sally when the wine runs out — tucker" },
-    meta: { posts: "168K TikToks" },
-    hashtags: [],
-    examples: [
-      { label: "Later — trend breakdown", url: "https://later.com/blog/tiktok-trends/" },
-      { label: "Audio — Sally when the wine runs out", url: "https://www.tiktok.com/music/sally-when-the-wine-runs-out-7465380137857534762" },
-    ],
-    angle: "'Googled my symptoms... turns out I just needed a stain-proof sofa.' Build suspense, dramatic pause, then reveal FibreGuard. The format is MADE for product reveals. 🎯",
-    dateAdded: "2026-02-23",
-  },
-  {
-    name: "DtMF — Bad Bunny (1.2M Reels)",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    desc: "Bad Bunny's DtMF is THE dominant audio on Instagram right now — 1.2M Reels. Energetic, urban, confident. Quick cuts synced to beat. Everything Bad Bunny is trending.",
-    proof: { research: "SocialPilot (Feb 16, 1.2M Reels — #1 trending audio)" },
-    meta: { posts: "1.2M Reels" },
-    hashtags: ["#badbunny", "#dtmf"],
-    examples: [
-      { label: "Instagram — DtMF audio", url: "https://www.instagram.com/reels/audio/580872141396073/" },
-    ],
-    angle: "High-energy FibreGuard stain test montage — rapid spills synced to the beat drops. Confident 'we got this' energy. Match cuts to the rhythm for maximum impact.",
-    dateAdded: "2026-02-23",
-  },
-  {
-    name: "Temperature x Sweet Dreams (Altego Mix)",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    desc: "Dreamy mashup of Sean Paul + Eurythmics — 53K Reels. Chill, stylish, aesthetic content. SocialPilot #1 for Feb 18.",
-    proof: { research: "SocialPilot (Feb 18, 53K Reels)" },
-    meta: { posts: "53K Reels" },
-    hashtags: [],
-    examples: [
-      { label: "Instagram — Temperature x Sweet Dreams audio", url: "https://www.instagram.com/reels/audio/25352736997756477/" },
-    ],
-    angle: "Smooth, aesthetic FibreGuard room tour — dreamy transitions between styled rooms, textures, fabrics. Chill vibes, wide shots, natural light. The audio does the heavy lifting.",
-    dateAdded: "2026-02-23",
-  },
-  {
-    name: "Skyfall — Adele (Cinematic Reveals)",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    desc: "Adele's Skyfall for dramatic reveals and transformations. 1M Reels. Cinematic, emotional, big-moment content.",
-    proof: { research: "SocialPilot (Feb 13, 1M Reels)" },
-    meta: { posts: "1M Reels" },
-    hashtags: [],
-    examples: [
-      { label: "Instagram — Skyfall audio", url: "https://www.instagram.com/reels/audio/459290957836815/" },
-    ],
-    angle: "Dramatic before/after room transformation — old stained furniture → stunning FibreGuard styled room. Slow-motion, wide-angle, cinematic energy. The 'grand reveal' format.",
-    dateAdded: "2026-02-23",
-  },
-  {
-    name: "Funny Song — Vintage Oddities (4.9M Reels!)",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    desc: "THE most-used audio on IG right now — 4.9M Reels. Playful, awkward, intentionally silly. For relatable fails and deadpan humor. The comedy comes from contrast.",
-    proof: { research: "SocialPilot (Feb 4, 4.9M Reels — massive)" },
-    meta: { posts: "4.9M Reels" },
-    hashtags: [],
-    examples: [
-      { label: "Instagram — Funny Song audio", url: "https://www.instagram.com/reels/audio/429078484519618/" },
-    ],
-    angle: "'When you spill red wine on the new white sofa... but it's FibreGuard' — hold the frame on the spill awkwardly long, then casual wipe. Deadpan humor = viral. Hold the pause LONGER than feels comfortable.",
-    dateAdded: "2026-02-23",
-  },
-  {
-    name: "'Hurt the Paper' Format",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    desc: "Tell viewer to 'hurt the paper' → paper gets crumpled → apologize → paper still damaged → show 'solution' → paper is brand new. A creative way to showcase a product. SocialBee confirmed Feb 20.",
-    proof: { research: "SocialBee (Feb 20)" },
-    meta: {},
-    hashtags: [],
-    examples: [
-      { label: "SocialBee — trend breakdown", url: "https://socialbee.com/blog/instagram-trends/" },
-    ],
-    angle: "'Hurt the fabric' → pour wine, drop chocolate, let the dog sit → apologize → still stained → show FibreGuard solution → fabric is BRAND NEW. This format is literally designed for stain-proof product demos. 🎯🎯",
-    dateAdded: "2026-02-23",
-  },
-  {
-    name: "'Born to..., Forced to...' Contrast",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    desc: "Simple text format — 'Born to [dream job]... forced to [real life].' About corporate life, adulting, responsibilities. SocialBee confirmed Feb 20.",
-    proof: { research: "SocialBee (Feb 20)" },
-    meta: {},
-    hashtags: [],
-    examples: [
-      { label: "SocialBee — trend breakdown", url: "https://socialbee.com/blog/instagram-trends/" },
-    ],
-    angle: "'Born to lounge on the couch forever... forced to clean up after the kids.' But wait — FibreGuard means you don't have to choose. Easy workplace humor adaptation.",
-    dateAdded: "2026-02-23",
-  },
-  {
-    name: "'Nobody Saw Me...' Hustle Parody",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    desc: "Lists dramatic sacrifices (late nights, skipped meals), then the punchline: none of it happened. Pokes fun at hustle culture. SocialBee confirmed Feb 20.",
-    proof: { research: "SocialBee (Feb 20)" },
-    meta: {},
-    hashtags: [],
-    examples: [
-      { label: "SocialBee — trend breakdown", url: "https://socialbee.com/blog/instagram-trends/" },
-    ],
-    angle: "'Nobody saw me scrubbing stains for hours, treating the fabric, calling the cleaner...' punchline: 'Because I didn't. It's FibreGuard.' Anti-hustle humor meets product benefit.",
-    dateAdded: "2026-02-23",
-  },
-  {
-    name: "Lady Gaga 'Telephone' — Kinda Busy",
-    platform: "instagram", confidence: "research", freshness: "hot",
-    desc: "Using 'I'm kinda busy' lines from Telephone to show packed schedules, chaos, behind-the-scenes. Passionbits confirmed for brands Feb 2026.",
-    proof: { research: "Passionbits (Feb 2026, brand-friendly)" },
-    meta: {},
-    hashtags: [],
-    examples: [
-      { label: "Instagram — Telephone audio", url: "https://www.instagram.com/reels/audio/141092380089606/" },
-    ],
-    angle: "Behind-the-scenes at FibreGuard — order rush, fabric testing, stain demos. 'Stop calling, stop calling, I'm kinda busy' but with product energy. Shows the chaos that goes into making stain-proof fabric.",
-    dateAdded: "2026-02-23",
-  },
-  {
-    name: "Runway Freedom Walk",
-    platform: "tiktok", confidence: "emerging", freshness: "hot",
-    desc: "Massive UK trend — people doing dramatic runway walks in everyday settings (offices, parks, supermarkets). Exploded across the UK in Feb 2026. SS Studios confirmed.",
-    proof: { research: "SS Studios (Feb 2026, UK cultural phenomenon)" },
-    meta: {},
-    hashtags: ["#runwayfreedomwalk"],
-    examples: [
-      { label: "SS Studios — trend breakdown", url: "https://ssstudios.co.uk/viral-tiktok-trend-uk-2026/" },
-    ],
-    angle: "Runway walk through FibreGuard showroom/living room — dramatic strut, fabric swatches as accessories, ending with a casual wine spill and confident wipe. Fashion meets function.",
-    dateAdded: "2026-02-23",
-  },
-  {
-    name: "Childhood Photos Reveal",
-    platform: "tiktok", confidence: "research", freshness: "hot",
-    desc: "Present-day clip then hard cut to baby/childhood photo — 'ohhhh that tracks' moment. 628K posts! Audio: Diva by Beyoncé. Later confirmed Feb 20.",
-    proof: { research: "Later TikTok (Feb 20, 628.2K posts)" },
-    meta: { posts: "628K TikToks" },
-    hashtags: [],
-    examples: [
-      { label: "Later — trend breakdown", url: "https://later.com/blog/tiktok-trends/" },
-    ],
-    angle: "Team/brand personality content — show FibreGuard team members now vs childhood photos. Humanize the brand. Light, fun, high engagement.",
-    dateAdded: "2026-02-23",
-  },
-  {
-    name: "'Does He?' — Bare Minimum Check",
-    platform: "tiktok", confidence: "research", freshness: "hot",
-    desc: "Creators call out small things, then cut to 'I do.' Playful, slightly petty. 951K posts! Audio: hey daddy by Usher. Later confirmed Feb 20.",
-    proof: { research: "Later TikTok (Feb 20, 951K posts)" },
-    meta: { posts: "951K TikToks" },
-    hashtags: [],
-    examples: [
-      { label: "Later — trend breakdown", url: "https://later.com/blog/tiktok-trends/" },
-    ],
-    angle: "'Does your sofa survive wine spills? Does your sofa handle pets? Does it still look new after 5 years? I do.' — FibreGuard as the sofa that passes every test. Playful and confident.",
-    dateAdded: "2026-02-23",
-  },
-
-  // ──── EMERGING SIGNALS ────
-  {
-    name: "Seedance 2.0 / AI-Generated Video",
-    platform: "both", confidence: "emerging", freshness: "hot",
-    desc: "ByteDance Seedance 2.0 AI video generation going viral on X and news. Tom Cruise deepfakes, cinematic AI clips. Will hit TikTok/IG as a format within days.",
-    proof: { research: "Guardian, TechCrunch, NBC, X — Feb 15-17" },
-    meta: {},
-    hashtags: ["#seedance", "#aivideo"],
-    examples: [
-      { label: "TikTok — #seedance", url: "https://www.tiktok.com/tag/seedance" },
-      { label: "TikTok — AI video trend", url: "https://www.tiktok.com/search?q=seedance%20ai%20video" },
-    ],
-    angle: "'AI tried to recreate our fabric... it couldn't' — real vs AI comparison. Or: use AI to create a wild FibreGuard ad and reveal the twist.",
-  },
-  {
-    name: "Milan Cortina Olympics — Broken Medals Meme",
-    platform: "both", confidence: "emerging", freshness: "hot",
-    desc: "Winter Olympics medals literally breaking apart (Alysa Liu TikTok) + viral chocolate cake. Massive on TikTok + X right now.",
-    proof: { research: "NBC, Times of India, TikTok — this week" },
-    meta: {},
-    hashtags: ["#milancortina2026", "#olympicmedals"],
-    examples: [
-      { label: "TikTok — #milancortina2026", url: "https://www.tiktok.com/tag/milancortina2026" },
-    ],
-    angle: "'Things that DON'T break: FibreGuard fabric' — play on broken medals meme. Timely humor, ride the Olympics wave.",
-  },
-  {
-    name: "#petpivot — Pet Content Surge",
-    platform: "tiktok", confidence: "emerging", freshness: "hot",
-    desc: "API score 0.99 ↑ — one of highest-scoring hashtags this week. Pet-related content surging. 68K posts, 28M views. No research cross-ref yet. 🆕 NEW in API.",
-    proof: { api: "#petpivot — score 0.99 ↑, 28.7M views, 68K posts — organic (low views/post ratio)" },
-    meta: { views: "28.7M", posts: "68K", score: "0.99 ↑" },
-    hashtags: ["#petpivot"],
-    examples: [
-      { label: "TikTok — #petpivot", url: "https://www.tiktok.com/tag/petpivot" },
-    ],
-    angle: "Pet-proof fabric content: 'The pet pivot every pet owner needs' — show pets doing their worst on FibreGuard furniture and the fabric surviving. Perfect brand territory IF this trend gets research confirmation.",
-  },
-  {
-    name: "CleanTok Spring Cleaning Spike",
-    platform: "both", confidence: "emerging", freshness: "warm",
-    desc: "Decluttering/cleaning content surging for spring. 'Get rid of 10 things a day' format. #CleanTok spiking again.",
-    proof: { research: "Bustle, TikTok — ongoing + fresh spike" },
-    meta: {},
-    hashtags: ["#cleantok", "#springcleaning", "#satisfyingcleaning"],
-    examples: [
-      { label: "TikTok — #cleantok", url: "https://www.tiktok.com/tag/cleantok" },
-      { label: "TikTok — #springcleaning", url: "https://www.tiktok.com/tag/springcleaning" },
-    ],
-    angle: "Flip the CleanTok script: 'POV: you have FibreGuard and cleaning day takes 5 seconds.' Satisfying wipe-clean ASMR.",
-  },
+    name: "Phonk / Doomscroll Aesthetic",
+    platforms: ["yt","tt"],
+    status: "rising",
+    desc: "Phonk music is dominating YouTube Shorts and TikTok — NYT just profiled it as \"the soundtrack of the doomscroll generation.\" Fast-cut, high-energy edits with bass-heavy beats. Works for product showcases, satisfying reveals, and anything with visual punch. Massive Shorts algorithm boost.",
+    fg_idea: "High-energy fabric durability montage set to phonk — rapid cuts of stains hitting fabric, instant wipe-clean, repeat. Satisfying, punchy, viral format. Think \"oddly satisfying meets product demo.\" The aggressive audio + clean visuals = contrast that hooks.",
+    meta: "NYT feature · YouTube Shorts algorithm favorite · Gen Z dominant",
+    sources: "New York Times, YouTube Music Trends"
+  }
 ];
 
-// ──── TRENDING NOW — TikTok Creative Center (US) ────
-const TRENDING_NOW_UPDATED = "2026-02-23 (⚠️ Apify trial expired — TikTok CC data frozen at Feb 20. Research trends updated Feb 23.)";
-const TRENDING_NOW = [
-  {rank:1,tag:"#grammys",views:"3.5B",views_raw:3479272953,posts:"84.5K",posts_raw:84539,industry:"Music & Entertainment",direction:"↓"},
-  {rank:2,tag:"#grammys2026",views:"827.8M",views_raw:827769315,posts:"20.9K",posts_raw:20947,industry:"Music & Entertainment",direction:"↓"},
-  {rank:3,tag:"#grammy",views:"453.1M",views_raw:453144263,posts:"13.3K",posts_raw:13328,industry:"Music & Entertainment",direction:"↓"},
-  {rank:4,tag:"#aspenkartier",views:"407.2M",views_raw:407243518,posts:"6.3K",posts_raw:6307,industry:"Entertainment",direction:"→"},
-  {rank:5,tag:"#superbowlsunday",views:"260.2M",views_raw:260223240,posts:"34.8K",posts_raw:34807,industry:"Sports & Outdoor",direction:"↓"},
-  {rank:6,tag:"#singlesinferno",views:"218.6M",views_raw:218579629,posts:"5.5K",posts_raw:5533,industry:"Entertainment",direction:"→"},
-  {rank:7,tag:"#february",views:"175.5M",views_raw:175518416,posts:"83.7K",posts_raw:83723,industry:"",direction:"→"},
-  {rank:8,tag:"#grammyawards",views:"175.0M",views_raw:174979683,posts:"5.0K",posts_raw:4979,industry:"Music & Entertainment",direction:"↓"},
-  {rank:9,tag:"#bridgertonedit",views:"136.1M",views_raw:136124175,posts:"2.6K",posts_raw:2644,industry:"Entertainment",direction:"→"},
-  {rank:10,tag:"#walkout",views:"132.6M",views_raw:132641900,posts:"10.1K",posts_raw:10132,industry:"",direction:"↓"},
-  {rank:11,tag:"#makefriendslive",views:"129.0M",views_raw:128983531,posts:"92.8K",posts_raw:92759,industry:"",direction:"→"},
-  {rank:12,tag:"#justinbeiber",views:"116.6M",views_raw:116644220,posts:"8.6K",posts_raw:8630,industry:"Music & Entertainment",direction:"→"},
-  {rank:13,tag:"#sophiebaek",views:"100.4M",views_raw:100425592,posts:"2.6K",posts_raw:2639,industry:"Entertainment",direction:"↓"},
-  {rank:14,tag:"#ufc325",views:"95.6M",views_raw:95561611,posts:"5.2K",posts_raw:5168,industry:"Sports & Outdoor",direction:"→"},
-  {rank:15,tag:"#themspatshow",views:"92.6M",views_raw:92611276,posts:"3.3K",posts_raw:3299,industry:"Entertainment",direction:"↓"},
-  {rank:16,tag:"#yukon",views:"87.1M",views_raw:87106712,posts:"5.3K",posts_raw:5282,industry:"",direction:"↓"},
-  {rank:17,tag:"#tracycortez",views:"83.1M",views_raw:83100119,posts:"30.1K",posts_raw:30053,industry:"Sports & Outdoor",direction:"↓"},
-  {rank:18,tag:"#ufc322",views:"81.5M",views_raw:81481596,posts:"27.0K",posts_raw:27001,industry:"Sports & Outdoor",direction:"↓"},
-  {rank:19,tag:"#thegreatdivide",views:"78.9M",views_raw:78935506,posts:"14.8K",posts_raw:14759,industry:"",direction:"↓"},
-  {rank:20,tag:"#needohnicecube",views:"78.3M",views_raw:78315060,posts:"2.9K",posts_raw:2901,industry:"",direction:"↑"},
-  {rank:21,tag:"#zerotohero",views:"73.2M",views_raw:73155763,posts:"65.6K",posts_raw:65641,industry:"",direction:"↓"},
-  {rank:22,tag:"#benfica",views:"70.5M",views_raw:70469437,posts:"5.4K",posts_raw:5445,industry:"Sports & Outdoor",direction:"↑↑"},
-  {rank:23,tag:"#shakurstevenson",views:"69.4M",views_raw:69407187,posts:"3.2K",posts_raw:3159,industry:"Sports & Outdoor",direction:"↓"},
-  {rank:24,tag:"#melania",views:"63.1M",views_raw:63143251,posts:"4.1K",posts_raw:4091,industry:"",direction:"↓"},
-  {rank:25,tag:"#euphoriamakeup",views:"52.9M",views_raw:52872392,posts:"7.0K",posts_raw:6954,industry:"Beauty",direction:"↓"},
-  {rank:26,tag:"#teamworkmakesthedreamwork",views:"51.5M",views_raw:51466278,posts:"78.8K",posts_raw:78834,industry:"",direction:"↓"},
-  {rank:27,tag:"#alexandervolkanovski",views:"50.5M",views_raw:50524744,posts:"2.2K",posts_raw:2238,industry:"Sports & Outdoor",direction:"↓"},
-  {rank:28,tag:"#seniornight",views:"50.1M",views_raw:50094257,posts:"7.1K",posts_raw:7083,industry:"",direction:"↓"},
-  {rank:29,tag:"#todolofue",views:"45.3M",views_raw:45251738,posts:"8.7K",posts_raw:8704,industry:"Music & Entertainment",direction:"↑"},
-  {rank:30,tag:"#groundhog",views:"40.2M",views_raw:40166794,posts:"5.6K",posts_raw:5590,industry:"",direction:"→"},
-  {rank:31,tag:"#sweetheartsnite",views:"38.3M",views_raw:38339134,posts:"5.2K",posts_raw:5169,industry:"",direction:"↓"},
-  {rank:32,tag:"#migration",views:"36.5M",views_raw:36474743,posts:"5.0K",posts_raw:5027,industry:"",direction:"↓"},
-  {rank:33,tag:"#petpivot",views:"28.8M",views_raw:28750471,posts:"68.6K",posts_raw:68649,industry:"Pets & Animals",direction:"→"},
-  {rank:34,tag:"#letemknow",views:"26.3M",views_raw:26302707,posts:"5.6K",posts_raw:5556,industry:"",direction:"→"},
-  {rank:35,tag:"#petpivotfamily",views:"18.7M",views_raw:18745044,posts:"68.0K",posts_raw:68003,industry:"Pets & Animals",direction:"→"},
-  {rank:36,tag:"#febuary",views:"18.6M",views_raw:18556455,posts:"8.9K",posts_raw:8948,industry:"",direction:"→"},
-  {rank:37,tag:"#facedance",views:"16.1M",views_raw:16127722,posts:"6.0K",posts_raw:5954,industry:"",direction:"↓"},
-  {rank:38,tag:"#birthdaymonth",views:"6.5M",views_raw:6527134,posts:"3.9K",posts_raw:3912,industry:"",direction:"→"},
-  {rank:39,tag:"#snowday2026",views:"5.8M",views_raw:5841011,posts:"6.7K",posts_raw:6711,industry:"",direction:"→"},
-  {rank:40,tag:"#trendingbooks2025",views:"5.8M",views_raw:5832294,posts:"10.9K",posts_raw:10882,industry:"",direction:"↓"},
-];
-
-// ──── ENGINE ────
-// Dark mode only — no toggle needed
-
-const TAB_CONFIG = [
-  {id:'overlaps',label:'✅ Confirmed Trends'},
-  {id:'trending',label:'<svg viewBox="0 0 48 48" style="width:14px;height:14px;vertical-align:-2px;margin-right:2px"><path d="M41 4H9C6.24 4 4 6.24 4 9v32c0 2.76 2.24 5 5 5h32c2.76 0 5-2.24 5-5V9c0-2.76-2.24-5-5-5z" fill="none"/><path d="M38.8 16.8c-2.4.2-4.6-.4-6.4-1.6v11.2c0 5.6-4.6 10.2-10.2 10.2-2.2 0-4.2-.7-5.8-1.8-2.8-2-4.4-5.2-4.4-8.4 0-5.6 4.6-10.2 10.2-10.2.6 0 1.2.1 1.8.2v5.2c-.6-.2-1.2-.4-1.8-.4-2.8 0-5 2.2-5 5s2.2 5 5 5c2.8 0 5.2-2.2 5.2-5V4h5c.4 4.6 4.2 8.2 8.8 8.4v4.4z" fill="white"/></svg><svg viewBox="0 0 24 24" style="width:14px;height:14px;vertical-align:-2px;margin-right:4px"><defs><linearGradient id="ig" x1="0" y1="1" x2="1" y2="0"><stop offset="0%" stop-color="#feda75"/><stop offset="25%" stop-color="#fa7e1e"/><stop offset="50%" stop-color="#d62976"/><stop offset="75%" stop-color="#962fbf"/><stop offset="100%" stop-color="#4f5bd5"/></linearGradient></defs><rect x="2" y="2" width="20" height="20" rx="5" fill="none" stroke="url(#ig)" stroke-width="1.5"/><circle cx="12" cy="12" r="5" fill="none" stroke="url(#ig)" stroke-width="1.5"/><circle cx="17.5" cy="6.5" r="1.2" fill="url(#ig)"/></svg> Data Based Trends'},
-  {id:'research',label:'🔭 Research Based Trends'},
-  {id:'emerging',label:'📡 Early Signals'},
-  {id:'eu',label:'🇪🇺 EU Trends'},
-];
-
-// ──── EU TRENDING DATA (updated weekly) ────
-const EU_TRENDS_UPDATED = "2026-02-19";
-const EU_TRENDS = {
-  "🇩🇪 Germany": [
-    {tag:"#valentinstagsdeals", views:"44.7M", posts:"4.0K", relevant:false},
-    {tag:"#loveisintheair", views:"32.4M", posts:"2.7K", relevant:true, note:"Love/lifestyle — cozy living room setup", idea:"💡 'Date night in on a FibreGuard sofa' — wine, candles, cozy couple moments. Spill the wine? No stress. Wipe clean."},
-    {tag:"#damenhoodie", views:"2.0M", posts:"3.4K", relevant:false},
-    {tag:"#streng", views:"1.0M", posts:"224", relevant:false},
-  ],
-  "🇫🇷 France": [
-    {tag:"#coupedefrance", views:"2.1M", posts:"133", relevant:false},
-    {tag:"#sportwear", views:"919K", posts:"307", relevant:false},
-    {tag:"#tracksuit", views:"1.3M", posts:"231", relevant:false},
-    {tag:"#highwaistsportswear", views:"875K", posts:"1.1K", relevant:false},
-    {tag:"#offresdelasaintvalentin", views:"44.3M", posts:"7.1K", relevant:false},
-  ],
-  "🇪🇸 Spain": [
-    {tag:"#copadelrey", views:"50.6M", posts:"2.8K", relevant:false},
-    {tag:"#loveisintheair", views:"44.8M", posts:"4.5K", relevant:true, note:"Love/lifestyle — cozy home interiors", idea:"💡 Romantic living room transformation — styled FibreGuard sofa with throws, cushions, mood lighting. 'Love is in the air… and so is red wine on the couch.'"},
-    {tag:"#ofertasdesanvalentín", views:"52.6M", posts:"5.4K", relevant:false},
-    {tag:"#redessociales", views:"6.2M", posts:"512", relevant:false},
-  ],
-  "🇳🇱 Netherlands": [
-    {tag:"#newwave", views:"14.3M", posts:"883", relevant:false},
-    {tag:"#badbunny", views:"44.5M", posts:"1.3K", relevant:false},
-    {tag:"#grok", views:"392K", posts:"171", relevant:false},
-  ],
-  "🇮🇹 Italy": [
-    {tag:"#milanocortina2026", views:"463M", posts:"9.0K", relevant:true, note:"Winter Olympics — cozy viewing party at home", idea:"💡 'Olympics watch party but the sofa survives' — friends, snacks, drinks, cheering on the couch. Show the mess → FibreGuard wipe-clean reveal."},
-    {tag:"#olympics", views:"274M", posts:"3.7K", relevant:true, note:"Olympics — home viewing content", idea:"💡 'Your sofa is the real MVP' — before/after of a watch party on FibreGuard upholstery. Nachos, beer, celebrations → spotless sofa."},
-    {tag:"#workwearforstylists", views:"1.2M", posts:"3.1K", relevant:false},
-    {tag:"#modestfashion", views:"889K", posts:"389", relevant:false},
-    {tag:"#luxuryfashion", views:"949K", posts:"474", relevant:true, note:"Luxury interiors positioning", idea:"💡 'Luxury you can actually live on' — high-end styled room with FibreGuard upholstery. Kids jump on it, pets nap on it, wine gets spilled → still looks designer."},
-  ],
-  "🇬🇧 United Kingdom": [
-    {tag:"#chelsea", views:"51.9M", posts:"4.9K", relevant:false},
-    {tag:"#beautycrush", views:"35.0M", posts:"12.1K", relevant:false},
-    {tag:"#alexwarren", views:"11.6M", posts:"1.3K", relevant:false},
-  ],
-};
-
-function buildTabs() {
-  const euTotal = Object.values(EU_TRENDS).reduce((s,arr)=>s+arr.length, 0);
-  const counts = {
-    trending: TRENDING_NOW.length,
-    overlaps: TRENDS.filter(t=>t.confidence==='overlap').length,
-    research: TRENDS.filter(t=>t.confidence==='research').length,
-    emerging: TRENDS.filter(t=>t.confidence==='emerging').length,
-    eu: euTotal,
-  };
-  document.getElementById('tab-bar').innerHTML = TAB_CONFIG.map((tc,i) =>
-    `<button class="tab ${i===0?'active':''}" onclick="switchTab('${tc.id}',this)">${tc.label}<span class="tab-count">${counts[tc.id]}</span></button>`
-  ).join('');
+function fv(n){if(n>=1e9)return(n/1e9).toFixed(1)+'B';if(n>=1e6)return(n/1e6).toFixed(1)+'M';if(n>=1e3)return(n/1e3).toFixed(1)+'K';return n}
+function fp(n){if(n>=1e6)return(n/1e6).toFixed(1)+'M';if(n>=1e3)return(n/1e3).toFixed(1)+'K';return n}
+function spark(v,col){
+const w=100,h=24,mx=Math.max(...v),pts=v.map((y,i)=>[i/(v.length-1)*w,h-y/mx*(h-4)]);
+const path=pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ');
+return '<svg class="sp" width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'"><path d="'+path+'" fill="none" stroke="'+col+'" stroke-width="1.5" stroke-linecap="round"/><circle cx="'+pts[pts.length-1][0].toFixed(1)+'" cy="'+pts[pts.length-1][1].toFixed(1)+'" r="2" fill="'+col+'"/></svg>';
+}
+const DC={rising:{l:'Rising',c:'r',col:'var(--green)'},neutral:{l:'Stable',c:'n',col:'var(--blue)'},declining:{l:'Declining',c:'d',col:'var(--red)'}};
+function stats(t){
+const r=t.filter(x=>x.d==='rising').length,n=t.filter(x=>x.d==='neutral').length,d=t.filter(x=>x.d==='declining').length;
+return '<div class="sts"><div class="st"><div class="l">📈 Rising</div><div class="v" style="color:var(--green)">'+r+'</div><div class="sb">Gaining momentum</div></div><div class="st"><div class="l">→ Stable</div><div class="v" style="color:var(--blue)">'+n+'</div><div class="sb">Holding steady</div></div><div class="st"><div class="l">📉 Declining</div><div class="v" style="color:var(--red)">'+d+'</div><div class="sb">Past peak</div></div></div>';
 }
 
-function switchTab(tab, el) {
-  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
-  document.getElementById('tab-'+tab).classList.add('active');
-  if(el) el.classList.add('active');
+// ──── SORTABLE TABLE LOGIC ────
+let sortState = {}; // key: panelId, value: {col, asc}
+
+function tbl(trends,showEU,panelId){
+const sid = panelId||'default';
+const st = sortState[sid] || {col:'v',asc:false};
+// Sort the trends array
+const sorted = [...trends].sort((a,b)=>{
+  let va,vb;
+  switch(st.col){
+    case 'v': va=a.v;vb=b.v;break;
+    case 'p': va=a.p;vb=b.p;break;
+    case 's': va=a.s;vb=b.s;break;
+    case 'eu': va=a.eu;vb=b.eu;break;
+    default: va=a.v;vb=b.v;
+  }
+  return st.asc ? va-vb : vb-va;
+});
+
+function thClass(col){return 'num sortable'+(st.col===col?' sorted':'');}
+function arrow(col){return '<span class="arrow">'+(st.col===col?(st.asc?'▲':'▼'):'⇅')+'</span>';}
+
+let h='<table class="tbl"><thead><tr><th>#</th><th>Hashtag</th><th>Status</th>';
+if(showEU) h+='<th class="'+thClass('eu')+'" onclick="doSort(\''+sid+'\',\'eu\')">EU % '+arrow('eu')+'</th><th>Top Countries</th>';
+h+='<th class="'+thClass('v')+'" onclick="doSort(\''+sid+'\',\'v\')">Views '+arrow('v')+'</th>';
+h+='<th class="'+thClass('p')+'" onclick="doSort(\''+sid+'\',\'p\')">Posts '+arrow('p')+'</th>';
+h+='<th class="'+thClass('s')+' hide-m" onclick="doSort(\''+sid+'\',\'s\')">Score '+arrow('s')+'</th>';
+h+='<th class="hide-m">7d Trend</th><th class="hide-m">Audience</th></tr></thead><tbody>';
+sorted.forEach((t,i)=>{
+const dc=DC[t.d];
+const euPills=t.et.slice(0,4).map(e=>'<span class="ep">'+(FL[e.c]||'')+' '+e.c+'</span>').join('');
+const ageP=t.ages.slice(0,2).map(a=>'<span class="age">'+a.r+': '+a.s+'%</span>').join(' ');
+const intP=t.int.slice(0,2).map(x=>'<span class="tg">'+x+'</span>').join('');
+h+='<tr><td class="rank">'+(i+1)+'</td>';
+h+='<td class="ht"><a href="'+t.url+'" target="_blank" rel="noopener">#'+t.n+'</a><a href="'+t.url+'" target="_blank" class="lnk">↗ TikTok</a></td>';
+h+='<td><span class="dir '+dc.c+'">'+{rising:'↑ Rising',neutral:'→ Stable',declining:'↓ Declining'}[t.d]+'</span></td>';
+if(showEU){
+h+='<td class="num"><span class="eu-pct">'+(t.eu>0?t.eu+'%':'—')+'</span></td>';
+h+='<td><div class="eu-pills">'+euPills+'</div></td>';
+}
+h+='<td class="num"><span class="vw">'+fv(t.v)+'</span></td>';
+h+='<td class="num"><span class="ps">'+fp(t.p)+'</span></td>';
+h+='<td class="num hide-m"><span class="sc">'+t.s.toFixed(2)+'</span></td>';
+h+='<td class="hide-m">'+spark(t.sp,dc.col)+'</td>';
+h+='<td class="hide-m"><div>'+ageP+'</div><div class="tags" style="margin-top:2px">'+intP+'</div></td>';
+h+='</tr>';
+});
+h+='</tbody></table>';
+return h;
 }
 
-function jumpTab(tab) {
-  const tabs = document.querySelectorAll('.tab');
-  document.querySelectorAll('.tab-content').forEach(t=>t.classList.remove('active'));
-  tabs.forEach(t=>t.classList.remove('active'));
-  document.getElementById('tab-'+tab).classList.add('active');
-  const idx = TAB_CONFIG.findIndex(tc=>tc.id===tab);
-  if(idx>=0 && tabs[idx]) tabs[idx].classList.add('active');
+function doSort(panelId,col){
+const st = sortState[panelId] || {col:'v',asc:false};
+if(st.col===col) st.asc=!st.asc;
+else { st.col=col; st.asc=false; }
+sortState[panelId]=st;
+render();
 }
 
-function searchTrends(q) {
-  q = q.toLowerCase().trim();
-  document.querySelectorAll('.trend-card').forEach(c => {
-    c.classList.toggle('hidden', q && !c.textContent.toLowerCase().includes(q));
+function sw(t,el){
+document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+el.classList.add('on');
+document.getElementById('p-us').hidden=t!=='us';
+document.getElementById('p-eu').hidden=t!=='eu';
+document.getElementById('p-xp').hidden=t!=='xp';
+}
+
+// ──── TOP 3 FIBREGUARD PICKS ────
+const FG_PICKS = [
+  {
+    hashtag: 'wutheringheights',
+    why: 'Massive aesthetic trend (518M views, score 0.80) — moody, dramatic, romantic interiors. The literary vibe pairs perfectly with rich fabric textures and dark-toned styling. Stable and holding strong across EU (82%).',
+    idea: '"Wuthering Heights but make it interior design" — dramatic lighting on dark FibreGuard fabrics, candlelight, slow pans across textures. Moody, cinematic, aspirational.',
+  },
+  {
+    hashtag: 'filmedit',
+    why: 'Cinematic content format (57M views, score 0.75, 91% EU). Film-quality transitions and color grading — the premium content format that showcases fabric textures beautifully. Cross-platform with the Reality TV Edit trend.',
+    idea: 'Slow-motion product film — close-up texture shots, dramatic stain-test reveal with cinematic grading. Think luxury brand ad meets TikTok.',
+  },
+  {
+    hashtag: 'lowcortisol',
+    why: 'Wellness/comfort trend (77M views, score 0.90 — near peak). "Low cortisol lifestyle" = calm, cozy, stress-free home. 76% EU. Perfect overlap with home comfort and fabric care.',
+    idea: '"Low cortisol living room" — ASMR fabric textures, satisfying couch fluffing, calm morning routine on a FibreGuard sofa.',
+  },
+];
+
+function renderPicks(){
+  const html = '<div class="picks"><div class="picks-title">🎯 Today\'s Top 3 FibreGuard Picks — Feb 26, 2026</div><div class="picks-grid">' +
+    FG_PICKS.map((p,i) => {
+      const t = D.find(x=>x.n===p.hashtag);
+      if(!t) return '';
+      return '<div class="pick"><div class="pick-rank">#'+(i+1)+'</div>' +
+        '<div class="pick-name"><a href="'+t.url+'" target="_blank">#'+t.n+'</a></div>' +
+        '<div class="pick-stats"><span>'+fv(t.v)+' views</span><span>'+fp(t.p)+' posts</span><span>Score: '+t.s.toFixed(2)+'</span></div>' +
+        '<div class="pick-why">'+p.why+'</div>' +
+        '<div class="pick-idea"><strong>💡 Video idea:</strong> '+p.idea+'</div></div>';
+    }).join('') +
+  '</div></div>';
+  document.getElementById('fg-picks').innerHTML = html;
+}
+
+// ──── CROSS-PLATFORM TAB ────
+function renderXP(){
+  const platMap = {tt:'TikTok',ig:'Instagram',yt:'YouTube Shorts',x:'X / Twitter'};
+  const platClass = {tt:'tt',ig:'ig',yt:'yt',x:'x'};
+  const statusMap = {hot:'🔥 Hot Now',peak:'⚡ At Peak',rising:'📈 Rising'};
+  const statusClass = {hot:'hot',peak:'peak',rising:'rising'};
+
+  let html = '<h2 style="font-size:16px;font-weight:700;margin-bottom:4px">🔥 Cross-Platform Trends — This Week</h2>';
+  html += '<div class="xp-updated">Researched & verified Feb 26, 2026 · Sources: Later, Scott Social, Epidemic Sound, Dash Social, NYT, British Vogue</div>';
+  html += '<div class="xp-grid">';
+
+  XP_TRENDS.forEach((t,i) => {
+    html += '<div class="xp-card"><div class="xp-rank">#'+(i+1)+'</div>';
+    html += '<div class="xp-head"><span class="xp-name">'+t.name+'</span>';
+    html += '<span class="xp-dir '+statusClass[t.status]+'">'+statusMap[t.status]+'</span>';
+    html += '</div>';
+    html += '<div class="xp-plat">'+t.platforms.map(p=>'<span class="xp-pill '+platClass[p]+'">'+platMap[p]+'</span>').join('')+'</div>';
+    html += '<div class="xp-desc" style="margin-top:8px">'+t.desc+'</div>';
+    html += '<div class="xp-idea"><strong>🎬 FibreGuard idea:</strong> '+t.fg_idea+'</div>';
+    html += '<div class="xp-meta"><span>'+t.meta+'</span></div>';
+    html += '</div>';
   });
+
+  html += '</div>';
+  document.getElementById('p-xp').innerHTML = html;
 }
 
-function filterTrends(filter, btn) {
-  document.querySelectorAll('.filter-btn').forEach(b=>b.classList.remove('active'));
-  if(btn) btn.classList.add('active');
-  document.querySelectorAll('#overview-grid .trend-card').forEach(c => {
-    let show = true;
-    if(filter==='overlap') show = c.dataset.confidence==='overlap';
-    else if(filter==='tiktok') show = c.dataset.platform==='tiktok'||c.dataset.platform==='both';
-    else if(filter==='instagram') show = c.dataset.platform==='instagram'||c.dataset.platform==='both';
-    else if(filter==='angle') show = c.dataset.angle==='yes';
-    c.style.display = show ? 'block' : 'none';
+function render(){
+  const us=[...D].sort((a,b)=>b.v-a.v);
+  const eu=[...D].filter(t=>t.eu>=15).sort((a,b)=>b.eu-a.eu);
+
+  document.getElementById('us-c').textContent=us.length;
+  document.getElementById('eu-c').textContent=eu.length;
+  document.getElementById('p-us').innerHTML=
+    '<h2 style="font-size:16px;font-weight:700;margin-bottom:2px">🇺🇸 All TikTok Trending Hashtags</h2>'+
+    '<p style="font-size:12px;color:var(--text2);margin-bottom:16px">'+us.length+' hashtags from API. Click column headers to sort by Views, Posts, or Score. Click again to reverse.</p>'+
+    stats(us)+tbl(us,false,'us');
+  document.getElementById('p-eu').innerHTML=
+    '<h2 style="font-size:16px;font-weight:700;margin-bottom:2px">🇪🇺 EU Region — ≥15% European Audience</h2>'+
+    '<p style="font-size:12px;color:var(--text2);margin-bottom:16px">'+eu.length+' hashtags with significant EU audience. Click column headers to sort.</p>'+
+    stats(eu)+tbl(eu,true,'eu');
+  renderXP();
+}
+
+function init(){
+  document.getElementById('ts').textContent=new Date().toLocaleString('en-GB',{timeZone:'Europe/Madrid',weekday:'short',day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'})+' CET';
+  D.forEach(t=>{
+    t.sp=t.sp.slice(-7);
+    if(t.sp.length>=4){
+      const r=(t.sp[t.sp.length-1]+t.sp[t.sp.length-2])/2;
+      const o=(t.sp[0]+t.sp[1])/2;
+      if(r>o*1.15)t.d='rising';else if(r<o*0.85)t.d='declining';else t.d='neutral';
+    }
   });
+  renderPicks();
+  render();
 }
-
-function isDeclining(t) {
-  return t.proof?.api?.includes('↓↓') || t.proof?.api?.includes('fading');
-}
-function isNew(t) {
-  // Check dateAdded field if present
-  if (t.dateAdded) {
-    const added = new Date(t.dateAdded);
-    const now = new Date();
-    return (now - added) < 48 * 60 * 60 * 1000;
-  }
-  // Auto-detect from proof text: "Feb 19" or "🆕" in desc
-  const proofText = (t.proof?.research||'') + (t.proof?.api||'') + (t.desc||'');
-  // Match today's date or yesterday's in "Feb DD" format
-  const now = new Date();
-  const today = `Feb ${now.getDate()}`;
-  const yesterday = `Feb ${now.getDate()-1}`;
-  return proofText.includes('🆕') || proofText.includes(today) || proofText.includes(yesterday);
-}
-
-function renderCard(t) {
-  const pClass = t.platform==='both'?'both':t.platform;
-  const pLabel = t.platform==='both'?'TikTok + IG':t.platform==='tiktok'?'TikTok':'Instagram';
-  const confClass = t.confidence+'-badge';
-  const confLabel = {overlap:'✅ CONFIRMED',research:'🔭 EXPLORATORY',emerging:'📡 OTHER PLATFORMS'}[t.confidence]||'';
-  const cardClass = t.confidence==='overlap'?'overlap':t.confidence==='research'?'research-only':t.confidence==='emerging'?'emerging-card':'';
-  const freshLabels = {hot:'🔥 THIS WEEK',warm:'⚡ ACTIVE',evergreen:'🌿 EVERGREEN'};
-  const freshClass = t.freshness||'warm';
-  const declining = isDeclining(t);
-  const isNewTrend = isNew(t);
-
-  // Proof block
-  let proofHtml = '';
-  if(t.proof) {
-    let parts = [];
-    if(t.proof.api) parts.push(`<span class="src-api">📊 API:</span> ${t.proof.api}`);
-    if(t.proof.research) parts.push(`<span class="src-research">🔬 Sources:</span> ${t.proof.research}`);
-    proofHtml = `<div class="trend-proof">${parts.join(' · ')}</div>`;
-  }
-
-  const hashHtml = (t.hashtags||[]).map(h =>
-    `<span class="hashtag" onclick="navigator.clipboard.writeText('${h}');showToast('Copied ${h}')">${h}</span>`
-  ).join('');
-
-  const angleId = 'a-'+Math.random().toString(36).substr(2,6);
-
-  return `
-    <div class="trend-card ${cardClass}${declining?' declining':''}" data-confidence="${t.confidence}" data-platform="${t.platform}" data-angle="${t.angle?'yes':'no'}">
-      <span class="confidence-badge ${confClass}">${confLabel}</span>
-      <div class="trend-header">
-        <span class="trend-name">${t.name}</span>
-        ${isNewTrend?'<span class="badge-new">🆕 NEW</span>':''}
-        <span class="badge ${pClass}">${pLabel}</span>
-        <span class="badge ${freshClass}">${freshLabels[freshClass]||''}</span>
-        ${declining?'<span class="badge-declining">📉 FADING</span>':''}
-      </div>
-      ${t.angle?`<div class="trend-angle-top" id="${angleId}"><span class="angle-label">💡 FibreGuard angle:</span> ${t.angle}<button class="copy-btn" onclick="event.stopPropagation();copyAngle('${angleId}',this)">📋 Copy</button></div>`:''}
-      ${proofHtml}
-      <div class="trend-desc">${t.desc}</div>
-      <div class="trend-meta">
-        ${t.meta.views?`<span>👁️ ${t.meta.views} views</span>`:''}
-        ${t.meta.posts?`<span>📊 ${t.meta.posts}</span>`:''}
-        ${t.meta.score?`<span>📈 Score: ${t.meta.score}</span>`:''}
-      </div>
-      ${hashHtml?`<div class="trend-hashtags">${hashHtml}</div>`:''}
-      ${(t.examples&&t.examples.length)?`<div class="trend-examples">${t.examples.map(e=>`<a href="${e.url}" target="_blank" rel="noopener">▶ ${e.label}</a>`).join('')}</div>`:''}
-    </div>`;
-}
-
-function copyAngle(id, btn) {
-  const el = document.getElementById(id);
-  const text = el.textContent.replace('📋 Copy','').replace('✅ Copied!','').replace('FibreGuard angle:','').trim();
-  navigator.clipboard.writeText(text);
-  btn.textContent='✅ Copied!';
-  showToast('Angle copied!');
-  setTimeout(()=>{btn.textContent='📋 Copy';},2000);
-}
-
-function showToast(msg) {
-  const t=document.getElementById('toast');
-  t.textContent=msg; t.classList.add('show');
-  setTimeout(()=>t.classList.remove('show'),2000);
-}
-
-function renderRecCard(r) {
-  const fitClass = r.fit;
-  const fitLabel = {perfect:'🎯 Perfect Fit',strong:'💪 Strong Fit',natural:'🌿 Natural Fit'}[r.fit]||'';
-  const pLabel = r.platform==='both'?'TikTok + IG':r.platform==='tiktok'?'TikTok':'Instagram';
-
-  let proofText = '';
-  if(r.proof) {
-    if(r.proof.api) proofText += '📊 '+r.proof.api+' ';
-    if(r.proof.research) proofText += '🔬 '+r.proof.research;
-  }
-
-  const exHtml = (r.examples||[]).map(e=>`<a href="${e.url}" target="_blank" rel="noopener">▶ ${e.label}</a>`).join('');
-
-  return `
-    <div class="rec-card fit-${fitClass}">
-      <div class="rec-rank">#${r.rank}</div>
-      <div class="rec-header">
-        <span class="rec-name">${r.name}</span>
-        <span class="fit-badge ${fitClass}">${fitLabel}</span>
-        <span class="badge ${r.platform==='both'?'both':r.platform}">${pLabel}</span>
-      </div>
-      <div class="rec-why">${r.why}</div>
-      <div class="rec-desc">${r.desc}</div>
-      ${proofText?`<div class="rec-proof">${proofText}</div>`:''}
-      <div class="rec-meta">
-        ${r.meta.views?`<span>👁️ ${r.meta.views}</span>`:''}
-        ${r.meta.posts?`<span>📊 ${r.meta.posts}</span>`:''}
-        ${r.meta.score?`<span>📈 ${r.meta.score}</span>`:''}
-      </div>
-      ${exHtml?`<div class="rec-examples">${exHtml}</div>`:''}
-    </div>`;
-}
-
-// Hot This Week: Best FibreGuard fits from ALL trends (any confidence tier)
-// Brand-safe filter: no personal humor, edgy, political, person-only formats
-const HOT_THIS_WEEK = (() => {
-  const unsafe = ['shutupmom','euphoriamakeup','blackhistorymonth','thermostat','callmysister','shutup'];
-  const brandSafe = TRENDS.filter(t => {
-    const nameLower = t.name.toLowerCase();
-    if (unsafe.some(u => nameLower.includes(u))) return false;
-    // Skip fast-declining
-    if (t.proof?.api?.includes('↓↓')) return false;
-    // Must have a FibreGuard angle
-    if (!t.angle || t.angle.length < 10) return false;
-    return true;
-  });
-  // Ranking priority: Confirmed (overlap) → EU → Exploratory (research) → Emerging
-  const freshScore = {hot:2, warm:1, evergreen:0};
-  const byFreshness = (a,b) => (freshScore[b.freshness]||0) - (freshScore[a.freshness]||0);
-
-  const confirmed = brandSafe.filter(t=>t.confidence==='overlap').sort(byFreshness);
-  const exploratory = brandSafe.filter(t=>t.confidence==='research').sort(byFreshness);
-  const emerging = brandSafe.filter(t=>t.confidence==='emerging').sort(byFreshness);
-
-  // Build EU pick
-  const euAll = [];
-  for (const [country, tags] of Object.entries(EU_TRENDS)) {
-    const flag = country.split(' ')[0];
-    tags.filter(t=>t.relevant).forEach(t => euAll.push({...t, flag, country}));
-  }
-  euAll.sort((a,b) => parseViews(b.views) - parseViews(a.views));
-  const euPick = euAll.length > 0 ? {
-    name: `${euAll[0].flag} ${euAll[0].tag}`,
-    confidence: 'eu',
-    freshness: 'hot',
-    angle: euAll[0].note || '',
-    desc: `${euAll[0].views} views · ${euAll[0].posts} posts · Trending in ${euAll[0].country}`,
-    proof: {},
-    _isEU: true,
-  } : null;
-
-  // Pick best from each tier in order: confirmed → EU → exploratory → emerging
-  const picks = [];
-  if (confirmed.length > 0) picks.push(confirmed[0]);
-  if (euPick) picks.push(euPick);
-  if (exploratory.length > 0) picks.push(exploratory[0]);
-  if (emerging.length > 0) picks.push(emerging[0]);
-
-  return picks.slice(0, 4);
-})();
-
-function buildPriorityQueue() {
-  if (HOT_THIS_WEEK.length === 0) {
-    document.getElementById('priority-grid').innerHTML = '<div style="color:var(--text3);font-size:13px;padding:12px 0;">No brand-safe trends this week with strong FibreGuard angles.</div>';
-    return;
-  }
-  const confLabel = {overlap:'✅ Confirmed',research:'🔭 Exploratory',emerging:'📡 Other Platforms',eu:'🇪🇺 EU Top Pick'};
-  const confTab = {overlap:'overlaps',research:'research',emerging:'emerging',eu:'eu'};
-  document.getElementById('priority-grid').innerHTML = HOT_THIS_WEEK.map((t,i) => `
-    <div class="pq-card" onclick="jumpTab('${confTab[t.confidence]||'overlaps'}')">
-      <div class="pq-rank">#${i+1}</div>
-      <div class="pq-name">${t.name}</div>
-      <div class="pq-conf overlap">${confLabel[t.confidence]||''}</div>
-      <div class="pq-angle">${(t.angle||t.desc||'').substring(0,140)}${(t.angle||t.desc||'').length>140?'...':''}</div>
-    </div>
-  `).join('');
-}
-
-function init() {
-  document.getElementById('updateTime').textContent = new Date().toLocaleString('en-GB',{
-    timeZone:'Europe/Madrid',weekday:'short',day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'
-  })+' CET';
-
-  // Sort within each tier: hot first, declining/fading last
-  const freshOrder = {hot:0,warm:1,evergreen:2};
-  function sortTrends(arr) {
-    return [...arr].sort((a,b) => {
-      const aDecl = isDeclining(a) ? 1 : 0;
-      const bDecl = isDeclining(b) ? 1 : 0;
-      if (aDecl !== bDecl) return aDecl - bDecl; // declining goes last
-      return (freshOrder[a.freshness]||2) - (freshOrder[b.freshness]||2);
-    });
-  }
-
-  // Confirmed Trends: brand-safe only, split active vs fading
-  const overlapsAll = sortTrends(TRENDS.filter(t=>t.confidence==='overlap'));
-  const overlapsSafe = overlapsAll.filter(t=>t.brandSafe !== false);
-  const overlapsUnsafe = overlapsAll.filter(t=>t.brandSafe === false);
-  const activeOverlaps = overlapsSafe.filter(t=>!isDeclining(t));
-  const fadingOverlaps = overlapsSafe.filter(t=>isDeclining(t));
-  let overlapsHtml = activeOverlaps.map(renderCard).join('');
-  if (fadingOverlaps.length > 0) {
-    overlapsHtml += `<div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--card-border);">
-      <div style="font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">📉 Fading — May still work on some platforms</div>
-      ${fadingOverlaps.map(renderCard).join('')}
-    </div>`;
-  }
-  if (overlapsUnsafe.length > 0) {
-    overlapsHtml += `<div style="margin-top:20px;padding-top:16px;border-top:1px solid var(--card-border);">
-      <div style="font-size:12px;font-weight:600;color:var(--text3);text-transform:uppercase;letter-spacing:1px;margin-bottom:12px;">⚠️ Confirmed viral but not relevant for FibreGuard</div>
-      <div style="display:flex;flex-wrap:wrap;gap:8px;">${overlapsUnsafe.map(t =>
-        `<span style="background:var(--bg2);border:1px solid var(--card-border);border-radius:8px;padding:6px 12px;font-size:12px;color:var(--text3);">${t.name}</span>`
-      ).join('')}</div>
-    </div>`;
-  }
-  document.getElementById('overlaps-grid').innerHTML = overlapsHtml;
-
-  // Exploratory Trends: cap at 8, show-more for rest
-  const research = sortTrends(TRENDS.filter(t=>t.confidence==='research'));
-  const CAP = 8;
-  if (research.length > CAP) {
-    const visible = research.slice(0, CAP).map(renderCard).join('');
-    const hidden = research.slice(CAP).map(renderCard).join('');
-    document.getElementById('research-grid').innerHTML = visible +
-      `<div class="hidden-trends" id="more-research">${hidden}</div>` +
-      `<button class="show-more-btn" onclick="document.getElementById('more-research').classList.toggle('show');this.textContent=this.textContent.includes('Show')?'Show less':'Show ${research.length - CAP} more trends'">Show ${research.length - CAP} more trends</button>`;
-  } else {
-    document.getElementById('research-grid').innerHTML = research.map(renderCard).join('');
-  }
-
-  // Other Platforms
-  document.getElementById('emerging-grid').innerHTML = sortTrends(TRENDS.filter(t=>t.confidence==='emerging')).map(renderCard).join('');
-
-  buildTabs();
-  buildPriorityQueue();
-  renderTrendingNow();
-  renderEU();
-}
-
-function renderTrendingNow() {
-  const sorted = [...TRENDING_NOW].sort((a,b) => b.views_raw - a.views_raw);
-  const rising = sorted.filter(t => t.direction === '↑');
-  const stable = sorted.filter(t => t.direction === '→');
-  const falling = sorted.filter(t => t.direction === '↓');
-
-  function renderTNCard(t) {
-    const dirColor = t.direction === '↑' ? 'var(--accent)' : t.direction === '↓' ? 'var(--red)' : 'var(--text3)';
-    const dirLabel = t.direction === '↑' ? '📈 Rising' : t.direction === '↓' ? '📉 Falling' : '→ Stable';
-    return `<div style="background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:16px;display:flex;justify-content:space-between;align-items:center;gap:12px;">
-      <div style="flex:1;min-width:0;">
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;flex-wrap:wrap;">
-          <a href="https://www.tiktok.com/tag/${t.tag.replace('#','')}" target="_blank" rel="noopener" style="font-weight:700;font-size:15px;color:var(--text);text-decoration:none;">${t.tag} ↗</a>
-          <span style="font-size:11px;color:${dirColor};font-weight:600;">${dirLabel}</span>
-          ${t.industry ? `<span style="font-size:10px;color:var(--text3);background:var(--bg2);padding:2px 8px;border-radius:6px;">${t.industry}</span>` : ''}
-        </div>
-        <div style="display:flex;gap:16px;font-size:12px;color:var(--text3);">
-          <span>👀 ${t.views} views</span><span>📹 ${t.posts} posts</span><span style="color:var(--text3);opacity:0.5;">CC Rank #${t.rank}</span>
-        </div>
-      </div>
-    </div>`;
-  }
-
-  let html = `<p style="color:var(--text3);font-size:12px;margin-bottom:20px;">Last updated: ${TRENDING_NOW_UPDATED} · Source: TikTok Creative Center via Apify · US market · Ad-boosted filtered out</p>`;
-
-  if (rising.length > 0) {
-    html += `<h3 style="font-size:14px;font-weight:600;color:var(--accent);margin-bottom:12px;">📈 Rising</h3>`;
-    html += `<div style="display:grid;gap:8px;margin-bottom:24px;">${rising.map(renderTNCard).join('')}</div>`;
-  }
-  if (stable.length > 0) {
-    html += `<h3 style="font-size:14px;font-weight:600;color:var(--text2);margin-bottom:12px;">→ Holding Steady</h3>`;
-    html += `<div style="display:grid;gap:8px;margin-bottom:24px;">${stable.map(renderTNCard).join('')}</div>`;
-  }
-  if (falling.length > 0) {
-    html += `<h3 style="font-size:14px;font-weight:600;color:var(--text3);margin-bottom:12px;">📉 Cooling Down</h3>`;
-    html += `<div style="display:grid;gap:8px;margin-bottom:24px;">${falling.map(renderTNCard).join('')}</div>`;
-  }
-  document.getElementById('trending-grid').innerHTML = html;
-}
-
-function parseViews(v) {
-  if (!v) return 0;
-  const s = v.toString().replace(/,/g,'');
-  if (s.endsWith('B')) return parseFloat(s)*1e9;
-  if (s.endsWith('M')) return parseFloat(s)*1e6;
-  if (s.endsWith('K')) return parseFloat(s)*1e3;
-  return parseFloat(s)||0;
-}
-
-function renderEU() {
-  // Flatten all tags with country info, then sort by views descending
-  const all = [];
-  for (const [country, tags] of Object.entries(EU_TRENDS)) {
-    const flag = country.split(' ')[0]; // emoji flag
-    tags.forEach(t => all.push({...t, country, flag}));
-  }
-  all.sort((a,b) => parseViews(b.views) - parseViews(a.views));
-
-  const relevant = all.filter(t=>t.relevant);
-  const other = all.filter(t=>!t.relevant);
-
-  let html = `<p style="color:var(--text3);font-size:12px;margin-bottom:20px;">Last updated: ${EU_TRENDS_UPDATED} · Source: TikTok Trending API (Apify) · Top 6 EU markets · Ranked by views</p>`;
-
-  // FibreGuard-relevant trends (ranked)
-  if (relevant.length > 0) {
-    html += `<h3 style="font-size:15px;font-weight:600;color:var(--accent);margin-bottom:14px;">✅ FibreGuard-Relevant Trends</h3>`;
-    html += `<div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-bottom:28px;">`;
-    relevant.forEach((t, i) => {
-      html += `<div style="background:var(--card);border:1px solid var(--card-border);border-radius:14px;padding:18px;position:relative;">
-        <div style="position:absolute;top:10px;right:14px;font-size:20px;font-weight:800;color:rgba(3,252,123,0.12);">#${i+1}</div>
-        <div style="display:flex;align-items:center;gap:8px;margin-bottom:8px;">
-          <span style="font-size:18px;">${t.flag}</span>
-          <a href="https://www.tiktok.com/tag/${t.tag.replace('#','')}\?lang=en" target="_blank" rel="noopener" style="font-weight:700;color:var(--accent);font-size:15px;text-decoration:none;">${t.tag} ↗</a>
-          <span style="background:#34c75922;color:#34c759;font-size:10px;padding:2px 8px;border-radius:6px;font-weight:600;">FG FIT</span>
-        </div>
-        <div style="display:flex;gap:16px;font-size:12px;color:var(--text3);margin-bottom:8px;">
-          <span>👀 ${t.views} views</span><span>📹 ${t.posts} posts</span>
-        </div>
-        ${t.note ? `<p style="font-size:12px;color:var(--text2);line-height:1.4;">📌 ${t.note}</p>` : ''}
-        ${t.idea ? `<div style="margin-top:8px;padding:10px 12px;background:linear-gradient(135deg, rgba(3,252,123,0.08), rgba(3,252,123,0.03));border:1px solid rgba(3,252,123,0.15);border-radius:10px;font-size:12px;line-height:1.5;color:var(--text);">${t.idea}</div>` : ''}
-      </div>`;
-    });
-    html += `</div>`;
-  }
-
-  // Other trending (not relevant)
-  if (other.length > 0) {
-    html += `<h3 style="font-size:14px;font-weight:600;color:var(--text3);margin-bottom:12px;">Other Trending (not FG-relevant)</h3>`;
-    html += `<div style="display:flex;flex-wrap:wrap;gap:8px;">`;
-    other.forEach(t => {
-      html += `<a href="https://www.tiktok.com/tag/${t.tag.replace('#','')}\?lang=en" target="_blank" rel="noopener" style="background:var(--card);border:1px solid var(--card-border);border-radius:8px;padding:6px 12px;font-size:12px;color:var(--text3);text-decoration:none;display:inline-flex;align-items:center;gap:4px;">${t.flag} ${t.tag} ↗ <span style="color:var(--text3);opacity:0.6;">${t.views}</span></a>`;
-    });
-    html += `</div>`;
-  }
-
-  document.getElementById('eu-grid').innerHTML = html;
-}
-
 init();
-</script>
-</body>
-</html>
+</script></body></html>
