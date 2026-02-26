@@ -69,6 +69,9 @@ padding:4px 10px;text-align:left;position:sticky;top:0;background:var(--bg2);use
 .ep{font-size:9px;padding:1px 6px;border-radius:3px;background:var(--blue-d);color:var(--blue);font-weight:600}
 .eu-pct{font-size:12px;font-weight:700;color:var(--blue)}
 .age{font-size:9px;padding:1px 5px;border-radius:3px;background:var(--yellow-d);color:var(--yellow)}
+.score-wrap{position:relative;display:inline-block;cursor:help}
+.score-tip{display:none;position:absolute;bottom:calc(100% + 8px);right:0;width:260px;background:var(--bg3);border:1px solid var(--bg4);border-radius:8px;padding:10px 12px;font-size:11px;color:var(--text2);line-height:1.5;z-index:100;box-shadow:0 4px 12px rgba(0,0,0,.4);pointer-events:none}
+.score-wrap:hover .score-tip{display:block}
 svg.sp{display:block}
 /* FG Picks */
 .picks{padding:20px 0 0}
@@ -356,7 +359,7 @@ h+='<td><div class="eu-pills">'+euPills+'</div></td>';
 }
 h+='<td class="num"><span class="vw">'+fv(t.v)+'</span></td>';
 h+='<td class="num"><span class="ps">'+fp(t.p)+'</span></td>';
-h+='<td class="num hide-m"><span class="sc">'+t.s.toFixed(2)+'</span></td>';
+h+='<td class="num hide-m"><span class="score-wrap"><span class="sc">'+t.s.toFixed(2)+'</span><span class="score-tip"><strong style="color:var(--text)">Trend Score (0–1)</strong><br>Measures current momentum relative to peak. Calculated from the TikTok API\'s 30-day activity curve:<br>• <strong>1.0</strong> = at peak right now<br>• <strong>0.5</strong> = half of peak activity<br>• <strong>&lt;0.1</strong> = trend has cooled significantly<br><br>Based on normalized daily engagement data (views + posts velocity) from Apify\'s TikTok scraper.</span></span></td>';
 h+='<td class="hide-m">'+spark(t.sp,dc.col)+'</td>';
 h+='<td class="hide-m"><div>'+ageP+'</div><div class="tags" style="margin-top:2px">'+intP+'</div></td>';
 h+='</tr>';
