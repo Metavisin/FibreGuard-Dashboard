@@ -1,0 +1,1064 @@
+Found 20 trending hashtags
+[
+  {
+    "trend": [
+      {
+        "time": 1771891200,
+        "value": 0.97
+      },
+      {
+        "time": 1771977600,
+        "value": 1
+      },
+      {
+        "time": 1772064000,
+        "value": 0.94
+      },
+      {
+        "time": 1772150400,
+        "value": 0.93
+      },
+      {
+        "time": 1772236800,
+        "value": 0.91
+      },
+      {
+        "time": 1772323200,
+        "value": 0.89
+      },
+      {
+        "time": 1772409600,
+        "value": 0.89
+      }
+    ],
+    "rank": 1,
+    "hashtagId": "1615607668873221",
+    "hashtagName": "poppyplaytime",
+    "countryInfo": {
+      "id": "ALL",
+      "value": "ALL",
+      "label": "ALL"
+    },
+    "industryInfo": {
+      "id": 25000000000,
+      "value": "Games",
+      "label": "label_25000000000"
+    },
+    "isPromoted": false,
+    "publishCnt": 152719,
+    "videoViews": 3062441475,
+    "rankDiff": 0,
+    "rankDiffType": 2
+  },
+  {
+    "trend": [
+      {
+        "time": 1771891200,
+        "value": 0.88
+      },
+      {
+        "time": 1771977600,
+        "value": 1
+      },
+      {
+        "time": 1772064000,
+        "value": 0.96
+      },
+      {
+        "time": 1772150400,
+        "value": 0.88
+      },
+      {
+        "time": 1772236800,
+        "value": 0.76
+      },
+      {
+        "time": 1772323200,
+        "value": 0.66
+      },
+      {
+        "time": 1772409600,
+        "value": 0.57
+      }
+    ],
+    "creators": [
+      {
+        "nickName": "Kevin Vazquez",
+        "avatarUrl": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/f20aff8ef2bd467135d4e193d62873fe~tplv-tiktokx-cropcenter:100:100.png?dr=14579&refresh_token=f83ddde6&x-expires=1772697600&x-signature=jMseZORwJeMiiIDupPRP5PENl%2BI%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=317596d8&idc=my3"
+      }
+    ],
+    "rank": 2,
+    "hashtagId": "38632",
+    "hashtagName": "punch",
+    "countryInfo": {
+      "id": "ALL",
+      "value": "ALL",
+      "label": "ALL"
+    },
+    "industryInfo": {
+      "id": 28000000000,
+      "value": "Sports & Outdoor",
+      "label": "label_28000000000"
+    },
+    "isPromoted": false,
+    "publishCnt": 85844,
+    "videoViews": 2263108752,
+    "rankDiff": 0,
+    "rankDiffType": 2
+  },
+  {
+    "trend": [
+      {
+        "time": 1771891200,
+        "value": 1
+      },
+      {
+        "time": 1771977600,
+        "value": 1
+      },
+      {
+        "time": 1772064000,
+        "value": 0.93
+      },
+      {
+        "time": 1772150400,
+        "value": 0.92
+      },
+      {
+        "time": 1772236800,
+        "value": 0.92
+      },
+      {
+        "time": 1772323200,
+        "value": 0.9
+      },
+      {
+        "time": 1772409600,
+        "value": 0.97
+      }
+    ],
+    "creators": [
+      {
+        "nickName": "Kabayan Zone",
+        "avatarUrl": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/2e2e0a2dababe07ae0dce95a60b1d077~tplv-tiktokx-cropcenter:100:100.png?dr=14579&refresh_token=ddc26ce0&x-expires=1772697600&x-signature=y9IryHkMz8tgGdWW47OD%2BR%2Bm0GA%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=317596d8&idc=my3"
+      },
+      {
+        "nickName": "Marvelvino",
+        "avatarUrl": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/9919923e5faf838fe3a9e90dbf09a478~tplv-tiktokx-cropcenter:100:100.png?dr=14579&refresh_token=88a4905d&x-expires=1772697600&x-signature=yTzVFPp7BBcmmba%2BH%2FzYL5uJSCU%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=317596d8&idc=my3"
+      },
+      {
+        "nickName": "Nur Optical pictures \ud83d\udcf7",
+        "avatarUrl": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/1583d64c23b616aee3fbcd6f96da9f97~tplv-tiktokx-cropcenter:100:100.png?dr=14579&refresh_token=5a800983&x-expires=1772697600&x-signature=4jgjeZ5lAXZxcHGcGMl3yLQu5sY%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=317596d8&idc=my3"
+      }
+    ],
+    "rank": 3,
+    "hashtagId": "141684",
+    "hashtagName": "iftar",
+    "countryInfo": {
+      "id": "ALL",
+      "value": "ALL",
+      "label": "ALL"
+    },
+    "industryInfo": {
+      "id": 27000000000,
+      "value": "Food & Beverage",
+      "label": "label_27000000000"
+    },
+    "isPromoted": false,
+    "publishCnt": 117734,
+    "videoViews": 1361622133,
+    "rankDiffType": 4
+  },
+  {
+    "trend": [
+      {
+        "time": 1771891200,
+        "value": 0.59
+      },
+      {
+        "time": 1771977600,
+        "value": 1
+      },
+      {
+        "time": 1772064000,
+        "value": 0.47
+      },
+      {
+        "time": 1772150400,
+        "value": 0.32
+      },
+      {
+        "time": 1772236800,
+        "value": 0.25
+      },
+      {
+        "time": 1772323200,
+        "value": 0.19
+      },
+      {
+        "time": 1772409600,
+        "value": 0.17
+      }
+    ],
+    "rank": 4,
+    "hashtagId": "1597050542987269",
+    "hashtagName": "williecolon",
+    "countryInfo": {
+      "id": "ALL",
+      "value": "ALL",
+      "label": "ALL"
+    },
+    "industryInfo": {
+      "id": 23000000000,
+      "value": "News & Entertainment",
+      "label": "label_23000000000"
+    },
+    "isPromoted": false,
+    "publishCnt": 36843,
+    "videoViews": 372376298,
+    "rankDiff": 2,
+    "rankDiffType": 1
+  },
+  {
+    "trend": [
+      {
+        "time": 1771891200,
+        "value": 0.64
+      },
+      {
+        "time": 1771977600,
+        "value": 1
+      },
+      {
+        "time": 1772064000,
+        "value": 0.78
+      },
+      {
+        "time": 1772150400,
+        "value": 0.72
+      },
+      {
+        "time": 1772236800,
+        "value": 0.65
+      },
+      {
+        "time": 1772323200,
+        "value": 0.61
+      },
+      {
+        "time": 1772409600,
+        "value": 0.57
+      }
+    ],
+    "creators": [
+      {
+        "nickName": "\u2741\u06ea\u06ea\u0f74\u0f7b\u2661",
+        "avatarUrl": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/f45b5d7cb43ebb8f6017e1d92ac675b1~tplv-tiktokx-cropcenter:100:100.png?dr=14579&refresh_token=6c1693f5&x-expires=1772697600&x-signature=xjpyERpegrfVCG7sms7XrlaFaTU%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=317596d8&idc=my3"
+      },
+      {
+        "nickName": "angel0nice",
+        "avatarUrl": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/685e8f40b781b0cc779e0bad450aad76~tplv-tiktokx-cropcenter:100:100.png?dr=14579&refresh_token=ccfc50b3&x-expires=1772697600&x-signature=d0JW3zITjYOOYrn5dOLFDY%2BXC5E%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=317596d8&idc=my3"
+      }
+    ],
+    "rank": 5,
+    "hashtagId": "18560",
+    "hashtagName": "hockey",
+    "countryInfo": {
+      "id": "ALL",
+      "value": "ALL",
+      "label": "ALL"
+    },
+    "industryInfo": {
+      "id": 28000000000,
+      "value": "Sports & Outdoor",
+      "label": "label_28000000000"
+    },
+    "isPromoted": false,
+    "publishCnt": 66045,
+    "videoViews": 1402733523,
+    "rankDiffType": 4
+  },
+  {
+    "trend": [
+      {
+        "time": 1771891200,
+        "value": 0.11
+      },
+      {
+        "time": 1771977600,
+        "value": 0.61
+      },
+      {
+        "time": 1772064000,
+        "value": 1
+      },
+      {
+        "time": 1772150400,
+        "value": 0.61
+      },
+      {
+        "time": 1772236800,
+        "value": 0.42
+      },
+      {
+        "time": 1772323200,
+        "value": 0.3
+      },
+      {
+        "time": 1772409600,
+        "value": 0.24
+      }
+    ],
+    "creators": [
+      {
+        "nickName": "El Uziel",
+        "avatarUrl": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/5c43dcaccb9ec81b4ed2e0487201bde9~tplv-tiktokx-cropcenter:100:100.png?dr=14579&refresh_token=69254d7d&x-expires=1772697600&x-signature=4HJr%2BZVogAVTiBulTqPcpbeNJHE%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=317596d8&idc=my3"
+      },
+      {
+        "nickName": "jazminlares5",
+        "avatarUrl": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/47940a2a58237dc90e6e05c1f3fd8840~tplv-tiktokx-cropcenter:100:100.png?dr=14579&refresh_token=6ca0e429&x-expires=1772697600&x-signature=uBO2acJK6XunQNu7YREjjodXjMc%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=317596d8&idc=my3"
+      },
+      {
+        "nickName": "Daniel Garc\u00eda",
+        "avatarUrl": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/724dce5918fcb42ae66ecb9837e9b2c9~tplv-tiktokx-cropcenter:100:100.png?dr=14579&refresh_token=615daab4&x-expires=1772697600&x-signature=Kcg4sg%2Bfxh5gCIjsDs84o%2BcfsZw%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=317596d8&idc=my3"
+      }
+    ],
+    "rank": 6,
+    "hashtagId": "376046",
+    "hashtagName": "jalisco",
+    "countryInfo": {
+      "id": "ALL",
+      "value": "ALL",
+      "label": "ALL"
+    },
+    "isPromoted": false,
+    "publishCnt": 49772,
+    "videoViews": 2153093856,
+    "rankDiffType": 4
+  },
+  {
+    "trend": [
+      {
+        "time": 1771891200,
+        "value": 0.13
+      },
+      {
+        "time": 1771977600,
+        "value": 1
+      },
+      {
+        "time": 1772064000,
+        "value": 0.57
+      },
+      {
+        "time": 1772150400,
+        "value": 0.19
+      },
+      {
+        "time": 1772236800,
+        "value": 0.14
+      },
+      {
+        "time": 1772323200,
+        "value": 0.12
+      },
+      {
+        "time": 1772409600,
+        "value": 0.11
+      }
+    ],
+    "creators": [
+      {
+        "nickName": "Las aventuras de Dannita \ud83e\udd84",
+        "avatarUrl": "https://p16-sign-va.tiktokcdn.com/tos-maliva-avt-0068/ff87da9276a492b9fe3a6f793ab7546e~tplv-tiktokx-cropcenter:100:100.png?dr=14579&refresh_token=27844f69&x-expires=1772697600&x-signature=%2Ba2wQLnamAWArcbmxr7HITs%2FCeg%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=317596d8&idc=my3"
+      },
+      {
+        "nickName": "Rafael Martins",
+        "avatarUrl": "https://p77-sign-va.tiktokcdn.com/tos-maliva-avt-0068/1435ef489211d3b6cd1fcaf174f75fc2~tplv-tiktokx-cropcenter:100:100.png?dr=14579&refresh_token=67520cd8&x-expires=1772697600&x-signature=vkL12AhtsKenYQk%2B1GBsuYoX%2F5o%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=317596d8&idc=my3"
+      }
+    ],
+    "rank": 7,
+    "hashtagId": "552426",
+    "hashtagName": "domingo",
+    "countryInfo": {
+      "id": "ALL",
+      "value": "ALL",
+      "label": "ALL"
+    },
+    "isPromoted": false,
+    "publishCnt": 31437,
+    "videoViews": 128387231,
+    "rankDiffType": 4
+  },
+  {
+    "trend": [
+      {
+        "time": 1771891200,
+        "value": 0.87
+      },
+      {
+        "time": 1771977600,
+        "value": 1
+      },
+      {
+        "time": 1772064000,
+        "value": 0.91
+      },
+      {
+        "time": 1772150400,
+        "value": 0.81
+      },
+      {
+        "time": 1772236800,
+        "value": 0.75
+      },
+      {
+        "time": 1772323200,
+        "value": 0.76
+      },
+      {
+        "time": 1772409600,
+        "value": 0.74
+      }
+    ],
+    "creators": [
+      {
+        "nickName": "Laura MLP leal",
+        "avatarUrl": "https://p77-sign-va.tiktokcdn.com/tos-maliva-avt-0068/efafa66034ced02388966ac38eaa2154~tplv-tiktokx-cropcenter:100:100.png?dr=14579&refresh_token=cf0e2e6e&x-expires=1772697600&x-signature=gFcRd4dyzBjZRofQH7ft5ZJ9m%2Fw%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=317596d8&idc=my3"
+      },
+      {
+        "nickName": "Meu Desenho Favorito",
+        "avatarUrl": "https://p77-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/84c4041b65ffbb6c6906f3fbf2db904b~tplv-tiktokx-cropcenter:100:100.png?dr=14579&refresh_token=546f7b2d&x-expires=1772697600&x-signature=kzWwDdjOcNHZHOXDJrbX%2B7G84Ts%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=317596d8&idc=my3"
+      },
+      {
+        "nickName": "Zac-An",
+        "avatarUrl": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/74ce3311dd326c3fee3afa38bb5c57e6~tplv-tiktokx-cropcenter:100:100.png?dr=14579&refresh_token=358335c5&x-expires=1772697600&x-signature=OZBzLWsDzSh9RSs4k8JuZ4wG20I%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=317596d8&idc=my3"
+      }
+    ],
+    "rank": 8,
+    "hashtagId": "15182",
+    "hashtagName": "mlp",
+    "countryInfo": {
+      "id": "ALL",
+      "value": "ALL",
+      "label": "ALL"
+    },
+    "industryInfo": {
+      "id": 25000000000,
+      "value": "Games",
+      "label": "label_25000000000"
+    },
+    "isPromoted": false,
+    "publishCnt": 77246,
+    "videoViews": 482093008,
+    "rankDiff": 4,
+    "rankDiffType": 3
+  },
+  {
+    "trend": [
+      {
+        "time": 1771891200,
+        "value": 0.91
+      },
+      {
+        "time": 1771977600,
+        "value": 1
+      },
+      {
+        "time": 1772064000,
+        "value": 0.92
+      },
+      {
+        "time": 1772150400,
+        "value": 0.84
+      },
+      {
+        "time": 1772236800,
+        "value": 0.8
+      },
+      {
+        "time": 1772323200,
+        "value": 0.85
+      },
+      {
+        "time": 1772409600,
+        "value": 0.83
+      }
+    ],
+    "creators": [
+      {
+        "nickName": "Laura MLP leal",
+        "avatarUrl": "https://p77-sign-va.tiktokcdn.com/tos-maliva-avt-0068/efafa66034ced02388966ac38eaa2154~tplv-tiktokx-cropcenter:100:100.png?dr=14579&refresh_token=cf0e2e6e&x-expires=1772697600&x-signature=gFcRd4dyzBjZRofQH7ft5ZJ9m%2Fw%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=317596d8&idc=my3"
+      },
+      {
+        "nickName": "Meu Desenho Favorito",
+        "avatarUrl": "https://p77-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/84c4041b65ffbb6c6906f3fbf2db904b~tplv-tiktokx-cropcenter:100:100.png?dr=14579&refresh_token=546f7b2d&x-expires=1772697600&x-signature=kzWwDdjOcNHZHOXDJrbX%2B7G84Ts%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=317596d8&idc=my3"
+      },
+      {
+        "nickName": "Zac-An",
+        "avatarUrl": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/74ce3311dd326c3fee3afa38bb5c57e6~tplv-tiktokx-cropcenter:100:100.png?dr=14579&refresh_token=358335c5&x-expires=1772697600&x-signature=OZBzLWsDzSh9RSs4k8JuZ4wG20I%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=317596d8&idc=my3"
+      }
+    ],
+    "rank": 9,
+    "hashtagId": "33951",
+    "hashtagName": "mylittlepony",
+    "countryInfo": {
+      "id": "ALL",
+      "value": "ALL",
+      "label": "ALL"
+    },
+    "industryInfo": {
+      "id": 25000000000,
+      "value": "Games",
+      "label": "label_25000000000"
+    },
+    "isPromoted": false,
+    "publishCnt": 65710,
+    "videoViews": 483611992,
+    "rankDiffType": 4
+  },
+  {
+    "trend": [
+      {
+        "time": 1771891200,
+        "value": 0
+      },
+      {
+        "time": 1771977600,
+        "value": 0.66
+      },
+      {
+        "time": 1772064000,
+        "value": 1
+      },
+      {
+        "time": 1772150400,
+        "value": 0.51
+      },
+      {
+        "time": 1772236800,
+        "value": 0.4
+      },
+      {
+        "time": 1772323200,
+        "value": 0.3
+      },
+      {
+        "time": 1772409600,
+        "value": 0.25
+      }
+    ],
+    "rank": 10,
+    "hashtagId": "1604844720897029",
+    "hashtagName": "mencho",
+    "countryInfo": {
+      "id": "ALL",
+      "value": "ALL",
+      "label": "ALL"
+    },
+    "industryInfo": {
+      "id": 23000000000,
+      "value": "News & Entertainment",
+      "label": "label_23000000000"
+    },
+    "isPromoted": false,
+    "publishCnt": 22441,
+    "videoViews": 796121169,
+    "rankDiffType": 4
+  },
+  {
+    "trend": [
+      {
+        "time": 1771891200,
+        "value": 0.15
+      },
+      {
+        "time": 1771977600,
+        "value": 1
+      },
+      {
+        "time": 1772064000,
+        "value": 0.19
+      },
+      {
+        "time": 1772150400,
+        "value": 0.07
+      },
+      {
+        "time": 1772236800,
+        "value": 0.06
+      },
+      {
+        "time": 1772323200,
+        "value": 0.05
+      },
+      {
+        "time": 1772409600,
+        "value": 0.05
+      }
+    ],
+    "rank": 11,
+    "hashtagId": "6006",
+    "hashtagName": "happysunday",
+    "countryInfo": {
+      "id": "ALL",
+      "value": "ALL",
+      "label": "ALL"
+    },
+    "isPromoted": false,
+    "publishCnt": 21582,
+    "videoViews": 26269814,
+    "rankDiffType": 4
+  },
+  {
+    "trend": [
+      {
+        "time": 1771891200,
+        "value": 0.23
+      },
+      {
+        "time": 1771977600,
+        "value": 0.69
+      },
+      {
+        "time": 1772064000,
+        "value": 1
+      },
+      {
+        "time": 1772150400,
+        "value": 0.62
+      },
+      {
+        "time": 1772236800,
+        "value": 0.43
+      },
+      {
+        "time": 1772323200,
+        "value": 0.36
+      },
+      {
+        "time": 1772409600,
+        "value": 0.29
+      }
+    ],
+    "rank": 12,
+    "hashtagId": "343293",
+    "hashtagName": "guadalajara",
+    "countryInfo": {
+      "id": "ALL",
+      "value": "ALL",
+      "label": "ALL"
+    },
+    "isPromoted": false,
+    "publishCnt": 27432,
+    "videoViews": 783073843,
+    "rankDiffType": 4
+  },
+  {
+    "trend": [
+      {
+        "time": 1771891200,
+        "value": 0.77
+      },
+      {
+        "time": 1771977600,
+        "value": 0.97
+      },
+      {
+        "time": 1772064000,
+        "value": 0.98
+      },
+      {
+        "time": 1772150400,
+        "value": 0.98
+      },
+      {
+        "time": 1772236800,
+        "value": 1
+      },
+      {
+        "time": 1772323200,
+        "value": 0.99
+      },
+      {
+        "time": 1772409600,
+        "value": 0.97
+      }
+    ],
+    "rank": 13,
+    "hashtagId": "1654115449348102",
+    "hashtagName": "alysaliu",
+    "countryInfo": {
+      "id": "ALL",
+      "value": "ALL",
+      "label": "ALL"
+    },
+    "industryInfo": {
+      "id": 28000000000,
+      "value": "Sports & Outdoor",
+      "label": "label_28000000000"
+    },
+    "isPromoted": false,
+    "publishCnt": 28906,
+    "videoViews": 1983889447,
+    "rankDiff": 0,
+    "rankDiffType": 2
+  },
+  {
+    "trend": [
+      {
+        "time": 1771891200,
+        "value": 0.98
+      },
+      {
+        "time": 1771977600,
+        "value": 1
+      },
+      {
+        "time": 1772064000,
+        "value": 0.98
+      },
+      {
+        "time": 1772150400,
+        "value": 0.99
+      },
+      {
+        "time": 1772236800,
+        "value": 0.98
+      },
+      {
+        "time": 1772323200,
+        "value": 0.97
+      },
+      {
+        "time": 1772409600,
+        "value": 1
+      }
+    ],
+    "creators": [
+      {
+        "nickName": "\ud801\ude5a rosie | ILVEORSE",
+        "avatarUrl": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/df311c472e2e944feb39b4ea9fd695ea~tplv-tiktokx-cropcenter:100:100.png?dr=14579&refresh_token=1b086dda&x-expires=1772697600&x-signature=JgvvYnnxh%2FKbkhtyz3wrlUR4%2FW4%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=317596d8&idc=my3"
+      },
+      {
+        "nickName": "tamtimtomtom",
+        "avatarUrl": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/66365b0f22185e6b07a40fb8a05843c3~tplv-tiktokx-cropcenter:100:100.png?dr=14579&refresh_token=5898a34e&x-expires=1772697600&x-signature=eYcmXref5F7B7w5FC7xui%2Bs4hHY%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=317596d8&idc=my3"
+      },
+      {
+        "nickName": "Isa Beluzak",
+        "avatarUrl": "https://p16-sign-sg.tiktokcdn.com/tos-alisg-avt-0068/f86fc82bcbe49bda0d0da29060cd089d~tplv-tiktokx-cropcenter:100:100.png?dr=14579&refresh_token=b93dd628&x-expires=1772697600&x-signature=CEmx3VaeO1H4WKf%2FAZIhvMX61V8%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=317596d8&idc=my3"
+      }
+    ],
+    "rank": 14,
+    "hashtagId": "1601533329171462",
+    "hashtagName": "hearts2hearts",
+    "countryInfo": {
+      "id": "ALL",
+      "value": "ALL",
+      "label": "ALL"
+    },
+    "industryInfo": {
+      "id": 23000000000,
+      "value": "News & Entertainment",
+      "label": "label_23000000000"
+    },
+    "isPromoted": false,
+    "publishCnt": 49332,
+    "videoViews": 674126952,
+    "rankDiff": 5,
+    "rankDiffType": 3
+  },
+  {
+    "trend": [
+      {
+        "time": 1771891200,
+        "value": 0.35
+      },
+      {
+        "time": 1771977600,
+        "value": 1
+      },
+      {
+        "time": 1772064000,
+        "value": 0.46
+      },
+      {
+        "time": 1772150400,
+        "value": 0.34
+      },
+      {
+        "time": 1772236800,
+        "value": 0.27
+      },
+      {
+        "time": 1772323200,
+        "value": 0.21
+      },
+      {
+        "time": 1772409600,
+        "value": 0.19
+      }
+    ],
+    "creators": [
+      {
+        "nickName": "Theclipsa",
+        "avatarUrl": "https://p77-sign-va.tiktokcdn.com/tos-maliva-avt-0068/c6df31de8c95cff20f549a3247214681~tplv-tiktokx-cropcenter:100:100.png?dr=14579&refresh_token=0f88a3b8&x-expires=1772697600&x-signature=4UMF%2F0Rks79uofIPlPf8udGFgio%3D&t=4d5b0474&ps=13740610&shp=a5d48078&shcp=317596d8&idc=my3"
+      }
+    ],
+    "rank": 15,
+    "hashtagId": "1599860131636229",
+    "hashtagName": "ryangarcia",
+    "countryInfo": {
+      "id": "ALL",
+      "value": "ALL",
+      "label": "ALL"
+    },
+    "industryInfo": {
+      "id": 28000000000,
+      "value": "Sports & Outdoor",
+      "label": "label_28000000000"
+    },
+    "isPromoted": false,
+    "publishCnt": 10375,
+    "videoViews": 480307438,
+    "rankDiff": 20,
+    "rankDiffType": 1
+  },
+  {
+    "trend": [
+      {
+        "time": 1771891200,
+        "value": 0.25
+      },
+      {
+        "time": 1771977600,
+        "value": 0.48
+      },
+      {
+        "time": 1772064000,
+        "value": 1
+      },
+      {
+        "time": 1772150400,
+        "value": 0.21
+      },
+      {
+        "time": 1772236800,
+        "value": 0.12
+      },
+      {
+        "time": 1772323200,
+        "value": 0.09
+      },
+      {
+        "time": 1772409600,
+        "value": 0.07
+      }
+    ],
+    "rank": 16,
+    "hashtagId": "7291675",
+    "hashtagName": "23\u0444\u0435\u0432\u0440\u0430\u043b\u044f",
+    "countryInfo": {
+      "id": "ALL",
+      "value": "ALL",
+      "label": "ALL"
+    },
+    "isPromoted": false,
+    "publishCnt": 28679,
+    "videoViews": 557010814,
+    "rankDiffType": 4
+  },
+  {
+    "trend": [
+      {
+        "time": 1771891200,
+        "value": 0.73
+      },
+      {
+        "time": 1771977600,
+        "value": 1
+      },
+      {
+        "time": 1772064000,
+        "value": 0.4
+      },
+      {
+        "time": 1772150400,
+        "value": 0.22
+      },
+      {
+        "time": 1772236800,
+        "value": 0.15
+      },
+      {
+        "time": 1772323200,
+        "value": 0.12
+      },
+      {
+        "time": 1772409600,
+        "value": 0.1
+      }
+    ],
+    "rank": 17,
+    "hashtagId": "8249206",
+    "hashtagName": "\u043c\u0430\u0441\u043b\u0435\u043d\u0438\u0446\u0430",
+    "countryInfo": {
+      "id": "ALL",
+      "value": "ALL",
+      "label": "ALL"
+    },
+    "industryInfo": {
+      "id": 27000000000,
+      "value": "Food & Beverage",
+      "label": "label_27000000000"
+    },
+    "isPromoted": false,
+    "publishCnt": 16817,
+    "videoViews": 151306856,
+    "rankDiffType": 4
+  },
+  {
+    "trend": [
+      {
+        "time": 1771891200,
+        "value": 0.89
+      },
+      {
+        "time": 1771977600,
+        "value": 1
+      },
+      {
+        "time": 1772064000,
+        "value": 0.91
+      },
+      {
+        "time": 1772150400,
+        "value": 0.81
+      },
+      {
+        "time": 1772236800,
+        "value": 0.73
+      },
+      {
+        "time": 1772323200,
+        "value": 0.68
+      },
+      {
+        "time": 1772409600,
+        "value": 0.63
+      }
+    ],
+    "rank": 18,
+    "hashtagId": "17683",
+    "hashtagName": "tan",
+    "countryInfo": {
+      "id": "ALL",
+      "value": "ALL",
+      "label": "ALL"
+    },
+    "isPromoted": false,
+    "publishCnt": 36590,
+    "videoViews": 147100528,
+    "rankDiff": 8,
+    "rankDiffType": 3
+  },
+  {
+    "trend": [
+      {
+        "time": 1771891200,
+        "value": 0.39
+      },
+      {
+        "time": 1771977600,
+        "value": 1
+      },
+      {
+        "time": 1772064000,
+        "value": 0.71
+      },
+      {
+        "time": 1772150400,
+        "value": 0.38
+      },
+      {
+        "time": 1772236800,
+        "value": 0.3
+      },
+      {
+        "time": 1772323200,
+        "value": 0.28
+      },
+      {
+        "time": 1772409600,
+        "value": 0.3
+      }
+    ],
+    "rank": 19,
+    "hashtagId": "2393964",
+    "hashtagName": "tottenham",
+    "countryInfo": {
+      "id": "ALL",
+      "value": "ALL",
+      "label": "ALL"
+    },
+    "industryInfo": {
+      "id": 28000000000,
+      "value": "Sports & Outdoor",
+      "label": "label_28000000000"
+    },
+    "isPromoted": false,
+    "publishCnt": 13906,
+    "videoViews": 234921820,
+    "rankDiffType": 4
+  },
+  {
+    "trend": [
+      {
+        "time": 1771891200,
+        "value": 0.91
+      },
+      {
+        "time": 1771977600,
+        "value": 1
+      },
+      {
+        "time": 1772064000,
+        "value": 0.88
+      },
+      {
+        "time": 1772150400,
+        "value": 0.83
+      },
+      {
+        "time": 1772236800,
+        "value": 0.79
+      },
+      {
+        "time": 1772323200,
+        "value": 0.74
+      },
+      {
+        "time": 1772409600,
+        "value": 0.74
+      }
+    ],
+    "rank": 20,
+    "hashtagId": "408709",
+    "hashtagName": "rants",
+    "countryInfo": {
+      "id": "ALL",
+      "value": "ALL",
+      "label": "ALL"
+    },
+    "industryInfo": {
+      "id": 25000000000,
+      "value": "Games",
+      "label": "label_25000000000"
+    },
+    "isPromoted": false,
+    "publishCnt": 50562,
+    "videoViews": 90583066,
+    "rankDiff": 6,
+    "rankDiffType": 3
+  }
+]
