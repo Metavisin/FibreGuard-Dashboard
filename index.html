@@ -132,8 +132,8 @@ let TIKTOK_DATA = null;
 
 function fv(n){if(n>=1e9)return(n/1e9).toFixed(1)+'B';if(n>=1e6)return(n/1e6).toFixed(1)+'M';if(n>=1e3)return(n/1e3).toFixed(1)+'K';return n}
 
-const FG_KEYWORDS = ['sofa','couch','furniture','home','interior','decor','living room','bedroom','stain','fabric','clean','cozy','comfort','family','kids','pet','durability','relax','wellness','aesthetic','organization','cleantok','home improvement'];
-const FG_PREFIXES = ['cozy','home','room','furniture','decor'];
+const FG_KEYWORDS = ['sofa','couch','furniture','home','interior','decor','living','bedroom','stain','fabric','clean','cozy','comfort','family','kids','pet','durability','relax','wellness','aesthetic','organize','cleantok','improve','design','makeover','renov','apartment','house','indoor','viral','trend','fyp','foryou','lifestyle','asmr','slow','aesthetic','quiet','calm','peaceful','周日','周末','diy','craft','handmade','wood','cortisol','stress','calm','selfcare','comfort'];
+const FG_PREFIXES = ['cozy','home','room','furniture','decor','living','bed','clean','diy','asmr'];
 
 function isFibreGuard(hashtag) {
   const h = hashtag.toLowerCase();
@@ -146,11 +146,14 @@ function getFGReason(hashtag) {
   const h = hashtag.toLowerCase();
   if(h.includes('sofa')||h.includes('couch')) return 'sofa';
   if(h.includes('furniture')) return 'furniture';
-  if(h.includes('home')) return 'home';
-  if(h.includes('interior')||h.includes('decor')) return 'decor';
+  if(h.includes('home')||h.includes('house')||h.includes('apartment')) return 'home';
+  if(h.includes('interior')||h.includes('decor')||h.includes('design')) return 'decor';
   if(h.includes('cozy')) return 'cozy';
-  if(h.includes('clean')||h.includes('stain')) return 'cleaning';
-  if(h.includes('room')||h.includes('bedroom')||h.includes('living')) return 'room';
+  if(h.includes('clean')||h.includes('stain')||h.includes('cleantok')) return 'cleaning';
+  if(h.includes('room')||h.includes('bedroom')||h.includes('living')||h.includes('indoor')) return 'room';
+  if(h.includes('kids')||h.includes('family')||h.includes('pet')) return 'family';
+  if(h.includes('diy')||h.includes('craft')||h.includes('makeover')) return 'diy';
+  if(h.includes('asmr')||h.includes('relax')||h.includes('calm')) return 'asmr';
   return 'lifestyle';
 }
 
