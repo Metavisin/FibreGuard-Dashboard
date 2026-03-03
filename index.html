@@ -1,0 +1,497 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>FibreGuard Trend Spotter v3</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#09090b;--bg2:#18181b;--bg3:#27272a;--bg4:#3f3f46;--text:#fafafa;--text2:#a1a1aa;--text3:#71717a;
+--green:#22c55e;--green-d:rgba(34,197,94,.12);--blue:#3b82f6;--blue-d:rgba(59,130,246,.12);
+--red:#ef4444;--red-d:rgba(239,68,68,.12);--yellow:#eab308;--yellow-d:rgba(234,179,8,.1);
+--purple:#a855f7;--purple-d:rgba(168,85,247,.12);--orange:#f97316;--orange-d:rgba(249,115,22,.12);
+--border:#27272a;--card:#18181b;--r:12px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.5}
+a{color:inherit;text-decoration:none}
+.sh{max-width:1280px;margin:0 auto;padding:0 24px}
+header{padding:28px 0 20px;border-bottom:1px solid var(--border)}
+header h1{font-size:22px;font-weight:800;letter-spacing:-.5px}
+header h1 em{font-style:normal;color:var(--green)}
+.meta{display:flex;gap:10px;margin-top:6px;font-size:11px;color:var(--text3);flex-wrap:wrap;align-items:center}
+.meta .p{padding:2px 8px;border-radius:5px;background:var(--bg3);color:var(--text2);font-weight:500}
+.meta .live{color:var(--green);display:flex;align-items:center;gap:4px}
+.meta .live::before{content:'';width:5px;height:5px;border-radius:50%;background:var(--green);animation:p 2s infinite}
+@keyframes p{0%,100%{opacity:1}50%{opacity:.3}}
+.tabs{display:flex;gap:2px;padding-top:20px;flex-wrap:wrap}
+.tab{padding:8px 18px;font-size:13px;font-weight:600;cursor:pointer;border:none;background:none;color:var(--text3);
+border-radius:8px 8px 0 0;transition:all .15s}
+.tab:hover{color:var(--text2);background:var(--bg2)}
+.tab.on{color:var(--text);background:var(--bg2)}
+.tab .c{font-size:10px;padding:1px 5px;border-radius:4px;background:var(--bg3);color:var(--text3);margin-left:5px}
+.tab.on .c{background:var(--green-d);color:var(--green)}
+.pnl{background:var(--bg2);border-radius:0 var(--r) var(--r) var(--r);padding:20px;min-height:300px}
+.pnl[hidden]{display:none}
+.sts{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:20px}
+.st{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:14px}
+.st .l{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--text3);margin-bottom:2px}
+.st .v{font-size:26px;font-weight:800}.st .sb{font-size:10px;color:var(--text3);margin-top:1px}
+.ds{margin-bottom:24px}
+.dh{display:flex;align-items:center;gap:8px;margin-bottom:10px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.dd{width:8px;height:8px;border-radius:50%}
+.dd.r{background:var(--green)}.dd.n{background:var(--blue)}.dd.d{background:var(--red)}
+.dl{font-size:13px;font-weight:700}.dc{font-size:11px;color:var(--text3)}
+.tbl{width:100%;border-collapse:separate;border-spacing:0 4px}
+.tbl th{font-size:10px;text-transform:uppercase;letter-spacing:.5px;color:var(--text3);font-weight:600;
+padding:4px 10px;text-align:left;position:sticky;top:0;background:var(--bg2);user-select:none}
+.tbl th.sortable{cursor:pointer}.tbl th.sortable:hover{color:var(--text2)}
+.tbl th .arrow{font-size:8px;margin-left:2px;opacity:0.4}
+.tbl th.sorted .arrow{opacity:1;color:var(--green)}
+.tbl th.num{text-align:right}
+.tbl td{padding:10px;background:var(--bg);vertical-align:middle}
+.tbl tr td:first-child{border-radius:var(--r) 0 0 var(--r)}
+.tbl tr td:last-child{border-radius:0 var(--r) var(--r) 0}
+.tbl tr{transition:all .1s}
+.tbl tr:hover td{background:var(--bg3)}
+.rank{font-size:11px;color:var(--text3);font-weight:700;width:32px;text-align:center}
+.ht a{font-size:14px;font-weight:700;color:var(--green);transition:opacity .15s}
+.ht a:hover{opacity:.7}
+.ht .lnk{font-size:10px;color:var(--text3);margin-left:6px;opacity:0;transition:opacity .15s}
+.tbl tr:hover .ht .lnk{opacity:1}
+.dir{font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;text-transform:uppercase;letter-spacing:.3px;white-space:nowrap}
+.dir.r{background:var(--green-d);color:var(--green)}
+.dir.n{background:var(--blue-d);color:var(--blue)}
+.dir.d{background:var(--red-d);color:var(--red)}
+.num{text-align:right;font-variant-numeric:tabular-nums}
+.vw{font-size:14px;font-weight:700}
+.ps{font-size:12px;color:var(--text2)}
+.sc{font-size:11px;color:var(--text3)}
+.tags{display:flex;gap:3px;flex-wrap:wrap;margin-top:3px}
+.tg{font-size:9px;padding:1px 6px;border-radius:3px;background:var(--bg2);color:var(--text3);border:1px solid var(--border)}
+.eu-pills{display:flex;gap:3px;flex-wrap:wrap}
+.ep{font-size:9px;padding:1px 6px;border-radius:3px;background:var(--blue-d);color:var(--blue);font-weight:600}
+.eu-pct{font-size:12px;font-weight:700;color:var(--blue)}
+.age{font-size:9px;padding:1px 5px;border-radius:3px;background:var(--yellow-d);color:var(--yellow)}
+.score-wrap{position:relative;display:inline-block;cursor:help}
+.score-tip{display:none;position:absolute;bottom:calc(100% + 8px);right:0;width:260px;background:var(--bg3);border:1px solid var(--bg4);border-radius:8px;padding:10px 12px;font-size:11px;color:var(--text2);line-height:1.5;z-index:100;box-shadow:0 4px 12px rgba(0,0,0,.4);pointer-events:none}
+.score-wrap:hover .score-tip{display:block}
+svg.sp{display:block}
+/* FG Picks */
+.picks{padding:20px 0 0}
+.picks-title{font-size:14px;font-weight:800;text-transform:uppercase;letter-spacing:.5px;color:var(--green);margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.picks-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+.pick{background:linear-gradient(135deg,rgba(34,197,94,.06),rgba(34,197,94,.02));border:1px solid rgba(34,197,94,.2);border-radius:var(--r);padding:16px;position:relative;transition:all .15s}
+.pick:hover{border-color:rgba(34,197,94,.4);transform:translateY(-1px)}
+.pick-rank{position:absolute;top:10px;right:12px;font-size:24px;font-weight:800;color:rgba(34,197,94,.15)}
+.pick-name{font-size:15px;font-weight:700;margin-bottom:4px}
+.pick-name a{color:var(--green)}
+.pick-why{font-size:11px;color:var(--text2);margin-bottom:6px;line-height:1.4}
+.pick-idea{font-size:11px;color:var(--text);background:rgba(34,197,94,.08);padding:6px 10px;border-radius:8px;margin-top:8px;line-height:1.4}
+.pick-idea strong{color:var(--green)}
+.pick-stats{font-size:10px;color:var(--text3);display:flex;gap:8px;margin-top:6px}
+/* Cross-platform */
+.xp-grid{display:grid;grid-template-columns:1fr;gap:12px}
+.xp-card{background:var(--bg);border:1px solid var(--border);border-radius:var(--r);padding:18px;transition:all .15s;position:relative;overflow:hidden}
+.xp-card:hover{border-color:var(--bg4);transform:translateY(-1px)}
+.xp-rank{position:absolute;top:12px;right:16px;font-size:36px;font-weight:800;color:rgba(255,255,255,.04)}
+.xp-head{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.xp-name{font-size:16px;font-weight:800}
+.xp-plat{display:flex;gap:4px;flex-wrap:wrap}
+.xp-pill{font-size:9px;font-weight:700;padding:2px 8px;border-radius:4px;text-transform:uppercase;letter-spacing:.3px}
+.xp-pill.tt{background:rgba(255,0,80,.12);color:#ff0050}
+.xp-pill.ig{background:rgba(225,48,108,.12);color:#e1306c}
+.xp-pill.yt{background:rgba(255,0,0,.12);color:#ff4444}
+.xp-pill.x{background:rgba(255,255,255,.08);color:var(--text2)}
+.xp-desc{font-size:12px;color:var(--text2);line-height:1.5;margin-bottom:8px}
+.xp-idea{font-size:11px;color:var(--text);background:rgba(168,85,247,.08);padding:8px 12px;border-radius:8px;line-height:1.4;border-left:2px solid var(--purple)}
+.xp-idea strong{color:var(--purple)}
+.xp-meta{font-size:10px;color:var(--text3);margin-top:8px;display:flex;gap:12px;flex-wrap:wrap}
+.xp-dir{font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px}
+.xp-dir.hot{background:var(--orange-d);color:var(--orange)}
+.xp-dir.peak{background:var(--green-d);color:var(--green)}
+.xp-dir.rising{background:var(--purple-d);color:var(--purple)}
+.xp-updated{font-size:11px;color:var(--text3);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)}
+@media(max-width:768px){
+.sh{padding:0 10px}.sts{grid-template-columns:1fr}
+.picks-grid{grid-template-columns:1fr}
+.tbl{font-size:12px}.hide-m{display:none}
+}
+</style></head>
+<body>
+<div class="sh">
+<header>
+<h1>🎯 FibreGuard <em>Trend Spotter</em> v3</h1>
+<div class="meta">
+<span class="live">Live TikTok API</span>
+<span class="p" id="ts"></span>
+<span class="p">77 TikTok hashtags + Cross-Platform</span>
+<span class="p">Updated daily</span>
+</div>
+</header>
+<div id="fg-picks"></div>
+<div class="tabs">
+<button class="tab on" onclick="sw('ol',this)">🔗 Overlap<span class="c" id="ol-c"></span></button>
+<button class="tab" onclick="sw('us',this)">🇺🇸 US Market<span class="c" id="us-c"></span></button>
+<button class="tab" onclick="sw('eu',this)">🇪🇺 EU Region<span class="c" id="eu-c"></span></button>
+<button class="tab" onclick="sw('xp',this)">🔥 Cross-Platform<span class="c">6</span></button>
+</div>
+<div class="pnl" id="p-ol"></div>
+<div class="pnl" id="p-us" hidden></div>
+<div class="pnl" id="p-eu" hidden></div>
+<div class="pnl" id="p-xp" hidden></div>
+</div>
+<script>
+const FL={NL:'🇳🇱',IT:'🇮🇹',CZ:'🇨🇿',LV:'🇱🇻',SK:'🇸🇰',SE:'🇸🇪',IS:'🇮🇸',FI:'🇫🇮',NO:'🇳🇴',DK:'🇩🇰',IE:'🇮🇪',GB:'🇬🇧',RO:'🇷🇴',GR:'🇬🇷',BG:'🇧🇬',HU:'🇭🇺',EE:'🇪🇪',LT:'🇱🇹',DE:'🇩🇪',AT:'🇦🇹',CH:'🇨🇭',ES:'🇪🇸',PT:'🇵🇹',FR:'🇫🇷',PL:'🇵🇱',HR:'🇭🇷',LU:'🇱🇺',BE:'🇧🇪'};
+const D=[
+{c:"DK",n:"Denmark"},{c:"IE",n:"Ireland"},{c:"CH",n:"Switzerland"},{c:"LU",n:"Luxembourg"}],int:["Sports News","Social News","Entertainment News"],ages:[{r:"25-34",s:57},{r:"35-44",s:25},{r:"45-54",s:18}],sp:[0.03,0.03,0.03,0.03,0.04,0.04,0.04,0.05,0.06,0.08,0.1,0.12,0.17,0.35,1,0.42,0.27,0.2,0.15,0.12,0.09,0.08,0.06,0.06,0.05,0.05,0.04,0.03,0.03,0.03]},
+{c:"CH",n:"Switzerland"},{c:"DK",n:"Denmark"},{c:"ES",n:"Spain"},{c:"IE",n:"Ireland"},{c:"LU",n:"Luxembourg"}],int:["Entertainment News","Social News","Dance"],ages:[{r:"25-34",s:62},{r:"35-44",s:23},{r:"45-54",s:15}],sp:[0.05,0.05,0.06,0.06,0.06,0.07,0.06,0.05,0.08,0.09,0.11,0.13,0.16,0.19,0.37,1,0.47,0.31,0.23,0.19,0.15,0.11,0.1,0.08,0.07,0.07,0.06,0.06,0.05,0.04]},
+{c:"IT",n:"Italy"},{c:"PT",n:"Portugal"},{c:"CH",n:"Switzerland"},{c:"RO",n:"Romania"}],int:["Scripted Drama","Advertisement","Selfies"],ages:[{r:"25-34",s:45},{r:"35-44",s:32},{r:"45-54",s:23}],sp:[0.1,0.13,0.15,0.16,0.16,0.17,0.18,0.19,0.2,0.22,0.23,0.24,0.24,0.24,0.23,0.24,0.29,0.32,0.39,0.51,1,0.78,0.37,0.21,0.14,0.1,0.08,0.07,0.06,0.05]},
+{n:"wutheringheights",url:"https://www.tiktok.com/tag/wutheringheights",v:518002363,p:33394,s:0.8,d:"neutral",us:0,eu:82,et:[{c:"IE",n:"Ireland"},{c:"GB",n:"United Kingdom"},{c:"IS",n:"Iceland"},{c:"DK",n:"Denmark"},{c:"LV",n:"Latvia"},{c:"NO",n:"Norway"}],int:["Theatre & Stage","Beauty","Travel"],ages:[{r:"25-34",s:74},{r:"35-44",s:19},{r:"45-54",s:7}],sp:[0.13,0.19,0.2,0.19,0.3,0.3,0.21,0.21,0.21,0.21,0.2,0.22,0.31,0.27,0.22,0.21,0.27,0.27,0.33,0.58,0.82,0.96,1,0.93,0.94,0.84,0.79,0.81,0.83,0.8]},
+{c:"GB",n:"United Kingdom"},{c:"HR",n:"Croatia"},{c:"NO",n:"Norway"},{c:"FI",n:"Finland"},{c:"IS",n:"Iceland"}],int:["Nail Art","Family","Photography"],ages:[{r:"25-34",s:67},{r:"35-44",s:24},{r:"45-54",s:9}],sp:[0.11,0.18,0.18,0.18,0.18,0.19,0.23,0.3,0.3,0.26,0.25,0.26,0.3,0.55,0.85,0.65,0.55,0.49,0.5,0.66,1,0.85,0.69,0.44,0.3,0.24,0.21,0.27,0.36,0.32]},
+{n:"iliamalinin",url:"https://www.tiktok.com/tag/iliamalinin",v:380642646,p:6322,s:0.66,d:"rising",us:0,eu:72,et:[{c:"LV",n:"Latvia"},{c:"IT",n:"Italy"},{c:"EE",n:"Estonia"},{c:"LT",n:"Lithuania"},{c:"FI",n:"Finland"},{c:"IS",n:"Iceland"}],int:["Theatre & Stage","Extreme Sports","Sports News"],ages:[{r:"25-34",s:74},{r:"35-44",s:17},{r:"45-54",s:10}],sp:[0.03,0.03,0.05,0.04,0.04,0.04,0.07,0.06,0.08,0.08,0.08,0.07,0.1,0.18,0.3,0.32,0.37,0.41,0.35,0.59,1,0.73,0.58,0.5,0.46,0.41,0.49,0.55,0.66,0.66]},
+{c:"ES",n:"Spain"},{c:"PT",n:"Portugal"},{c:"CH",n:"Switzerland"},{c:"LU",n:"Luxembourg"}],int:["Sports News","Non-Video Games","Video Games"],ages:[{r:"25-34",s:63},{r:"35-44",s:24},{r:"45-54",s:13}],sp:[0.03,0.02,0.03,0.02,0.03,0.03,0.04,0.02,0.04,0.04,0.11,0.13,0.12,0.2,1,0.54,0.5,0.39,0.33,0.2,0.12,0.15,0.07,0.12,0.1,0.11,0.07,0.06,0.07,0.1]},
+{n:"curling",url:"https://www.tiktok.com/tag/curling",v:336927841,p:4958,s:0.36,d:"declining",us:0,eu:100,et:[{c:"SE",n:"Sweden"},{c:"IT",n:"Italy"},{c:"IS",n:"Iceland"},{c:"FI",n:"Finland"},{c:"NO",n:"Norway"},{c:"DK",n:"Denmark"}],int:["Sports News","Extreme Sports","Social News"],ages:[{r:"25-34",s:58},{r:"35-44",s:25},{r:"45-54",s:17}],sp:[0.11,0.12,0.17,0.14,0.16,0.14,0.18,0.16,0.16,0.16,0.2,0.36,0.38,0.56,0.62,0.62,0.86,0.71,0.7,0.72,0.85,0.96,1,0.97,0.84,0.82,0.81,0.72,0.63,0.49]},
+{c:"GR",n:"Greece"},{c:"LT",n:"Lithuania"},{c:"HR",n:"Croatia"}],int:["Sports News","Traditional Sports","Extreme Sports"],ages:[{r:"25-34",s:68},{r:"35-44",s:22},{r:"45-54",s:10}],sp:[0.05,0.07,0.08,0.1,0.08,0.08,0.1,0.22,0.17,0.14,0.12,0.12,0.16,0.17,0.17,0.17,0.18,0.24,0.39,0.72,0.95,1,0.5,0.36,0.26,0.21,0.16,0.14,0.1,0.14]},
+{c:"DK",n:"Denmark"},{c:"IE",n:"Ireland"},{c:"CH",n:"Switzerland"},{c:"NO",n:"Norway"},{c:"LU",n:"Luxembourg"}],int:["Sports News","Scripted Comedy","Traditional Sports"],ages:[{r:"25-34",s:61},{r:"35-44",s:23},{r:"45-54",s:16}],sp:[0.02,0.03,0.02,0.03,0.02,0.03,0.04,0.03,0.04,0.06,0.07,0.08,0.11,0.17,0.32,1,0.41,0.26,0.18,0.13,0.11,0.09,0.08,0.07,0.07,0.06,0.05,0.05,0.04,0.04]},
+{n:"mikaylanogueira",url:"https://www.tiktok.com/tag/mikaylanogueira",v:264650733,p:4480,s:0.31,d:"neutral",us:13,eu:58,et:[{c:"IS",n:"Iceland"},{c:"IE",n:"Ireland"},{c:"GB",n:"United Kingdom"},{c:"DK",n:"Denmark"},{c:"FI",n:"Finland"},{c:"NO",n:"Norway"}],int:["Beauty","Family","Mukbangs & Tasting"],ages:[{r:"25-34",s:72},{r:"35-44",s:19},{r:"45-54",s:9}],sp:[0.09,0.11,0.12,0.12,0.12,0.12,0.1,0.11,0.12,0.13,0.14,0.12,0.2,0.27,0.19,0.17,0.15,0.23,1,0.84,0.94,0.94,0.9,0.7,0.56,0.47,0.37,0.36,0.43,0.44]},
+{n:"loveisblind",url:"https://www.tiktok.com/tag/loveisblind",v:252801651,p:12132,s:0.65,d:"declining",us:9,eu:79,et:[{c:"SE",n:"Sweden"},{c:"DE",n:"Germany"},{c:"AT",n:"Austria"},{c:"IS",n:"Iceland"},{c:"CH",n:"Switzerland"},{c:"DK",n:"Denmark"}],int:["Social News","Entertainment News","Family"],ages:[{r:"25-34",s:59},{r:"35-44",s:32},{r:"45-54",s:9}],sp:[0.07,0.12,0.14,0.18,0.16,0.13,0.11,0.14,0.13,0.14,0.13,0.11,0.11,0.12,0.12,0.11,0.13,0.24,0.43,0.45,0.43,0.46,0.55,0.57,0.69,1,0.95,0.78,0.67,0.65]},
+{n:"kidrock",url:"https://www.tiktok.com/tag/kidrock",v:231988046,p:13390,s:0.1,d:"neutral",us:26,eu:39,et:[{c:"IS",n:"Iceland"},{c:"IE",n:"Ireland"},{c:"DK",n:"Denmark"},{c:"FI",n:"Finland"},{c:"NO",n:"Norway"},{c:"SE",n:"Sweden"}],int:["Social News","Humanities","Social Issues"],ages:[{r:"25-34",s:51},{r:"45-54",s:27},{r:"35-44",s:22}],sp:[0.04,0.05,0.05,0.08,0.07,0.06,0.06,0.07,0.14,0.2,0.22,0.27,0.29,0.45,1,0.51,0.38,0.26,0.21,0.18,0.14,0.14,0.12,0.17,0.16,0.13,0.12,0.11,0.11,0.1]},
+{n:"iheartmemphis",url:"https://www.tiktok.com/tag/iheartmemphis",v:208197744,p:4395,s:0.06,d:"declining",us:39,eu:33,et:[{c:"GB",n:"United Kingdom"},{c:"IE",n:"Ireland"},{c:"DK",n:"Denmark"},{c:"SE",n:"Sweden"},{c:"IS",n:"Iceland"},{c:"NO",n:"Norway"}],int:["Entertainment News","Babies","Family"],ages:[{r:"25-34",s:75},{r:"35-44",s:19},{r:"45-54",s:6}],sp:[0.01,0.01,0.02,0.02,0.02,0.01,0.02,0.01,0.02,0.02,0.02,0.02,0.1,0.18,0.34,1,0.55,0.33,0.2,0.18,0.15,0.17,0.23,0.25,0.15,0.11,0.1,0.1,0.08,0.06]},
+{n:"speedskating",url:"https://www.tiktok.com/tag/speedskating",v:194860922,p:3201,s:0.55,d:"rising",us:0,eu:100,et:[{c:"NL",n:"Netherlands"},{c:"IT",n:"Italy"},{c:"CZ",n:"Czech Republic"},{c:"LV",n:"Latvia"},{c:"SK",n:"Slovakia"},{c:"HU",n:"Hungary"}],int:["Sports News","Extreme Sports","Other Art"],ages:[{r:"25-34",s:57},{r:"35-44",s:25},{r:"45-54",s:18}],sp:[0.07,0.11,0.15,0.18,0.21,0.2,0.2,0.14,0.22,0.24,0.27,0.28,0.28,0.49,0.38,0.64,1,0.9,0.76,0.74,0.73,0.62,0.56,0.45,0.37,0.34,0.36,0.4,0.51,0.55]},
+{n:"juttaleerdam",url:"https://www.tiktok.com/tag/juttaleerdam",v:205620020,p:4226,s:0.50,d:"rising",us:0,eu:100,et:[{c:"NL",n:"Netherlands"},{c:"LV",n:"Latvia"},{c:"CZ",n:"Czech Republic"},{c:"SK",n:"Slovakia"},{c:"HU",n:"Hungary"},{c:"IT",n:"Italy"}],int:["Fishing, Hunting & Camping","Extreme Sports","Sports News"],ages:[{r:"25-34",s:58},{r:"35-44",s:24},{r:"45-54",s:18}],sp:[0.05,0.09,0.11,0.15,0.17,0.17,0.18,0.08,0.18,0.2,0.21,0.23,0.22,0.36,0.2,0.54,1,1,0.82,0.82,0.71,0.55,0.4,0.34,0.28,0.3,0.21,0.23,0.29,0.39]},
+{n:"nyfw",url:"https://www.tiktok.com/tag/nyfw",v:179748224,p:18547,s:0.25,d:"declining",us:18,eu:45,et:[{c:"IS",n:"Iceland"},{c:"GB",n:"United Kingdom"},{c:"DK",n:"Denmark"},{c:"IE",n:"Ireland"},{c:"CH",n:"Switzerland"},{c:"HR",n:"Croatia"}],int:["Entertainment News","Photography","Food Tour & Recommendations"],ages:[{r:"25-34",s:71},{r:"35-44",s:20},{r:"45-54",s:9}],sp:[0.15,0.15,0.15,0.15,0.15,0.15,0.15,0.16,0.17,0.19,0.19,0.2,0.19,0.23,0.25,0.33,0.5,0.81,1,0.99,1,0.95,0.8,0.64,0.53,0.48,0.38,0.36,0.35,0.31]},
+{r:"35-44",s:25},{r:"45-54",s:19}],sp:[0.02,0.03,0.03,0.03,0.03,0.03,0.04,0.04,0.04,0.04,0.05,0.05,0.05,0.06,0.06,0.07,0.09,0.12,0.24,1,0.8,0.24,0.11,0.07,0.04,0.04,0.03,0.03,0.02,0.02]},
+{n:"jessicaalba",url:"https://www.tiktok.com/tag/jessicaalba",v:159388178,p:1636,s:0.29,d:"neutral",us:10,eu:55,et:[{c:"CH",n:"Switzerland"},{c:"AT",n:"Austria"},{c:"DK",n:"Denmark"},{c:"IS",n:"Iceland"},{c:"NO",n:"Norway"},{c:"SK",n:"Slovakia"}],int:["Scenery & Plants","Entertainment News","Beauty"],ages:[{r:"25-34",s:75},{r:"35-44",s:18},{r:"45-54",s:7}],sp:[0.23,0.28,0.25,0.24,0.23,0.31,0.3,0.27,0.25,0.19,0.26,0.23,0.25,0.25,1,0.85,0.95,0.81,0.64,0.57,0.49,0.36,0.33,0.33,0.32,0.27,0.36,0.33,0.31,0.29]},
+{n:"justgolive",url:"https://www.tiktok.com/tag/justgolive",v:139842840,p:101627,s:0.06,d:"declining",us:5,eu:0,et:[],int:["Scripted Drama","Advertisement","Selfies"],ages:[{r:"25-34",s:46},{r:"35-44",s:28},{r:"45-54",s:26}],sp:[0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.02,0.02,0.01,0.01,0.56,0.87,0.97,1,0.97,0.93,0.89,0.5,0.13,0.1,0.09,0.09,0.09,0.07,0.07,0.06]},
+{n:"badbunnysuperbowl",url:"https://www.tiktok.com/tag/badbunnysuperbowl",v:134328339,p:10909,s:0.04,d:"declining",us:12,eu:26,et:[{c:"ES",n:"Spain"},{c:"IS",n:"Iceland"},{c:"GR",n:"Greece"},{c:"CH",n:"Switzerland"}],int:["Software & APPs","Entertainment News","Professional & Personal Development"],ages:[{r:"25-34",s:61},{r:"35-44",s:24},{r:"45-54",s:15}],sp:[0.08,0.07,0.07,0.07,0.09,0.07,0.08,0.12,0.11,0.12,0.15,0.19,0.21,0.45,1,0.45,0.3,0.24,0.19,0.15,0.12,0.11,0.09,0.09,0.07,0.07,0.06,0.06,0.06,0.04]},
+{n:"needohs",url:"https://www.tiktok.com/tag/needohs",v:127559677,p:8354,s:0.67,d:"declining",us:21,eu:49,et:[{c:"GB",n:"United Kingdom"},{c:"IE",n:"Ireland"},{c:"IS",n:"Iceland"},{c:"DK",n:"Denmark"},{c:"NO",n:"Norway"},{c:"EE",n:"Estonia"}],int:["Toys & Collectables","Oddly Satisfying","Nail Art"],ages:[{r:"25-34",s:80},{r:"35-44",s:13},{r:"45-54",s:7}],sp:[0.28,0.25,0.22,0.2,0.24,0.32,0.37,0.3,0.25,0.24,0.35,0.39,0.48,0.58,0.44,0.46,0.48,0.48,0.55,0.69,0.78,0.91,0.85,0.85,0.72,0.77,0.87,1,0.78,0.67]},
+{n:"wideawake",url:"https://www.tiktok.com/tag/wideawake",v:126937289,p:4409,s:0.32,d:"declining",us:7,eu:45,et:[{c:"DK",n:"Denmark"},{c:"IE",n:"Ireland"},{c:"IS",n:"Iceland"},{c:"GB",n:"United Kingdom"},{c:"NO",n:"Norway"}],int:["Singing & Instruments","Non-Video Games","Dance"],ages:[{r:"25-34",s:71},{r:"35-44",s:22},{r:"45-54",s:7}],sp:[0.06,0.1,0.1,0.09,0.09,0.13,0.18,0.17,0.19,0.25,0.41,0.52,0.64,0.71,0.67,0.74,0.86,1,1,0.92,0.73,0.65,0.57,0.54,0.48,0.48,0.44,0.38,0.37,0.35]},
+{n:"pambondi",url:"https://www.tiktok.com/tag/pambondi",v:117679655,p:9836,s:0.11,d:"declining",us:13,eu:46,et:[{c:"IS",n:"Iceland"},{c:"IE",n:"Ireland"},{c:"NO",n:"Norway"},{c:"DK",n:"Denmark"},{c:"CH",n:"Switzerland"},{c:"AT",n:"Austria"}],int:["Social News","Humanities","Social Issues"],ages:[{r:"25-34",s:47},{r:"45-54",s:27},{r:"35-44",s:26}],sp:[0.09,0.09,0.07,0.05,0.04,0.09,0.08,0.08,0.07,0.07,0.05,0.04,0.07,0.06,0.06,0.07,0.09,0.57,1,0.83,0.58,0.46,0.38,0.3,0.22,0.21,0.19,0.14,0.12,0.11]},
+{n:"charlieputh",url:"https://www.tiktok.com/tag/charlieputh",v:114680420,p:2739,s:0.22,d:"declining",us:13,eu:34,et:[{c:"IE",n:"Ireland"},{c:"IS",n:"Iceland"},{c:"DK",n:"Denmark"}],int:["Singing & Instruments","Music","Entertainment News"],ages:[{r:"25-34",s:73},{r:"35-44",s:18},{r:"45-54",s:9}],sp:[0.17,0.18,0.22,0.22,0.23,0.23,0.24,0.2,0.2,0.19,0.21,0.2,0.26,0.27,0.66,1,0.79,0.83,0.7,0.59,0.5,0.48,0.44,0.36,0.37,0.35,0.32,0.33,0.29,0.27]},
+{n:"rickymartin",url:"https://www.tiktok.com/tag/rickymartin",v:111265966,p:3899,s:0.07,d:"declining",us:10,eu:39,et:[{c:"ES",n:"Spain"},{c:"IT",n:"Italy"},{c:"GR",n:"Greece"},{c:"PT",n:"Portugal"},{c:"CH",n:"Switzerland"}],int:["Entertainment News","Social News","Professional & Personal Development"],ages:[{r:"25-34",s:63},{r:"35-44",s:22},{r:"45-54",s:15}],sp:[0.03,0.03,0.04,0.04,0.04,0.05,0.04,0.04,0.04,0.05,0.05,0.04,0.05,0.05,1,0.49,0.36,0.33,0.25,0.23,0.2,0.13,0.11,0.11,0.11,0.07,0.09,0.08,0.07,0.07]},
+{n:"titimepregunto",url:"https://www.tiktok.com/tag/titimepregunto",v:102625944,p:3161,s:0.19,d:"declining",us:16,eu:49,et:[{c:"IS",n:"Iceland"},{c:"DK",n:"Denmark"},{c:"CH",n:"Switzerland"},{c:"GR",n:"Greece"},{c:"LU",n:"Luxembourg"},{c:"PT",n:"Portugal"}],int:["Music","Singing & Instruments","Dance"],ages:[{r:"25-34",s:60},{r:"35-44",s:26},{r:"45-54",s:14}],sp:[0.06,0.03,0.05,0.05,0.04,0.05,0.08,0.09,0.08,0.09,0.14,0.16,0.21,0.45,1,0.58,0.55,0.51,0.52,0.5,0.45,0.39,0.3,0.29,0.24,0.23,0.25,0.26,0.22,0.19]},
+{c:"HU",n:"Hungary"},{c:"LV",n:"Latvia"},{c:"FI",n:"Finland"},{c:"IE",n:"Ireland"},{c:"LT",n:"Lithuania"}],int:["Social News","Sports News","Other Transportation"],ages:[{r:"25-34",s:57},{r:"35-44",s:22},{r:"45-54",s:21}],sp:[0.08,0.07,0.07,0.06,0.06,0.07,0.07,0.07,0.08,0.08,0.08,0.09,0.1,0.12,0.16,0.18,0.22,0.29,0.37,0.39,0.74,1,0.64,0.47,0.33,0.25,0.22,0.18,0.13,0.13]},
+{n:"amithedrama",url:"https://www.tiktok.com/tag/amithedrama",v:94514971,p:4890,s:0.66,d:"neutral",us:27,eu:23,et:[{c:"IE",n:"Ireland"},{c:"LU",n:"Luxembourg"},{c:"GB",n:"United Kingdom"},{c:"IS",n:"Iceland"},{c:"GR",n:"Greece"}],int:["Entertainment News","Babies","Family"],ages:[{r:"25-34",s:65},{r:"35-44",s:26},{r:"45-54",s:9}],sp:[0.25,0.27,0.25,0.26,0.25,0.26,0.36,0.32,0.27,0.23,0.22,0.22,0.24,0.27,0.29,0.29,0.31,0.92,0.94,0.97,0.72,0.99,1,0.79,0.61,0.74,0.69,0.61,0.74,0.66]},
+{n:"livecareer",url:"https://www.tiktok.com/tag/livecareer",v:83715805,p:53218,s:0.07,d:"declining",us:3,eu:5,et:[{c:"ES",n:"Spain"}],int:["Scripted Drama","Selfies","Software & APPs"],ages:[{r:"25-34",s:35},{r:"35-44",s:33},{r:"45-54",s:32}],sp:[0.01,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.02,0.01,0.02,0.81,1,0.93,0.9,0.83,0.81,0.79,0.4,0.13,0.1,0.1,0.09,0.08,0.07,0.07]},
+{n:"atleticodemadrid",url:"https://www.tiktok.com/tag/atleticodemadrid",v:80768301,p:5566,s:0.31,d:"rising",us:0,eu:49,et:[{c:"ES",n:"Spain"},{c:"GR",n:"Greece"},{c:"PT",n:"Portugal"},{c:"CH",n:"Switzerland"},{c:"LU",n:"Luxembourg"}],int:["Sports News","Traditional Sports","Video Games"],ages:[{r:"25-34",s:62},{r:"35-44",s:28},{r:"45-54",s:10}],sp:[0.08,0.07,0.1,0.08,0.08,0.08,0.11,0.11,0.14,0.1,0.25,0.38,0.21,0.21,0.17,0.18,0.26,0.92,1,0.57,0.51,0.34,0.21,0.25,0.23,0.18,0.18,0.15,0.14,0.31]},
+{n:"livestory",url:"https://www.tiktok.com/tag/livestory",v:77604217,p:23985,s:0.94,d:"rising",us:3,eu:6,et:[{c:"ES",n:"Spain"}],int:["Scripted Drama","Selfies","Social News"],ages:[{r:"25-34",s:45},{r:"35-44",s:29},{r:"45-54",s:26}],sp:[0.14,0.19,0.18,0.17,0.16,0.16,0.15,0.15,0.15,0.16,0.16,0.15,0.15,0.15,0.14,0.15,0.13,0.14,0.13,1,0.89,0.22,0.21,0.16,0.16,0.16,0.15,0.14,0.14,0.94]},
+{n:"lowcortisol",url:"https://www.tiktok.com/tag/lowcortisol",v:77384778,p:9236,s:0.9,d:"neutral",us:0,eu:76,et:[{c:"LT",n:"Lithuania"},{c:"EE",n:"Estonia"},{c:"FI",n:"Finland"},{c:"IS",n:"Iceland"},{c:"LV",n:"Latvia"},{c:"CZ",n:"Czech Republic"}],int:["Science","Scenery & Plants","Video Games"],ages:[{r:"25-34",s:77},{r:"35-44",s:16},{r:"45-54",s:7}],sp:[0.06,0.05,0.07,0.1,0.14,0.16,0.17,0.18,0.19,0.2,0.2,0.27,0.28,0.29,0.31,0.3,0.36,0.39,0.4,0.51,0.66,0.7,0.67,0.7,0.74,0.81,1,1,0.92,0.9]},
+{n:"jamesvanderbeek",url:"https://www.tiktok.com/tag/jamesvanderbeek",v:74855851,p:6513,s:0.07,d:"declining",us:11,eu:64,et:[{c:"IT",n:"Italy"},{c:"IE",n:"Ireland"},{c:"IS",n:"Iceland"},{c:"FR",n:"France"},{c:"ES",n:"Spain"},{c:"GB",n:"United Kingdom"}],int:["Health & Wellness","Social News","Entertainment News"],ages:[{r:"45-54",s:38},{r:"25-34",s:37},{r:"35-44",s:25}],sp:[0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.01,0.8,1,0.56,0.34,0.21,0.18,0.13,0.11,0.1,0.13,0.09,0.07,0.07]},
+{c:"DK",n:"Denmark"},{c:"IE",n:"Ireland"},{c:"FI",n:"Finland"},{c:"CH",n:"Switzerland"},{c:"NO",n:"Norway"}],int:["Entertainment News","Social News","Dance"],ages:[{r:"25-34",s:66},{r:"35-44",s:20},{r:"45-54",s:14}],sp:[0.04,0.06,0.09,0.07,0.07,0.06,0.06,0.06,0.11,0.09,0.12,0.15,0.21,0.35,1,0.48,0.34,0.26,0.21,0.15,0.12,0.09,0.09,0.08,0.08,0.07,0.06,0.05,0.07,0.08]},
+{n:"debitirarmasfotos",url:"https://www.tiktok.com/tag/debitirarmasfotos",v:64770348,p:3307,s:0.15,d:"neutral",us:5,eu:25,et:[{c:"ES",n:"Spain"},{c:"PT",n:"Portugal"},{c:"CH",n:"Switzerland"},{c:"LU",n:"Luxembourg"}],int:["Entertainment News","Travel","Social News"],ages:[{r:"25-34",s:71},{r:"35-44",s:19},{r:"45-54",s:10}],sp:[0.17,0.16,0.12,0.11,0.09,0.09,0.09,0.33,0.26,0.24,0.33,0.36,0.47,0.66,1,0.77,0.58,0.47,0.42,0.33,0.29,0.26,0.21,0.19,0.16,0.17,0.17,0.15,0.14,0.15]},
+{n:"baileinolvidable",url:"https://www.tiktok.com/tag/baileinolvidable",v:64261262,p:7102,s:0.23,d:"neutral",us:6,eu:29,et:[{c:"ES",n:"Spain"},{c:"PT",n:"Portugal"},{c:"IT",n:"Italy"},{c:"CH",n:"Switzerland"},{c:"LU",n:"Luxembourg"}],int:["Dance","Recreation Facilities","Campus Life"],ages:[{r:"25-34",s:72},{r:"35-44",s:18},{r:"45-54",s:10}],sp:[0.17,0.22,0.21,0.23,0.2,0.2,0.24,0.22,0.29,0.29,0.31,0.34,0.36,0.46,0.66,1,0.71,0.68,0.52,0.48,0.51,0.44,0.37,0.33,0.29,0.27,0.24,0.26,0.25,0.23]},
+{n:"livewithlessfollowers",url:"https://www.tiktok.com/tag/livewithlessfollowers",v:63342984,p:21783,s:0.14,d:"declining",us:0,eu:5,et:[{c:"ES",n:"Spain"}],int:["Selfies","Other Talent","Health & Wellness"],ages:[{r:"45-54",s:39},{r:"35-44",s:34},{r:"25-34",s:27}],sp:[0.1,0.1,0.1,0.1,0.1,0.1,0.11,0.1,0.1,0.1,0.09,0.09,0.09,0.09,1,0.85,0.18,0.14,0.12,0.12,0.11,0.11,0.1,0.1,0.09,0.1,0.96,0.84,0.16,0.14]},
+{n:"turningpoint",url:"https://www.tiktok.com/tag/turningpoint",v:60247159,p:2984,s:0.1,d:"neutral",us:17,eu:14,et:[{c:"IS",n:"Iceland"},{c:"IE",n:"Ireland"}],int:["Social News","Entertainment News","Humanities"],ages:[{r:"25-34",s:48},{r:"45-54",s:28},{r:"35-44",s:24}],sp:[0.03,0.09,0.08,0.13,0.13,0.12,0.12,0.1,0.13,0.2,0.24,0.23,0.28,0.25,0.41,1,0.43,0.29,0.24,0.23,0.18,0.16,0.14,0.13,0.12,0.1,0.12,0.11,0.1,0.1]},
+{n:"filmedit",url:"https://www.tiktok.com/tag/filmedit",v:57326867,p:10526,s:0.75,d:"neutral",us:0,eu:91,et:[{c:"RO",n:"Romania"},{c:"GR",n:"Greece"},{c:"LV",n:"Latvia"},{c:"BG",n:"Bulgaria"},{c:"CZ",n:"Czech Republic"},{c:"HU",n:"Hungary"}],int:["Scenery & Plants","Graphic Art","Extreme Sports"],ages:[{r:"25-34",s:81},{r:"35-44",s:13},{r:"45-54",s:6}],sp:[0.32,0.4,0.38,0.4,0.4,0.39,0.36,0.39,0.36,0.34,0.38,0.37,0.45,0.39,0.83,0.83,0.88,0.88,0.92,1,0.98,0.98,0.84,0.89,0.9,0.89,0.85,0.75,0.76,0.75]},
+{c:"GR",n:"Greece"},{c:"RO",n:"Romania"},{c:"GB",n:"United Kingdom"},{c:"IE",n:"Ireland"}],int:["DIY & Handicrafts","Photography","Nail Art"],ages:[{r:"25-34",s:57},{r:"35-44",s:25},{r:"45-54",s:18}],sp:[0.11,0.16,0.17,0.17,0.18,0.17,0.18,0.2,0.22,0.22,0.23,0.23,0.23,0.24,0.24,0.24,0.27,0.29,0.33,0.45,1,0.88,0.42,0.27,0.2,0.13,0.11,0.1,0.08,0.07]},
+{c:"EE",n:"Estonia"},{c:"LT",n:"Lithuania"},{c:"LV",n:"Latvia"},{c:"IS",n:"Iceland"},{c:"FI",n:"Finland"}],int:["Supernatural & Horror","Cosplay","Other Fashion"],ages:[{r:"25-34",s:61},{r:"35-44",s:24},{r:"45-54",s:15}],sp:[0.05,0.06,0.06,0.06,0.06,0.06,0.07,0.06,0.07,0.08,0.08,0.1,0.09,0.09,0.1,0.14,0.15,0.21,1,0.7,0.22,0.16,0.12,0.11,0.1,0.09,0.08,0.07,0.06,0.07]},
+{c:"IS",n:"Iceland"},{c:"LU",n:"Luxembourg"},{c:"DK",n:"Denmark"},{c:"GR",n:"Greece"},{c:"BE",n:"Belgium"}],int:["Video Games","Science","Comics & Cartoon, Anime"],ages:[{r:"25-34",s:72},{r:"35-44",s:18},{r:"45-54",s:10}],sp:[0.03,0.03,0.02,0.02,0.03,0.02,0.02,0.05,0.05,0.08,0.09,0.11,0.12,0.29,1,0.36,0.24,0.17,0.13,0.08,0.08,0.06,0.05,0.04,0.05,0.04,0.04,0.03,0.02,0.02]},
+{n:"momsoftikok",url:"https://www.tiktok.com/tag/momsoftikok",v:44440009,p:14467,s:0.73,d:"neutral",us:20,eu:52,et:[{c:"IE",n:"Ireland"},{c:"IS",n:"Iceland"},{c:"DK",n:"Denmark"},{c:"NO",n:"Norway"},{c:"GB",n:"United Kingdom"},{c:"HR",n:"Croatia"}],int:["Family","Babies","DIY & Handicrafts"],ages:[{r:"25-34",s:60},{r:"35-44",s:29},{r:"45-54",s:11}],sp:[0.2,0.22,0.18,0.15,0.16,0.15,0.12,0.26,0.29,0.3,0.31,0.24,0.3,0.62,0.74,0.81,0.8,0.85,1,0.77,0.78,0.81,0.74,0.84,0.73,0.75,0.68,0.68,0.76,0.73]},
+{n:"draculaura",url:"https://www.tiktok.com/tag/draculaura",v:39874139,p:3956,s:0.29,d:"neutral",us:0,eu:45,et:[{c:"CZ",n:"Czech Republic"},{c:"EE",n:"Estonia"},{c:"LT",n:"Lithuania"},{c:"FI",n:"Finland"},{c:"LV",n:"Latvia"},{c:"PL",n:"Poland"}],int:["Cosplay","Oddly Satisfying","Toys & Collectables"],ages:[{r:"25-34",s:81},{r:"35-44",s:13},{r:"45-54",s:6}],sp:[0.16,0.24,0.17,0.17,0.19,0.17,0.2,0.24,0.21,0.21,0.2,0.2,0.18,0.23,0.24,0.22,0.21,0.2,0.21,0.29,1,0.8,0.34,0.28,0.27,0.27,0.23,0.26,0.26,0.29]},
+{n:"dtmfbadbunny",url:"https://www.tiktok.com/tag/dtmfbadbunny",v:39125012,p:2752,s:0.15,d:"declining",us:6,eu:25,et:[{c:"ES",n:"Spain"},{c:"PT",n:"Portugal"},{c:"CH",n:"Switzerland"},{c:"LU",n:"Luxembourg"},{c:"IT",n:"Italy"}],int:["Entertainment News","Dance","Music"],ages:[{r:"25-34",s:76},{r:"35-44",s:17},{r:"45-54",s:7}],sp:[0.15,0.14,0.13,0.12,0.11,0.12,0.11,0.34,0.27,0.25,0.32,0.38,0.5,0.65,1,0.69,0.48,0.42,0.38,0.35,0.3,0.29,0.25,0.22,0.19,0.18,0.19,0.18,0.15,0.15]},
+{n:"valentineday",url:"https://www.tiktok.com/tag/valentineday",v:37951062,p:10802,s:0.09,d:"neutral",us:0,eu:65,et:[{c:"RO",n:"Romania"},{c:"GR",n:"Greece"},{c:"LV",n:"Latvia"},{c:"HR",n:"Croatia"},{c:"CZ",n:"Czech Republic"},{c:"BG",n:"Bulgaria"}],int:["DIY & Handicrafts","Scripted Drama","Nail Art"],ages:[{r:"25-34",s:59},{r:"35-44",s:24},{r:"45-54",s:17}],sp:[0.13,0.16,0.17,0.17,0.17,0.16,0.16,0.18,0.22,0.19,0.22,0.23,0.24,0.25,0.24,0.25,0.29,0.34,0.35,0.52,1,0.82,0.39,0.22,0.17,0.13,0.1,0.1,0.09,0.09]},
+{n:"noahkahanmusic",url:"https://www.tiktok.com/tag/noahkahanmusic",v:37798109,p:4170,s:0.3,d:"neutral",us:15,eu:45,et:[{c:"IE",n:"Ireland"},{c:"GB",n:"United Kingdom"},{c:"IS",n:"Iceland"},{c:"DK",n:"Denmark"},{c:"NO",n:"Norway"},{c:"NL",n:"Netherlands"}],int:["Travel","Campus Life","Drinks"],ages:[{r:"25-34",s:78},{r:"35-44",s:17},{r:"45-54",s:5}],sp:[0.15,0.19,0.19,0.36,0.36,0.77,0.53,0.45,0.7,0.62,0.54,0.44,0.46,0.35,0.34,0.38,1,0.96,0.87,0.68,0.54,0.52,0.54,0.44,0.36,0.37,0.4,0.36,0.38,0.3]},
+{n:"chivasdelguadalajara",url:"https://www.tiktok.com/tag/chivasdelguadalajara",v:35696357,p:4213,s:0.22,d:"rising",us:9,eu:1,et:[{c:"ES",n:"Spain"},{c:"CZ",n:"Czech Republic"}],int:["Selfies","Traditional Sports","Sports News"],ages:[{r:"25-34",s:54},{r:"35-44",s:27},{r:"45-54",s:19}],sp:[0.09,0.12,0.14,0.11,0.14,0.15,0.17,0.32,0.18,0.15,0.14,0.14,0.17,0.35,0.27,0.22,0.21,0.22,0.24,0.29,0.47,1,0.48,0.31,0.26,0.23,0.23,0.29,0.43,0.22]},
+{n:"cheersport",url:"https://www.tiktok.com/tag/cheersport",v:33600643,p:6744,s:0.11,d:"declining",us:11,eu:40,et:[{c:"FI",n:"Finland"},{c:"GB",n:"United Kingdom"},{c:"IS",n:"Iceland"},{c:"AT",n:"Austria"},{c:"DK",n:"Denmark"},{c:"IE",n:"Ireland"}],int:["Dance","Recreation Facilities","Nail Art"],ages:[{r:"25-34",s:74},{r:"35-44",s:17},{r:"45-54",s:9}],sp:[0.04,0.08,0.07,0.05,0.04,0.04,0.05,0.04,0.06,0.06,0.07,0.07,0.07,0.08,0.1,0.13,0.11,0.15,0.24,0.43,0.88,1,0.92,0.52,0.32,0.24,0.17,0.16,0.14,0.11]},
+{c:"PT",n:"Portugal"},{c:"IT",n:"Italy"},{c:"CH",n:"Switzerland"}],int:["Scripted Drama","Selfies","DIY & Handicrafts"],ages:[{r:"25-34",s:44},{r:"35-44",s:34},{r:"45-54",s:22}],sp:[0.11,0.12,0.13,0.15,0.15,0.13,0.16,0.18,0.18,0.19,0.19,0.23,0.2,0.19,0.19,0.2,0.22,0.25,0.3,0.44,1,0.82,0.39,0.21,0.13,0.08,0.07,0.05,0.04,0.05]},
+{n:"benitomartinezocasio",url:"https://www.tiktok.com/tag/benitomartinezocasio",v:32419462,p:3598,s:0.11,d:"neutral",us:16,eu:36,et:[{c:"PT",n:"Portugal"},{c:"ES",n:"Spain"},{c:"GR",n:"Greece"},{c:"CH",n:"Switzerland"},{c:"LU",n:"Luxembourg"}],int:["Babies","Dance","Photography"],ages:[{r:"25-34",s:73},{r:"35-44",s:20},{r:"45-54",s:7}],sp:[0.05,0.06,0.05,0.04,0.05,0.06,0.07,0.2,0.16,0.15,0.14,0.14,0.2,0.36,1,0.55,0.4,0.29,0.24,0.23,0.2,0.18,0.22,0.17,0.16,0.14,0.12,0.12,0.11,0.11]},
+{n:"liveaccess",url:"https://www.tiktok.com/tag/liveaccess",v:31172103,p:17000,s:1,d:"rising",us:3,eu:4,et:[{c:"ES",n:"Spain"}],int:["Selfies","Work & Jobs","Other Talent"],ages:[{r:"25-34",s:35},{r:"35-44",s:34},{r:"45-54",s:31}],sp:[0.04,0.06,0.06,0.06,0.05,0.05,0.05,0.04,0.05,0.05,0.05,0.05,0.04,0.04,0.04,0.04,0.05,0.92,0.85,0.15,0.12,0.1,0.08,0.08,0.08,0.07,0.07,0.07,0.06,1]},
+{n:"livecanbeeasy",url:"https://www.tiktok.com/tag/livecanbeeasy",v:29853928,p:9784,s:0.06,d:"neutral",us:4,eu:4,et:[{c:"ES",n:"Spain"}],int:["Scripted Drama","Selfies","Work & Jobs"],ages:[{r:"45-54",s:37},{r:"35-44",s:35},{r:"25-34",s:28}],sp:[0.05,0.07,0.06,0.06,0.06,0.06,0.07,0.06,0.04,0.05,0.05,0.05,0.06,0.05,0.05,0.05,0.05,0.05,0.06,0.05,1,0.88,0.14,0.1,0.09,0.09,0.08,0.08,0.08,0.06]},
+{n:"nello",url:"https://www.tiktok.com/tag/nello",v:29743167,p:8070,s:0.76,d:"rising",us:77,eu:4,et:[{c:"IT",n:"Italy"},{c:"CZ",n:"Czech Republic"},{c:"IE",n:"Ireland"}],int:["Health & Wellness","Other Talent","Other Beauty"],ages:[{r:"25-34",s:52},{r:"35-44",s:26},{r:"45-54",s:22}],sp:[0.31,0.47,0.65,0.63,0.62,0.56,0.59,0.67,0.69,0.77,0.69,0.68,0.67,0.66,0.72,0.88,0.97,1,0.93,0.81,0.81,0.93,0.82,0.71,0.72,0.72,0.59,0.62,0.74,0.76]},
+{n:"jasonvoorhees",url:"https://www.tiktok.com/tag/jasonvoorhees",v:28112201,p:3400,s:0.14,d:"neutral",us:5,eu:22,et:[{c:"LT",n:"Lithuania"},{c:"LV",n:"Latvia"},{c:"EE",n:"Estonia"},{c:"CZ",n:"Czech Republic"}],int:["Supernatural & Horror","Video Games","Cosplay"],ages:[{r:"25-34",s:61},{r:"35-44",s:25},{r:"45-54",s:14}],sp:[0.14,0.14,0.13,0.13,0.14,0.11,0.15,0.14,0.13,0.13,0.12,0.14,0.15,0.14,0.14,0.17,0.19,0.26,1,0.7,0.24,0.21,0.18,0.19,0.18,0.19,0.16,0.17,0.16,0.14]},
+{n:"valentinesbasket",url:"https://www.tiktok.com/tag/valentinesbasket",v:27221263,p:3516,s:0.07,d:"declining",us:36,eu:24,et:[{c:"GB",n:"United Kingdom"},{c:"IE",n:"Ireland"},{c:"DK",n:"Denmark"},{c:"SE",n:"Sweden"},{c:"EE",n:"Estonia"}],int:["DIY & Handicrafts","Family","Home & Garden"],ages:[{r:"25-34",s:71},{r:"35-44",s:20},{r:"45-54",s:9}],sp:[0.21,0.19,0.21,0.18,0.25,0.26,0.29,0.28,0.28,0.3,0.31,0.31,0.36,0.35,0.39,0.42,0.46,0.57,0.75,1,0.54,0.29,0.17,0.15,0.12,0.06,0.07,0.06,0.03,0.07]},
+{c:"IT",n:"Italy"},{c:"PT",n:"Portugal"},{c:"CH",n:"Switzerland"}],int:["Selfies","Other Talent","Work & Jobs"],ages:[{r:"35-44",s:36},{r:"45-54",s:34},{r:"25-34",s:30}],sp:[0.07,0.1,0.1,0.11,0.12,0.12,0.11,0.15,0.16,0.15,0.16,0.17,0.18,0.17,0.18,0.19,0.23,0.24,0.28,0.4,1,0.63,0.25,0.13,0.09,0.07,0.07,0.05,0.06,0.05]},
+{c:"GB",n:"United Kingdom"},{c:"IE",n:"Ireland"},{c:"RO",n:"Romania"},{c:"SK",n:"Slovakia"},{c:"AT",n:"Austria"}],int:["DIY & Handicrafts","Nail Art","Photography"],ages:[{r:"25-34",s:71},{r:"35-44",s:20},{r:"45-54",s:9}],sp:[0.1,0.15,0.15,0.15,0.14,0.17,0.19,0.2,0.23,0.21,0.23,0.24,0.24,0.28,0.27,0.26,0.3,0.32,0.38,0.53,1,0.85,0.43,0.24,0.16,0.12,0.08,0.08,0.07,0.06]},
+{n:"giftexchange",url:"https://www.tiktok.com/tag/giftexchange",v:25773048,p:4210,s:0.35,d:"declining",us:12,eu:16,et:[{c:"IS",n:"Iceland"},{c:"DK",n:"Denmark"},{c:"LU",n:"Luxembourg"}],int:["Family","DIY & Handicrafts","Photography"],ages:[{r:"25-34",s:68},{r:"35-44",s:23},{r:"45-54",s:9}],sp:[0.28,0.26,0.24,0.24,0.21,0.35,0.52,0.42,0.33,0.25,0.24,0.3,0.61,0.98,0.73,0.57,0.53,0.53,0.65,1,1,0.84,0.54,0.42,0.35,0.36,0.46,0.66,0.54,0.35]},
+{n:"nikepro",url:"https://www.tiktok.com/tag/nikepro",v:24301209,p:5598,s:0.7,d:"neutral",us:0,eu:78,et:[{c:"FI",n:"Finland"},{c:"HR",n:"Croatia"},{c:"PL",n:"Poland"},{c:"LT",n:"Lithuania"},{c:"EE",n:"Estonia"},{c:"BG",n:"Bulgaria"}],int:["Other Transportation","Cosplay","Fishing, Hunting & Camping"],ages:[{r:"25-34",s:66},{r:"35-44",s:20},{r:"45-54",s:14}],sp:[0.16,0.24,0.22,0.23,0.28,0.31,0.42,0.4,0.71,0.85,0.67,0.79,0.83,0.65,0.76,0.59,0.79,0.94,1,0.93,0.89,0.78,0.93,0.88,0.69,0.51,0.64,0.62,0.68,0.7]},
+{c:"FI",n:"Finland"},{c:"SE",n:"Sweden"},{c:"IE",n:"Ireland"},{c:"LT",n:"Lithuania"},{c:"EE",n:"Estonia"}],int:["Other Fashion","Supernatural & Horror","Cosplay"],ages:[{r:"25-34",s:60},{r:"35-44",s:24},{r:"45-54",s:16}],sp:[0.05,0.06,0.05,0.05,0.05,0.06,0.07,0.07,0.07,0.07,0.07,0.09,0.09,0.09,0.09,0.12,0.19,0.25,1,0.79,0.25,0.17,0.12,0.1,0.07,0.08,0.06,0.07,0.06,0.06]},
+{r:"35-44",s:22},{r:"45-54",s:12}],sp:[0.05,0.08,0.08,0.08,0.08,0.09,0.09,0.11,0.12,0.14,0.15,0.16,0.15,0.19,0.18,0.28,0.26,0.25,0.33,0.53,1,0.55,0.28,0.17,0.12,0.09,0.07,0.07,0.06,0.04]},
+{c:"LT",n:"Lithuania"},{c:"SK",n:"Slovakia"},{c:"RO",n:"Romania"},{c:"BG",n:"Bulgaria"},{c:"LV",n:"Latvia"}],int:["Selfies","Dance","Food Display"],ages:[{r:"25-34",s:72},{r:"35-44",s:18},{r:"45-54",s:10}],sp:[0.14,0.13,0.15,0.16,0.17,0.19,0.29,0.25,0.25,0.21,0.24,0.26,0.25,0.26,0.22,0.27,0.31,0.35,0.47,1,0.77,0.27,0.16,0.12,0.09,0.07,0.08,0.08,0.07,0.08]},
+{r:"35-44",s:20},{r:"45-54",s:13}],sp:[0.06,0.11,0.1,0.1,0.11,0.1,0.13,0.15,0.14,0.16,0.15,0.17,0.16,0.19,0.2,0.18,0.23,0.27,0.32,0.52,1,0.73,0.33,0.17,0.12,0.08,0.07,0.07,0.05,0.06]},
+{n:"liverecognition",url:"https://www.tiktok.com/tag/liverecognition",v:16167773,p:16100,s:0.79,d:"rising",us:4,eu:5,et:[{c:"ES",n:"Spain"}],int:["Selfies","Work & Jobs","Other Talent"],ages:[{r:"35-44",s:35},{r:"25-34",s:33},{r:"45-54",s:32}],sp:[0.03,0.04,0.03,0.03,0.04,0.03,0.04,0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.03,0.02,0.02,1,0.8,0.14,0.11,0.08,0.07,0.07,0.06,0.05,0.05,0.05,0.05,0.79]},
+{c:"GR",n:"Greece"},{c:"IE",n:"Ireland"},{c:"LV",n:"Latvia"},{c:"BG",n:"Bulgaria"},{c:"RO",n:"Romania"}],int:["Selfies","Photography","Nail Art"],ages:[{r:"25-34",s:59},{r:"35-44",s:25},{r:"45-54",s:16}],sp:[0.06,0.06,0.07,0.07,0.07,0.07,0.08,0.09,0.08,0.1,0.11,0.1,0.1,0.12,0.12,0.14,0.15,0.19,0.31,0.9,1,0.53,0.31,0.19,0.13,0.11,0.09,0.08,0.08,0.06]},
+{c:"DK",n:"Denmark"},{c:"IT",n:"Italy"},{c:"BE",n:"Belgium"}],int:["Selfies","Other Talent","Work & Jobs"],ages:[{r:"35-44",s:36},{r:"25-34",s:33},{r:"45-54",s:31}],sp:[0.08,0.11,0.11,0.11,0.13,0.12,0.11,0.14,0.13,0.15,0.17,0.16,0.16,0.17,0.17,0.24,0.25,0.35,0.44,1,0.68,0.26,0.15,0.09,0.06,0.05,0.03,0.03,0.05,0.03]},
+{c:"LT",n:"Lithuania"},{c:"SE",n:"Sweden"},{c:"LV",n:"Latvia"},{c:"FI",n:"Finland"},{c:"SK",n:"Slovakia"}],int:["Other Fashion","Tech Products & Infos","Graphic Art"],ages:[{r:"25-34",s:60},{r:"35-44",s:25},{r:"45-54",s:15}],sp:[0.01,0.03,0.03,0.04,0.05,0.05,0.04,0.06,0.05,0.06,0.06,0.06,0.08,0.06,0.06,0.09,0.11,0.16,0.24,1,0.78,0.22,0.14,0.11,0.08,0.07,0.06,0.06,0.04,0.05]},
+{c:"IT",n:"Italy"},{c:"PT",n:"Portugal"},{c:"GR",n:"Greece"},{c:"IS",n:"Iceland"}],int:["Selfies","Other Beauty","Home & Garden"],ages:[{r:"35-44",s:37},{r:"45-54",s:34},{r:"25-34",s:29}],sp:[0.1,0.16,0.16,0.2,0.19,0.2,0.19,0.21,0.22,0.26,0.29,0.26,0.24,0.27,0.27,0.28,0.3,0.35,0.41,0.53,1,0.86,0.44,0.28,0.17,0.14,0.15,0.13,0.09,0.08]},
+{c:"IT",n:"Italy"},{c:"PT",n:"Portugal"},{c:"RO",n:"Romania"},{c:"GR",n:"Greece"}],int:["Selfies","Work & Jobs","Finger Dance & Basic Dance"],ages:[{r:"45-54",s:45},{r:"35-44",s:36},{r:"25-34",s:19}],sp:[0.04,0.06,0.06,0.06,0.07,0.1,0.25,0.23,0.16,0.12,0.1,0.09,0.08,0.07,0.09,0.11,0.11,0.13,0.22,1,0.43,0.15,0.1,0.08,0.06,0.06,0.06,0.06,0.06,0.06]},
+{c:"IT",n:"Italy"},{c:"DE",n:"Germany"},{c:"IE",n:"Ireland"},{c:"HU",n:"Hungary"},{c:"CZ",n:"Czech Republic"}],int:["Selfies","Nail Art","Other Beauty"],ages:[{r:"25-34",s:57},{r:"35-44",s:25},{r:"45-54",s:18}],sp:[0.12,0.18,0.2,0.22,0.19,0.22,0.21,0.25,0.29,0.25,0.26,0.25,0.27,0.27,0.31,0.32,0.4,0.4,0.45,0.57,1,0.74,0.39,0.24,0.2,0.19,0.17,0.17,0.18,0.15]},
+{c:"DK",n:"Denmark"}],int:["Selfies","Nail Art","Other Beauty"],ages:[{r:"25-34",s:52},{r:"35-44",s:25},{r:"45-54",s:23}],sp:[0.02,0.03,0.03,0.02,0.03,0.03,0.03,0.03,0.05,0.04,0.04,0.04,0.06,0.06,0.07,0.08,0.1,0.11,0.15,0.29,1,0.67,0.19,0.13,0.06,0.05,0.03,0.03,0.03,0.03]},
+{c:"GB",n:"United Kingdom"},{c:"RO",n:"Romania"}],int:["Selfies","Food Tour & Recommendations","Work & Jobs"],ages:[{r:"25-34",s:37},{r:"35-44",s:36},{r:"45-54",s:27}],sp:[0.06,0.1,0.11,0.11,0.11,0.13,0.13,0.18,0.18,0.19,0.17,0.19,0.19,0.17,0.15,0.17,0.26,0.25,0.32,0.45,1,0.69,0.28,0.15,0.07,0.05,0.05,0.05,0.04,0.05]},
+{n:"streetwearvibes",url:"https://www.tiktok.com/tag/streetwearvibes",v:9949704,p:5471,s:0.67,d:"neutral",us:8,eu:85,et:[{c:"LT",n:"Lithuania"},{c:"HR",n:"Croatia"},{c:"SK",n:"Slovakia"},{c:"LV",n:"Latvia"},{c:"EE",n:"Estonia"},{c:"CZ",n:"Czech Republic"}],int:["Video Games","Non-Video Games","Cosplay"],ages:[{r:"25-34",s:37},{r:"35-44",s:34},{r:"45-54",s:29}],sp:[0.12,0.15,0.15,0.22,0.21,0.21,0.26,0.29,0.54,0.65,0.5,0.61,0.76,0.67,0.79,0.68,0.87,1,1,0.92,0.88,0.8,0.95,0.86,0.71,0.51,0.6,0.6,0.62,0.67]},
+{c:"SK",n:"Slovakia"},{c:"CZ",n:"Czech Republic"},{c:"NO",n:"Norway"},{c:"IE",n:"Ireland"},{c:"HU",n:"Hungary"}],int:["Dance","Babies","Selfies"],ages:[{r:"25-34",s:60},{r:"35-44",s:24},{r:"45-54",s:16}],sp:[0.02,0.02,0.03,0.02,0.02,0.03,0.03,0.04,0.06,0.06,0.05,0.06,0.07,0.07,0.06,0.1,0.11,0.13,0.29,1,0.75,0.23,0.12,0.08,0.05,0.04,0.04,0.02,0.03,0.02]},
+{n:"aiimage",url:"https://www.tiktok.com/tag/aiimage",v:6201262,p:26308,s:0.45,d:"declining",us:0,eu:0,et:[],int:["Selfies","Other Talent","Scenery & Plants"],ages:[{r:"45-54",s:57},{r:"35-44",s:26},{r:"25-34",s:17}],sp:[0.11,0.14,0.13,0.13,0.14,0.17,0.18,0.22,0.29,0.32,0.36,0.36,0.36,0.33,0.35,0.37,0.37,0.42,0.66,0.65,0.51,0.45,0.42,0.4,0.38,0.41,1,0.8,0.53,0.45]}
+];
+
+// ──── CROSS-PLATFORM TRENDS (Updated 2026-02-27) ────
+const XP_TRENDS = [
+  {
+    name: "Sunshine Boy Trend",
+    platforms: ["tt","ig"],
+    status: "hot",
+    desc: "Using Rihanna's 'Kiss It Better' — specifically the 'been waiting on that sunshine boy' lyric. Creators share summer photos as a love letter to their summer selves. Seasonal nostalgia at peak in early March before spring hits. Huge engagement on 'take me back' energy.",
+    fg_idea: "Show cozy FibreGuard sofa shot: 'Been waiting on that sunshine boy... but honestly my sofa is so comfortable I might just stay here.' Summer travel vs. sofa comfort — lean into the cozy对比. Carousel: winter gloom → FibreGuard sofa bliss.",
+    meta: "Rising fast · Seasonal window closing · Business-friendly audio ✅",
+    links: [
+      {label:"TikTok Sound",url:"https://www.tiktok.com/music/Original-Sound-56954574"},
+      {label:"NewEngen breakdown",url:"https://newengen.com/insights/march-2026-tiktok-trends/"}
+    ]
+  },
+  {
+    name: "\"Just Gonna Put Something On The TV While I Clean\"",
+    platforms: ["tt","ig"],
+    status: "hot",
+    desc: "Relatable cleaning format: set up that you're about to clean, then freeze completely hypnotized by what's on TV. Punchline is the TV clip so captivating no one could look away. Universal relatability — everyone has lived this moment.",
+    fg_idea: "Perfect for furniture demos! Film yourself with cleaning supplies frozen, eyes locked on a FibreGuard sofa: 'Just gonna put something on while I clean... okay the stain-proof fabric is TOO mesmerizing.' Or: 'I was gonna test the wine resistance but the texture is so satisfying.'",
+    meta: "Format trend · Universal relatability · Brand-safe ✅",
+    links: [
+      {label:"NewEngen breakdown",url:"https://newengen.com/insights/march-2026-tiktok-trends/"}
+    ]
+  },
+  {
+    name: "\"Do You Actually Want To Do This Or Not\" Audio",
+    platforms: ["tt","ig"],
+    status: "rising",
+    desc: "Trending audio unlocking core memories of being dramatically scolded during fun activities. Lip-sync or react with on-screen text revealing absurdly low-stakes situations. Joe Jonas jumped on this. Works because everyone has that memory.",
+    fg_idea: "Stain test format: 'Do you actually want to spill that red wine on the sofa or not?' Dramatic reveal of FibreGuard's stain-proof fabric. Or: 'Do you actually want to test the durability or not?' → shows sofa surviving everything.",
+    meta: "Audio trend · Rising fast · Interactive format",
+    links: [
+      {label:"TikTok Audio",url:"https://www.tiktok.com/music/Originalton-Iron-Mindset-7398582962192780064"}
+    ]
+  },
+  {
+    name: "Don Toliver \"E85\" — \"Like Dumber and Dumber\"",
+    platforms: ["tt","ig"],
+    status: "hot",
+    desc: "Don Toliver's E85 is trending, specifically the 'like Dumber and Dumber' lyric. Creators showcase their most chaotic friendship moments. Format celebrates the dumbest version of friendships — pure joy, no one's trying to look cool.",
+    fg_idea: "Friendship content: 'My friend and I are like Dumber and Dumber when it comes to choosing movies over cleaning.' Show two FibreGuard sofas, both people sinking in, refusing to move. Or: 'We spent 3 hours choosing a Netflix show instead of cleaning. Again.'",
+    meta: "Music trend · Friendship edits · March momentum",
+    links: [
+      {label:"NewEngen breakdown",url:"https://newengen.com/insights/march-2026-tiktok-trends/"}
+    ]
+  },
+  {
+    name: "Reality TV Show Edit",
+    platforms: ["tt","ig","yt"],
+    status: "peak",
+    desc: "Creators editing everyday content like reality TV — dramatic zoom-ins, confessional-style cuts, cliffhangers, cinematic sound effects. 3.5M+ posts on TikTok. CapCut templates widely available. Works for any behind-the-scenes content.",
+    fg_idea: "Edit a sofa stain-test like a reality show. Confessional cut: 'I didn't think red wine stood a chance against this couch...' Dramatic zoom on upholstery. Cut to black. 'Next episode: ketchup vs. the armchair.' Makes furniture demos entertaining.",
+    meta: "3.5M+ TikTok posts · Trending IG audio · CapCut templates available",
+    links: [
+      {label:"TikTok Discover",url:"https://www.tiktok.com/discover/how-to-make-the-reality-show-trend"}
+    ]
+  },
+  {
+    name: "Academy Awards Content (March 15)",
+    platforms: ["tt","ig","yt"],
+    status: "rising",
+    desc: "98th Academy Awards air March 15 (12 days away). Red carpet content, reaction videos, best/worst dressed analysis. Brands can jump on the conversation with Oscars-themed content. Short window — peak during awards week.",
+    fg_idea: "Oscars-themed sofa content: 'Who wore it best? This sofa or Zendaya's carpet look?' Or: 'The only thing more dramatic than this year's Best Picture race is this stain-test.' Use Oscars anticipation for timing.",
+    meta: "Event-based · Short window · March 15 peak",
+    links: [
+      {label:"Oscars 2026",url:"https://www.oscars.org/oscars/awards/2026.html"}
+    ]
+  }
+];
+
+function fv(n){if(n>=1e9)return(n/1e9).toFixed(1)+'B';if(n>=1e6)return(n/1e6).toFixed(1)+'M';if(n>=1e3)return(n/1e3).toFixed(1)+'K';return n}
+function fp(n){if(n>=1e6)return(n/1e6).toFixed(1)+'M';if(n>=1e3)return(n/1e3).toFixed(1)+'K';return n}
+function spark(v,col){
+const w=100,h=24,mx=Math.max(...v),pts=v.map((y,i)=>[i/(v.length-1)*w,h-y/mx*(h-4)]);
+const path=pts.map((p,i)=>(i?'L':'M')+p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ');
+return '<svg class="sp" width="'+w+'" height="'+h+'" viewBox="0 0 '+w+' '+h+'"><path d="'+path+'" fill="none" stroke="'+col+'" stroke-width="1.5" stroke-linecap="round"/><circle cx="'+pts[pts.length-1][0].toFixed(1)+'" cy="'+pts[pts.length-1][1].toFixed(1)+'" r="2" fill="'+col+'"/></svg>';
+}
+const DC={rising:{l:'Rising',c:'r',col:'var(--green)'},neutral:{l:'Stable',c:'n',col:'var(--blue)'},declining:{l:'Declining',c:'d',col:'var(--red)'}};
+function stats(t){
+const r=t.filter(x=>x.d==='rising').length,n=t.filter(x=>x.d==='neutral').length,d=t.filter(x=>x.d==='declining').length;
+return '<div class="sts"><div class="st"><div class="l">📈 Rising</div><div class="v" style="color:var(--green)">'+r+'</div><div class="sb">Gaining momentum</div></div><div class="st"><div class="l">→ Stable</div><div class="v" style="color:var(--blue)">'+n+'</div><div class="sb">Holding steady</div></div><div class="st"><div class="l">📉 Declining</div><div class="v" style="color:var(--red)">'+d+'</div><div class="sb">Past peak</div></div></div>';
+}
+
+// ──── SORTABLE TABLE LOGIC ────
+let sortState = {}; // key: panelId, value: {col, asc}
+let filterState = {}; // key: panelId, value: 'all'|'rising'|'neutral'|'declining'
+
+function setFilter(panelId,f){
+  filterState[panelId]=f;
+  render();
+}
+
+function tbl(trends,showEU,panelId){
+const sid = panelId||'default';
+const st = sortState[sid] || {col:'v',asc:false};
+// Filter then sort
+const filt = (filterState[sid]&&filterState[sid]!=='all') ? trends.filter(t=>t.d===filterState[sid]) : trends;
+const sorted = [...filt].sort((a,b)=>{
+  let va,vb;
+  switch(st.col){
+    case 'v': va=a.v;vb=b.v;break;
+    case 'p': va=a.p;vb=b.p;break;
+    case 's': va=a.s;vb=b.s;break;
+    case 'eu': va=a.eu;vb=b.eu;break;
+    default: va=a.v;vb=b.v;
+  }
+  return st.asc ? va-vb : vb-va;
+});
+
+function thClass(col){return 'num sortable'+(st.col===col?' sorted':'');}
+function arrow(col){return '<span class="arrow">'+(st.col===col?(st.asc?'▲':'▼'):'⇅')+'</span>';}
+
+let h='<div style="display:flex;gap:6px;margin-bottom:12px;align-items:center;flex-wrap:wrap"><span style="font-size:11px;color:var(--text3);font-weight:600">Filter status:</span>';
+['all','rising','neutral','declining'].forEach(f=>{
+  const labels={all:'All',rising:'↑ Rising',neutral:'→ Stable',declining:'↓ Declining'};
+  const colors={all:'var(--text2)',rising:'var(--green)',neutral:'var(--blue)',declining:'var(--red)'};
+  const active=(filterState[panelId]||'all')===f;
+  h+='<button onclick="setFilter(\''+panelId+'\',\''+f+'\')" style="padding:4px 12px;font-size:11px;font-weight:600;border:1px solid '+(active?colors[f]:'var(--border)');
+  h+=';background:'+(active?colors[f]+'20':'var(--bg)')+';color:'+(active?colors[f]:'var(--text3)')+';border-radius:6px;cursor:pointer">'+labels[f]+'</button>';
+});
+h+='</div>';
+
+h+='<table class="tbl"><thead><tr><th>#</th><th>Hashtag</th><th>Status</th>';
+if(showEU) h+='<th class="'+thClass('eu')+'" onclick="doSort(\''+sid+'\',\'eu\')">EU % '+arrow('eu')+'</th><th>Top Countries</th>';
+h+='<th class="'+thClass('v')+'" onclick="doSort(\''+sid+'\',\'v\')">Views '+arrow('v')+'</th>';
+h+='<th class="'+thClass('p')+'" onclick="doSort(\''+sid+'\',\'p\')">Posts '+arrow('p')+'</th>';
+h+='<th class="hide-m">Audience</th></tr></thead><tbody>';
+sorted.forEach((t,i)=>{
+const dc=DC[t.d];
+const euPills=t.et.slice(0,4).map(e=>'<span class="ep">'+(FL[e.c]||'')+' '+e.c+'</span>').join('');
+const ageP=t.ages.slice(0,2).map(a=>'<span class="age">'+a.r+': '+a.s+'%</span>').join(' ');
+const intP=t.int.slice(0,2).map(x=>'<span class="tg">'+x+'</span>').join('');
+h+='<tr><td class="rank">'+(i+1)+'</td>';
+h+='<td class="ht"><a href="'+t.url+'" target="_blank" rel="noopener">#'+t.n+'</a><a href="'+t.url+'" target="_blank" class="lnk">↗ TikTok</a></td>';
+h+='<td><span class="dir '+dc.c+'">'+{rising:'↑ Rising',neutral:'→ Stable',declining:'↓ Declining'}[t.d]+'</span></td>';
+if(showEU){
+h+='<td class="num"><span class="eu-pct">'+(t.eu>0?t.eu+'%':'—')+'</span></td>';
+h+='<td><div class="eu-pills">'+euPills+'</div></td>';
+}
+h+='<td class="num"><span class="vw">'+fv(t.v)+'</span></td>';
+h+='<td class="num"><span class="ps">'+fp(t.p)+'</span></td>';
+/* score+sparkline removed */
+h+='<td class="hide-m"><div>'+ageP+'</div><div class="tags" style="margin-top:2px">'+intP+'</div></td>';
+h+='</tr>';
+});
+h+='</tbody></table>';
+return h;
+}
+
+function doSort(panelId,col){
+const st = sortState[panelId] || {col:'v',asc:false};
+if(st.col===col) st.asc=!st.asc;
+else { st.col=col; st.asc=false; }
+sortState[panelId]=st;
+render();
+}
+
+function sw(t,el){
+document.querySelectorAll('.tab').forEach(x=>x.classList.remove('on'));
+el.classList.add('on');
+document.getElementById('p-ol').hidden=t!=='ol';
+document.getElementById('p-us').hidden=t!=='us';
+document.getElementById('p-eu').hidden=t!=='eu';
+document.getElementById('p-xp').hidden=t!=='xp';
+}
+
+// ──── TOP 3 FIBREGUARD PICKS ────
+const FG_PICKS = [
+  {
+    hashtag: 'wutheringheights',
+    why: 'Massive viral trend (518M views, score 0.80) — the Kate Bush revival continues strong. Moody, dramatic, romantic aesthetic that people are actively recreating. 82% EU audience. Cultural moment that can ride into early March.',
+    idea: 'Dark velvet FibreGuard sofa in moody candlelit setting. Slow pan across the upholstery texture while Kate Bush audio plays. "Wuthering Heights but make it your living room." Drama meets durability. March moody content works.',
+  },
+  {
+    hashtag: 'filmedit',
+    why: 'Cinematic edit format (56M views, score 0.73) with 91% EU audience — the highest EU concentration in the entire dataset. Creators are making everyday content look like movie trailers. Perfect format for product showcases.',
+    idea: '"FibreGuard: The Movie" — cinematic slow-mo of wine glass tipping toward a sofa, dramatic music builds, SPLASH... then calm wipe reveal. Clean fabric. Credits roll: "Directed by FibreGuard." Film-edit aesthetic makes furniture content feel premium.',
+  },
+  {
+    hashtag: 'lowcortisol',
+    why: 'Viral wellness trend (77M views, score 0.90 — near peak). "Low cortisol lifestyle" continues blowing up — calm routines, cozy spaces, stress-free living. 76% EU. Perfect for home/sofa content. March still relevant before spring.',
+    idea: '"Low cortisol living room" — someone sinks into a FibreGuard sofa, ASMR close-up of hands running across stain-proof upholstery, kid spills juice but no stress because the sofa cleans instantly. Calm energy, zero panic.',
+  },
+];
+
+function renderPicks(){
+  const html = '<div class="picks"><div class="picks-title">🎯 Today\'s Top 3 FibreGuard Picks — Mar 3, 2026</div><div class="picks-grid">' +
+    FG_PICKS.map((p,i) => {
+      const t = D.find(x=>x.n===p.hashtag);
+      if(!t) return '';
+      return '<div class="pick"><div class="pick-rank">#'+(i+1)+'</div>' +
+        '<div class="pick-name"><a href="'+t.url+'" target="_blank">#'+t.n+'</a></div>' +
+        '<div class="pick-stats"><span>'+fv(t.v)+' views</span><span>'+fp(t.p)+' posts</span><span>Score: '+t.s.toFixed(2)+'</span></div>' +
+        '<div class="pick-why">'+p.why+'</div>' +
+        '<div class="pick-idea"><strong>💡 Video idea:</strong> '+p.idea+'</div></div>';
+    }).join('') +
+  '</div></div>';
+  document.getElementById('fg-picks').innerHTML = html;
+}
+
+// ──── CROSS-PLATFORM TAB ────
+function renderXP(){
+  const platMap = {tt:'TikTok',ig:'Instagram',yt:'YouTube Shorts',x:'X / Twitter'};
+  const platClass = {tt:'tt',ig:'ig',yt:'yt',x:'x'};
+  const statusMap = {hot:'🔥 Hot Now',peak:'⚡ At Peak',rising:'📈 Rising'};
+  const statusClass = {hot:'hot',peak:'peak',rising:'rising'};
+
+  let html = '<h2 style="font-size:16px;font-weight:700;margin-bottom:4px">🔥 Cross-Platform Trends — This Week</h2>';
+  html += '<div class="xp-updated">Researched & verified Mar 3, 2026 · Sources: NewEngen, Epidemic Sound, Dash Social, Scott Social, Mean CEO</div>';
+  html += '<div class="xp-grid">';
+
+  XP_TRENDS.forEach((t,i) => {
+    html += '<div class="xp-card"><div class="xp-rank">#'+(i+1)+'</div>';
+    html += '<div class="xp-head"><span class="xp-name">'+t.name+'</span>';
+    html += '<span class="xp-dir '+statusClass[t.status]+'">'+statusMap[t.status]+'</span>';
+    html += '</div>';
+    html += '<div class="xp-plat">'+t.platforms.map(p=>'<span class="xp-pill '+platClass[p]+'">'+platMap[p]+'</span>').join('')+'</div>';
+    html += '<div class="xp-desc" style="margin-top:8px">'+t.desc+'</div>';
+    html += '<div class="xp-idea"><strong>🎬 FibreGuard idea:</strong> '+t.fg_idea+'</div>';
+    html += '<div class="xp-meta"><span>'+t.meta+'</span></div>';
+    if(t.links&&t.links.length){
+      html += '<div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:8px">';
+      t.links.forEach(l=>{
+        html += '<a href="'+l.url+'" target="_blank" rel="noopener" style="font-size:10px;color:var(--purple);text-decoration:none;padding:2px 8px;border:1px solid rgba(168,85,247,.25);border-radius:4px;transition:all .15s" onmouseover="this.style.background=\'rgba(168,85,247,.1)\'" onmouseout="this.style.background=\'none\'">'+l.label+' ↗</a>';
+      });
+      html += '</div>';
+    }
+    html += '</div>';
+  });
+
+  html += '</div>';
+  document.getElementById('p-xp').innerHTML = html;
+}
+
+function render(){
+  const us=[...D].sort((a,b)=>b.v-a.v);
+  const eu=[...D].filter(t=>t.eu>=15).sort((a,b)=>b.eu-a.eu);
+
+  // Overlap: hashtags that appear in both US (all) and EU (>=15%) lists
+  const euSet = new Set(eu.map(t=>t.n));
+  const overlap = us.filter(t=>euSet.has(t.n));
+
+  document.getElementById('ol-c').textContent=overlap.length;
+  document.getElementById('us-c').textContent=us.length;
+  document.getElementById('eu-c').textContent=eu.length;
+  document.getElementById('p-ol').innerHTML=
+    '<h2 style="font-size:16px;font-weight:700;margin-bottom:2px">🔗 US + EU Overlap — Trending in Both Markets</h2>'+
+    '<p style="font-size:12px;color:var(--text2);margin-bottom:16px">'+overlap.length+' hashtags that are trending in the US market AND have ≥15% EU audience. These have the widest reach for global campaigns. Click column headers to sort.</p>'+
+    stats(overlap)+tbl(overlap,true,'ol');
+  document.getElementById('p-us').innerHTML=
+    '<h2 style="font-size:16px;font-weight:700;margin-bottom:2px">🇺🇸 All TikTok Trending Hashtags</h2>'+
+    '<p style="font-size:12px;color:var(--text2);margin-bottom:16px">'+us.length+' hashtags from API. Click column headers to sort by Views, Posts, or Score. Click again to reverse.</p>'+
+    stats(us)+tbl(us,false,'us');
+  document.getElementById('p-eu').innerHTML=
+    '<h2 style="font-size:16px;font-weight:700;margin-bottom:2px">🇪🇺 EU Region — ≥15% European Audience</h2>'+
+    '<p style="font-size:12px;color:var(--text2);margin-bottom:16px">'+eu.length+' hashtags with significant EU audience. Click column headers to sort.</p>'+
+    stats(eu)+tbl(eu,true,'eu');
+  renderXP();
+}
+
+function init(){
+  document.getElementById('ts').textContent=new Date().toLocaleString('en-GB',{timeZone:'Europe/Madrid',weekday:'short',day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'})+' CET';
+  D.forEach(t=>{
+    t.sp=t.sp.slice(-7);
+    if(t.sp.length>=4){
+      const r=(t.sp[t.sp.length-1]+t.sp[t.sp.length-2])/2;
+      const o=(t.sp[0]+t.sp[1])/2;
+      if(r>o*1.15)t.d='rising';else if(r<o*0.85)t.d='declining';else t.d='neutral';
+    }
+  });
+  renderPicks();
+  render();
+}
+init();
+</script></body></html>
