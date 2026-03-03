@@ -281,7 +281,7 @@ const XP_TRENDS = [
     name: "Academy Awards Content (March 15)",
     platforms: ["tt","ig","yt"],
     status: "rising",
-    desc: "98th Academy Awards air March 15. Red carpet content, reaction videos, best/worst dressed analysis. Brands can jump on the conversation with Oscars-themed content. Short window — peak during awards week.",
+    desc: "98th Academy Awards air March 15 (12 days away). Red carpet content, reaction videos, best/worst dressed analysis. Brands can jump on the conversation with Oscars-themed content. Short window — peak during awards week.",
     fg_idea: "Oscars-themed sofa content: 'Who wore it best? This sofa or Zendaya's carpet look?' Or: 'The only thing more dramatic than this year's Best Picture race is this stain-test.' Use Oscars anticipation for timing.",
     meta: "Event-based · Short window · March 15 peak",
     links: [
@@ -406,7 +406,7 @@ const FG_PICKS = [
 ];
 
 function renderPicks(){
-  const html = '<div class="picks"><div class="picks-title">🎯 Today\'s Top 3 FibreGuard Picks — Mar 2, 2026</div><div class="picks-grid">' +
+  const html = '<div class="picks"><div class="picks-title">🎯 Today\'s Top 3 FibreGuard Picks — Mar 3, 2026</div><div class="picks-grid">' +
     FG_PICKS.map((p,i) => {
       const t = D.find(x=>x.n===p.hashtag);
       if(!t) return '';
@@ -428,7 +428,7 @@ function renderXP(){
   const statusClass = {hot:'hot',peak:'peak',rising:'rising'};
 
   let html = '<h2 style="font-size:16px;font-weight:700;margin-bottom:4px">🔥 Cross-Platform Trends — This Week</h2>';
-  html += '<div class="xp-updated">Researched & verified Mar 2, 2026 · Sources: NewEngen, Epidemic Sound, Dash Social, Scott Social, Mean CEO</div>';
+  html += '<div class="xp-updated">Researched & verified Mar 3, 2026 · Sources: NewEngen, Epidemic Sound, Dash Social, Scott Social, Mean CEO</div>';
   html += '<div class="xp-grid">';
 
   XP_TRENDS.forEach((t,i) => {
