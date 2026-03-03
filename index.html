@@ -132,29 +132,108 @@ let TIKTOK_DATA = null;
 
 function fv(n){if(n>=1e9)return(n/1e9).toFixed(1)+'B';if(n>=1e6)return(n/1e6).toFixed(1)+'M';if(n>=1e3)return(n/1e3).toFixed(1)+'K';return n}
 
-const FG_KEYWORDS = ['sofa','couch','furniture','home','interior','decor','living','bedroom','stain','fabric','clean','cozy','comfort','family','kids','pet','durability','relax','wellness','aesthetic','organize','cleantok','improve','design','makeover','renov','apartment','house','indoor','viral','trend','fyp','foryou','lifestyle','asmr','slow','aesthetic','quiet','calm','peaceful','周日','周末','diy','craft','handmade','wood','cortisol','stress','calm','selfcare','comfort'];
-const FG_PREFIXES = ['cozy','home','room','furniture','decor','living','bed','clean','diy','asmr'];
+// ==========================================
+// FIBREGUARD MARKETING TEAM CRITERIA
+// ==========================================
+// We look for trends that fit our brand:
+// - Stain-resistant / easy clean (our USP)
+// - Family & pet-friendly (key demo)
+// - Home decor / interior / room makeovers
+// - Cozy / low-stress / wellness lifestyle
+// - Outdoor living / patio
+// - ASMR / satisfying textures
+// - Commercial/hospitality durability
 
-function isFibreGuard(hashtag) {
+// Weighted scoring: higher weight = better match
+const FG_CATEGORIES = {
+  // Tier 1: Direct product demos (highest weight)
+  stain: { keywords: ['stain','clean','cleantok','cleaning','wipe','spill','mess','dirty','wash','sponge','satisfied','satisfying'], weight: 3.0 },
+  furniture: { keywords: ['sofa','couch','furniture','chair','settee','loveseat','sectional','recliner','ottoman','bed','mattress','upholstery'], weight: 2.5 },
+  
+  // Tier 2: Core demo audiences
+  pet: { keywords: ['pet','dog','cat','puppy','kitten','pup','kitty','fur','furparent','dogmom','dogdad','catmom','catdad','petlife','puppylove'], weight: 2.0 },
+  family: { keywords: ['family','kids','baby','toddler','child','parent','parenting','mom','dad','mommy','daddy','familyhome','nursery','playroom'], weight: 2.0 },
+  
+  // Tier 3: Home/interior context
+  home: { keywords: ['home','house','apartment','livingroom','bedroom','kitchen','dining','room','interior','decor','homedecor','design','interiordesign','roommakeover','makeover','renovation','renovate','flip','hometour','roomtour'], weight: 1.5 },
+  outdoor: { keywords: ['outdoor','patio','deck','garden','backyard','porch','balcony','terrace','pool','sunroom','poolside','camping','outdoorliving'], weight: 1.5 },
+  
+  // Tier 4: Lifestyle fit
+  cozy: { keywords: ['cozy','comfort','comfortable','relax','relaxing','calm','peaceful','quiet','slow','hygge','nest','nestled','snuggle','curlup','lowstress','selfcare','wellness','cortisol','stressfree','laidback','chill','lounge','lounging'], weight: 1.2 },
+  aesthetic: { keywords: ['aesthetic','vibe','mood','minimal','minimalist','neutral','earthy','warm','neutraltones','cottagecore','boho','bohemian','scandi','scandinavian','modern','classic','timeless'], weight: 1.0 },
+  organization: { keywords: ['organize','organization','declutter','decluttering','tidy','storage','organised','minimalism','simplify','springclean','deepclean'], weight: 1.0 },
+  
+  // Tier 5: Broader trends that could work with a twist
+  viral: { keywords: ['viral','fyp','foryou','trending','challenge','trend','dance','song','comedy','humor','funny','relatable','storytime'], weight: 0.5 }
+};
+
+function fgScoreV2(hashtag) {
   const h = hashtag.toLowerCase();
-  for(const kw of FG_KEYWORDS) { if(h.includes(kw)) return true; }
-  for(const p of FG_PREFIXES) { if(h.startsWith(p)) return true; }
-  return false;
+  let totalScore = 0;
+  let matchedCategories = [];
+  
+  for (const [cat, data] of Object.entries(FG_CATEGORIES)) {
+    for (const kw of data.keywords) {
+      if (h.includes(kw)) {
+        totalScore += data.weight;
+        matchedCategories.push(cat);
+        break; // Only count each category once
+      }
+    }
+  }
+  
+  // Bonus: exact match on key terms
+  if (h === 'cleantok' || h === 'cleantokuk') totalScore += 2;
+  if (h.includes('sofa') || h.includes('couch')) totalScore += 1;
+  if (h.includes('pet') && h.includes('proof')) totalScore += 1;
+  
+  return { score: totalScore, categories: [...new Set(matchedCategories)] };
 }
 
-function getFGReason(hashtag) {
+// Simple boolean check for table filtering
+function isFibreGuard(hashtag) {
+  const result = fgScoreV2(hashtag);
+  return result.score >= 1.5; // Threshold for "FG relevant"
+}
+
+// Get human-readable reason
+function getFGReasonV2(hashtag) {
   const h = hashtag.toLowerCase();
-  if(h.includes('sofa')||h.includes('couch')) return 'sofa';
-  if(h.includes('furniture')) return 'furniture';
-  if(h.includes('home')||h.includes('house')||h.includes('apartment')) return 'home';
-  if(h.includes('interior')||h.includes('decor')||h.includes('design')) return 'decor';
-  if(h.includes('cozy')) return 'cozy';
-  if(h.includes('clean')||h.includes('stain')||h.includes('cleantok')) return 'cleaning';
-  if(h.includes('room')||h.includes('bedroom')||h.includes('living')||h.includes('indoor')) return 'room';
-  if(h.includes('kids')||h.includes('family')||h.includes('pet')) return 'family';
-  if(h.includes('diy')||h.includes('craft')||h.includes('makeover')) return 'diy';
-  if(h.includes('asmr')||h.includes('relax')||h.includes('calm')) return 'asmr';
-  return 'lifestyle';
+  if (h.match(/stain|clean|cleantok|wipe|spill|mess/)) return '🧹 Stain-resistant demo';
+  if (h.match(/sofa|couch|furniture|chair/)) return '🛋️ Furniture direct';
+  if (h.match(/pet|dog|cat|puppy|kitten/)) return '🐕 Pet-friendly';
+  if (h.match(/family|kids|baby|parent/)) return '👨‍👩‍👧‍👦 Family-friendly';
+  if (h.match(/home|house|apartment|room|interior|decor/)) return '🏠 Home/interior';
+  if (h.match(/outdoor|patio|garden|deck/)) return '☀️ Outdoor living';
+  if (h.match(/cozy|comfort|relax|calm|stress|cortisol/)) return '😌 Cozy lifestyle';
+  if (h.match(/aesthetic|vibe|mood/)) return '🎨 Aesthetic content';
+  if (h.match(/organize|declutter|tidy/)) return '📦 Organization';
+  return '📱 Could work with twist';
+}
+
+// Generate FG-specific video idea
+function getFgIdeaV2(hashtag) {
+  const h = hashtag.toLowerCase();
+  
+  if (h.match(/stain|clean|cleantok|wipe/)) {
+    return `Stain test! Wine, coffee, sauce — wipe clean instantly. Satisfying ASMR reveal. "Messy life, clean sofa."`;
+  }
+  if (h.match(/pet|dog|cat/)) {
+    return `Pet-proof test: dog claws, cat jumping, fur everywhere — FibreGuard withstands it all. "Worried about pets? Don't be."`;
+  }
+  if (h.match(/family|kids|baby/)) {
+    return `Kid-proof furniture: juice spills, marker stains, sticky hands — easy wipe. "Parenting is hard. Furniture shouldn't be."`;
+  }
+  if (h.match(/cozy|comfort|relax|cortisol|stress/)) {
+    return `Low-stress living room ASMR. Soft fabric, calm colors, peace of mind. "Your stress-free sanctuary starts here."`;
+  }
+  if (h.match(/home|house|room|makeover/)) {
+    return `Room reveal: before/after with FibreGuard. "This fabric changed everything." Interior design transformation.`;
+  }
+  if (h.match(/outdoor|patio|garden/)) {
+    return `Outdoor durability test: sun, rain, pool splashes — still looks new. "Indoor luxury, outdoor resilience."`;
+  }
+  return `Ride this trend with a FibreGuard twist — show the product naturally in content.`;
 }
 
 function sw(t,el){
@@ -226,9 +305,9 @@ function renderOverlap(data) {
 function renderFG(data) {
   const fg = data.filter(t=>isFibreGuard(t.hashtag));
   const scored = fg.map(t=>{
-    const matchFactor = isFibreGuard(t.hashtag) ? 1.5 : 1.0;
+    const fgResult = fgScoreV2(t.hashtag);
     const combined = (t.us_score + t.eu5_score) / 2;
-    return {...t, fg_score: combined * matchFactor, reason: getFGReason(t.hashtag)};
+    return {...t, fg_score: combined * fgResult.score, reason: getFGReasonV2(t.hashtag), fg_categories: fgResult.categories};
   });
   const sorted = scored.sort((a,b)=>b.fg_score - a.fg_score).slice(0,30);
   
@@ -277,21 +356,10 @@ function renderXP(){
 }
 
 function renderPicks(top3){
-  const ideas = {
-    'sofa':'Sofa styling tips. "3 ways to style your FibreGuard couch for maximum comfort."',
-    'furniture':'Furniture reveal. "This sofa changed our whole living room vibe."',
-    'home':'Home transformation. "Making our home feel brand new with stain-proof fabrics."',
-    'decor':'Interior decor inspo. "Love how this fabric ties the room together."',
-    'cozy':'Cozy setup. "Finally found the perfect spot to relax."',
-    'cleaning':'Stain-proof demo. "Spilled wine? No stress with this fabric."',
-    'room':'Room transformation. "Before and after with FibreGuard."',
-    'lifestyle':'Showcase your FibreGuard furniture with this trending hashtag.'
-  };
-  
   let html = '<div class="picks"><div class="picks-title">🎯 Today\'s Top 3 FibreGuard Picks — Mar 3, 2026</div><div class="picks-grid">';
   
   top3.forEach((t,i) => {
-    const idea = ideas[t.reason] || ideas['lifestyle'];
+    const idea = getFgIdeaV2(t.hashtag);
     html += '<div class="pick"><div class="pick-rank">#'+(i+1)+'</div>' +
       '<div class="pick-name"><a href="https://www.tiktok.com/tag/'+t.hashtag+'" target="_blank">#'+t.hashtag+'</a><span class="fg-badge">'+t.reason+'</span></div>' +
       '<div class="pick-stats"><span>US: '+t.us_score.toFixed(2)+'</span><span>EU5: '+t.eu5_score.toFixed(2)+'</span><span>Score: '+t.fg_score.toFixed(2)+'</span></div>' +
