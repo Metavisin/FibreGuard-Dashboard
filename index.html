@@ -384,10 +384,14 @@ function renderXP(){
 }
 
 function render(){
-  const us=[...D].sort((a,b)=>b.v-a.v);
-  const eu=[...D].filter(t=>t.eu>=15).sort((a,b)=>b.eu-a.eu);
+  // Calculate effective views per region, then filter and sort by those
+  const usData = D.map(t=>({...t, regionalViews: Math.round(t.v * t.us / 100)}));
+  const euData = D.map(t=>({...t, regionalViews: Math.round(t.v * t.eu / 100)}));
+  
+  const us = usData.filter(t=>t.regionalViews >= 500000).sort((a,b)=>b.regionalViews-a.regionalViews);
+  const eu = euData.filter(t=>t.regionalViews >= 500000).sort((a,b)=>b.regionalViews-a.regionalViews);
 
-  // Overlap: hashtags that appear in both US (all) and EU (>=15%) lists
+  // Overlap: hashtags with both US>=500K AND EU>=500K regional views
   const euSet = new Set(eu.map(t=>t.n));
   const overlap = us.filter(t=>euSet.has(t.n));
 
@@ -396,15 +400,15 @@ function render(){
   document.getElementById('eu-c').textContent=eu.length;
   document.getElementById('p-ol').innerHTML=
     '<h2 style="font-size:16px;font-weight:700;margin-bottom:2px">🔗 US + EU Overlap — Trending in Both Markets</h2>'+
-    '<p style="font-size:12px;color:var(--text2);margin-bottom:16px">'+overlap.length+' hashtags that are trending in the US market AND have ≥15% EU audience. These have the widest reach for global campaigns. Click column headers to sort.</p>'+
+    '<p style="font-size:12px;color:var(--text2);margin-bottom:16px">'+overlap.length+' hashtags with ≥500K views in BOTH US and EU. These have the widest global reach. Click column headers to sort.</p>'+
     stats(overlap)+tbl(overlap,true,'ol');
   document.getElementById('p-us').innerHTML=
-    '<h2 style="font-size:16px;font-weight:700;margin-bottom:2px">🇺🇸 All TikTok Trending Hashtags</h2>'+
-    '<p style="font-size:12px;color:var(--text2);margin-bottom:16px">'+us.length+' hashtags from API. Click column headers to sort by Views, Posts, or Score. Click again to reverse.</p>'+
-    stats(us)+tbl(us,false,'us');
+    '<h2 style="font-size:16px;font-weight:700;margin-bottom:2px">🇺🇸 US Market — ≥500K US Views</h2>'+
+    '<p style="font-size:12px;color:var(--text2);margin-bottom:16px">'+us.length+' hashtags ranked by estimated US views (total × US%). Filter: ≥500K US views. Click column headers to sort.</p>'+
+    stats(us)+tbl(us,true,'us');
   document.getElementById('p-eu').innerHTML=
-    '<h2 style="font-size:16px;font-weight:700;margin-bottom:2px">🇪🇺 EU Region — ≥15% European Audience</h2>'+
-    '<p style="font-size:12px;color:var(--text2);margin-bottom:16px">'+eu.length+' hashtags with significant EU audience. Click column headers to sort.</p>'+
+    '<h2 style="font-size:16px;font-weight:700;margin-bottom:2px">🇪🇺 EU Region — ≥500K EU Views</h2>'+
+    '<p style="font-size:12px;color:var(--text2);margin-bottom:16px">'+eu.length+' hashtags ranked by estimated EU views (total × EU%). Filter: ≥500K EU views. Click column headers to sort.</p>'+
     stats(eu)+tbl(eu,true,'eu');
   renderXP();
 }
