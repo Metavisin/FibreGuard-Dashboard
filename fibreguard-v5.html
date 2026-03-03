@@ -442,7 +442,7 @@ let US_DATA = [];
 
 function renderUSTable(){
   const st = sortState.us;
-  const sorted = [...US_DATA].sort((a,b)=>{
+  const sorted = [...US_DATA].filter(h=>h.views>0||h.posts>0).sort((a,b)=>{
     let va=a[st.col],vb=b[st.col];
     if(typeof va==='string') return st.asc?va.localeCompare(vb):vb.localeCompare(va);
     return st.asc?(va-vb):(vb-va);
@@ -500,7 +500,7 @@ function switchEU(cc){
 function renderEUTable(){
   const data = EU_DATA[activeEUCountry] || [];
   const st = sortState.eu;
-  const sorted = [...data].sort((a,b)=>{
+  const sorted = [...data].filter(h=>h.views>0||h.posts>0).sort((a,b)=>{
     let va=a[st.col],vb=b[st.col];
     if(typeof va==='string') return st.asc?va.localeCompare(vb):vb.localeCompare(va);
     return st.asc?(va-vb):(vb-va);
