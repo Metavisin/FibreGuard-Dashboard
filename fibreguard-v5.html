@@ -153,8 +153,9 @@ padding:4px 10px;text-align:left;position:sticky;top:0;background:var(--bg2);use
 
 <!-- Tabs -->
 <div class="tabs">
-<button class="tab on" onclick="switchTab('us',this)">🇺🇸 US Market<span class="c" id="us-c">0</span></button>
+<button class="tab" onclick="switchTab('us',this)">🇺🇸 US Market<span class="c" id="us-c">0</span></button>
 <button class="tab" onclick="switchTab('eu',this)">🇪🇺 EU Region<span class="c" id="eu-c">0</span></button>
+<button class="tab" onclick="switchTab('cc',this)">🎯 Creative Center<span class="c" id="cc-c">0</span></button>
 <button class="tab" onclick="switchTab('claw',this)">🔬 Claw Research<span class="c">5</span></button>
 </div>
 
@@ -163,6 +164,9 @@ padding:4px 10px;text-align:left;position:sticky;top:0;background:var(--bg2);use
 </div>
 <div class="pnl" id="p-eu">
 <div class="loading"><div class="spin"></div><br>Loading EU hashtags...</div>
+</div>
+<div class="pnl" id="p-cc">
+<div class="loading"><div class="spin"></div><br>Loading Creative Center data...</div>
 </div>
 <div class="pnl" id="p-claw"></div>
 </div>
@@ -426,12 +430,13 @@ function switchTab(t,el){
 // ============================================
 // SORTING
 // ============================================
-let sortState = {us:{col:'views',asc:false}, eu:{col:'views',asc:false}};
+let sortState = {us:{col:'views',asc:false}, eu:{col:'views',asc:false}, cc:{col:'posts',asc:false}};
 
 function sortTable(region, col){
   const st = sortState[region];
   if(st.col===col) st.asc=!st.asc; else {st.col=col;st.asc=false;}
   if(region==='us') renderUSTable();
+  else if(region==='cc') renderCC();
   else renderEUTable();
 }
 
@@ -557,6 +562,50 @@ function renderEUTable(){
 }
 
 // ============================================
+// RENDER CREATIVE CENTER TAB (Sorted by Posts, not Views)
+// ============================================
+function renderCC(){
+  const st = sortState.cc;
+  const sorted = [...US_DATA].filter(h=>h.views>0||h.posts>0).sort((a,b)=>{
+    let va=a[st.col],vb=b[st.col];
+    if(typeof va==='string') return st.asc?va.localeCompare(vb):vb.localeCompare(va);
+    return st.asc?(va-vb):(vb-va);
+  }).slice(0,50);
+
+  const arrow = (col)=> st.col===col ? (st.asc?'↑':'↓') : '↕';
+  const cls = (col)=> st.col===col ? 'active' : '';
+
+  let h = `<h2 style="font-size:16px;font-weight:700;margin-bottom:2px">🎯 Creative Center — Top 50 Hashtags by POST COUNT</h2>`;
+  h += `<p style="font-size:12px;color:var(--text2);margin-bottom:16px">This matches TikTok's Creative Center ranking (by posts). Click any column header to sort. Data from TikTok Creative Center API via Apify.</p>`;
+  h += `<table class="tbl"><thead><tr>`;
+  h += `<th>#</th>`;
+  h += `<th>Hashtag</th>`;
+  h += `<th class="num ${cls('posts')}" onclick="sortTable('cc','posts')">Posts <span class="arrow">${arrow('posts')}</span></th>`;
+  h += `<th class="num ${cls('views')}" onclick="sortTable('cc','views')">Views <span class="arrow">${arrow('views')}</span></th>`;
+  h += `<th>Trend</th>`;
+  h += `<th>Top Age</th>`;
+  h += `<th class="hide-m">Industry</th>`;
+  h += `<th class="hide-m">7d Spark</th>`;
+  h += `</tr></thead><tbody>`;
+
+  sorted.forEach((t,i)=>{
+    h += `<tr>`;
+    h += `<td class="rank">${i+1}</td>`;
+    h += `<td class="ht"><a href="https://www.tiktok.com/tag/${t.hashtag}" target="_blank" rel="noopener">#${t.hashtag}</a><a href="https://www.tiktok.com/tag/${t.hashtag}" target="_blank" class="lnk">↗</a></td>`;
+    h += `<td class="num"><span class="vw">${fv(t.posts)}</span></td>`;
+    h += `<td class="num">${fv(t.views)}</td>`;
+    h += `<td><span class="dir ${dirClass(t.direction)}">${dirLabel(t.direction)}</span></td>`;
+    h += `<td><span class="age-pill ${ageClass(t.top_age)}">${t.top_age}</span></td>`;
+    h += `<td class="hide-m"><span class="industry-tag">${t.industry||'—'}</span></td>`;
+    h += `<td class="hide-m">${miniChart(t.trend)}</td>`;
+    h += `</tr>`;
+  });
+  h += `</tbody></table>`;
+  document.getElementById('p-cc').innerHTML = h;
+  document.getElementById('cc-c').textContent = sorted.length;
+}
+
+// ============================================
 // RENDER CLAW RESEARCH TAB
 // ============================================
 function renderClaw(){
@@ -637,6 +686,7 @@ async function init(){
     // US data
     US_DATA = json.countries?.US || [];
     renderUSTable();
+    renderCC(); // Creative Center tab (sorted by posts)
 
     // EU data
     const euCountries = ['FR','DE','IT','ES','NL','GB'];
