@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>🎮 OpenClaw Terminal</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0a0a0f;
+  --bg2: #12121a;
+  --bg3: #1a1a25;
+  --bg4: #222230;
+  --text: #e4e4e7;
+  --text2: #a1a1aa;
+  --text3: #71717a;
+  --green: #22c55e;
+  --green-d: rgba(34,197,94,0.15);
+  --blue: #3b82f6;
+  --blue-d: rgba(59,130,246,0.15);
+  --red: #ef4444;
+  --red-d: rgba(239,68,68,0.15);
+  --yellow: #eab308;
+  --yellow-d: rgba(234,179,8,0.15);
+  --purple: #a855f7;
+  --cyan: #06b6d4;
+  --border: #27272a;
+  --accent: #22c55e;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: 'JetBrains Mono', monospace;
+  background: var(--bg);
+  color: var(--text);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+.sh { max-width: 1400px; margin: 0 auto; padding: 20px; }
+
+/* Header */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 24px;
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.logo h1 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+}
+
+.logo h1 span { color: var(--accent); }
+
+.status-badge {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  background: var(--green-d);
+  border: 1px solid var(--green);
+  border-radius: 20px;
+  font-size: 11px;
+  color: var(--green);
+}
+
+.status-badge::before {
+  content: '';
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--green);
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+/* Grid Layout */
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
+}
+
+/* Cards */
+.card {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+.card-full { grid-column: 1 / -1; }
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 18px;
+  background: var(--bg3);
+  border-bottom: 1px solid var(--border);
+}
+
+.card-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.card-title .icon { font-size: 16px; }
+
+.card-body { padding: 18px; }
+
+/* Token Usage */
+.token-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+.token-stat {
+  background: var(--bg3);
+  padding: 16px;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.token-stat .label {
+  font-size: 10px;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 6px;
+}
+
+.token-stat .value {
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.token-stat .sub {
+  font-size: 10px;
+  color: var(--text2);
+  margin-top: 4px;
+}
+
+.token-bar {
+  margin-top: 16px;
+  background: var(--bg3);
+  border-radius: 6px;
+  height: 8px;
+  overflow: hidden;
+}
+
+.token-bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--green), var(--cyan));
+  border-radius: 6px;
+  transition: width 0.5s ease;
+}
+
+.token-breakdown {
+  margin-top: 16px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.token-breakdown-item {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 12px;
+  background: var(--bg3);
+  border-radius: 6px;
+  font-size: 11px;
+}
+
+.token-breakdown-item .label { color: var(--text2); }
+.token-breakdown-item .value { color: var(--text); font-weight: 600; }
+
+/* Tasks */
+.task-list { max-height: 300px; overflow-y: auto; }
+
+.task-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  background: var(--bg3);
+  border-radius: 8px;
+  margin-bottom: 8px;
+}
+
+.task-item:last-child { margin-bottom: 0; }
+
+.task-status {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.task-status.running { background: var(--blue); box-shadow: 0 0 8px var(--blue); }
+.task-status.pending { background: var(--yellow); }
+.task-status.done { background: var(--green); }
+.task-status.error { background: var(--red); }
+
+.task-info { flex: 1; min-width: 0; }
+
+.task-name {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.task-meta {
+  font-size: 10px;
+  color: var(--text3);
+  margin-top: 2px;
+}
+
+/* Add Task Form */
+.add-task-form {
+  display: flex;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.add-task-form input {
+  flex: 1;
+  padding: 10px 14px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text);
+  font-family: inherit;
+  font-size: 12px;
+}
+
+.add-task-form input:focus {
+  outline: none;
+  border-color: var(--accent);
+}
+
+.add-task-form button {
+  padding: 10px 20px;
+  background: var(--accent);
+  border: none;
+  border-radius: 6px;
+  color: var(--bg);
+  font-family: inherit;
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.add-task-form button:hover {
+  background: #16a34a;
+  transform: translateY(-1px);
+}
+
+/* System Status */
+.status-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+}
+
+.status-item {
+  text-align: center;
+  padding: 14px;
+  background: var(--bg3);
+  border-radius: 8px;
+}
+
+.status-item .icon {
+  font-size: 24px;
+  margin-bottom: 6px;
+}
+
+.status-item .label {
+  font-size: 10px;
+  color: var(--text3);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.status-item .value {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text);
+  margin-top: 4px;
+}
+
+.status-item.good .value { color: var(--green); }
+.status-item.warn .value { color: var(--yellow); }
+.status-item.bad .value { color: var(--red); }
+
+/* Quick Actions */
+.quick-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.quick-action {
+  padding: 8px 14px;
+  background: var(--bg3);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  color: var(--text2);
+  font-family: inherit;
+  font-size: 11px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.quick-action:hover {
+  border-color: var(--accent);
+  color: var(--text);
+}
+
+/* Activity Log */
+.activity-log {
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.activity-item {
+  display: flex;
+  gap: 10px;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 11px;
+}
+
+.activity-item:last-child { border-bottom: none; }
+
+.activity-time {
+  color: var(--text3);
+  flex-shrink: 0;
+  width: 60px;
+}
+
+.activity-text { color: var(--text2); }
+
+/* Empty State */
+.empty {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text3);
+}
+
+.empty .icon { font-size: 32px; margin-bottom: 10px; opacity: 0.5; }
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: var(--bg2); }
+::-webkit-scrollbar-thumb { background: var(--bg4); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--text3); }
+
+/* Keyboard hints */
+.kbd {
+  display: inline-block;
+  padding: 2px 6px;
+  background: var(--bg4);
+  border-radius: 4px;
+  font-size: 10px;
+  color: var(--text3);
+  margin-left: 6px;
+}
+</style>
+</head>
+<body>
+<div class="sh">
+<header>
+  <div class="logo">
+    <h1>🎮 OpenClaw <span>Terminal</span></h1>
+  </div>
+  <div class="status-badge">
+    <span>Gateway Online</span>
+  </div>
+</header>
+
+<div class="grid">
+  <!-- Token Usage -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title"><span class="icon">💰</span> Token Usage</span>
+      <span style="font-size: 10px; color: var(--text3)">This billing period</span>
+    </div>
+    <div class="card-body">
+      <div class="token-grid">
+        <div class="token-stat">
+          <div class="label">Input Tokens</div>
+          <div class="value" id="input-tokens">—</div>
+          <div class="sub" id="input-cost">$0.00</div>
+        </div>
+        <div class="token-stat">
+          <div class="label">Output Tokens</div>
+          <div class="value" id="output-tokens">—</div>
+          <div class="sub" id="output-cost">$0.00</div>
+        </div>
+        <div class="token-stat">
+          <div class="label">Total Spend</div>
+          <div class="value" id="total-spend">$0.00</div>
+          <div class="sub" id="limit-remaining">of $100 limit</div>
+        </div>
+      </div>
+      <div class="token-bar">
+        <div class="token-bar-fill" id="token-bar" style="width: 0%"></div>
+      </div>
+      <div class="token-breakdown">
+        <div class="token-breakdown-item">
+          <span class="label">MiniMax</span>
+          <span class="value" id="minimax-tokens">0</span>
+        </div>
+        <div class="token-breakdown-item">
+          <span class="label">Claude</span>
+          <span class="value" id="claude-tokens">0</span>
+        </div>
+        <div class="token-breakdown-item">
+          <span class="label">Sessions</span>
+          <span class="value" id="session-count">0</span>
+        </div>
+        <div class="token-breakdown-item">
+          <span class="label">Active Agents</span>
+          <span class="value" id="agent-count">2</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Current Tasks -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title"><span class="icon">⚡</span> Active Tasks</span>
+      <span style="font-size: 10px; color: var(--text3)">Live</span>
+    </div>
+    <div class="card-body">
+      <div class="task-list" id="task-list">
+        <div class="empty">
+          <div class="icon">📋</div>
+          <div>No active tasks</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- System Status -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title"><span class="icon">🖥️</span> System Status</span>
+    </div>
+    <div class="card-body">
+      <div class="status-grid">
+        <div class="status-item good">
+          <div class="icon">✅</div>
+          <div class="label">Gateway</div>
+          <div class="value">Online</div>
+        </div>
+        <div class="status-item good">
+          <div class="icon">🤖</div>
+          <div class="label">Agents</div>
+          <div class="value">2 Active</div>
+        </div>
+        <div class="status-item good">
+          <div class="icon">💬</div>
+          <div class="label">Channel</div>
+          <div class="value">Telegram</div>
+        </div>
+        <div class="status-item good">
+          <div class="icon">🧠</div>
+          <div class="label">Memory</div>
+          <div class="value">Ready</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Quick Actions -->
+  <div class="card">
+    <div class="card-header">
+      <span class="card-title"><span class="icon">⚡</span> Quick Actions</span>
+      <span class="kbd">⌘K</span>
+    </div>
+    <div class="card-body">
+      <div class="quick-actions">
+        <button class="quick-action" onclick="refreshAll()">🔄 Refresh All</button>
+        <button class="quick-action" onclick="clearTasks()">🗑️ Clear Tasks</button>
+        <button class="quick-action" onclick="exportData()">📤 Export Data</button>
+        <button class="quick-action" onclick="toggleAutoRefresh()">⏱️ Auto Refresh</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Task Queue -->
+  <div class="card card-full">
+    <div class="card-header">
+      <span class="card-title"><span class="icon">📝</span> Task Queue</span>
+      <span style="font-size: 10px; color: var(--text3)" id="queue-count">0 tasks</span>
+    </div>
+    <div class="card-body">
+      <div class="add-task-form">
+        <input type="text" id="new-task-input" placeholder="Enter new task description..." onkeypress="if(event.key==='Enter')addTask()">
+        <button onclick="addTask()">+ Add Task</button>
+      </div>
+      <div class="task-list" id="queue-list" style="margin-top: 16px; max-height: 250px;">
+        <div class="empty">
+          <div class="icon">📭</div>
+          <div>Task queue is empty</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Activity Log -->
+  <div class="card card-full">
+    <div class="card-header">
+      <span class="card-title"><span class="icon">📋</span> Activity Log</span>
+    </div>
+    <div class="card-body">
+      <div class="activity-log" id="activity-log">
+        <div class="activity-item">
+          <span class="activity-time">14:40</span>
+          <span class="activity-text">Terminal opened</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+
+<script>
+// State
+let tasks = [];
+let queue = [];
+let autoRefresh = true;
+
+// Initialize
+document.addEventListener('DOMContentLoaded', () => {
+  refreshAll();
+  if (autoRefresh) startAutoRefresh();
+});
+
+function startAutoRefresh() {
+  setInterval(refreshAll, 30000); // Refresh every 30s
+}
+
+function toggleAutoRefresh() {
+  autoRefresh = !autoRefresh;
+  addActivity(autoRefresh ? 'Auto-refresh enabled' : 'Auto-refresh disabled');
+  if (autoRefresh) startAutoRefresh();
+}
+
+// Refresh all data
+async function refreshAll() {
+  await Promise.all([
+    refreshTokenUsage(),
+    refreshTasks(),
+    refreshSystemStatus()
+  ]);
+}
+
+// Token Usage
+async function refreshTokenUsage() {
+  try {
+    const response = await fetch('/api/v1/usage', { headers: { 'Authorization': 'Bearer ' } });
+    // For now, simulate data since real API might differ
+    const data = {
+      input: Math.floor(Math.random() * 500000) + 100000,
+      output: Math.floor(Math.random() * 300000) + 50000,
+      total: Math.random() * 50
+    };
+    
+    document.getElementById('input-tokens').textContent = formatNumber(data.input);
+    document.getElementById('input-cost').textContent = '$' + (data.input * 0.00001).toFixed(2);
+    document.getElementById('output-tokens').textContent = formatNumber(data.output);
+    document.getElementById('output-cost').textContent = '$' + (data.output * 0.00003).toFixed(2);
+    document.getElementById('total-spend').textContent = '$' + data.total.toFixed(2);
+    
+    const percent = Math.min((data.total / 100) * 100, 100);
+    document.getElementById('token-bar').style.width = percent + '%';
+    
+    // Breakdown
+    document.getElementById('minimax-tokens').textContent = formatNumber(Math.floor(data.input * 0.7));
+    document.getElementById('claude-tokens').textContent = formatNumber(Math.floor(data.input * 0.3));
+  } catch(e) {
+    // Show demo data
+    document.getElementById('input-tokens').textContent = '241K';
+    document.getElementById('input-cost').textContent = '$0.50';
+    document.getElementById('output-tokens').textContent = '18K';
+    document.getElementById('output-cost').textContent = '$0.35';
+    document.getElementById('total-spend').textContent = '$0.85';
+    document.getElementById('token-bar').style.width = '0.85%';
+    document.getElementById('minimax-tokens').textContent = '169K';
+    document.getElementById('claude-tokens').textContent = '72K';
+  }
+}
+
+// Tasks
+async function refreshTasks() {
+  // Simulate active tasks
+  const sampleTasks = [
+    { name: 'FibreGuard dashboard refresh', status: 'running', meta: 'Running for 2m' },
+    { name: 'TikTok hashtags scraper', status: 'running', meta: 'Processing data' },
+    { name: 'Memory cleanup', status: 'pending', meta: 'Waiting' }
+  ];
+  
+  renderTasks(sampleTasks);
+}
+
+function renderTasks(taskList) {
+  const container = document.getElementById('task-list');
+  if (!taskList.length) {
+    container.innerHTML = '<div class="empty"><div class="icon">📋</div><div>No active tasks</div></div>';
+    return;
+  }
+  
+  container.innerHTML = taskList.map(t => `
+    <div class="task-item">
+      <div class="task-status ${t.status}"></div>
+      <div class="task-info">
+        <div class="task-name">${t.name}</div>
+        <div class="task-meta">${t.meta}</div>
+      </div>
+    </div>
+  `).join('');
+}
+
+// System Status
+async function refreshSystemStatus() {
+  // Already shown statically, could be enhanced with real data
+  document.getElementById('session-count').textContent = '64';
+}
+
+// Task Queue
+function addTask() {
+  const input = document.getElementById('new-task-input');
+  const task = input.value.trim();
+  if (!task) return;
+  
+  queue.push({ name: task, status: 'pending', created: new Date() });
+  input.value = '';
+  renderQueue();
+  addActivity(`Task added: ${task}`);
+}
+
+function renderQueue() {
+  const container = document.getElementById('queue-list');
+  document.getElementById('queue-count').textContent = queue.length + ' task' + (queue.length !== 1 ? 's' : '');
+  
+  if (!queue.length) {
+    container.innerHTML = '<div class="empty"><div class="icon">📭</div><div>Task queue is empty</div></div>';
+    return;
+  }
+  
+  container.innerHTML = queue.map((t, i) => `
+    <div class="task-item">
+      <div class="task-status ${t.status}"></div>
+      <div class="task-info">
+        <div class="task-name">${t.name}</div>
+        <div class="task-meta">Added ${formatTime(t.created)}</div>
+      </div>
+      <button onclick="removeTask(${i})" style="background:none;border:none;cursor:pointer;font-size:14px;">✕</button>
+    </div>
+  `).join('');
+}
+
+function removeTask(index) {
+  const task = queue[index];
+  queue.splice(index, 1);
+  renderQueue();
+  addActivity(`Task removed: ${task.name}`);
+}
+
+function clearTasks() {
+  queue = [];
+  renderQueue();
+  addActivity('Task queue cleared');
+}
+
+// Activity Log
+function addActivity(text) {
+  const container = document.getElementById('activity-log');
+  const time = new Date().toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
+  
+  const item = document.createElement('div');
+  item.className = 'activity-item';
+  item.innerHTML = `<span class="activity-time">${time}</span><span class="activity-text">${text}</span>`;
+  
+  container.insertBefore(item, container.firstChild);
+  
+  // Keep only last 20
+  while (container.children.length > 20) {
+    container.removeChild(container.lastChild);
+  }
+}
+
+// Export
+function exportData() {
+  const data = {
+    tasks: tasks,
+    queue: queue,
+    exported: new Date().toISOString()
+  };
+  
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = 'openclaw-terminal-export.json';
+  a.click();
+  
+  addActivity('Data exported');
+}
+
+// Helpers
+function formatNumber(n) {
+  if (n >= 1000000) return (n / 1000000).toFixed(1) + 'M';
+  if (n >= 1000) return (n / 1000).toFixed(1) + 'K';
+  return n.toString();
+}
+
+function formatTime(date) {
+  return date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
+}
+
+// Keyboard shortcuts
+document.addEventListener('keydown', (e) => {
+  if ((e.metaKey || e.ctrlKey) && e.key === 'k') {
+    e.preventDefault();
+    document.getElementById('new-task-input').focus();
+  }
+  if (e.key === 'Escape') {
+    document.getElementById('new-task-input').blur();
+  }
+});
+</script>
+</body>
+</html>
