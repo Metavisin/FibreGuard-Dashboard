@@ -408,9 +408,11 @@ function computeFGPicks(allData) {
     .map(item => ({ ...item, fg: scoreFG(item.hashtag) }))
     .filter(item => item.fg.score >= 1.0) // minimum relevance threshold
     .sort((a, b) => {
-      // Sort by: FG score * log(views) to balance relevance + reach
-      const scoreA = a.fg.score * Math.log10(Math.max(a.views, 1));
-      const scoreB = b.fg.score * Math.log10(Math.max(b.views, 1));
+      // FG Fit score is the PRIMARY factor (70-80% of total score).
+      // Views and posts are secondary signals only.
+      // Formula: (fg_score × 10) + log10(views) × 0.3 + log10(posts) × 0.3
+      const scoreA = (a.fg.score * 10) + Math.log10(Math.max(a.views, 1)) * 0.3 + Math.log10(Math.max(a.posts, 1)) * 0.3;
+      const scoreB = (b.fg.score * 10) + Math.log10(Math.max(b.views, 1)) * 0.3 + Math.log10(Math.max(b.posts, 1)) * 0.3;
       return scoreB - scoreA;
     });
 
