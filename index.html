@@ -123,6 +123,32 @@ padding:4px 10px;text-align:left;position:sticky;top:0;background:var(--bg2);use
 .trend-status.rising{background:var(--purple-d);color:var(--purple)}
 .trend-updated{font-size:11px;color:var(--text3);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)}
 
+/* FG Fit Filter */
+.fg-filter{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
+.fg-filter label{font-size:11px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.3px}
+.fg-filter select{background:var(--bg);border:1px solid var(--border);color:var(--text);padding:5px 12px;border-radius:6px;font-size:12px;font-family:inherit;cursor:pointer;transition:border-color .15s}
+.fg-filter select:focus{outline:none;border-color:var(--green)}
+.fg-filter .count{font-size:11px;color:var(--text3)}
+
+/* Score Tooltip */
+.fg-score-wrap{position:relative;display:inline-block;cursor:pointer}
+.fg-tooltip{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);
+  background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;
+  min-width:260px;max-width:320px;z-index:1000;box-shadow:0 8px 32px rgba(0,0,0,.5);
+  font-size:11px;line-height:1.5;color:var(--text2);pointer-events:auto;opacity:0;visibility:hidden;transition:opacity .15s,visibility .15s}
+.fg-tooltip.show{opacity:1;visibility:visible}
+.fg-tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
+  border:6px solid transparent;border-top-color:var(--border)}
+.fg-tooltip .tt-title{font-size:12px;font-weight:700;color:var(--text);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.fg-tooltip .tt-score{font-weight:800;padding:1px 6px;border-radius:4px;font-size:11px}
+.fg-tooltip .tt-cats{display:flex;flex-direction:column;gap:4px;margin-bottom:8px}
+.fg-tooltip .tt-cat{display:flex;align-items:center;gap:6px}
+.fg-tooltip .tt-cat-name{font-weight:600;color:var(--text)}
+.fg-tooltip .tt-cat-weight{font-size:10px;color:var(--text3)}
+.fg-tooltip .tt-kw{font-size:10px;color:var(--green);font-style:italic}
+.fg-tooltip .tt-none{color:var(--text3);font-style:italic}
+.fg-tooltip .tt-summary{font-size:11px;color:var(--text2);border-top:1px solid var(--border);padding-top:8px;margin-top:4px}
+
 /* Loading */
 .loading{text-align:center;padding:60px 20px;color:var(--text3)}
 .loading .spin{display:inline-block;width:24px;height:24px;border:3px solid var(--bg3);border-top-color:var(--green);border-radius:50%;animation:sp .8s linear infinite;margin-bottom:12px}
@@ -134,35 +160,8 @@ padding:4px 10px;text-align:left;position:sticky;top:0;background:var(--bg2);use
 .tbl{font-size:12px}.hide-m{display:none}
 .controls{flex-direction:column;align-items:flex-start}
 }
-
-/* Reasoning Modal */
-.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:1000;display:flex;align-items:center;justify-content:center;padding:16px;opacity:0;transition:opacity .2s;pointer-events:none}
-.modal-overlay.visible{opacity:1;pointer-events:auto}
-.modal{background:var(--bg2);border:1px solid var(--bg4);border-radius:16px;max-width:480px;width:100%;padding:28px;position:relative;transform:translateY(12px) scale(.97);transition:all .2s;box-shadow:0 24px 64px rgba(0,0,0,.6)}
-.modal-overlay.visible .modal{transform:translateY(0) scale(1)}
-.modal-close{position:absolute;top:14px;right:16px;background:var(--bg3);border:none;color:var(--text3);cursor:pointer;width:28px;height:28px;border-radius:6px;font-size:16px;display:flex;align-items:center;justify-content:center;transition:all .15s;line-height:1}
-.modal-close:hover{background:var(--bg4);color:var(--text)}
-.modal-hashtag{font-size:20px;font-weight:800;color:var(--green);margin-bottom:4px}
-.modal-about{font-size:12px;color:var(--text2);margin-bottom:18px;line-height:1.5}
-.modal-score-row{display:flex;align-items:center;gap:10px;margin-bottom:18px}
-.modal-score-big{font-size:32px;font-weight:900;line-height:1}
-.modal-score-label{font-size:11px;color:var(--text3);line-height:1.4}
-.modal-section{margin-bottom:14px}
-.modal-section-title{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--text3);margin-bottom:8px}
-.modal-cats{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:14px}
-.modal-cat-pill{font-size:11px;font-weight:600;padding:4px 10px;border-radius:6px;background:var(--bg3);color:var(--text2);border:1px solid var(--border)}
-.modal-reasoning{font-size:12px;color:var(--text);background:var(--bg);border-radius:10px;padding:14px 16px;line-height:1.7;border-left:3px solid var(--green)}
-.modal-no-score{font-size:13px;color:var(--text3);text-align:center;padding:12px 0}
 </style></head>
 <body>
-<!-- Reasoning Modal -->
-<div class="modal-overlay" id="reasoning-modal" onclick="closeModal(event)">
-  <div class="modal" id="modal-content">
-    <button class="modal-close" onclick="hideModal()" title="Close">✕</button>
-    <div id="modal-body"></div>
-  </div>
-</div>
-
 <div class="sh">
 <header>
 <h1>🎯 FibreGuard <em>Trend Spotter</em> <span class="v">v5</span></h1>
@@ -451,23 +450,147 @@ function switchTab(t,el){
 }
 
 // ============================================
+// FG FIT FILTER STATE
+// ============================================
+let fgFilter = { us: 'all', eu: 'all' };
+
+function setFGFilter(region, value) {
+  fgFilter[region] = value;
+  if (region === 'us') renderUSTable();
+  else renderEUTable();
+}
+
+function applyFGFilter(data, region) {
+  const f = fgFilter[region];
+  if (f === 'all') return data;
+  return data.filter(item => {
+    const desc = HASHTAG_DESCS[item.hashtag] || {};
+    const s = parseInt(desc.fg_score) || 0;
+    if (f === 'high') return s >= 7;
+    if (f === 'medium') return s >= 4 && s <= 6;
+    if (f === 'low') return s >= 1 && s <= 3;
+    if (f === 'none') return s === 0;
+    return true;
+  });
+}
+
+function fgFilterHTML(region) {
+  const val = fgFilter[region];
+  return `<div class="fg-filter">
+    <label>🎯 FG Fit:</label>
+    <select onchange="setFGFilter('${region}',this.value)">
+      <option value="all"${val==='all'?' selected':''}>All Scores</option>
+      <option value="high"${val==='high'?' selected':''}>🟢 High Fit (7-10)</option>
+      <option value="medium"${val==='medium'?' selected':''}>🟡 Medium Fit (4-6)</option>
+      <option value="low"${val==='low'?' selected':''}>🟠 Low Fit (1-3)</option>
+      <option value="none"${val==='none'?' selected':''}>— No Score</option>
+    </select>
+  </div>`;
+}
+
+// ============================================
+// SCORE EXPLANATION ENGINE
+// ============================================
+function explainFGScore(hashtag) {
+  const h = (hashtag || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  const matches = [];
+  let totalScore = 0;
+
+  for (const [cat, data] of Object.entries(FG_CATEGORIES)) {
+    for (const kw of data.kw) {
+      if (h.includes(kw)) {
+        matches.push({ cat, keyword: kw, weight: data.weight, emoji: data.emoji });
+        totalScore += data.weight;
+        break;
+      }
+    }
+  }
+
+  // Bonuses
+  const bonuses = [];
+  if (h === 'cleantok' || h === 'satisfyingcleaning') { bonuses.push('Exact match bonus: cleaning keyword'); totalScore += 2; }
+  if (h.includes('sofa') || h.includes('couch')) { bonuses.push('Bonus: direct furniture term'); totalScore += 1.5; }
+  if (h.includes('petproof') || h.includes('stainproof')) { bonuses.push('Bonus: proof/protection term'); totalScore += 2; }
+
+  return { matches, bonuses, algorithmScore: totalScore };
+}
+
+function scoreTooltipHTML(hashtag, fgScore) {
+  const s = parseInt(fgScore) || 0;
+  const explanation = explainFGScore(hashtag);
+  const desc = HASHTAG_DESCS[hashtag] || {};
+
+  let level, levelColor, levelBg;
+  if (s >= 7) { level = 'High Fit'; levelColor = 'var(--green)'; levelBg = 'var(--green-d)'; }
+  else if (s >= 4) { level = 'Medium Fit'; levelColor = 'var(--yellow)'; levelBg = 'var(--yellow-d)'; }
+  else if (s >= 1) { level = 'Low Fit'; levelColor = 'var(--orange)'; levelBg = 'var(--orange-d)'; }
+  else { level = 'No Fit'; levelColor = 'var(--text3)'; levelBg = 'var(--bg3)'; }
+
+  let html = `<div class="tt-title">#${hashtag} <span class="tt-score" style="background:${levelBg};color:${levelColor}">${s}/10 · ${level}</span></div>`;
+
+  if (desc.about) {
+    html += `<div style="margin-bottom:8px;font-size:11px;color:var(--text2)">${desc.about}</div>`;
+  }
+
+  if (explanation.matches.length > 0) {
+    html += `<div class="tt-cats">`;
+    explanation.matches.forEach(m => {
+      const catLabel = m.cat.charAt(0).toUpperCase() + m.cat.slice(1);
+      html += `<div class="tt-cat">${m.emoji} <span class="tt-cat-name">${catLabel}</span> <span class="tt-cat-weight">(+${m.weight} weight)</span> <span class="tt-kw">matched "${m.keyword}"</span></div>`;
+    });
+    html += `</div>`;
+    if (explanation.bonuses.length) {
+      html += `<div style="font-size:10px;color:var(--cyan);margin-bottom:6px">⭐ ${explanation.bonuses.join(' · ')}</div>`;
+    }
+  } else {
+    html += `<div class="tt-none">No direct FibreGuard category keyword matches detected.</div>`;
+  }
+
+  html += `<div class="tt-summary">`;
+  if (s >= 7) html += `Strong FibreGuard relevance — directly relates to home, furniture, cleaning, or family/pet life.`;
+  else if (s >= 4) html += `Moderate relevance — touches on lifestyle themes FibreGuard can connect with (home, comfort, aesthetics).`;
+  else if (s >= 1) html += `Low relevance — tangential connection. Could work with creative angle but not a natural fit.`;
+  else html += `No obvious FibreGuard connection detected in this hashtag.`;
+  html += `</div>`;
+
+  return html;
+}
+
+// Global tooltip management
+let activeTooltip = null;
+function toggleFGTooltip(el, hashtag, fgScore) {
+  const existing = el.querySelector('.fg-tooltip');
+  if (existing && existing.classList.contains('show')) {
+    existing.classList.remove('show');
+    activeTooltip = null;
+    return;
+  }
+  // Close any open tooltip
+  if (activeTooltip) { activeTooltip.classList.remove('show'); activeTooltip = null; }
+  if (!existing) {
+    const tip = document.createElement('div');
+    tip.className = 'fg-tooltip show';
+    tip.innerHTML = scoreTooltipHTML(hashtag, fgScore);
+    tip.addEventListener('click', e => e.stopPropagation());
+    el.appendChild(tip);
+    activeTooltip = tip;
+  } else {
+    existing.classList.add('show');
+    activeTooltip = existing;
+  }
+}
+document.addEventListener('click', () => { if (activeTooltip) { activeTooltip.classList.remove('show'); activeTooltip = null; } });
+
+// ============================================
 // SORTING
 // ============================================
 let sortState = {us:{col:'views',asc:false}, eu:{col:'views',asc:false}};
 
 function sortTable(region, col){
   const st = sortState[region];
-  if(st.col===col) st.asc=!st.asc; else {st.col=col;st.asc=col==='fg_score'?false:false;}
+  if(st.col===col) st.asc=!st.asc; else {st.col=col;st.asc=false;}
   if(region==='us') renderUSTable();
   else renderEUTable();
-}
-
-// Enrich all hashtag data arrays with fg_score so sorting works
-function enrichWithScores(dataArr){
-  return dataArr.map(item => {
-    const desc = HASHTAG_DESCS[item.hashtag] || {};
-    return { ...item, fg_score: desc.fg_score != null ? parseInt(desc.fg_score) : 0 };
-  });
 }
 
 // ============================================
@@ -477,10 +600,9 @@ let US_DATA = [];
 
 function renderUSTable(){
   const st = sortState.us;
-  const enriched = enrichWithScores(US_DATA);
-  const sorted = enriched.filter(h=>h.views>0||h.posts>0).sort((a,b)=>{
+  const filtered = applyFGFilter([...US_DATA].filter(h=>h.views>0||h.posts>0), 'us');
+  const sorted = filtered.sort((a,b)=>{
     let va=a[st.col],vb=b[st.col];
-    if(va==null) va=0; if(vb==null) vb=0;
     if(typeof va==='string') return st.asc?va.localeCompare(vb):vb.localeCompare(va);
     return st.asc?(va-vb):(vb-va);
   }).slice(0,50);
@@ -489,7 +611,8 @@ function renderUSTable(){
   const cls = (col)=> st.col===col ? 'active' : '';
 
   let h = `<h2 style="font-size:16px;font-weight:700;margin-bottom:2px">🇺🇸 US Market — Top 50 Trending Hashtags (7 Days)</h2>`;
-  h += `<p style="font-size:12px;color:var(--text2);margin-bottom:16px">Click any column header to sort. Click a <strong style="color:var(--green)">FG Fit</strong> score to see reasoning.</p>`;
+  h += `<p style="font-size:12px;color:var(--text2);margin-bottom:16px">Click any column header to sort. Click an FG Fit score for details. Data from TikTok Creative Center API via Apify.</p>`;
+  h += fgFilterHTML('us');
   h += `<table class="tbl"><thead><tr>`;
   h += `<th>#</th>`;
   h += `<th>Hashtag</th>`;
@@ -500,13 +623,13 @@ function renderUSTable(){
   h += `<th class="hide-m">Industry</th>`;
   h += `<th class="hide-m">7d Spark</th>`;
   h += `<th class="hide-m" style="max-width:180px">About</th>`;
-  h += `<th class="num ${cls('fg_score')}" onclick="sortTable('us','fg_score')" style="cursor:pointer">FG Fit <span class="arrow">${arrow('fg_score')}</span></th>`;
+  h += `<th>FG Fit</th>`;
   h += `</tr></thead><tbody>`;
 
   sorted.forEach((t,i)=>{
     const desc = HASHTAG_DESCS[t.hashtag] || {};
     const about = desc.about || '—';
-    const fgScore = desc.fg_score != null ? parseInt(desc.fg_score) : null;
+    const fgScore = desc.fg_score || null;
     h += `<tr>`;
     h += `<td class="rank">${i+1}</td>`;
     h += `<td class="ht"><a href="https://www.tiktok.com/tag/${t.hashtag}" target="_blank" rel="noopener">#${t.hashtag}</a><a href="https://www.tiktok.com/tag/${t.hashtag}" target="_blank" class="lnk">↗</a></td>`;
@@ -517,7 +640,7 @@ function renderUSTable(){
     h += `<td class="hide-m"><span class="industry-tag">${t.industry||'—'}</span></td>`;
     h += `<td class="hide-m">${miniChart(t.trend)}</td>`;
     h += `<td class="hide-m" style="font-size:11px;color:var(--text2);max-width:180px;line-height:1.3">${about}</td>`;
-    h += `<td class="num" style="white-space:nowrap">${fgScoreBadge(fgScore, t.hashtag)}</td>`;
+    h += `<td style="white-space:nowrap">${fgScoreBadge(fgScore, t.hashtag)}</td>`;
     h += `</tr>`;
   });
   h += `</tbody></table>`;
@@ -544,10 +667,9 @@ function switchEU(cc){
 function renderEUTable(){
   const data = EU_DATA[activeEUCountry] || [];
   const st = sortState.eu;
-  const enriched = enrichWithScores(data);
-  const sorted = enriched.filter(h=>h.views>0||h.posts>0).sort((a,b)=>{
+  const filtered = applyFGFilter([...data].filter(h=>h.views>0||h.posts>0), 'eu');
+  const sorted = filtered.sort((a,b)=>{
     let va=a[st.col],vb=b[st.col];
-    if(va==null) va=0; if(vb==null) vb=0;
     if(typeof va==='string') return st.asc?va.localeCompare(vb):vb.localeCompare(va);
     return st.asc?(va-vb):(vb-va);
   }).slice(0,50);
@@ -565,7 +687,8 @@ function renderEUTable(){
   subTabs += '</div>';
 
   let h = `<h2 style="font-size:16px;font-weight:700;margin-bottom:2px">🇪🇺 EU Region — Trending Hashtags (7 Days)</h2>`;
-  h += `<p style="font-size:12px;color:var(--text2);margin-bottom:16px">Select a country below. Click column headers to sort. Data from TikTok Creative Center API.</p>`;
+  h += `<p style="font-size:12px;color:var(--text2);margin-bottom:16px">Select a country below. Click column headers to sort. Click an FG Fit score for details.</p>`;
+  h += fgFilterHTML('eu');
   h += subTabs;
 
   if(!sorted.length){
@@ -581,13 +704,13 @@ function renderEUTable(){
     h += `<th class="hide-m">Industry</th>`;
     h += `<th class="hide-m">7d Spark</th>`;
     h += `<th class="hide-m" style="max-width:180px">About</th>`;
-    h += `<th class="num ${cls('fg_score')}" onclick="sortTable('eu','fg_score')" style="cursor:pointer">FG Fit <span class="arrow">${arrow('fg_score')}</span></th>`;
+    h += `<th>FG Fit</th>`;
     h += `</tr></thead><tbody>`;
 
     sorted.forEach((t,i)=>{
       const desc = HASHTAG_DESCS[t.hashtag] || {};
       const about = desc.about || '—';
-      const fgScore = desc.fg_score != null ? parseInt(desc.fg_score) : null;
+      const fgScore = desc.fg_score || null;
       h += `<tr>`;
       h += `<td class="rank">${i+1}</td>`;
       h += `<td class="ht"><a href="https://www.tiktok.com/tag/${t.hashtag}" target="_blank" rel="noopener">#${t.hashtag}</a><a href="https://www.tiktok.com/tag/${t.hashtag}" target="_blank" class="lnk">↗</a></td>`;
@@ -598,7 +721,7 @@ function renderEUTable(){
       h += `<td class="hide-m"><span class="industry-tag">${t.industry||'—'}</span></td>`;
       h += `<td class="hide-m">${miniChart(t.trend)}</td>`;
       h += `<td class="hide-m" style="font-size:11px;color:var(--text2);max-width:180px;line-height:1.3">${about}</td>`;
-      h += `<td class="num" style="white-space:nowrap">${fgScoreBadge(fgScore, t.hashtag)}</td>`;
+      h += `<td style="white-space:nowrap">${fgScoreBadge(fgScore, t.hashtag)}</td>`;
       h += `</tr>`;
     });
     h += `</tbody></table>`;
@@ -670,112 +793,18 @@ function renderPicks(allData){
 }
 
 // ============================================
+// ============================================
 // FG SCORE BADGE HELPER
 // ============================================
 function fgScoreBadge(score, hashtag) {
   const s = parseInt(score);
-  if (!s || isNaN(s)) return '<span style="color:var(--text3);font-size:11px">—</span>';
+  if (!s) return '<span style="color:var(--text3);font-size:11px">—</span>';
   let color = s >= 8 ? 'var(--green)' : s >= 6 ? 'var(--yellow)' : s >= 4 ? 'var(--orange)' : 'var(--text3)';
   let bg = s >= 8 ? 'var(--green-d)' : s >= 6 ? 'var(--yellow-d)' : s >= 4 ? 'var(--orange-d)' : 'var(--bg3)';
   let border = s >= 8 ? 'rgba(34,197,94,.35)' : s >= 6 ? 'rgba(234,179,8,.35)' : s >= 4 ? 'rgba(249,115,22,.35)' : 'var(--border)';
-  const click = hashtag ? `onclick="showReasoningModal('${hashtag.replace(/'/g,"\\'")}',${s})" title="Click to see FG Fit reasoning" style="cursor:pointer;` : 'style="';
-  return `<span ${click}display:inline-flex;align-items:center;justify-content:center;width:26px;height:20px;border-radius:5px;background:${bg};color:${color};border:1px solid ${border};font-size:11px;font-weight:700">${s}</span>`;
+  const ht = (hashtag || '').replace(/'/g, "\\'");
+  return `<span class="fg-score-wrap" onclick="event.stopPropagation();toggleFGTooltip(this,'${ht}',${s})"><span style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:20px;border-radius:5px;background:${bg};color:${color};border:1px solid ${border};font-size:11px;font-weight:700;cursor:pointer;transition:transform .1s" onmouseenter="this.style.transform='scale(1.15)'" onmouseleave="this.style.transform='scale(1)'">${s}</span></span>`;
 }
-
-// ============================================
-// REASONING MODAL
-// ============================================
-function generateReasoning(hashtag, score) {
-  const desc = HASHTAG_DESCS[hashtag] || {};
-  const about = desc.about || null;
-  const fg = scoreFG(hashtag);
-  const cats = fg.cats || [];
-  const topCat = fg.topCat;
-
-  // Score tier label
-  const tierLabel = score >= 9 ? 'Perfect Fit 🏆' : score >= 8 ? 'Excellent Fit ✅' : score >= 6 ? 'Good Fit 👍' : score >= 4 ? 'Moderate Fit 🟡' : score >= 2 ? 'Weak Fit 🔸' : 'Low Fit ❌';
-  const tierColor = score >= 8 ? 'var(--green)' : score >= 6 ? 'var(--yellow)' : score >= 4 ? 'var(--orange)' : 'var(--text3)';
-
-  // Build category signals
-  const catSignals = cats.map(cat => {
-    const info = FG_CATEGORIES[cat];
-    if (!info) return null;
-    return `${info.emoji} <strong>${cat.charAt(0).toUpperCase()+cat.slice(1)}</strong> — matched keyword signals for this category`;
-  }).filter(Boolean);
-
-  // Build reasoning text
-  let reasoning = '';
-
-  if (score >= 8) {
-    reasoning = `<strong>#${hashtag}</strong> is a strong content opportunity for FibreGuard. `;
-    if (topCat === 'stain') reasoning += `Stain-resistance is FibreGuard's core value prop — this hashtag audience is primed to see exactly what FibreGuard solves. A satisfying clean reveal video here would perform exceptionally well.`;
-    else if (topCat === 'furniture') reasoning += `Furniture content draws an audience already shopping or styling their home — the exact moment to showcase FibreGuard fabric's durability and aesthetic. `;
-    else if (topCat === 'pet') reasoning += `Pet owners are one of FibreGuard's hottest audiences — they live in fear of fur, claws, and muddy paws on their sofas. A "pet vs. FibreGuard" video here is practically pre-sold.`;
-    else if (topCat === 'family') reasoning += `Family content draws parents who know sofa damage all too well — FibreGuard is the practical upgrade they didn't know they needed. Very relatable angle here.`;
-    else reasoning += `This hashtag aligns tightly with FibreGuard's key content categories. High engagement potential with the right creative approach.`;
-  } else if (score >= 6) {
-    reasoning = `<strong>#${hashtag}</strong> is a solid fit with a clear FibreGuard angle. `;
-    if (topCat === 'home') reasoning += `Home & interior content attracts exactly the audience renovating or refreshing their living spaces — natural territory for FibreGuard fabric showcases.`;
-    else if (topCat === 'cozy') reasoning += `Cozy / comfort content resonates with people who care about their living environment — FibreGuard slots in as the brand that lets you have beautiful things without the stress.`;
-    else if (topCat === 'outdoor') reasoning += `Outdoor living content is a great fit — FibreGuard's weather and stain resistance is a perfect story for patio/garden settings.`;
-    else reasoning += `There's a genuine connection between this trend's audience and FibreGuard's value proposition. Worth building content around with the right creative hook.`;
-  } else if (score >= 4) {
-    reasoning = `<strong>#${hashtag}</strong> has a moderate connection to FibreGuard. `;
-    if (topCat === 'food_drink') reasoning += `Food & drink content naturally creates spill anxiety — the FibreGuard angle is "never stress about hosting again." Works as a humorous or aspirational hook.`;
-    else if (topCat === 'aesthetic') reasoning += `Aesthetic content viewers care about how their space looks — FibreGuard can be positioned as the secret to a beautiful home that actually survives real life.`;
-    else if (topCat === 'diy') reasoning += `DIY / upcycle audiences love transformation content — a before/after reupholstery with FibreGuard fabric is a natural fit for this community.`;
-    else reasoning += `The overlap isn't immediate but there's a creative angle available. FibreGuard could ride this trend with the right unexpected hook or product tie-in.`;
-  } else {
-    reasoning = `<strong>#${hashtag}</strong> has limited direct relevance to FibreGuard. `;
-    if (about) reasoning += `The hashtag covers "${about.toLowerCase()}" — while the audience is large, connecting FibreGuard naturally would require a creative stretch. `;
-    reasoning += `Better suited as background noise unless a specific campaign idea bridges the gap.`;
-  }
-
-  return { tierLabel, tierColor, catSignals, reasoning, about };
-}
-
-function showReasoningModal(hashtag, score) {
-  const { tierLabel, tierColor, catSignals, reasoning, about } = generateReasoning(hashtag, score);
-
-  const scoreColor = score >= 8 ? 'var(--green)' : score >= 6 ? 'var(--yellow)' : score >= 4 ? 'var(--orange)' : 'var(--text3)';
-  const scoreBg = score >= 8 ? 'var(--green-d)' : score >= 6 ? 'var(--yellow-d)' : score >= 4 ? 'var(--orange-d)' : 'var(--bg3)';
-
-  let html = `<div class="modal-hashtag">#${hashtag}</div>`;
-  if (about) html += `<div class="modal-about">${about}</div>`;
-
-  html += `<div class="modal-score-row">`;
-  html += `<div class="modal-score-big" style="color:${scoreColor};background:${scoreBg};padding:8px 14px;border-radius:10px">${score}<span style="font-size:14px;font-weight:500;color:var(--text3)">/10</span></div>`;
-  html += `<div class="modal-score-label"><div style="font-size:14px;font-weight:700;color:${tierColor}">${tierLabel}</div><div style="margin-top:2px">FibreGuard Relevance Score</div></div>`;
-  html += `</div>`;
-
-  if (catSignals.length) {
-    html += `<div class="modal-section">`;
-    html += `<div class="modal-section-title">Category Signals</div>`;
-    html += `<div class="modal-cats">${catSignals.map(s=>`<div class="modal-cat-pill">${s}</div>`).join('')}</div>`;
-    html += `</div>`;
-  }
-
-  html += `<div class="modal-section">`;
-  html += `<div class="modal-section-title">🧠 Why this score</div>`;
-  html += `<div class="modal-reasoning">${reasoning}</div>`;
-  html += `</div>`;
-
-  document.getElementById('modal-body').innerHTML = html;
-  document.getElementById('reasoning-modal').classList.add('visible');
-  document.body.style.overflow = 'hidden';
-}
-
-function hideModal() {
-  document.getElementById('reasoning-modal').classList.remove('visible');
-  document.body.style.overflow = '';
-}
-
-function closeModal(e) {
-  if (e.target === document.getElementById('reasoning-modal')) hideModal();
-}
-
-// Keyboard close
-document.addEventListener('keydown', e => { if (e.key === 'Escape') hideModal(); });
 
 // Global hashtag descriptions lookup
 let HASHTAG_DESCS = {};
