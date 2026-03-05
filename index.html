@@ -123,31 +123,43 @@ padding:4px 10px;text-align:left;position:sticky;top:0;background:var(--bg2);use
 .trend-status.rising{background:var(--purple-d);color:var(--purple)}
 .trend-updated{font-size:11px;color:var(--text3);margin-bottom:16px;padding-bottom:10px;border-bottom:1px solid var(--border)}
 
-/* FG Fit Filter */
-.fg-filter{display:flex;align-items:center;gap:8px;margin-bottom:14px;flex-wrap:wrap}
-.fg-filter label{font-size:11px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.3px}
-.fg-filter select{background:var(--bg);border:1px solid var(--border);color:var(--text);padding:5px 12px;border-radius:6px;font-size:12px;font-family:inherit;cursor:pointer;transition:border-color .15s}
-.fg-filter select:focus{outline:none;border-color:var(--green)}
-.fg-filter .count{font-size:11px;color:var(--text3)}
+/* FG Inline Column Filter Select */
+.fg-col-select{background:var(--bg3);border:1px solid rgba(255,255,255,.1);color:var(--text2);
+  padding:2px 5px;border-radius:4px;font-size:9px;font-family:inherit;cursor:pointer;
+  margin-top:4px;display:block;width:100%;transition:border-color .15s}
+.fg-col-select:focus{outline:none;border-color:var(--green)}
 
-/* Score Tooltip */
-.fg-score-wrap{position:relative;display:inline-block;cursor:pointer}
-.fg-tooltip{position:absolute;bottom:calc(100% + 8px);left:50%;transform:translateX(-50%);
-  background:var(--bg2);border:1px solid var(--border);border-radius:10px;padding:14px 16px;
-  min-width:260px;max-width:320px;z-index:1000;box-shadow:0 8px 32px rgba(0,0,0,.5);
-  font-size:11px;line-height:1.5;color:var(--text2);pointer-events:auto;opacity:0;visibility:hidden;transition:opacity .15s,visibility .15s}
-.fg-tooltip.show{opacity:1;visibility:visible}
-.fg-tooltip::after{content:'';position:absolute;top:100%;left:50%;transform:translateX(-50%);
-  border:6px solid transparent;border-top-color:var(--border)}
-.fg-tooltip .tt-title{font-size:12px;font-weight:700;color:var(--text);margin-bottom:8px;display:flex;align-items:center;gap:6px}
-.fg-tooltip .tt-score{font-weight:800;padding:1px 6px;border-radius:4px;font-size:11px}
-.fg-tooltip .tt-cats{display:flex;flex-direction:column;gap:4px;margin-bottom:8px}
-.fg-tooltip .tt-cat{display:flex;align-items:center;gap:6px}
-.fg-tooltip .tt-cat-name{font-weight:600;color:var(--text)}
-.fg-tooltip .tt-cat-weight{font-size:10px;color:var(--text3)}
-.fg-tooltip .tt-kw{font-size:10px;color:var(--green);font-style:italic}
-.fg-tooltip .tt-none{color:var(--text3);font-style:italic}
-.fg-tooltip .tt-summary{font-size:11px;color:var(--text2);border-top:1px solid var(--border);padding-top:8px;margin-top:4px}
+/* FG Score Modal */
+.fg-modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.75);z-index:2000;
+  display:flex;align-items:center;justify-content:center;padding:20px;
+  backdrop-filter:blur(4px);animation:fadeIn .15s ease}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.fg-modal{background:var(--bg2);border:1px solid var(--border);border-radius:14px;
+  max-width:480px;width:100%;max-height:80vh;overflow:hidden;
+  box-shadow:0 24px 64px rgba(0,0,0,.7);display:flex;flex-direction:column;
+  animation:slideUp .15s ease}
+@keyframes slideUp{from{transform:translateY(12px);opacity:0}to{transform:translateY(0);opacity:1}}
+.fg-modal-header{padding:16px 20px;border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;flex-shrink:0}
+.fg-modal-body{padding:16px 20px;overflow-y:auto;flex:1;
+  scrollbar-width:thin;scrollbar-color:var(--bg4) transparent}
+.fg-modal-body::-webkit-scrollbar{width:4px}
+.fg-modal-body::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:2px}
+.fg-modal-close{background:none;border:none;color:var(--text3);font-size:16px;
+  cursor:pointer;padding:4px 8px;border-radius:6px;transition:color .15s,background .15s;line-height:1}
+.fg-modal-close:hover{color:var(--text);background:var(--bg3)}
+
+/* Score tooltip content (reused inside modal) */
+.fg-score-wrap{display:inline-block;cursor:pointer}
+.tt-title{font-size:13px;font-weight:700;color:var(--text);margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.tt-score{font-weight:800;padding:2px 8px;border-radius:5px;font-size:12px}
+.tt-cats{display:flex;flex-direction:column;gap:5px;margin-bottom:10px}
+.tt-cat{display:flex;align-items:center;gap:6px}
+.tt-cat-name{font-weight:600;color:var(--text)}
+.tt-cat-weight{font-size:10px;color:var(--text3)}
+.tt-kw{font-size:10px;color:var(--green);font-style:italic}
+.tt-none{color:var(--text3);font-style:italic;font-size:12px}
+.tt-summary{font-size:12px;color:var(--text2);border-top:1px solid var(--border);padding-top:10px;margin-top:6px;line-height:1.6}
 
 /* Loading */
 .loading{text-align:center;padding:60px 20px;color:var(--text3)}
@@ -396,9 +408,10 @@ function computeFGPicks(allData) {
     .map(item => ({ ...item, fg: scoreFG(item.hashtag) }))
     .filter(item => item.fg.score >= 1.0) // minimum relevance threshold
     .sort((a, b) => {
-      // Sort by: FG score * log(views) to balance relevance + reach
-      const scoreA = a.fg.score * Math.log10(Math.max(a.views, 1));
-      const scoreB = b.fg.score * Math.log10(Math.max(b.views, 1));
+      // Updated algorithm: FG Fit (high weight) + views (medium) + posts (medium)
+      // FG score 0-10+ scaled ×2.5 so a score of 8 = 20pts, competing with log10 of huge view counts
+      const scoreA = (a.fg.score * 2.5) + Math.log10(Math.max(a.views, 1)) + Math.log10(Math.max(a.posts, 1));
+      const scoreB = (b.fg.score * 2.5) + Math.log10(Math.max(b.views, 1)) + Math.log10(Math.max(b.posts, 1));
       return scoreB - scoreA;
     });
 
@@ -474,18 +487,24 @@ function applyFGFilter(data, region) {
   });
 }
 
-function fgFilterHTML(region) {
+// Generate inline FG Fit column header (sort + filter combined)
+function fgFitColHeader(region) {
+  const st = sortState[region];
   const val = fgFilter[region];
-  return `<div class="fg-filter">
-    <label>🎯 FG Fit:</label>
-    <select onchange="setFGFilter('${region}',this.value)">
-      <option value="all"${val==='all'?' selected':''}>All Scores</option>
-      <option value="high"${val==='high'?' selected':''}>🟢 High Fit (7-10)</option>
-      <option value="medium"${val==='medium'?' selected':''}>🟡 Medium Fit (4-6)</option>
-      <option value="low"${val==='low'?' selected':''}>🟠 Low Fit (1-3)</option>
-      <option value="none"${val==='none'?' selected':''}>— No Score</option>
+  const isActive = st.col === 'fg_score';
+  const arrow = isActive ? (st.asc ? '↑' : '↓') : '↕';
+  const activeClass = isActive ? 'color:var(--green)' : 'color:var(--text3)';
+  return `<th class="num" style="white-space:nowrap;vertical-align:top;padding-bottom:6px">
+    <div onclick="sortTable('${region}','fg_score')" style="cursor:pointer;${activeClass};font-size:10px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;display:inline-flex;align-items:center;gap:2px" onmouseenter="this.style.color='var(--text2)'" onmouseleave="this.style.color='${isActive?'var(--green)':'var(--text3)'}'"
+    >🎯 FG Fit <span style="font-size:8px;opacity:.7">${arrow}</span></div>
+    <select class="fg-col-select" onchange="setFGFilter('${region}',this.value)" onclick="event.stopPropagation()">
+      <option value="all"${val==='all'?' selected':''}>All</option>
+      <option value="high"${val==='high'?' selected':''}>🟢 High (7+)</option>
+      <option value="medium"${val==='medium'?' selected':''}>🟡 Med (4-6)</option>
+      <option value="low"${val==='low'?' selected':''}>🟠 Low (1-3)</option>
+      <option value="none"${val==='none'?' selected':''}>— None</option>
     </select>
-  </div>`;
+  </th>`;
 }
 
 // ============================================
@@ -556,30 +575,35 @@ function scoreTooltipHTML(hashtag, fgScore) {
   return html;
 }
 
-// Global tooltip management
-let activeTooltip = null;
-function toggleFGTooltip(el, hashtag, fgScore) {
-  const existing = el.querySelector('.fg-tooltip');
-  if (existing && existing.classList.contains('show')) {
-    existing.classList.remove('show');
-    activeTooltip = null;
-    return;
-  }
-  // Close any open tooltip
-  if (activeTooltip) { activeTooltip.classList.remove('show'); activeTooltip = null; }
-  if (!existing) {
-    const tip = document.createElement('div');
-    tip.className = 'fg-tooltip show';
-    tip.innerHTML = scoreTooltipHTML(hashtag, fgScore);
-    tip.addEventListener('click', e => e.stopPropagation());
-    el.appendChild(tip);
-    activeTooltip = tip;
-  } else {
-    existing.classList.add('show');
-    activeTooltip = existing;
-  }
+// FG Score Modal — replaces old tooltip with a proper scrollable modal
+function showFGModal(hashtag, fgScore) {
+  // Remove existing modal if open
+  const existing = document.getElementById('fg-score-modal');
+  if (existing) { existing.remove(); return; }
+
+  const overlay = document.createElement('div');
+  overlay.className = 'fg-modal-overlay';
+  overlay.id = 'fg-score-modal';
+  // Click outside to close
+  overlay.addEventListener('click', (e) => { if (e.target === overlay) overlay.remove(); });
+
+  overlay.innerHTML = `<div class="fg-modal">
+    <div class="fg-modal-header">
+      <div style="display:flex;align-items:center;gap:10px">
+        <span style="font-size:15px;font-weight:800;color:var(--green)">#${hashtag}</span>
+        <span style="font-size:12px;font-weight:600;color:var(--text3)">FG Fit Breakdown</span>
+      </div>
+      <button class="fg-modal-close" onclick="document.getElementById('fg-score-modal').remove()" title="Close">✕</button>
+    </div>
+    <div class="fg-modal-body">${scoreTooltipHTML(hashtag, fgScore)}</div>
+  </div>`;
+
+  document.body.appendChild(overlay);
 }
-document.addEventListener('click', () => { if (activeTooltip) { activeTooltip.classList.remove('show'); activeTooltip = null; } });
+// ESC key closes modal
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape') { const m = document.getElementById('fg-score-modal'); if (m) m.remove(); }
+});
 
 // ============================================
 // SORTING
@@ -611,8 +635,7 @@ function renderUSTable(){
   const cls = (col)=> st.col===col ? 'active' : '';
 
   let h = `<h2 style="font-size:16px;font-weight:700;margin-bottom:2px">🇺🇸 US Market — Top 50 Trending Hashtags (7 Days)</h2>`;
-  h += `<p style="font-size:12px;color:var(--text2);margin-bottom:16px">Click any column header to sort. Click an FG Fit score for details. Data from TikTok Creative Center API via Apify.</p>`;
-  h += fgFilterHTML('us');
+  h += `<p style="font-size:12px;color:var(--text2);margin-bottom:16px">Click column headers to sort. Use the FG Fit dropdown to filter. Click a score badge to see the full breakdown.</p>`;
   h += `<table class="tbl"><thead><tr>`;
   h += `<th>#</th>`;
   h += `<th>Hashtag</th>`;
@@ -623,7 +646,7 @@ function renderUSTable(){
   h += `<th class="hide-m">Industry</th>`;
   h += `<th class="hide-m">7d Spark</th>`;
   h += `<th class="hide-m" style="max-width:180px">About</th>`;
-  h += `<th>FG Fit</th>`;
+  h += fgFitColHeader('us');
   h += `</tr></thead><tbody>`;
 
   sorted.forEach((t,i)=>{
@@ -687,8 +710,7 @@ function renderEUTable(){
   subTabs += '</div>';
 
   let h = `<h2 style="font-size:16px;font-weight:700;margin-bottom:2px">🇪🇺 EU Region — Trending Hashtags (7 Days)</h2>`;
-  h += `<p style="font-size:12px;color:var(--text2);margin-bottom:16px">Select a country below. Click column headers to sort. Click an FG Fit score for details.</p>`;
-  h += fgFilterHTML('eu');
+  h += `<p style="font-size:12px;color:var(--text2);margin-bottom:16px">Select a country below. Click column headers to sort. Use the FG Fit dropdown to filter. Click a score badge for the full breakdown.</p>`;
   h += subTabs;
 
   if(!sorted.length){
@@ -704,7 +726,7 @@ function renderEUTable(){
     h += `<th class="hide-m">Industry</th>`;
     h += `<th class="hide-m">7d Spark</th>`;
     h += `<th class="hide-m" style="max-width:180px">About</th>`;
-    h += `<th>FG Fit</th>`;
+    h += fgFitColHeader('eu');
     h += `</tr></thead><tbody>`;
 
     sorted.forEach((t,i)=>{
@@ -803,7 +825,7 @@ function fgScoreBadge(score, hashtag) {
   let bg = s >= 8 ? 'var(--green-d)' : s >= 6 ? 'var(--yellow-d)' : s >= 4 ? 'var(--orange-d)' : 'var(--bg3)';
   let border = s >= 8 ? 'rgba(34,197,94,.35)' : s >= 6 ? 'rgba(234,179,8,.35)' : s >= 4 ? 'rgba(249,115,22,.35)' : 'var(--border)';
   const ht = (hashtag || '').replace(/'/g, "\\'");
-  return `<span class="fg-score-wrap" onclick="event.stopPropagation();toggleFGTooltip(this,'${ht}',${s})"><span style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:20px;border-radius:5px;background:${bg};color:${color};border:1px solid ${border};font-size:11px;font-weight:700;cursor:pointer;transition:transform .1s" onmouseenter="this.style.transform='scale(1.15)'" onmouseleave="this.style.transform='scale(1)'">${s}</span></span>`;
+  return `<span class="fg-score-wrap" onclick="event.stopPropagation();showFGModal('${ht}',${s})"><span style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:20px;border-radius:5px;background:${bg};color:${color};border:1px solid ${border};font-size:11px;font-weight:700;cursor:pointer;transition:transform .1s" onmouseenter="this.style.transform='scale(1.15)'" onmouseleave="this.style.transform='scale(1)'">${s}</span></span>`;
 }
 
 // Global hashtag descriptions lookup
@@ -834,14 +856,20 @@ async function init(){
       HASHTAG_DESCS = await descResp.json();
     }
     
+    // Helper: enrich items with fg_score for inline sorting
+    const enrichItems = arr => arr.map(item => ({
+      ...item,
+      fg_score: parseInt(HASHTAG_DESCS[item.hashtag]?.fg_score) || 0
+    }));
+
     // US data
-    US_DATA = json.countries?.US || [];
+    US_DATA = enrichItems(json.countries?.US || []);
     renderUSTable();
 
     // EU data
     const euCountries = ['FR','DE','IT','ES','NL','GB'];
     euCountries.forEach(cc=>{
-      if(json.countries?.[cc]?.length) EU_DATA[cc] = json.countries[cc];
+      if(json.countries?.[cc]?.length) EU_DATA[cc] = enrichItems(json.countries[cc]);
     });
     
     // Set first available EU country as active
