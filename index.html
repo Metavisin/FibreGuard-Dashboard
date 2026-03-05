@@ -462,9 +462,14 @@ function renderUSTable(){
   h += `<th>Top Age</th>`;
   h += `<th class="hide-m">Industry</th>`;
   h += `<th class="hide-m">7d Spark</th>`;
+  h += `<th class="hide-m" style="max-width:180px">About</th>`;
+  h += `<th>FG Fit</th>`;
   h += `</tr></thead><tbody>`;
 
   sorted.forEach((t,i)=>{
+    const desc = HASHTAG_DESCS[t.hashtag] || {};
+    const about = desc.about || '—';
+    const fgScore = desc.fg_score || null;
     h += `<tr>`;
     h += `<td class="rank">${i+1}</td>`;
     h += `<td class="ht"><a href="https://www.tiktok.com/tag/${t.hashtag}" target="_blank" rel="noopener">#${t.hashtag}</a><a href="https://www.tiktok.com/tag/${t.hashtag}" target="_blank" class="lnk">↗</a></td>`;
@@ -474,6 +479,8 @@ function renderUSTable(){
     h += `<td><span class="age-pill ${ageClass(t.top_age)}">${t.top_age}</span></td>`;
     h += `<td class="hide-m"><span class="industry-tag">${t.industry||'—'}</span></td>`;
     h += `<td class="hide-m">${miniChart(t.trend)}</td>`;
+    h += `<td class="hide-m" style="font-size:11px;color:var(--text2);max-width:180px;line-height:1.3">${about}</td>`;
+    h += `<td style="white-space:nowrap">${fgScoreBadge(fgScore)}</td>`;
     h += `</tr>`;
   });
   h += `</tbody></table>`;
@@ -534,9 +541,14 @@ function renderEUTable(){
     h += `<th>Top Age</th>`;
     h += `<th class="hide-m">Industry</th>`;
     h += `<th class="hide-m">7d Spark</th>`;
+    h += `<th class="hide-m" style="max-width:180px">About</th>`;
+    h += `<th>FG Fit</th>`;
     h += `</tr></thead><tbody>`;
 
     sorted.forEach((t,i)=>{
+      const desc = HASHTAG_DESCS[t.hashtag] || {};
+      const about = desc.about || '—';
+      const fgScore = desc.fg_score || null;
       h += `<tr>`;
       h += `<td class="rank">${i+1}</td>`;
       h += `<td class="ht"><a href="https://www.tiktok.com/tag/${t.hashtag}" target="_blank" rel="noopener">#${t.hashtag}</a><a href="https://www.tiktok.com/tag/${t.hashtag}" target="_blank" class="lnk">↗</a></td>`;
@@ -546,6 +558,8 @@ function renderEUTable(){
       h += `<td><span class="age-pill ${ageClass(t.top_age)}">${t.top_age}</span></td>`;
       h += `<td class="hide-m"><span class="industry-tag">${t.industry||'—'}</span></td>`;
       h += `<td class="hide-m">${miniChart(t.trend)}</td>`;
+      h += `<td class="hide-m" style="font-size:11px;color:var(--text2);max-width:180px;line-height:1.3">${about}</td>`;
+      h += `<td style="white-space:nowrap">${fgScoreBadge(fgScore)}</td>`;
       h += `</tr>`;
     });
     h += `</tbody></table>`;
@@ -617,6 +631,22 @@ function renderPicks(allData){
 }
 
 // ============================================
+// ============================================
+// FG SCORE BADGE HELPER
+// ============================================
+function fgScoreBadge(score) {
+  const s = parseInt(score);
+  if (!s) return '<span style="color:var(--text3);font-size:11px">—</span>';
+  let color = s >= 8 ? 'var(--green)' : s >= 6 ? 'var(--yellow)' : s >= 4 ? 'var(--orange)' : 'var(--text3)';
+  let bg = s >= 8 ? 'var(--green-d)' : s >= 6 ? 'var(--yellow-d)' : s >= 4 ? 'var(--orange-d)' : 'var(--bg3)';
+  let border = s >= 8 ? 'rgba(34,197,94,.35)' : s >= 6 ? 'rgba(234,179,8,.35)' : s >= 4 ? 'rgba(249,115,22,.35)' : 'var(--border)';
+  return `<span title="FibreGuard fit: ${s}/10" style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:20px;border-radius:5px;background:${bg};color:${color};border:1px solid ${border};font-size:11px;font-weight:700">${s}</span>`;
+}
+
+// Global hashtag descriptions lookup
+let HASHTAG_DESCS = {};
+
+// ============================================
 // INIT — Load data from JSON
 // ============================================
 async function init(){
@@ -631,8 +661,15 @@ async function init(){
 
   // Load data
   try {
-    const resp = await fetch('fibreguard-v5-data.json');
+    // Load hashtag descriptions alongside main data
+    const [resp, descResp] = await Promise.all([
+      fetch('fibreguard-v5-data.json'),
+      fetch('hashtag-descriptions.json').catch(()=>null)
+    ]);
     const json = await resp.json();
+    if (descResp && descResp.ok) {
+      HASHTAG_DESCS = await descResp.json();
+    }
     
     // US data
     US_DATA = json.countries?.US || [];
