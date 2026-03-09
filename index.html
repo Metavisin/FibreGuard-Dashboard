@@ -166,11 +166,31 @@ padding:4px 10px;text-align:left;position:sticky;top:0;background:var(--bg2);use
 .loading .spin{display:inline-block;width:24px;height:24px;border:3px solid var(--bg3);border-top-color:var(--green);border-radius:50%;animation:sp .8s linear infinite;margin-bottom:12px}
 @keyframes sp{to{transform:rotate(360deg)}}
 
+/* Table horizontal scroll wrapper */
+.tbl-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -4px;padding:0 4px}
+.tbl-wrap::-webkit-scrollbar{height:4px}
+.tbl-wrap::-webkit-scrollbar-thumb{background:var(--bg4);border-radius:2px}
+
 /* Responsive */
 @media(max-width:768px){
-.sh{padding:0 10px}.picks-grid{grid-template-columns:1fr}
-.tbl{font-size:12px}.hide-m{display:none}
-.controls{flex-direction:column;align-items:flex-start}
+  .sh{padding:0 10px}
+  .picks-grid{grid-template-columns:1fr}
+  .picks-title{font-size:12px;letter-spacing:.3px}
+  .pick{padding:14px}
+  .pick-name{font-size:14px}
+  .pick-idea{font-size:11px;padding:8px}
+  .tbl{font-size:12px}
+  .hide-m{display:none}
+  .controls{flex-direction:column;align-items:flex-start}
+  .tab{padding:10px 14px;font-size:12px}
+  .sub-tab{padding:7px 12px;font-size:11px}
+  header{padding:16px 0 14px}
+  header h1{font-size:20px}
+  .meta{gap:6px}
+  .pnl{padding:14px 12px}
+  .trend-card{padding:14px}
+  .fg-modal{max-height:90vh}
+  .scroll-hint{display:block !important}
 }
 </style></head>
 <body>
@@ -640,7 +660,8 @@ function renderUSTable(){
 
   let h = `<h2 style="font-size:16px;font-weight:700;margin-bottom:2px">🇺🇸 US Market — Top 50 Trending Hashtags (7 Days)</h2>`;
   h += `<p style="font-size:12px;color:var(--text2);margin-bottom:16px">Click column headers to sort. Use the FG Fit dropdown to filter. Click a score badge to see the full breakdown.</p>`;
-  h += `<table class="tbl"><thead><tr>`;
+  h += `<p class="scroll-hint" style="display:none;font-size:10px;color:var(--text3);margin-bottom:8px">← Swipe table to see more →</p>`;
+  h += `<div class="tbl-wrap"><table class="tbl"><thead><tr>`;
   h += `<th>#</th>`;
   h += `<th>Hashtag</th>`;
   h += `<th class="num ${cls('views')}" onclick="sortTable('us','views')">Views <span class="arrow">${arrow('views')}</span></th>`;
@@ -666,7 +687,7 @@ function renderUSTable(){
     h += `<td style="white-space:nowrap">${fgScoreBadge(fgScore, t.hashtag)}</td>`;
     h += `</tr>`;
   });
-  h += `</tbody></table>`;
+  h += `</tbody></table></div>`;
   document.getElementById('p-us').innerHTML = h;
   document.getElementById('us-c').textContent = sorted.length;
 }
@@ -711,12 +732,13 @@ function renderEUTable(){
 
   let h = `<h2 style="font-size:16px;font-weight:700;margin-bottom:2px">🇪🇺 EU Region — Trending Hashtags (7 Days)</h2>`;
   h += `<p style="font-size:12px;color:var(--text2);margin-bottom:16px">Select a country below. Click column headers to sort. Use the FG Fit dropdown to filter. Click a score badge for the full breakdown.</p>`;
+  h += `<p class="scroll-hint" style="display:none;font-size:10px;color:var(--text3);margin-bottom:8px">← Swipe table to see more →</p>`;
   h += subTabs;
 
   if(!sorted.length){
     h += `<div class="loading">No data for ${EU_NAMES[activeEUCountry] || activeEUCountry}. Data may still be loading.</div>`;
   } else {
-    h += `<table class="tbl"><thead><tr>`;
+    h += `<div class="tbl-wrap"><table class="tbl"><thead><tr>`;
     h += `<th>#</th>`;
     h += `<th>Hashtag</th>`;
     h += `<th class="num ${cls('views')}" onclick="sortTable('eu','views')">Views <span class="arrow">${arrow('views')}</span></th>`;
@@ -742,7 +764,7 @@ function renderEUTable(){
       h += `<td style="white-space:nowrap">${fgScoreBadge(fgScore, t.hashtag)}</td>`;
       h += `</tr>`;
     });
-    h += `</tbody></table>`;
+    h += `</tbody></table></div>`;
   }
   
   document.getElementById('p-eu').innerHTML = h;
