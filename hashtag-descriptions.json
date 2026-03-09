@@ -196,8 +196,8 @@
     "fg_score": 4
   },
   "punch": {
-    "about": "Viral 'punch' challenge or boxing/sports content",
-    "fg_score": 1
+    "about": "Viral zoo monkey named Punch — animal comedy content",
+    "fg_score": 0
   },
   "efectobaile": {
     "about": "Viral Latin dance trend / trending audio content",
@@ -1982,5 +1982,497 @@
   "омарcoutz": {
     "about": "Omar Coutz — Spanish influencer content",
     "fg_score": 1
+  },
+  "georgelopez": {
+    "about": "Trending clips and discussions related to actor George Lopez's work.",
+    "fg_score": 0
+  },
+  "jackhughes": {
+    "about": "Content about hockey player Jack Hughes, often game highlights or news.",
+    "fg_score": 0
+  },
+  "punchmonkey": {
+    "about": "Viral videos of a specific monkey, often a toy or real animal.",
+    "fg_score": 0
+  },
+  "livestory": {
+    "about": "Personal narratives shared in live streams or videos.",
+    "fg_score": 1
+  },
+  "liveaccess": {
+    "about": "Gaining exclusive or real-time access to events/content.",
+    "fg_score": 0
+  },
+  "goldmedal": {
+    "about": "Achievements in sports or competitions.",
+    "fg_score": 0
+  },
+  "guadalajara": {
+    "about": "Content about the city of Guadalajara, Mexico.",
+    "fg_score": 0
+  },
+  "punchthemonkey": {
+    "about": "Viral videos featuring a zoo monkey named Punch.",
+    "fg_score": 0
+  },
+  "mencho": {
+    "about": "Content related to Mexican drug lord Nemesio Oseguera Cervantes.",
+    "fg_score": 0
+  },
+  "puertovallarta": {
+    "about": "Content about the city of Puerto Vallarta, Mexico.",
+    "fg_score": 0
+  },
+  "twilightsparkle": {
+    "about": "Character from the My Little Pony franchise.",
+    "fg_score": 0
+  },
+  "наруто": {
+    "about": "Popular Japanese anime and manga series Naruto.",
+    "fg_score": 0
+  },
+  "nycsnow": {
+    "about": "Content related to snow events in New York City.",
+    "fg_score": 2
+  },
+  "luci4": {
+    "about": "Music artist known for phonk music.",
+    "fg_score": 0
+  },
+  "nycblizzard": {
+    "about": "Content related to blizzard events in New York City.",
+    "fg_score": 2
+  },
+  "rondalemoore": {
+    "about": "Content by or about TikTok creator Ronda LeMoore.",
+    "fg_score": 1
+  },
+  "highcortisol": {
+    "about": "Discussions about stress, health, and the hormone cortisol.",
+    "fg_score": 1
+  },
+  "poppyplaytime5": {
+    "about": "Chapter 5 of the horror video game Poppy Playtime.",
+    "fg_score": 0
+  },
+  "alysaliuedit": {
+    "about": "Fan edits of figure skater Alysa Liu.",
+    "fg_score": 0
+  },
+  "applejack": {
+    "about": "Character from the My Little Pony franchise.",
+    "fg_score": 0
+  },
+  "amberglenn": {
+    "about": "Content about figure skater Amber Glenn.",
+    "fg_score": 0
+  },
+  "verao": {
+    "about": "Portuguese for summer, often about summer activities or fashion.",
+    "fg_score": 3
+  },
+  "camdenbop": {
+    "about": "Specific dance trend or local music/events in Camden.",
+    "fg_score": 0
+  },
+  "claressashields": {
+    "about": "Content about professional boxer Claressa Shields.",
+    "fg_score": 0
+  },
+  "theprototype": {
+    "about": "Nickname for professional boxer Claressa Shields.",
+    "fg_score": 0
+  },
+  "gambian_tiktok🇬🇲🇬🇲": {
+    "about": "Content from or about Gambia.",
+    "fg_score": 0
+  },
+  "pantene": {
+    "about": "Content about the hair care brand Pantene.",
+    "fg_score": 0
+  },
+  "loveisblindseason10": {
+    "about": "Reality TV show Love Is Blind, specific season.",
+    "fg_score": 0
+  },
+  "#atardecerplantilla": {
+    "about": "Using video templates for sunset-themed content.",
+    "fg_score": 1
+  },
+  "#sunburn": {
+    "about": "Sharing experiences, remedies, or humor related to sunburns.",
+    "fg_score": 1
+  },
+  "#tourettes": {
+    "about": "Individuals sharing experiences and raising awareness about Tourette's.",
+    "fg_score": 0
+  },
+  "#sunshine": {
+    "about": "DIY projects, positive vibes, or drink recipes.",
+    "fg_score": 4
+  },
+  "#alors": {
+    "about": "A popular meme, sound, or transition trend.",
+    "fg_score": 1
+  },
+  "#xyabc": {
+    "about": "School-related memes, education, or hilarious fails.",
+    "fg_score": 1
+  },
+  "#modestclothing": {
+    "about": "Fashion trend showcasing modest outfits and styles.",
+    "fg_score": 0
+  },
+  "#fitlife": {
+    "about": "Content about fitness, healthy living, and workout routines.",
+    "fg_score": 0
+  },
+  "#quick": {
+    "about": "Sharing quick tips, hacks, or short tutorials.",
+    "fg_score": 3
+  },
+  "#lip": {
+    "about": "Lip-syncing, lip art, or beauty trends.",
+    "fg_score": 0
+  },
+  "#fitfam": {
+    "about": "Community focused on fitness and healthy living.",
+    "fg_score": 0
+  },
+  "#montemanyes": {
+    "about": "Content related to a specific gamer or game character.",
+    "fg_score": 0
+  },
+  "#fanttik": {
+    "about": "Content featuring a specific tech or electronics brand.",
+    "fg_score": 0
+  },
+  "ihk": {
+    "about": "German vocational training, exams, or work-life content.",
+    "fg_score": 0
+  },
+  "souly": {
+    "about": "Content related to the artist Souly or soulful music.",
+    "fg_score": 0
+  },
+  "mensoutfit": {
+    "about": "Men's fashion, clothing, and style ideas.",
+    "fg_score": 1
+  },
+  "тепло": {
+    "about": "Cozy, warm, and comforting feelings or aesthetics.",
+    "fg_score": 5
+  },
+  "ilahi": {
+    "about": "Islamic devotional songs and spiritual content.",
+    "fg_score": 0
+  },
+  "singingintheshower": {
+    "about": "People singing in the shower, often for comedic effect.",
+    "fg_score": 1
+  },
+  "atalanta": {
+    "about": "Content related to the Italian football club Atalanta BC.",
+    "fg_score": 0
+  },
+  "newroz": {
+    "about": "Celebrations and traditions of the Persian New Year.",
+    "fg_score": 1
+  },
+  "війнавукраїні": {
+    "about": "News, updates, and personal stories about the war in Ukraine.",
+    "fg_score": 0
+  },
+  "مولانا": {
+    "about": "Content related to Mawlana Rumi's teachings or Islamic spirituality.",
+    "fg_score": 0
+  },
+  "machinegunkelly": {
+    "about": "Content related to the musician Machine Gun Kelly.",
+    "fg_score": 0
+  },
+  "linksversifft": {
+    "about": "Political discussions and commentary, often with a critical tone.",
+    "fg_score": 0
+  },
+  "مسلسلات_رمضان": {
+    "about": "Discussions and clips from TV series aired during Ramadan.",
+    "fg_score": 0
+  },
+  "notes": {
+    "about": "Study notes, aesthetic note-taking, or personal reflections.",
+    "fg_score": 1
+  },
+  "myname": {
+    "about": "Trends sharing facts, jokes, or aesthetics related to names.",
+    "fg_score": 1
+  },
+  "emojistories": {
+    "about": "Creating narratives or jokes using only emojis.",
+    "fg_score": 0
+  },
+  "familieg": {
+    "about": "Content featuring a specific family, often vlogs or daily life.",
+    "fg_score": 5
+  },
+  "🤲🤲🤲": {
+    "about": "Content related to prayer, blessings, or spiritual gratitude.",
+    "fg_score": 0
+  },
+  "sanremo": {
+    "about": "Content about the annual Sanremo Music Festival.",
+    "fg_score": 0
+  },
+  "festivaldisanremo": {
+    "about": "Content about the annual Sanremo Music Festival.",
+    "fg_score": 0
+  },
+  "elettralamborghini": {
+    "about": "Content related to the Italian singer Elettra Lamborghini.",
+    "fg_score": 0
+  },
+  "ritadecrescenzo": {
+    "about": "Content featuring the Italian TikTok personality Rita De Crescenzo.",
+    "fg_score": 0
+  },
+  "samuraijay": {
+    "about": "Content related to the German rapper Samurai Jay.",
+    "fg_score": 0
+  },
+  "festival": {
+    "about": "Content about various music, cultural, or entertainment festivals.",
+    "fg_score": 0
+  },
+  "lda": {
+    "about": "Content related to the Italian singer Luca D'Alessio.",
+    "fg_score": 0
+  },
+  "sanremorai": {
+    "about": "Italian music festival Sanremo, broadcast by Rai.",
+    "fg_score": 0
+  },
+  "ariston": {
+    "about": "The Ariston Theatre, venue for Sanremo music festival.",
+    "fg_score": 0
+  },
+  "quadgod": {
+    "about": "Extreme sports content featuring quad bike stunts.",
+    "fg_score": 0
+  },
+  "tommasoparadiso": {
+    "about": "Content related to Italian singer-songwriter Tommaso Paradiso.",
+    "fg_score": 0
+  },
+  "scuolasuperiore": {
+    "about": "High school life, experiences, humor, and relatable fails.",
+    "fg_score": 1
+  },
+  "uovadipasqua": {
+    "about": "Easter eggs, their preparation, display, or consumption.",
+    "fg_score": 3
+  },
+  "labirinto": {
+    "about": "People exploring mazes or labyrinths, often with selfies.",
+    "fg_score": 1
+  },
+  "fashionweek": {
+    "about": "Fashion shows, events, and related style content.",
+    "fg_score": 0
+  },
+  "milanfashionweek": {
+    "about": "Milan Fashion Week events, styles, and photography.",
+    "fg_score": 0
+  },
+  "bodoglimt": {
+    "about": "News and content related to Bodø/Glimt football club.",
+    "fg_score": 0
+  },
+  "festadelpapà": {
+    "about": "Celebrating Father's Day, gifts, and family moments.",
+    "fg_score": 6
+  },
+  "nightmarerotation": {
+    "about": "Visual content featuring surreal or abstract rotating graphics.",
+    "fg_score": 0
+  },
+  "sombr": {
+    "about": "Artistic content, possibly related to a specific style or character.",
+    "fg_score": 0
+  },
+  "sciacca": {
+    "about": "Fashion content, outfits, or a specific apparel brand/style.",
+    "fg_score": 0
+  },
+  "giovannifashion": {
+    "about": "Fashion content, outfits, or a specific apparel brand/designer.",
+    "fg_score": 0
+  },
+  "gymoutfit": {
+    "about": "Showcasing workout attire and fitness fashion.",
+    "fg_score": 1
+  },
+  "tizianoferro": {
+    "about": "Italian singer Tiziano Ferro's music and life.",
+    "fg_score": 0
+  },
+  "sayf": {
+    "about": "A specific person, sound, or viral trend.",
+    "fg_score": 0
+  },
+  "fendi": {
+    "about": "Luxury fashion brand Fendi products and styling.",
+    "fg_score": 0
+  },
+  "23": {
+    "about": "Ambiguous; could be a number, year, song, or sports reference.",
+    "fg_score": 0
+  },
+  "#бравлстарс": {
+    "about": "A popular mobile multiplayer online battle arena game.",
+    "fg_score": 0
+  },
+  "#canelita": {
+    "about": "A character or funny situations, often involving fails.",
+    "fg_score": 1
+  },
+  "#mammamia": {
+    "about": "The popular musical and movie featuring ABBA songs.",
+    "fg_score": 1
+  },
+  "#porsimañanayanoestoy": {
+    "about": "An emotional song lyric for romantic or reflective content.",
+    "fg_score": 0
+  },
+  "#jk": {
+    "about": "Content related to K-pop idol Jungkook (JK).",
+    "fg_score": 0
+  },
+  "#electric": {
+    "about": "Electric vehicles, gadgets, or related life hacks.",
+    "fg_score": 1
+  },
+  "#malu": {
+    "about": "Content related to Spanish singer Malú or her music.",
+    "fg_score": 0
+  },
+  "#crida": {
+    "about": "The opening ceremony of the Fallas festival in Valencia.",
+    "fg_score": 1
+  },
+  "#rosita": {
+    "about": "A character or trend related to supernatural or horror content.",
+    "fg_score": 0
+  },
+  "#eternidad": {
+    "about": "DIY projects, education, or business advice related to longevity.",
+    "fg_score": 3
+  },
+  "#omar": {
+    "about": "Content featuring a person named Omar, often with hilarious fails.",
+    "fg_score": 1
+  },
+  "#fallasvalencia": {
+    "about": "The traditional Fallas festival celebrated in Valencia, Spain.",
+    "fg_score": 1
+  },
+  "#falles2026": {
+    "about": "Future planning or fashion trends for the Fallas festival.",
+    "fg_score": 1
+  },
+  "#diadelpadre": {
+    "about": "Celebrating Father's Day with family, gifts, and appreciation.",
+    "fg_score": 6
+  },
+  "#ron": {
+    "about": "Content related to a person named Ron or a specific character.",
+    "fg_score": 0
+  },
+  "#23f": {
+    "about": "Content related to the date February 23rd, often historical events.",
+    "fg_score": 0
+  },
+  "lente": {
+    "about": "Content related to spring season, nature, and new beginnings.",
+    "fg_score": 1
+  },
+  "tylerthecreator": {
+    "about": "Content featuring music, fashion, or persona of Tyler, The Creator.",
+    "fg_score": 0
+  },
+  "umrah": {
+    "about": "Personal experiences and reflections on the Islamic pilgrimage to Mecca.",
+    "fg_score": 0
+  },
+  "دعاء_يريح_القلوب": {
+    "about": "Sharing comforting Islamic prayers and supplications for peace.",
+    "fg_score": 0
+  },
+  "#iftarideas": {
+    "about": "Sharing recipes and meal ideas for the Iftar meal.",
+    "fg_score": 3
+  },
+  "#lospollostv": {
+    "about": "Content related to the Los Pollos TV gaming channel.",
+    "fg_score": 0
+  },
+  "#northlondonderby": {
+    "about": "Discussions and highlights of the North London football derby.",
+    "fg_score": 0
+  },
+  "#backtoschool": {
+    "about": "Students preparing for school, including supplies, outfits, and routines.",
+    "fg_score": 6
+  },
+  "#sehri": {
+    "about": "Recipes, meal prep, and routines for the pre-dawn Ramadan meal.",
+    "fg_score": 4
+  },
+  "#springiscoming": {
+    "about": "Seasonal refresh, including home decor, cleaning, and outdoor activities.",
+    "fg_score": 6
+  },
+  "#legallyblonde": {
+    "about": "Quotes, fashion, and appreciation for the movie \"Legally Blonde\".",
+    "fg_score": 0
+  },
+  "#iloveitiloveitiloveit": {
+    "about": "Expressing strong excitement or approval using a viral sound.",
+    "fg_score": 2
+  },
+  "#bonnieblue": {
+    "about": "Content related to pets, often dogs or horses, named Bonnie Blue.",
+    "fg_score": 6
+  },
+  "#viewrush": {
+    "about": "Creators discussing strategies or celebrating videos getting many views.",
+    "fg_score": 0
+  },
+  "#signlanguage": {
+    "about": "Learning and using sign language for communication and education.",
+    "fg_score": 2
+  },
+  "#horizonglow": {
+    "about": "Aesthetic videos featuring sunsets, sunrises, and natural beauty.",
+    "fg_score": 2
+  },
+  "#brunettes": {
+    "about": "Celebrating brown hair, hair care, and fashion for brunettes.",
+    "fg_score": 0
+  },
+  "#forestsnap": {
+    "about": "Nature photography, aesthetic forest videos, and outdoor adventures.",
+    "fg_score": 4
+  },
+  "#nld": {
+    "about": "Content related to the North London Derby football match.",
+    "fg_score": 0
+  },
+  "#oceanglow": {
+    "about": "Aesthetic videos featuring ocean views, bioluminescence, and beach scenes.",
+    "fg_score": 2
+  },
+  "#bgt": {
+    "about": "Content related to the TV show \"Britain's Got Talent\".",
+    "fg_score": 0
   }
 }
