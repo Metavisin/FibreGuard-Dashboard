@@ -426,7 +426,7 @@ function scoreFG(hashtag, item = null) {
 }
 
 function getPickData(item) {
-  const fg = scoreFG(item.hashtag);
+  const fg = scoreFG(item.hashtag, item);
   const cat = fg.topCat || 'home';
   const catInfo = FG_CATEGORIES[cat] || FG_CATEGORIES.home;
   const ideas = FG_IDEAS[cat] || FG_IDEAS_GENERIC;
@@ -440,6 +440,10 @@ function getPickData(item) {
   const dirNote = item.direction === 'rising' ? ' · 📈 Rising now' : item.direction === 'falling' ? ' · Declining' : '';
   const countryLabel = item.country === 'US' ? '🇺🇸 US' : (EU_FLAGS[item.country] || '') + ' ' + (EU_NAMES[item.country] || item.country);
 
+  // Use Gemini JSON score as authoritative display score (fallback to computed score)
+  const jsonScore = parseInt(HASHTAG_DESCS[item.hashtag]?.fg_score);
+  const displayScore = !isNaN(jsonScore) ? jsonScore : Math.round(item.effectiveScore || fg.score);
+
   return {
     name: `#${item.hashtag}`,
     cat: `${reasonEmoji} ${reasonLabel}`,
@@ -449,23 +453,28 @@ function getPickData(item) {
     direction: item.direction,
     idea: idea.replace('#{hashtag}', item.hashtag),
     stats: `${fv(item.views)} views · ${fv(item.posts)} posts · ${countryLabel}${dirNote}`,
-    fgScore: fg.score,
+    fgScore: displayScore,
     fgCats: fg.cats
   };
 }
 
 function computeFGPicks(allData) {
-  // Score every hashtag from all countries
+  // Score every hashtag from all countries.
+  // Uses the HIGHER of: (a) Gemini JSON score from hashtag-descriptions.json,
+  // or (b) JavaScript keyword-computed score. Gemini is the primary authority.
   const scored = allData
-    .map(item => ({ ...item, fg: scoreFG(item.hashtag, item) }))
-    .filter(item => item.fg.score >= 6.0) // minimum FG Fit threshold (6+)
+    .map(item => {
+      const fg = scoreFG(item.hashtag, item);
+      const jsonScore = parseInt(HASHTAG_DESCS[item.hashtag]?.fg_score);
+      const effectiveScore = Math.max(fg.score, isNaN(jsonScore) ? 0 : jsonScore);
+      return { ...item, fg, effectiveScore };
+    })
+    .filter(item => item.effectiveScore >= 6) // minimum FG Fit threshold (6+)
     .sort((a, b) => {
       // FG Fit score is the PRIMARY factor (70-80% of total score).
       // Views and posts are secondary signals only.
-      // Formula: (fg_score × 10) + log10(views) × 0.3 + log10(posts) × 0.3
-      // Example: FG 9 + 10k views beats FG 3 + 1M views (92.1 vs 33.3)
-      const scoreA = (a.fg.score * 10) + Math.log10(Math.max(a.views, 1)) * 0.3 + Math.log10(Math.max(a.posts, 1)) * 0.3;
-      const scoreB = (b.fg.score * 10) + Math.log10(Math.max(b.views, 1)) * 0.3 + Math.log10(Math.max(b.posts, 1)) * 0.3;
+      const scoreA = (a.effectiveScore * 10) + Math.log10(Math.max(a.views, 1)) * 0.3 + Math.log10(Math.max(a.posts, 1)) * 0.3;
+      const scoreB = (b.effectiveScore * 10) + Math.log10(Math.max(b.views, 1)) * 0.3 + Math.log10(Math.max(b.posts, 1)) * 0.3;
       return scoreB - scoreA;
     });
 
@@ -745,7 +754,7 @@ function renderGlobalTable() {
     sorted.forEach((t,i)=>{
       const desc = HASHTAG_DESCS[t.hashtag] || {};
       const about = desc.about || autoAbout(t);
-      const fgScore = desc.fg_score || null;
+      const fgScore = (desc.fg_score !== undefined && desc.fg_score !== null) ? desc.fg_score : null;
       const countryBadges = (t.eu_countries||[]).map(cc=>`<span style="font-size:11px">${flagMap[cc]||cc}</span>`).join('');
       h += `<tr>`;
       h += `<td class="rank">${i+1}</td>`;
@@ -806,7 +815,7 @@ function renderUSTable(){
   sorted.forEach((t,i)=>{
     const desc = HASHTAG_DESCS[t.hashtag] || {};
     const about = desc.about || autoAbout(t);
-    const fgScore = desc.fg_score || null;
+    const fgScore = (desc.fg_score !== undefined && desc.fg_score !== null) ? desc.fg_score : null;
     h += `<tr>`;
     h += `<td class="rank">${i+1}</td>`;
     h += `<td class="ht"><a href="https://www.tiktok.com/tag/${t.hashtag}" target="_blank" rel="noopener">#${t.hashtag}</a><a href="https://www.tiktok.com/tag/${t.hashtag}" target="_blank" class="lnk">↗</a></td>`;
@@ -897,7 +906,7 @@ function renderEUTable(){
     sorted.forEach((t,i)=>{
       const desc = HASHTAG_DESCS[t.hashtag] || {};
       const about = desc.about || autoAbout(t);
-      const fgScore = desc.fg_score || null;
+      const fgScore = (desc.fg_score !== undefined && desc.fg_score !== null) ? desc.fg_score : null;
       const countryBadges = (t.countries||[]).map(cc=>`<span style="font-size:10px">${countryFlags[cc]||cc}</span>`).join(' ');
       h += `<tr>`;
       h += `<td class="rank">${i+1}</td>`;
@@ -1019,8 +1028,10 @@ function renderPicks(allData){
 // FG SCORE BADGE HELPER
 // ============================================
 function fgScoreBadge(score, hashtag) {
+  if (score === null || score === undefined) return '<span style="color:var(--text3);font-size:11px">—</span>';
   const s = parseInt(score);
-  if (!s) return '<span style="color:var(--text3);font-size:11px">—</span>';
+  if (isNaN(s)) return '<span style="color:var(--text3);font-size:11px">—</span>';
+  if (s === 0) return `<span style="display:inline-flex;align-items:center;justify-content:center;width:26px;height:20px;border-radius:5px;background:var(--bg3);color:var(--text3);border:1px solid var(--border);font-size:11px;font-weight:700" title="No FibreGuard relevance">0</span>`;
   let color = s >= 8 ? 'var(--green)' : s >= 6 ? 'var(--yellow)' : s >= 4 ? 'var(--orange)' : 'var(--text3)';
   let bg = s >= 8 ? 'var(--green-d)' : s >= 6 ? 'var(--yellow-d)' : s >= 4 ? 'var(--orange-d)' : 'var(--bg3)';
   let border = s >= 8 ? 'rgba(34,197,94,.35)' : s >= 6 ? 'rgba(234,179,8,.35)' : s >= 4 ? 'rgba(249,115,22,.35)' : 'var(--border)';
