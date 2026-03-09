@@ -498,7 +498,6 @@ function computeFGPicks() {
                  + Math.log10(Math.max(item.posts, 1)) * 0.3;
       return { ...item, fg, effectiveScore, rank };
     })
-    .filter(item => item.effectiveScore >= 6)
     .sort((a, b) => b.rank - a.rank);
 
   // DEDUP: one pick per hashtag (strict), variety across content categories
