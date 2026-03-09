@@ -444,7 +444,7 @@ function getPickData(item) {
 
   // Direction bonus label
   const dirNote = item.direction === 'rising' ? ' · 📈 Rising now' : item.direction === 'falling' ? ' · Declining' : '';
-  const countryLabel = item.country === 'US' ? '🇺🇸 US' : (EU_FLAGS[item.country] || '') + ' ' + (EU_NAMES[item.country] || item.country);
+  const sourceLabel = item.source === 'global' ? '🌍 Global' : '🇪🇺 EU';
 
   // Use Gemini JSON score as authoritative display score (fallback to computed score)
   const jsonScore = parseInt(HASHTAG_DESCS[item.hashtag]?.fg_score);
@@ -458,51 +458,70 @@ function getPickData(item) {
     posts: item.posts,
     direction: item.direction,
     idea: idea.replace('#{hashtag}', item.hashtag),
-    stats: `${fv(item.views)} views · ${fv(item.posts)} posts · ${countryLabel}${dirNote}`,
+    stats: `${fv(item.views)} views · ${fv(item.posts)} posts · ${sourceLabel}${dirNote}`,
     fgScore: displayScore,
     fgCats: fg.cats
   };
 }
 
-function computeFGPicks(allData) {
-  // Score every hashtag from all countries.
-  // JSON score (from hashtag-descriptions.json) is the PRIMARY authority —
-  // set by a Claude marketing director reasoning for each hashtag.
-  // JS keyword score is FALLBACK only (used when no JSON entry exists).
-  // We never take the max — that would let stale keyword logic override curated scores.
-  const scored = allData
+function computeFGPicks() {
+  // DATA SOURCE: Global overlap first (trending in BOTH US + EU),
+  // then EU-only as fallback. Never individual countries alone.
+  // This ensures every pick is visible in the Global or EU tab.
+  const globalData = buildGlobalOverlap().map(item => ({
+    hashtag: item.hashtag,
+    views: item.views_combined,
+    posts: item.posts_combined,
+    industry: item.industry,
+    interests: item.interests,
+    direction: item.direction,
+    source: 'global'
+  }));
+
+  const euData = buildEUCombined()
+    .filter(item => !globalData.find(g => g.hashtag === item.hashtag))
+    .map(item => ({ ...item, source: 'eu' }));
+
+  const pool = [...globalData, ...euData];
+
+  // SCORING: JSON score is primary authority. JS keyword score is fallback only.
+  // FORMULA: FG score weighs 2× vs views+posts combined.
+  //   rank = (fgScore × 20) + log10(views) × 0.3 + log10(posts) × 0.3
+  //   FG range: 0–200pts  |  views+posts: ~0–5pts (tiebreaker only)
+  const scored = pool
     .map(item => {
       const fg = scoreFG(item.hashtag, item);
       const jsonScore = parseInt(HASHTAG_DESCS[item.hashtag]?.fg_score);
       const effectiveScore = !isNaN(jsonScore) ? jsonScore : fg.score; // JSON wins
-      return { ...item, fg, effectiveScore };
+      const rank = (effectiveScore * 20)
+                 + Math.log10(Math.max(item.views, 1)) * 0.3
+                 + Math.log10(Math.max(item.posts, 1)) * 0.3;
+      return { ...item, fg, effectiveScore, rank };
     })
-    .filter(item => item.effectiveScore >= 6) // minimum FG Fit threshold (6+)
-    .sort((a, b) => {
-      // FG Fit score is the PRIMARY factor (70-80% of total score).
-      // Views and posts are secondary signals only.
-      const scoreA = (a.effectiveScore * 10) + Math.log10(Math.max(a.views, 1)) * 0.3 + Math.log10(Math.max(a.posts, 1)) * 0.3;
-      const scoreB = (b.effectiveScore * 10) + Math.log10(Math.max(b.views, 1)) * 0.3 + Math.log10(Math.max(b.posts, 1)) * 0.3;
-      return scoreB - scoreA;
-    });
+    .filter(item => item.effectiveScore >= 6)
+    .sort((a, b) => b.rank - a.rank);
 
-  // Deduplicate by topCat — we want variety in the 3 picks
+  // DEDUP: one pick per hashtag (strict), variety across content categories
   const picks = [];
+  const usedHashtags = new Set();
   const usedCats = new Set();
+
   for (const item of scored) {
-    const cat = item.fg.topCat || 'generic';
     if (picks.length >= 3) break;
-    // Allow same cat only if we've exhausted unique ones
-    if (usedCats.has(cat) && picks.length < scored.filter(s => !usedCats.has(s.fg.topCat)).length) continue;
+    if (usedHashtags.has(item.hashtag)) continue; // no duplicates
+    const cat = item.fg.topCat || 'generic';
+    if (usedCats.has(cat) && scored.filter(s => !usedCats.has(s.fg.topCat) && !usedHashtags.has(s.hashtag)).length > 0) continue;
+    usedHashtags.add(item.hashtag);
     usedCats.add(cat);
     picks.push(item);
   }
 
-  // If we still need more, fill without cat constraint
-  if (picks.length < 3) {
-    for (const item of scored) {
-      if (picks.length >= 3) break;
-      if (!picks.find(p => p.hashtag === item.hashtag)) picks.push(item);
+  // Fill if still under 3 (relax category constraint)
+  for (const item of scored) {
+    if (picks.length >= 3) break;
+    if (!usedHashtags.has(item.hashtag)) {
+      usedHashtags.add(item.hashtag);
+      picks.push(item);
     }
   }
 
@@ -950,12 +969,13 @@ function renderClaw(){
 // RENDER FG PICKS (Top Bar) — Dynamic from hashtag data
 // ============================================
 function renderPicks(allData){
+  // allData is only used to detect loading state — picks now use Global/EU sources directly
   if(!allData || !allData.length) {
     document.getElementById('fg-picks').innerHTML = '<div class="picks"><div class="picks-title">🎯 Today\'s Top 3 FibreGuard Picks — Ranked by FG Fit Score</div><div style="font-size:12px;color:var(--text3);padding:12px 0">Loading hashtag data...</div></div>';
     return;
   }
 
-  const picks = computeFGPicks(allData);
+  const picks = computeFGPicks();
   if(!picks.length) {
     document.getElementById('fg-picks').innerHTML = '<div class="picks"><div class="picks-title">🎯 Today\'s Top 3 FibreGuard Picks — Ranked by FG Fit Score</div><div style="font-size:12px;color:var(--text3);padding:12px 0">No trends spotted today.</div></div>';
     return;
