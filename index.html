@@ -53,6 +53,7 @@ border-radius:8px 8px 0 0;transition:all .15s}
 /* Panels */
 .pnl{background:var(--bg2);border-radius:0 var(--r) var(--r) var(--r);padding:20px;min-height:300px;display:none}
 .pnl.on{display:block}
+.global-badge{font-size:9px;font-weight:700;padding:2px 6px;border-radius:3px;background:rgba(168,85,247,.12);color:var(--purple);white-space:nowrap}
 
 /* Controls */
 .controls{display:flex;gap:8px;margin-bottom:16px;flex-wrap:wrap;align-items:center}
@@ -211,12 +212,16 @@ padding:4px 10px;text-align:left;position:sticky;top:0;background:var(--bg2);use
 
 <!-- Tabs -->
 <div class="tabs">
-<button class="tab on" onclick="switchTab('us',this)">🇺🇸 US Market<span class="c" id="us-c">0</span></button>
+<button class="tab on" onclick="switchTab('global',this)">🌍 Global<span class="c" id="global-c">0</span></button>
+<button class="tab" onclick="switchTab('us',this)">🇺🇸 US Market<span class="c" id="us-c">0</span></button>
 <button class="tab" onclick="switchTab('eu',this)">🇪🇺 EU Region<span class="c" id="eu-c">0</span></button>
 <button class="tab" onclick="switchTab('claw',this)">🔬 Claw Research<span class="c">5</span></button>
 </div>
 
-<div class="pnl on" id="p-us">
+<div class="pnl on" id="p-global">
+<div class="loading"><div class="spin"></div><br>Loading global overlaps...</div>
+</div>
+<div class="pnl" id="p-us">
 <div class="loading"><div class="spin"></div><br>Loading US hashtags...</div>
 </div>
 <div class="pnl" id="p-eu">
@@ -369,25 +374,50 @@ const FG_IDEAS_GENERIC = [
   "Create a #{hashtag} video where FibreGuard fabric is the unexpected hero. The surprise element + trending hashtag = algorithm boost."
 ];
 
-function scoreFG(hashtag) {
+// Auto-generate "about" description from TikTok API data when no manual entry exists
+function autoAbout(item) {
+  if (!item) return '—';
+  const parts = [];
+  if (item.industry) parts.push(item.industry);
+  const interests = (item.interests || []).filter(Boolean).slice(0, 2);
+  if (interests.length) parts.push('Audience: ' + interests.join(', '));
+  return parts.length ? parts.join(' · ') : '—';
+}
+
+function scoreFG(hashtag, item = null) {
   const h = (hashtag || '').toLowerCase().replace(/[^a-z0-9]/g, '');
   let totalScore = 0;
   let matchedCats = [];
   let topCat = null;
   let topWeight = 0;
 
-  for (const [cat, data] of Object.entries(FG_CATEGORIES)) {
-    for (const kw of data.kw) {
-      if (h.includes(kw)) {
-        totalScore += data.weight;
-        matchedCats.push(cat);
-        if (data.weight > topWeight) { topWeight = data.weight; topCat = cat; }
-        break;
+  // Helper: check a text string against all FG categories
+  const checkText = (text, weightMult = 1.0) => {
+    const t = (text || '').toLowerCase().replace(/[^a-z0-9 ]/g, '');
+    if (!t) return;
+    for (const [cat, data] of Object.entries(FG_CATEGORIES)) {
+      for (const kw of data.kw) {
+        if (t.includes(kw)) {
+          const w = data.weight * weightMult;
+          totalScore += w;
+          matchedCats.push(cat);
+          if (data.weight > topWeight) { topWeight = data.weight; topCat = cat; }
+          break;
+        }
       }
     }
+  };
+
+  // Primary: check hashtag name (full weight)
+  checkText(h, 1.0);
+
+  // Secondary: check industry and interests (reduced weight — context signals)
+  if (item) {
+    checkText(item.industry || '', 0.4);
+    (item.interests || []).forEach(interest => checkText(interest, 0.25));
   }
 
-  // Bonus for exact key terms
+  // Exact-match bonuses
   if (h === 'cleantok' || h === 'satisfyingcleaning') totalScore += 2;
   if (h.includes('sofa') || h.includes('couch')) totalScore += 1.5;
   if (h.includes('petproof') || h.includes('stainproof')) totalScore += 2;
@@ -427,7 +457,7 @@ function getPickData(item) {
 function computeFGPicks(allData) {
   // Score every hashtag from all countries
   const scored = allData
-    .map(item => ({ ...item, fg: scoreFG(item.hashtag) }))
+    .map(item => ({ ...item, fg: scoreFG(item.hashtag, item) }))
     .filter(item => item.fg.score >= 6.0) // minimum FG Fit threshold (6+)
     .sort((a, b) => {
       // FG Fit score is the PRIMARY factor (70-80% of total score).
@@ -632,13 +662,114 @@ document.addEventListener('keydown', (e) => {
 // ============================================
 // SORTING
 // ============================================
-let sortState = {us:{col:'views',asc:false}, eu:{col:'views',asc:false}};
+let sortState = {global:{col:'views_combined',asc:false}, us:{col:'views',asc:false}, eu:{col:'views',asc:false}};
 
 function sortTable(region, col){
   const st = sortState[region];
   if(st.col===col) st.asc=!st.asc; else {st.col=col;st.asc=false;}
   if(region==='us') renderUSTable();
   else renderEUTable();
+}
+
+// ============================================
+// BUILD GLOBAL OVERLAP DATA (US ∩ EU)
+// ============================================
+function buildGlobalOverlap() {
+  const euCombined = buildEUCombined();
+  const euMap = {};
+  for (const item of euCombined) euMap[item.hashtag] = item;
+
+  const result = [];
+  for (const usItem of US_DATA) {
+    if (euMap[usItem.hashtag]) {
+      const euItem = euMap[usItem.hashtag];
+      const viewsCombined = usItem.views + euItem.views;
+      const postsCombined = usItem.posts + euItem.posts;
+      let direction = 'stable';
+      if (usItem.direction === 'rising' || euItem.direction === 'rising') direction = 'rising';
+      else if (usItem.direction === 'falling' && euItem.direction === 'falling') direction = 'falling';
+      result.push({
+        hashtag: usItem.hashtag,
+        views_us: usItem.views,
+        views_eu: euItem.views,
+        views_combined: viewsCombined,
+        posts_us: usItem.posts,
+        posts_eu: euItem.posts,
+        posts_combined: postsCombined,
+        industry: usItem.industry || euItem.industry,
+        interests: usItem.interests || euItem.interests || [],
+        direction,
+        eu_countries: euItem.countries || [],
+        fg_score: parseInt(HASHTAG_DESCS[usItem.hashtag]?.fg_score) || 0
+      });
+    }
+  }
+  return result.sort((a, b) => b.views_combined - a.views_combined);
+}
+
+// ============================================
+// RENDER GLOBAL TAB
+// ============================================
+function renderGlobalTable() {
+  const data = buildGlobalOverlap();
+  const st = sortState.global;
+  const sorted = [...data].sort((a,b)=>{
+    let va=a[st.col],vb=b[st.col];
+    if(typeof va==='string') return st.asc?va.localeCompare(vb):vb.localeCompare(va);
+    return st.asc?(va-vb):(vb-va);
+  });
+
+  const arrow = (col)=> st.col===col ? (st.asc?'↑':'↓') : '↕';
+  const cls = (col)=> st.col===col ? 'active' : '';
+  const flagMap = {FR:'🇫🇷',DE:'🇩🇪',IT:'🇮🇹',ES:'🇪🇸',NL:'🇳🇱',GB:'🇬🇧'};
+
+  let h = `<h2 style="font-size:16px;font-weight:700;margin-bottom:2px">🌍 Global — Hashtags Trending in Both US + EU</h2>`;
+  h += `<p style="font-size:12px;color:var(--text2);margin-bottom:16px">${sorted.length} hashtags trending in both the US market and at least one EU country. Combined views = US + EU aggregated. These are your highest-leverage trends — they cross markets.</p>`;
+  h += `<p class="scroll-hint" style="display:none;font-size:10px;color:var(--text3);margin-bottom:8px">← Swipe table to see more →</p>`;
+
+  if(!sorted.length){
+    h += `<div class="loading" style="color:var(--text3)">No overlapping hashtags found. Data may still be loading.</div>`;
+  } else {
+    h += `<div class="tbl-wrap"><table class="tbl"><thead><tr>`;
+    h += `<th>#</th>`;
+    h += `<th>Hashtag</th>`;
+    h += `<th class="num ${cls('views_combined')}" onclick="sortGlobal('views_combined')" style="cursor:pointer">Combined Views <span class="arrow">${arrow('views_combined')}</span></th>`;
+    h += `<th class="num hide-m ${cls('views_us')}" onclick="sortGlobal('views_us')" style="cursor:pointer">🇺🇸 US Views <span class="arrow">${arrow('views_us')}</span></th>`;
+    h += `<th class="num hide-m ${cls('views_eu')}" onclick="sortGlobal('views_eu')" style="cursor:pointer">🇪🇺 EU Views <span class="arrow">${arrow('views_eu')}</span></th>`;
+    h += `<th>Trend</th>`;
+    h += `<th class="hide-m">EU Countries</th>`;
+    h += `<th class="hide-m" style="max-width:160px">About</th>`;
+    h += `<th class="num">🎯 FG Fit</th>`;
+    h += `</tr></thead><tbody>`;
+
+    sorted.forEach((t,i)=>{
+      const desc = HASHTAG_DESCS[t.hashtag] || {};
+      const about = desc.about || autoAbout(t);
+      const fgScore = desc.fg_score || null;
+      const countryBadges = (t.eu_countries||[]).map(cc=>`<span style="font-size:11px">${flagMap[cc]||cc}</span>`).join('');
+      h += `<tr>`;
+      h += `<td class="rank">${i+1}</td>`;
+      h += `<td class="ht"><a href="https://www.tiktok.com/tag/${t.hashtag}" target="_blank" rel="noopener">#${t.hashtag}</a> <span class="global-badge">🌍 Global</span></td>`;
+      h += `<td class="num"><span class="vw">${fv(t.views_combined)}</span></td>`;
+      h += `<td class="num hide-m">${fv(t.views_us)}</td>`;
+      h += `<td class="num hide-m">${fv(t.views_eu)}</td>`;
+      h += `<td><span class="dir ${dirClass(t.direction)}">${dirLabel(t.direction)}</span></td>`;
+      h += `<td class="hide-m">${countryBadges}</td>`;
+      h += `<td class="hide-m" style="font-size:11px;color:var(--text2);max-width:160px;line-height:1.3">${about}</td>`;
+      h += `<td style="white-space:nowrap">${fgScoreBadge(fgScore, t.hashtag)}</td>`;
+      h += `</tr>`;
+    });
+    h += `</tbody></table></div>`;
+  }
+
+  document.getElementById('p-global').innerHTML = h;
+  document.getElementById('global-c').textContent = sorted.length;
+}
+
+function sortGlobal(col){
+  const st = sortState.global;
+  if(st.col===col) st.asc=!st.asc; else {st.col=col;st.asc=false;}
+  renderGlobalTable();
 }
 
 // ============================================
@@ -674,7 +805,7 @@ function renderUSTable(){
 
   sorted.forEach((t,i)=>{
     const desc = HASHTAG_DESCS[t.hashtag] || {};
-    const about = desc.about || '—';
+    const about = desc.about || autoAbout(t);
     const fgScore = desc.fg_score || null;
     h += `<tr>`;
     h += `<td class="rank">${i+1}</td>`;
@@ -701,49 +832,63 @@ let activeEUCountry = 'FR';
 const EU_FLAGS = {FR:'🇫🇷',DE:'🇩🇪',IT:'🇮🇹',ES:'🇪🇸',NL:'🇳🇱',GB:'🇬🇧'};
 const EU_NAMES = {FR:'France',DE:'Germany',IT:'Italy',ES:'Spain',NL:'Netherlands',GB:'United Kingdom'};
 
-function switchEU(cc){
-  activeEUCountry = cc;
-  document.querySelectorAll('.sub-tab').forEach(t=>t.classList.remove('on'));
-  document.querySelector(`.sub-tab[data-cc="${cc}"]`)?.classList.add('on');
-  renderEUTable();
+function buildEUCombined() {
+  const map = {};
+  for (const cc of ['FR','DE','IT','ES','NL','GB']) {
+    for (const item of (EU_DATA[cc] || [])) {
+      if (!map[item.hashtag]) {
+        map[item.hashtag] = {
+          ...item,
+          country: 'EU',
+          countries: [cc],
+          views: item.views,
+          posts: item.posts
+        };
+      } else {
+        map[item.hashtag].views += item.views;
+        map[item.hashtag].posts += item.posts;
+        map[item.hashtag].countries.push(cc);
+        // Promote direction: rising beats stable beats falling
+        if (item.direction === 'rising') map[item.hashtag].direction = 'rising';
+        else if (item.direction === 'stable' && map[item.hashtag].direction === 'falling') map[item.hashtag].direction = 'stable';
+      }
+    }
+  }
+  return Object.values(map)
+    .sort((a, b) => b.views - a.views)
+    .slice(0, 100)
+    .map(item => ({ ...item, fg_score: parseInt(HASHTAG_DESCS[item.hashtag]?.fg_score) || 0 }));
 }
 
 function renderEUTable(){
-  const data = EU_DATA[activeEUCountry] || [];
+  const combined = buildEUCombined();
   const st = sortState.eu;
-  const filtered = applyFGFilter([...data].filter(h=>h.views>0||h.posts>0), 'eu');
+  const filtered = applyFGFilter([...combined].filter(h=>h.views>0||h.posts>0), 'eu');
   const sorted = filtered.sort((a,b)=>{
     let va=a[st.col],vb=b[st.col];
     if(typeof va==='string') return st.asc?va.localeCompare(vb):vb.localeCompare(va);
     return st.asc?(va-vb):(vb-va);
-  }).slice(0,50);
+  }).slice(0,100);
 
   const arrow = (col)=> st.col===col ? (st.asc?'↑':'↓') : '↕';
   const cls = (col)=> st.col===col ? 'active' : '';
 
-  // Sub-tabs
-  let subTabs = '<div class="sub-tabs">';
-  for(const cc of Object.keys(EU_FLAGS)){
-    if(!EU_DATA[cc] || !EU_DATA[cc].length) continue;
-    const on = cc===activeEUCountry ? 'on' : '';
-    subTabs += `<button class="sub-tab ${on}" data-cc="${cc}" onclick="switchEU('${cc}')">${EU_FLAGS[cc]} ${EU_NAMES[cc]} <span style="font-size:10px;opacity:.6">(${EU_DATA[cc].length})</span></button>`;
-  }
-  subTabs += '</div>';
+  const countryFlags = {FR:'🇫🇷',DE:'🇩🇪',IT:'🇮🇹',ES:'🇪🇸',NL:'🇳🇱',GB:'🇬🇧'};
 
-  let h = `<h2 style="font-size:16px;font-weight:700;margin-bottom:2px">🇪🇺 EU Region — Trending Hashtags (7 Days)</h2>`;
-  h += `<p style="font-size:12px;color:var(--text2);margin-bottom:16px">Select a country below. Click column headers to sort. Use the FG Fit dropdown to filter. Click a score badge for the full breakdown.</p>`;
+  let h = `<h2 style="font-size:16px;font-weight:700;margin-bottom:2px">🇪🇺 EU Region — Top Trending Hashtags (Aggregated · 7 Days)</h2>`;
+  h += `<p style="font-size:12px;color:var(--text2);margin-bottom:16px">Views and posts are summed across FR, DE, IT, ES, NL, GB. A hashtag trending in multiple countries gets higher combined counts. Click column headers to sort.</p>`;
   h += `<p class="scroll-hint" style="display:none;font-size:10px;color:var(--text3);margin-bottom:8px">← Swipe table to see more →</p>`;
-  h += subTabs;
 
   if(!sorted.length){
-    h += `<div class="loading">No data for ${EU_NAMES[activeEUCountry] || activeEUCountry}. Data may still be loading.</div>`;
+    h += `<div class="loading">No EU data loaded yet.</div>`;
   } else {
     h += `<div class="tbl-wrap"><table class="tbl"><thead><tr>`;
     h += `<th>#</th>`;
     h += `<th>Hashtag</th>`;
-    h += `<th class="num ${cls('views')}" onclick="sortTable('eu','views')">Views <span class="arrow">${arrow('views')}</span></th>`;
-    h += `<th class="num ${cls('posts')}" onclick="sortTable('eu','posts')">Posts <span class="arrow">${arrow('posts')}</span></th>`;
+    h += `<th class="num ${cls('views')}" onclick="sortTable('eu','views')">Views (EU Sum) <span class="arrow">${arrow('views')}</span></th>`;
+    h += `<th class="num ${cls('posts')}" onclick="sortTable('eu','posts')">Posts (EU Sum) <span class="arrow">${arrow('posts')}</span></th>`;
     h += `<th>Trend</th>`;
+    h += `<th class="hide-m">Countries</th>`;
     h += `<th class="hide-m">Industry</th>`;
     h += `<th class="hide-m" style="max-width:180px">About</th>`;
     h += fgFitColHeader('eu');
@@ -751,14 +896,16 @@ function renderEUTable(){
 
     sorted.forEach((t,i)=>{
       const desc = HASHTAG_DESCS[t.hashtag] || {};
-      const about = desc.about || '—';
+      const about = desc.about || autoAbout(t);
       const fgScore = desc.fg_score || null;
+      const countryBadges = (t.countries||[]).map(cc=>`<span style="font-size:10px">${countryFlags[cc]||cc}</span>`).join(' ');
       h += `<tr>`;
       h += `<td class="rank">${i+1}</td>`;
       h += `<td class="ht"><a href="https://www.tiktok.com/tag/${t.hashtag}" target="_blank" rel="noopener">#${t.hashtag}</a><a href="https://www.tiktok.com/tag/${t.hashtag}" target="_blank" class="lnk">↗</a></td>`;
       h += `<td class="num"><span class="vw">${fv(t.views)}</span></td>`;
       h += `<td class="num">${fv(t.posts)}</td>`;
       h += `<td><span class="dir ${dirClass(t.direction)}">${dirLabel(t.direction)}</span></td>`;
+      h += `<td class="hide-m">${countryBadges}</td>`;
       h += `<td class="hide-m"><span class="industry-tag">${t.industry||'—'}</span></td>`;
       h += `<td class="hide-m" style="font-size:11px;color:var(--text2);max-width:180px;line-height:1.3">${about}</td>`;
       h += `<td style="white-space:nowrap">${fgScoreBadge(fgScore, t.hashtag)}</td>`;
@@ -766,10 +913,9 @@ function renderEUTable(){
     });
     h += `</tbody></table></div>`;
   }
-  
+
   document.getElementById('p-eu').innerHTML = h;
-  const euTotal = Object.values(EU_DATA).reduce((s,arr)=>s+Math.min(arr.length,50),0);
-  document.getElementById('eu-c').textContent = euTotal;
+  document.getElementById('eu-c').textContent = sorted.length;
 }
 
 // ============================================
@@ -930,6 +1076,9 @@ async function init(){
     const firstEU = euCountries.find(cc=>EU_DATA[cc]?.length);
     if(firstEU) activeEUCountry = firstEU;
     renderEUTable();
+
+    // Render global overlap tab
+    renderGlobalTable();
 
     // Total count
     const total = Object.values(json.countries||{}).reduce((s,arr)=>s+(arr?.length||0),0);
