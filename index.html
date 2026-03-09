@@ -458,10 +458,11 @@ function getPickData(item) {
   const fg = scoreFG(item.hashtag, item);
   const cat = fg.topCat || 'home';
   const catInfo = FG_CATEGORIES[cat] || FG_CATEGORIES.home;
+  // Use hashtag-specific idea from JSON first; fall back to category template
+  const specificIdea = HASHTAG_DESCS[item.hashtag]?.fg_idea;
   const ideas = FG_IDEAS[cat] || FG_IDEAS_GENERIC;
-  // Pick a random idea (seeded by hashtag name for consistency per day)
   const seed = item.hashtag.split('').reduce((s,c)=>s+c.charCodeAt(0),0);
-  const idea = ideas[seed % ideas.length];
+  const idea = specificIdea || ideas[seed % ideas.length];
   const reasonEmoji = catInfo.emoji;
   const reasonLabel = cat.charAt(0).toUpperCase() + cat.slice(1);
 
