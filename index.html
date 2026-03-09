@@ -398,7 +398,9 @@ function getPickData(item) {
     posts: item.posts,
     direction: item.direction,
     idea: idea.replace('#{hashtag}', item.hashtag),
-    stats: `${fv(item.views)} views · ${fv(item.posts)} posts · ${countryLabel}${dirNote}`
+    stats: `${fv(item.views)} views · ${fv(item.posts)} posts · ${countryLabel}${dirNote}`,
+    fgScore: fg.score,
+    fgCats: fg.cats
   };
 }
 
@@ -788,24 +790,60 @@ function renderClaw(){
 // ============================================
 function renderPicks(allData){
   if(!allData || !allData.length) {
-    document.getElementById('fg-picks').innerHTML = '<div class="picks"><div class="picks-title">🎯 Today\'s Top 3 FibreGuard Picks</div><div style="font-size:12px;color:var(--text3);padding:12px 0">Loading hashtag data...</div></div>';
+    document.getElementById('fg-picks').innerHTML = '<div class="picks"><div class="picks-title">🎯 Today\'s Top 3 FibreGuard Picks — Ranked by FG Fit Score</div><div style="font-size:12px;color:var(--text3);padding:12px 0">Loading hashtag data...</div></div>';
     return;
   }
 
   const picks = computeFGPicks(allData);
   if(!picks.length) {
-    document.getElementById('fg-picks').innerHTML = '<div class="picks"><div class="picks-title">🎯 Today\'s Top 3 FibreGuard Picks</div><div style="font-size:12px;color:var(--text3);padding:12px 0">No matching hashtags found in today\'s data.</div></div>';
+    document.getElementById('fg-picks').innerHTML = '<div class="picks"><div class="picks-title">🎯 Today\'s Top 3 FibreGuard Picks — Ranked by FG Fit Score</div><div style="font-size:12px;color:var(--text3);padding:12px 0">No matching hashtags found in today\'s data.</div></div>';
     return;
   }
 
-  let html = `<div class="picks"><div class="picks-title">🎯 Today's Top 3 FibreGuard Picks — From Live Hashtag Data</div><div class="picks-grid">`;
+  let html = `<div class="picks"><div class="picks-title">🎯 Today's Top 3 FibreGuard Picks — Ranked by FG Fit Score</div><div class="picks-grid">`;
 
   picks.forEach((p,i)=>{
     const dirBadge = p.direction === 'rising' ? '<span class="dir r" style="margin-left:6px;font-size:9px">↑ Rising</span>' :
                      p.direction === 'falling' ? '<span class="dir d" style="margin-left:6px;font-size:9px">↓ Declining</span>' :
                      '<span class="dir n" style="margin-left:6px;font-size:9px">→ Stable</span>';
-    html += `<div class="pick"><div class="pick-rank">#${i+1}</div>`;
-    html += `<div class="pick-name"><a href="https://www.tiktok.com/tag/${p.name.replace('#','')}" target="_blank" style="color:var(--green)">${p.name}</a>${dirBadge}</div>`;
+
+    // --- A) Large FG Fit score badge ---
+    const s = p.fgScore || 0;
+    const badgeColor = s >= 7 ? 'var(--green)' : s >= 4 ? 'var(--yellow)' : 'var(--orange)';
+    const badgeBg    = s >= 7 ? 'var(--green-d)' : s >= 4 ? 'var(--yellow-d)' : 'var(--orange-d)';
+    const badgeBorder= s >= 7 ? 'rgba(34,197,94,.4)' : s >= 4 ? 'rgba(234,179,8,.4)' : 'rgba(249,115,22,.4)';
+    const scoreBadge = `<span style="display:inline-flex;align-items:center;justify-content:center;height:32px;padding:0 12px;border-radius:8px;background:${badgeBg};color:${badgeColor};border:1px solid ${badgeBorder};font-size:14px;font-weight:800;letter-spacing:-.3px">${s.toFixed(1)}</span>`;
+
+    // --- B) Score breakdown summary ---
+    const cats = p.fgCats || [];
+    const breakdownParts = cats.map(cat => {
+      const catData = FG_CATEGORIES[cat];
+      if (!catData) return '';
+      const label = cat.charAt(0).toUpperCase() + cat.slice(1);
+      return `${catData.emoji} ${label} (+${catData.weight})`;
+    }).filter(Boolean);
+    const totalScore = s.toFixed(1);
+    const breakdown = breakdownParts.length
+      ? breakdownParts.join(' · ') + ` = ${totalScore} FG Fit`
+      : `Score: ${totalScore} FG Fit`;
+
+    // --- C) "Why this was picked" note ---
+    const dirIcon = p.direction === 'rising' ? '📈 Rising' : p.direction === 'falling' ? '📉 Declining' : '📊 Stable';
+    const whyNote = `Selected: highest FG Fit score from today's live data · ${dirIcon}`;
+
+    html += `<div class="pick">`;
+    // Header row: rank on left, score badge on right
+    html += `<div style="display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:10px">`;
+    html += `  <div style="font-size:24px;font-weight:900;color:rgba(34,197,94,.2);line-height:1">#${i+1}</div>`;
+    html += `  <div style="display:flex;flex-direction:column;align-items:flex-end;gap:3px">${scoreBadge}<div style="font-size:9px;color:var(--text3);font-weight:600;text-transform:uppercase;letter-spacing:.3px">FG Fit Score</div></div>`;
+    html += `</div>`;
+    // --- E) Hashtag name + Score: X.X / 10 ---
+    html += `<div class="pick-name"><a href="https://www.tiktok.com/tag/${p.name.replace('#','')}" target="_blank" style="color:var(--green)">${p.name}</a> <span style="font-size:11px;font-weight:600;color:var(--text3)">· Score: ${totalScore} / 10</span>${dirBadge}</div>`;
+    // --- B) Category breakdown row ---
+    html += `<div style="font-size:10px;color:var(--text2);margin:4px 0 5px;line-height:1.5">${breakdown}</div>`;
+    // --- C) Why note ---
+    html += `<div style="font-size:10px;color:var(--text3);font-style:italic;margin-bottom:9px;line-height:1.4">${whyNote}</div>`;
+    // Category + country chips
     html += `<div style="display:flex;gap:6px;margin-bottom:6px;flex-wrap:wrap"><span class="pick-plat tt" style="background:var(--green-d);color:var(--green)">${p.cat}</span><span style="font-size:10px;color:var(--text3)">${p.country}</span></div>`;
     html += `<div class="pick-idea"><strong>💡 Video idea:</strong> ${p.idea}</div>`;
     html += `<div class="pick-stats"><span>📊 ${p.stats}</span></div>`;
