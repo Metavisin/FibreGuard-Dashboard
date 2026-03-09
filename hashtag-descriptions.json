@@ -1,11 +1,11 @@
 {
   "alysaliu": {
-    "about": "Sports & Outdoor content featuring Theatre & Stage, Extreme Sports.",
+    "about": "Alysa Liu, 19-year-old Chinese-American figure skater — competition clips and fan edits",
     "fg_score": 2,
     "fg_reason": "Figure skating fan content — no home angle. The only stretch is a 'coming home to relax' follow-up, but it feels forced."
   },
   "poppyplaytime": {
-    "about": "Games content featuring Cosplay, Video Games.",
+    "about": "Poppy Playtime horror game — gameplay clips, lore deep-dives, and scary character edits",
     "fg_score": 1,
     "fg_reason": "Horror video game content. Audience is gaming-focused with no crossover to home decor. Essentially no viable angle."
   },
@@ -66,7 +66,7 @@
     "fg_score": 1
   },
   "loveisblindnetflix": {
-    "about": "Netflix Love Is Blind — relationships, moving in together, home setup",
+    "about": "Netflix's Love Is Blind — couples meeting and getting engaged without seeing each other, reaction and recap content",
     "fg_score": 4,
     "fg_reason": "Same as #loveisblind. Moving-in-together moments create natural content hooks around furnishing a shared home."
   },
@@ -85,7 +85,7 @@
     "fg_reason": "This trend is about eliminating stress — FibreGuard directly contributes by removing the anxiety of spills and stains. 'Things that lower my cortisol: a sofa I literally cannot ruin' is ready-made content."
   },
   "huggywuggy": {
-    "about": "Games content featuring Cosplay, Video Games.",
+    "about": "Huggy Wuggy, the giant blue monster from Poppy Playtime horror game — fan edits and cosplay",
     "fg_score": 1,
     "fg_reason": "Horror game toy character — children's gaming content with no home connection."
   },
@@ -95,7 +95,7 @@
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "23февраля": {
-    "about": "content featuring Video Games, Comics & Cartoon, Anime.",
+    "about": "February 23 — Russian Defender of the Fatherland Day, military tribute and patriotic celebration videos",
     "fg_score": 2,
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
@@ -104,7 +104,7 @@
     "fg_score": 2
   },
   "princeandrew": {
-    "about": "News & Entertainment content featuring Humanities, Entertainment News.",
+    "about": "Prince Andrew, UK royal — news clips, controversy commentary, and reaction content",
     "fg_score": 1,
     "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
@@ -118,7 +118,7 @@
     "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays, religious observances, or political topics to avoid controversy and respect brand neutrality."
   },
   "pinkiepie": {
-    "about": "Games content featuring Cosplay, Oddly Satisfying.",
+    "about": "Pinkie Pie, My Little Pony character — fan edits, cosplay, and nostalgic animated series content",
     "fg_score": 1,
     "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
@@ -203,12 +203,12 @@
     "fg_score": 3
   },
   "ericdane": {
-    "about": "News & Entertainment content featuring Entertainment News, Family.",
+    "about": "Eric Dane, actor from Grey's Anatomy and Euphoria — fan tributes, scene edits, and comeback news",
     "fg_score": 2,
     "fg_reason": "Celebrity actor fan content. No home angle unless you use a 'Grey's Anatomy watching party on the sofa' framing, which is extremely indirect."
   },
   "victorious": {
-    "about": "Trending hashtag #victorious.",
+    "about": "Victorious, Nickelodeon TV show — nostalgia clips, cast reunion content, and iconic scene edits",
     "fg_score": 2,
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
@@ -217,7 +217,7 @@
     "fg_score": 4
   },
   "punch": {
-    "about": "Viral zoo monkey named Punch being rejected by his mom at the zoo",
+    "about": "Punch the zoo monkey — viral baby monkey rejected by his mum at a US zoo, comedy and cute clips",
     "fg_score": 3,
     "fg_reason": "Viral zoo monkey content — comedy stretch only. See punchmonkey."
   },
@@ -226,12 +226,12 @@
     "fg_score": 2
   },
   "cloud9": {
-    "about": "Trending hashtag #cloud9.",
+    "about": "Cloud9, US esports organisation — gaming highlights, tournament clips, and team fan content",
     "fg_score": 2,
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "therians": {
-    "about": "Trending hashtag #therians.",
+    "about": "Therian subculture — people who identify as non-human animals, dancing in animal costumes and fursuits",
     "fg_score": 2,
     "fg_reason": "Subculture content where people identify as animals. Niche community — very indirect, though 'soft surfaces for your feral side' is a joke angle."
   },
@@ -274,7 +274,7 @@
     "fg_score": 1
   },
   "omarcourtz": {
-    "about": "content featuring Selfies, Scripted Drama.",
+    "about": "Omar Courtz (aka ousi), Latin urban/reggaeton artist — new music releases and fan content from his latest album",
     "fg_score": 2,
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
@@ -298,7 +298,7 @@
     "fg_score": 2
   },
   "marksloan": {
-    "about": "News & Entertainment content featuring Non-Video Games, Entertainment News.",
+    "about": "Mark Sloan, beloved surgeon character from Grey's Anatomy — fan edits, best scenes, and nostalgia content",
     "fg_score": 2,
     "fg_reason": "Grey's Anatomy character fan content. The watching party / sofa binge angle is thin but exists."
   },
@@ -311,7 +311,7 @@
     "fg_score": 4
   },
   "swm": {
-    "about": "Vehicle & Transportation content featuring Selfies, Finger Dance & Basic Dance.",
+    "about": "Mixed content — unclear trend",
     "fg_score": 2,
     "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
   },
@@ -328,7 +328,7 @@
     "fg_score": 1
   },
   "tariffs": {
-    "about": "News & Entertainment content featuring Social News, Business & Finance.",
+    "about": "US trade tariffs news — people reacting to price increases, panic buying, and economic commentary content",
     "fg_score": 1,
     "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
@@ -337,7 +337,7 @@
     "fg_score": 1
   },
   "prototype": {
-    "about": "Trending hashtag #prototype.",
+    "about": "Mixed content — unclear trend",
     "fg_score": 2,
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
@@ -360,7 +360,7 @@
     "fg_score": 1
   },
   "bootcampuntalfredo": {
-    "about": "content featuring Selfies, Cooking.",
+    "about": "Spanish fitness bootcamp challenge — workout sessions led by influencer 'Un Tal Alfredo'",
     "fg_score": 4,
     "fg_reason": "Food content in home settings has natural sofa stain prevention angle."
   },
@@ -379,12 +379,12 @@
     "fg_reason": "Kids being energetic and unpredictable — exactly the scenario FibreGuard is built for. 'My kid is a wildchild but my sofa doesn't suffer for it' is strong content."
   },
   "масленица": {
-    "about": "Food & Beverage content featuring Video Games, Comics & Cartoon, Anime.",
+    "about": "Maslenitsa (Russian Pancake Week) — traditional blini-making, folk games, and winter festival celebration videos",
     "fg_score": 5,
     "fg_reason": "Russian Maslenitsa (Pancake Week) — family food celebration. Syrup, jam, and pancake batter near fabric is literally what FibreGuard is built for."
   },
   "mayhemball": {
-    "about": "News & Entertainment content featuring Entertainment News, Dance.",
+    "about": "Lady Gaga's Mayhem Ball Tour 2026 — concert announcements, ticket reactions, and fan hype content",
     "fg_score": 1,
     "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
@@ -412,7 +412,7 @@
     "fg_score": 1
   },
   "tanlines": {
-    "about": "content featuring Nail Art, Other Beauty.",
+    "about": "Tan line reveal content — showing off contrast lines from swimwear, outdoor summer lifestyle videos",
     "fg_score": 4,
     "fg_reason": "Young people making home content provides sofa/dorm furniture angle."
   },
@@ -422,17 +422,17 @@
     "fg_reason": "Latin music artist fan content. No home connection."
   },
   "boomtown": {
-    "about": "News & Entertainment content featuring Cars, Trucks & Motorcycles, Farm Animals.",
+    "about": "Boomtown Festival 2026, UK music festival — lineup predictions, outfit planning, and hype content",
     "fg_score": 1,
     "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "ceravepartner": {
-    "about": "Beauty & Personal Care content featuring Sports News, Other Beauty.",
+    "about": "CeraVe skincare brand partnership content — sponsored skincare routines and product reviews",
     "fg_score": 3,
     "fg_reason": "CeraVe skincare partnership content — care/protection angle is parallel to FibreGuard's 'protect your investment' message. Audience cares about product quality and longevity."
   },
   "ousi": {
-    "about": "content featuring Selfies, Music.",
+    "about": "Omar Courtz (alias ousi), Latin reggaeton artist — music clips and fan content from his new album",
     "fg_score": 2,
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
@@ -441,7 +441,7 @@
     "fg_score": 2
   },
   "rhianna": {
-    "about": "content featuring Selfies, Finger Dance & Basic Dance.",
+    "about": "Rihanna fan content — music clips, fashion moments, and reaction videos from her catalogue",
     "fg_score": 2,
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
@@ -460,7 +460,7 @@
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "chroniqueemoji": {
-    "about": "Games content featuring Hilarious Fails, Oddly Satisfying.",
+    "about": "French 'emoji chronicle' format — humorous storytelling using only emoji captions to narrate life situations",
     "fg_score": 1,
     "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
@@ -469,7 +469,7 @@
     "fg_score": 3
   },
   "greysanatomy": {
-    "about": "Trending hashtag #greysanatomy.",
+    "about": "Grey's Anatomy TV show — fan edits, emotional scene compilations, character tributes, and nostalgia content",
     "fg_score": 2,
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
@@ -490,7 +490,7 @@
     "fg_score": 3
   },
   "nyxcosmeticsfrance": {
-    "about": "Beauty & Personal Care content featuring Beauty, Photography.",
+    "about": "NYX Cosmetics France — makeup tutorials, product hauls, and beauty brand partnership content",
     "fg_score": 3,
     "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
   },
@@ -499,7 +499,7 @@
     "fg_score": 5
   },
   "rant": {
-    "about": "Games content featuring Oddly Satisfying, Other Art.",
+    "about": "Rant videos — people venting frustrations, unpopular opinions, and emotional monologues to camera",
     "fg_score": 1,
     "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
@@ -517,7 +517,7 @@
     "fg_score": 3
   },
   "manon": {
-    "about": "News & Entertainment content featuring Entertainment News, Oddly Satisfying.",
+    "about": "Manon, French singer or personality — fan content and music clips",
     "fg_score": 1,
     "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
@@ -652,7 +652,7 @@
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "asterix": {
-    "about": "Travel content featuring Hilarious Fails, Recreation Facilities.",
+    "about": "Asterix & Obelix, beloved French comic franchise — new film content, nostalgia clips, and meme edits",
     "fg_score": 2,
     "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
   },
@@ -677,7 +677,7 @@
     "fg_score": 2
   },
   "gif": {
-    "about": "News & Entertainment content featuring Professional Special Effects, Oddly Satisfying.",
+    "about": "GIF culture and reaction content — people sharing and recreating classic internet GIFs in TikTok format",
     "fg_score": 1,
     "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
@@ -849,7 +849,7 @@
   },
   "sahur": {
     "about": "content featuring Professional Special Effects, Food Tour & Recommendations.",
-    "fg_score": 4,
+    "fg_score": 0,
     "fg_reason": "Food content in home settings has natural sofa stain prevention angle."
   },
   "rosenmontag": {
@@ -956,7 +956,7 @@
     "fg_score": 3
   },
   "timgioh": {
-    "about": "Games content featuring Pranks, Sports News.",
+    "about": "Timgioh, German TikTok creator who went viral after appearing in MontanaBlack's stream — reaction and gaming content",
     "fg_score": 1,
     "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
@@ -970,7 +970,7 @@
     "fg_reason": "German tech/lifestyle forum content. Home-adjacent if discussing home tech, but mostly indirect. Some potential in the 'smart home upgrade' angle."
   },
   "tan": {
-    "about": "content featuring Campus Life, Diary & VLOG.",
+    "about": "Self-tanning and sun tan content — tutorials, tan check-ins, and before/after transformation videos",
     "fg_score": 4,
     "fg_reason": "Self-tanning and summer body content — adjacent to outdoor/patio lifestyle. FibreGuard outdoor fabric angle: 'tan by the pool without worrying about your patio cushions.'"
   },
@@ -1011,7 +1011,7 @@
     "fg_score": 1
   },
   "аделияпетросян": {
-    "about": "Sports & Outdoor content featuring School Education, Extreme Sports.",
+    "about": "Adeliya Petrosyan, Russian figure skater — skating performance clips and fan tribute videos",
     "fg_score": 2,
     "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
   },
@@ -1031,7 +1031,7 @@
     "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays, religious observances, or political topics to avoid controversy and respect brand neutrality."
   },
   "8марта": {
-    "about": "International Women's Day (8th March) in Russian — flowers, gifts, and celebrating women",
+    "about": "International Women's Day (8th March) in Russian — flower tributes, appreciation posts, and celebration content",
     "fg_score": 5,
     "fg_reason": "Gifting occasion with a home angle — \"give her a home she never has to worry about\" is a credible FibreGuard message for this audience."
   },
@@ -1232,7 +1232,7 @@
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "8marzo": {
-    "about": "International Women's Day (8th March) in Italian/Spanish — flowers, tributes, and appreciation content",
+    "about": "International Women's Day (8th March) in Italian/Spanish — flower tributes, feminist content, and celebration videos",
     "fg_score": 5,
     "fg_reason": "Same gifting and appreciation angle as 8марта — a premium home product as a meaningful, lasting gift for the women in your life."
   },
@@ -1299,7 +1299,7 @@
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "fantasanremo": {
-    "about": "News & Entertainment content featuring Oddly Satisfying, Campus Life.",
+    "about": "FantaSanremo, Italy's fantasy game based on the Sanremo festival — scoring, strategy, and results content",
     "fg_score": 1,
     "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
@@ -1357,7 +1357,7 @@
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "sopravvivereafebbraio": {
-    "about": "Apparel & Accessories content featuring Life Hacks, Software & APPs.",
+    "about": "Italian 'surviving February' trend — humorous videos about getting through the coldest, dreariest winter month",
     "fg_score": 3,
     "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
   },
@@ -1370,7 +1370,7 @@
     "fg_score": 5
   },
   "scream7": {
-    "about": "News & Entertainment content featuring Cosplay, Recreation Facilities.",
+    "about": "Scream 7 horror film — trailer reactions, cast announcements, and slasher franchise fan content",
     "fg_score": 1,
     "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
@@ -1574,7 +1574,7 @@
     "fg_score": 1
   },
   "ofertasparati": {
-    "about": "Apparel & Accessories content featuring Software & APPs, Scenery & Plants.",
+    "about": "Spanish deals and discounts content — product hauls, bargain finds, and TikTok Shop promotions",
     "fg_score": 3,
     "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
   },
@@ -2017,7 +2017,7 @@
     "fg_score": 3
   },
   "andrew": {
-    "about": "News & Entertainment content featuring Cosplay, Graphic Art.",
+    "about": "Prince Andrew or a person named Andrew — mixed content around news and commentary",
     "fg_score": 1,
     "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
@@ -2123,7 +2123,7 @@
     "fg_score": 6
   },
   "december10": {
-    "about": "News & Entertainment content featuring Theatre & Stage, Entertainment News.",
+    "about": "Mixed content — unclear trend",
     "fg_score": 1,
     "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
@@ -2146,7 +2146,7 @@
     "fg_score": 4
   },
   "tns": {
-    "about": "News & Entertainment content featuring Theatre & Stage, Other Art.",
+    "about": "Mixed content — unclear trend",
     "fg_score": 1,
     "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
@@ -2205,7 +2205,7 @@
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "signlanguage": {
-    "about": "content featuring Graphic Art, Theatre & Stage.",
+    "about": "Sign language education and awareness content — people learning and sharing ASL/BSL communication videos",
     "fg_score": 2,
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
@@ -2231,42 +2231,42 @@
     "fg_score": 1
   },
   "punchmonkey": {
-    "about": "Viral zoo monkey named Punch — animal comedy content",
+    "about": "Punch the zoo monkey going viral — the baby monkey rejected by his mum, comedy clips and reactions",
     "fg_score": 3,
     "fg_reason": "Same zoo monkey content as #punch. Lateral angle: animal seeking warmth and softness maps loosely onto FibreGuard's comfort story, but it's a reach."
   },
   "babymonkey": {
-    "about": "content featuring Other Animals, Scripted Drama.",
+    "about": "Baby monkey videos — cute and funny clips of young monkeys, often related to the viral Punch trend",
     "fg_score": 2,
     "fg_reason": "Cute baby monkey content — very indirect. Only a comedy stretch: 'even monkeys deserve stain-proof fabric.'"
   },
   "georgelopez": {
-    "about": "News & Entertainment content featuring Scripted Drama, Non-Video Games.",
+    "about": "George Lopez, US comedian and actor — stand-up clips, reaction videos, and fan content",
     "fg_score": 2,
     "fg_reason": "Comedian fan content. No natural FibreGuard angle — purely entertainment-driven audience."
   },
   "jackhughes": {
-    "about": "Sports & Outdoor content featuring Sports News, Extreme Sports.",
+    "about": "Jack Hughes, New Jersey Devils NHL ice hockey player — game highlights and fan reaction clips",
     "fg_score": 1,
     "fg_reason": "NHL ice hockey player fan content. Sports audience with zero home decor crossover."
   },
   "premiolonuestro": {
-    "about": "News & Entertainment content featuring Entertainment News, Selfies.",
+    "about": "Premios Lo Nuestro, major Latin music awards show — performances, winners, and red carpet clips",
     "fg_score": 2,
     "fg_reason": "Latin music awards content. Celebrity entertainment — no home angle."
   },
   "lilylovebraids": {
-    "about": "Games content featuring Cosplay, Oddly Satisfying.",
+    "about": "Lily Love, TikTok hair braiding creator — tutorials, braid style reveals, and client transformations",
     "fg_score": 3,
     "fg_reason": "Hair braiding content — beauty niche. No direct home angle, but the beauty creator audience does lounge at home while watching tutorials."
   },
   "toystory5": {
-    "about": "Games content featuring Cosplay, Toys & Collectables.",
+    "about": "Toy Story 5 upcoming Pixar film — trailers, fan theories, nostalgia reactions, and speculation content",
     "fg_score": 2,
     "fg_reason": "Anticipated Pixar sequel — mostly nostalgic fan content. Thin angle: 'your sofa has survived more than Woody' as a durability joke."
   },
   "oscars": {
-    "about": "News & Entertainment content featuring Entertainment News, Humanities.",
+    "about": "Academy Awards ceremony — red carpet fashion, winner reactions, and memorable moments",
     "fg_score": 1,
     "fg_reason": "Awards ceremony content — celebrity fashion and film discussion. No home angle."
   },
@@ -2276,87 +2276,87 @@
     "fg_reason": "Political speech content. Zero FibreGuard connection."
   },
   "womenshockey": {
-    "about": "Sports & Outdoor content featuring Entertainment News, Sports News.",
+    "about": "Women's ice hockey content — match highlights, player profiles, and championship reaction clips",
     "fg_score": 1,
     "fg_reason": "Sports content. No home angle."
   },
   "bafta": {
-    "about": "News & Entertainment content featuring Entertainment News, Humanities.",
+    "about": "BAFTA British film and TV awards — winner announcements, red carpet fashion, and ceremony highlights",
     "fg_score": 1,
     "fg_reason": "British film awards content. Same as Oscars — no home angle."
   },
   "varka": {
-    "about": "Games content featuring Cosplay, Oddly Satisfying.",
+    "about": "Varka, a character from Genshin Impact video game — fan art, gameplay edits, and cosplay content",
     "fg_score": 2,
     "fg_reason": "Gaming character (Genshin Impact) fan content. No home connection."
   },
   "poppyplaytimeedit": {
-    "about": "Games content featuring Cosplay, Video Games.",
+    "about": "Fan-made edits and AMVs of Poppy Playtime horror game characters — creative video compilations",
     "fg_score": 1,
     "fg_reason": "Horror game fan edit content. No home angle."
   },
   "blizzard2026": {
-    "about": "2026 snowstorm content — people staying indoors, cosy home moments",
+    "about": "February 2026 blizzard — people documenting the major US snowstorm, cosy home content and snowy scenes",
     "fg_score": 4,
     "fg_reason": "Snowstorm / staying indoors content — cosy home moments, people hunkering down at home. 'Blizzard day on the sofa' is a natural FibreGuard setting."
   },
   "lib": {
-    "about": "content featuring Entertainment News, Health & Wellness.",
-    "fg_score": 2,
+    "about": "Political content — exclusion list",
+    "fg_score": 0,
     "fg_reason": "Ambiguous — could be political or lifestyle. No clear FibreGuard connection."
   },
   "seanstrickland": {
-    "about": "Sports & Outdoor content featuring Sports News, Extreme Sports.",
+    "about": "Sean Strickland, UFC middleweight fighter — fight highlights, trash talk clips, and controversy content",
     "fg_score": 2,
     "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
   },
   "hearts2hearts": {
-    "about": "News & Entertainment content featuring Dance, Oddly Satisfying.",
+    "about": "Hearts2Hearts (H2H), K-pop girl group — music videos, dance challenges, and fan fancam edits",
     "fg_score": 5,
     "fg_reason": "Family and baby content — directly relevant. Parents with young children are a core FibreGuard audience; spill moments are natural content here."
   },
   "heartssoldseperately": {
-    "about": "News & Entertainment content featuring Hair, Nail Art.",
+    "about": "'Hearts Sold Separately' — romance book or song trend, emotional storytelling and reading content",
     "fg_score": 5,
     "fg_reason": "Parent/family content with baby moments. Same reasoning — young families and the chaos of toddlers near furniture is prime FibreGuard territory."
   },
   "wishbone": {
-    "about": "News & Entertainment content featuring Graphic Art, Dance.",
+    "about": "Mixed content — unclear trend",
     "fg_score": 1,
     "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "supremecourt": {
-    "about": "content featuring Humanities, Social News.",
-    "fg_score": 2,
+    "about": "US Supreme Court news content — ruling reactions, legal commentary, and political discussion",
+    "fg_score": 0,
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "stockup": {
-    "about": "Games content featuring Scripted Drama, Other Talent.",
+    "about": "People stocking up on groceries and goods ahead of US tariffs — bulk buying hauls and prepping content",
     "fg_score": 1,
     "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "pale": {
-    "about": "content featuring Nail Art, Beauty.",
+    "about": "Pale skin aesthetic trend — embracing natural light skin tones, beauty routines and styling content",
     "fg_score": 2,
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "theslap": {
-    "about": "Games content featuring Beauty, Nail Art.",
+    "about": "Will Smith's 2022 Oscars slap anniversary content — reactions, commentary, and retrospective clips",
     "fg_score": 1,
     "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "blizzard": {
-    "about": "Trending hashtag #blizzard.",
+    "about": "Snowstorm and blizzard content — people showing heavy snowfall, cosy indoor scenes, and winter chaos",
     "fg_score": 2,
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "meganmoroney": {
-    "about": "Trending hashtag #meganmoroney.",
+    "about": "Megan Moroney, US country music singer — song clips, live performances, and fan content",
     "fg_score": 2,
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "livestory": {
-    "about": "Trending hashtag #livestory.",
+    "about": "Live story content — creators sharing unfiltered real-life moments and personal narratives in real time",
     "fg_score": 4,
     "fg_reason": "Behind-the-scenes and authentic lifestyle storytelling content. FibreGuard fits as a product in authentic 'real home life' content."
   },
@@ -2847,7 +2847,7 @@
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "montemanyes": {
-    "about": "Games content featuring Pranks, Diary & VLOG.",
+    "about": "MontanaBlack 'Monte man yes' viral catchphrase — German streamer meme content and reaction videos",
     "fg_score": 4,
     "fg_reason": "Food content in home settings has natural sofa stain prevention angle."
   },
@@ -3173,27 +3173,27 @@
     "fg_score": 0
   },
   "samuraijay": {
-    "about": "content featuring Non-Video Games, Other Fashion.",
+    "about": "Samurai Jay, Italian rapper at Sanremo 2026 with hit song 'Ossessione' — music clips and viral dance challenges",
     "fg_score": 2,
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "festival": {
-    "about": "News & Entertainment content featuring Photography, Entertainment News.",
+    "about": "Festival season content — music festivals, outfit planning, camping tips, and live event highlights",
     "fg_score": 2,
     "fg_reason": "Entertainment fan content with minimal home lifestyle crossover."
   },
   "lda": {
-    "about": "Sports & Outdoor content featuring Entertainment News, Music.",
+    "about": "LDA (Luca D'Alessio), Italian singer and son of Gigi D'Alessio — music content and fan edits",
     "fg_score": 2,
     "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
   },
   "sanremorai": {
-    "about": "News & Entertainment content featuring Entertainment News, Non-Video Games.",
+    "about": "RAI official Sanremo 2026 broadcast — behind-the-scenes content, broadcaster clips, and official festival moments",
     "fg_score": 2,
     "fg_reason": "Entertainment fan content with minimal home lifestyle crossover."
   },
   "ariston": {
-    "about": "News & Entertainment content featuring Non-Video Games, Graphic Art.",
+    "about": "Teatro Ariston, the iconic Sanremo festival venue — backstage content, atmosphere clips, and performance highlights",
     "fg_score": 1,
     "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
@@ -3669,7 +3669,7 @@
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "ballibotmogis": {
-    "about": "content featuring Professional Special Effects, Hilarious Fails.",
+    "about": "Mixed content — unclear trend",
     "fg_score": 2,
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
@@ -3834,12 +3834,12 @@
     "fg_reason": "Dutch baby and pregnancy fair — expecting parents and young families. Core FibreGuard audience about to furnish a home with a newborn in mind."
   },
   "jalal": {
-    "about": "content featuring Diary & VLOG, Selfies.",
+    "about": "Mixed content — unclear trend",
     "fg_score": 4,
     "fg_reason": "Young people making home content provides sofa/dorm furniture angle."
   },
   "baftas": {
-    "about": "News & Entertainment content featuring Entertainment News, Sports News.",
+    "about": "BAFTA awards — British film and TV ceremony, winner clips, red carpet fashion, and reaction content",
     "fg_score": 1,
     "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
@@ -4064,7 +4064,7 @@
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "punchthemonkey": {
-    "about": "Trending hashtag #punchthemonkey.",
+    "about": "Punch the zoo monkey — reaction and comedy clips about the viral baby monkey rejected by his mother",
     "fg_score": 2,
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
@@ -4094,17 +4094,17 @@
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "samos": {
-    "about": "content featuring Sports News, Video Games.",
+    "about": "Mixed content — unclear trend",
     "fg_score": 2,
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "survieenfévrier": {
-    "about": "Apparel & Accessories content featuring Magic, Fishing, Hunting & Camping.",
+    "about": "French 'surviving February' trend — comedic videos about enduring the depressing end of winter",
     "fg_score": 3,
     "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
   },
   "survieenfevrier": {
-    "about": "Apparel & Accessories content featuring Software & APPs, Tech Products & Infos.",
+    "about": "French 'surviving February' trend — comedic videos about enduring the depressing end of winter",
     "fg_score": 3,
     "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
   },
@@ -4324,22 +4324,22 @@
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "sanremo": {
-    "about": "News & Entertainment content featuring Music, Celebrity Clips & Variety Show.",
+    "about": "Sanremo Music Festival 2026, Italy's iconic annual song contest — performances, highlights, and viral moments",
     "fg_score": 2,
     "fg_reason": "Entertainment fan content with minimal home lifestyle crossover."
   },
   "festivaldisanremo": {
-    "about": "News & Entertainment content featuring Entertainment News, Oddly Satisfying.",
+    "about": "Festival di Sanremo 2026, Italy's biggest music event — song performances, drama, and fan reactions",
     "fg_score": 2,
     "fg_reason": "Entertainment fan content with minimal home lifestyle crossover."
   },
   "elettralamborghini": {
-    "about": "News & Entertainment content featuring Non-Video Games, Campus Life.",
+    "about": "Elettra Lamborghini, Italian singer and influencer — music clips, lifestyle content, and fashion moments",
     "fg_score": 1,
     "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "ritadecrescenzo": {
-    "about": "content featuring Oddly Satisfying, Nail Art.",
+    "about": "Rita De Crescenzo, Italian TikTok creator and singer from Naples — lifestyle, music, and viral personality content",
     "fg_score": 2,
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
