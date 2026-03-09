@@ -466,13 +466,15 @@ function getPickData(item) {
 
 function computeFGPicks(allData) {
   // Score every hashtag from all countries.
-  // Uses the HIGHER of: (a) Gemini JSON score from hashtag-descriptions.json,
-  // or (b) JavaScript keyword-computed score. Gemini is the primary authority.
+  // JSON score (from hashtag-descriptions.json) is the PRIMARY authority —
+  // set by a Claude marketing director reasoning for each hashtag.
+  // JS keyword score is FALLBACK only (used when no JSON entry exists).
+  // We never take the max — that would let stale keyword logic override curated scores.
   const scored = allData
     .map(item => {
       const fg = scoreFG(item.hashtag, item);
       const jsonScore = parseInt(HASHTAG_DESCS[item.hashtag]?.fg_score);
-      const effectiveScore = Math.max(fg.score, isNaN(jsonScore) ? 0 : jsonScore);
+      const effectiveScore = !isNaN(jsonScore) ? jsonScore : fg.score; // JSON wins
       return { ...item, fg, effectiveScore };
     })
     .filter(item => item.effectiveScore >= 6) // minimum FG Fit threshold (6+)
@@ -783,7 +785,7 @@ function renderUSTable(){
     let va=a[st.col],vb=b[st.col];
     if(typeof va==='string') return st.asc?va.localeCompare(vb):vb.localeCompare(va);
     return st.asc?(va-vb):(vb-va);
-  }).slice(0,50);
+  }).slice(0,200);
 
   const arrow = (col)=> st.col===col ? (st.asc?'↑':'↓') : '↕';
   const cls = (col)=> st.col===col ? 'active' : '';
