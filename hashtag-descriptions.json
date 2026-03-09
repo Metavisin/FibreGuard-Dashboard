@@ -1,11 +1,11 @@
 {
   "alysaliu": {
-    "about": "Olympic figure skater viral fan content",
-    "fg_score": 1
+    "about": "This trend is about figure skater Alysa Liu's performances.",
+    "fg_score": 0
   },
   "poppyplaytime": {
-    "about": "Horror video game (monster toys) trend",
-    "fg_score": 1
+    "about": "This trend is about the horror video game Poppy Playtime.",
+    "fg_score": 0
   },
   "رمضان": {
     "about": "Ramadan — Islamic holy month, family gatherings & food content",
@@ -60,8 +60,8 @@
     "fg_score": 1
   },
   "loveisblindnetflix": {
-    "about": "Netflix Love is Blind show reactions & drama",
-    "fg_score": 2
+    "about": "This trend is about the Netflix reality show Love Is Blind.",
+    "fg_score": 0
   },
   "رمضان_كريم": {
     "about": "Ramadan Kareem — Islamic holy month blessings content",
@@ -76,24 +76,24 @@
     "fg_score": 7
   },
   "huggywuggy": {
-    "about": "Horror game character (Poppy Playtime) — kids/gaming content",
-    "fg_score": 1
+    "about": "This trend is about the character Huggy Wuggy from Poppy Playtime.",
+    "fg_score": 0
   },
   "als": {
     "about": "ALS disease awareness & ice bucket challenge revival",
     "fg_score": 1
   },
   "23февраля": {
-    "about": "Russian Defender of the Fatherland Day — gifts for men content",
-    "fg_score": 4
+    "about": "This trend is about Defender of the Fatherland Day in Russia.",
+    "fg_score": 0
   },
   "heathcliff": {
     "about": "Wuthering Heights character / classic novel adaptation content",
     "fg_score": 2
   },
   "princeandrew": {
-    "about": "UK royal family (Prince Andrew) drama & news commentary",
-    "fg_score": 1
+    "about": "Discussions and news updates about Prince Andrew.",
+    "fg_score": 0
   },
   "cny": {
     "about": "Chinese New Year — celebrations, red envelopes & family content",
@@ -104,7 +104,7 @@
     "fg_score": 5
   },
   "pinkiepie": {
-    "about": "My Little Pony character — fan & kids content",
+    "about": "Fans creating content related to the My Little Pony character.",
     "fg_score": 1
   },
   "rainbowdash": {
@@ -172,7 +172,7 @@
     "fg_score": 1
   },
   "secretaccout": {
-    "about": "Secret TikTok account reveal trend",
+    "about": "People sharing content from their anonymous or private accounts.",
     "fg_score": 1
   },
   "personalized": {
@@ -184,19 +184,19 @@
     "fg_score": 3
   },
   "ericdane": {
-    "about": "Actor Eric Dane (McSteamy from Grey's Anatomy) content",
-    "fg_score": 1
+    "about": "This trend is about actor Eric Dane and his roles.",
+    "fg_score": 0
   },
   "victorious": {
-    "about": "Victorious (Nickelodeon show) nostalgia content",
-    "fg_score": 2
+    "about": "Fans sharing nostalgic clips and memes from the TV show.",
+    "fg_score": 1
   },
   "yearofthehorse": {
     "about": "Chinese zodiac Year of the Horse — luck & new year content",
     "fg_score": 4
   },
   "punch": {
-    "about": "Viral zoo monkey named Punch — animal comedy content",
+    "about": "This trend is about a viral zoo monkey named Punch.",
     "fg_score": 0
   },
   "efectobaile": {
@@ -204,7 +204,7 @@
     "fg_score": 2
   },
   "cloud9": {
-    "about": "Cloud9 esports team (Rocket League) gaming content",
+    "about": "People sharing moments of extreme happiness and joy.",
     "fg_score": 1
   },
   "therians": {
@@ -248,8 +248,8 @@
     "fg_score": 1
   },
   "omarcourtz": {
-    "about": "Spanish/Latin influencer Omar Courtz content",
-    "fg_score": 1
+    "about": "This trend is about actor and singer Omar Courtz.",
+    "fg_score": 0
   },
   "mcsteamy": {
     "about": "Grey's Anatomy character McSteamy (Eric Dane) content",
@@ -268,8 +268,8 @@
     "fg_score": 2
   },
   "marksloan": {
-    "about": "Grey's Anatomy character Mark Sloan fan content",
-    "fg_score": 1
+    "about": "This trend is about the character Mark Sloan from Grey's Anatomy.",
+    "fg_score": 0
   },
   "fattuesday": {
     "about": "Fat Tuesday (Mardi Gras) — party & food celebration content",
@@ -280,7 +280,7 @@
     "fg_score": 4
   },
   "swm": {
-    "about": "SWM acronym content — unclear/niche trend",
+    "about": "Users showcasing their hair transformations and dance moves.",
     "fg_score": 1
   },
   "amithedrama": {
@@ -296,8 +296,8 @@
     "fg_score": 1
   },
   "tariffs": {
-    "about": "US trade tariffs news & economic commentary",
-    "fg_score": 1
+    "about": "Discussions and news about economic tariffs and trade.",
+    "fg_score": 0
   },
   "neda": {
     "about": "NEDA (National Eating Disorders Association) awareness content",
@@ -324,8 +324,8 @@
     "fg_score": 1
   },
   "bootcampuntalfredo": {
-    "about": "Influencer 'Un Tal Fredro' bootcamp fitness content",
-    "fg_score": 1
+    "about": "Users sharing cooking recipes and home organization tips.",
+    "fg_score": 4
   },
   "rarity": {
     "about": "My Little Pony character Rarity — fan & kids content",
@@ -336,31 +336,31 @@
     "fg_score": 1
   },
   "wildchild": {
-    "about": "'Wild child' personality type viral relatable content",
-    "fg_score": 2
+    "about": "People sharing moments of their children being energetic or mischievous.",
+    "fg_score": 5
   },
   "масленица": {
-    "about": "Maslenitsa (Russian Pancake Week) — spring festival & food content",
-    "fg_score": 4
+    "about": "People celebrating the Russian holiday with food and traditions.",
+    "fg_score": 3
   },
   "mayhemball": {
-    "about": "Mayhem Ball music festival tour content",
+    "about": "People showcasing elaborate costumes and dance performances.",
     "fg_score": 1
   },
   "springnails": {
-    "about": "Spring nail art & nail design inspiration content",
-    "fg_score": 3
+    "about": "People showcasing various nail art designs for spring.",
+    "fg_score": 1
   },
   "elcinco": {
-    "about": "El Cinco (Spanish term) — likely sports or music content",
-    "fg_score": 1
+    "about": "A trend related to a specific date or event, often sports-related.",
+    "fg_score": 0
   },
   "newranter": {
     "about": "New ranter trend — venting/opinion sharing content",
     "fg_score": 1
   },
   "темка": {
-    "about": "Temka (Russian short for Tema) — name or game trend",
+    "about": "A Russian trend often involving personal stories or relatable situations.",
     "fg_score": 1
   },
   "tellmeliesfinale": {
@@ -368,23 +368,23 @@
     "fg_score": 1
   },
   "tanlines": {
-    "about": "Tan lines beauty/summer body content",
-    "fg_score": 2
-  },
-  "williecolon": {
-    "about": "Salsa legend Willie Colón music & tribute content",
+    "about": "People showing off their summer tans and beauty routines.",
     "fg_score": 1
   },
+  "williecolon": {
+    "about": "People sharing and dancing to music by Willie Colón.",
+    "fg_score": 0
+  },
   "boomtown": {
-    "about": "Boomtown music festival or area boom town content",
+    "about": "Content related to a music festival with unique vehicles.",
     "fg_score": 1
   },
   "ceravepartner": {
-    "about": "CeraVe skincare brand partnership/sponsored content",
-    "fg_score": 1
+    "about": "This trend is about CeraVe skincare product promotions.",
+    "fg_score": 0
   },
   "ousi": {
-    "about": "Ousi — niche/local viral trend (unclear meaning)",
+    "about": "Users sharing travel vlogs and scenic views.",
     "fg_score": 1
   },
   "aodai": {
@@ -392,20 +392,20 @@
     "fg_score": 2
   },
   "rhianna": {
-    "about": "Rihanna music, beauty & lifestyle content",
-    "fg_score": 1
+    "about": "Fans dancing to Rihanna's music and sharing selfies.",
+    "fg_score": 0
   },
   "trendsobremim": {
-    "about": "Trends sobre mim (Portuguese: trends about me) — viral challenge",
-    "fg_score": 2
+    "about": "Users sharing personal facts or stories about themselves.",
+    "fg_score": 1
   },
   "ramadhan": {
     "about": "Ramadan (French spelling) — Islamic holy month family & food content",
     "fg_score": 5
   },
   "tiramisu": {
-    "about": "Tiramisu recipe & dessert content — food & lifestyle",
-    "fg_score": 4
+    "about": "People sharing recipes, making, and enjoying tiramisu.",
+    "fg_score": 3
   },
   "chroniqueemoji": {
     "about": "Emoji chronique — French viral commentary format",
@@ -416,8 +416,8 @@
     "fg_score": 3
   },
   "greysanatomy": {
-    "about": "Grey's Anatomy TV show fan content & nostalgia",
-    "fg_score": 2
+    "about": "Fans discussing and reacting to the TV show Grey's Anatomy.",
+    "fg_score": 0
   },
   "quentin": {
     "about": "French name/person trend content",
@@ -468,7 +468,7 @@
     "fg_score": 1
   },
   "slimes": {
-    "about": "Slime collection & DIY satisfying content",
+    "about": "People making, playing with, and reviewing various slimes.",
     "fg_score": 3
   },
   "jeanfils": {
@@ -476,8 +476,8 @@
     "fg_score": 1
   },
   "tall": {
-    "about": "Tall person lifestyle & relatable tall content",
-    "fg_score": 2
+    "about": "People sharing experiences or humor related to being tall.",
+    "fg_score": 0
   },
   "ramazan": {
     "about": "Ramazan (Turkish/DE spelling of Ramadan) — family & food content",
@@ -516,36 +516,36 @@
     "fg_score": 1
   },
   "innondation": {
-    "about": "Flooding (French) — weather emergency & news content",
+    "about": "People sharing videos and news about floods and their impact.",
     "fg_score": 1
   },
   "brun": {
-    "about": "Brun (French for brown) — hair color or aesthetic content",
-    "fg_score": 3
+    "about": "People sharing content related to brown hair or brown-themed aesthetics.",
+    "fg_score": 1
   },
   "vini": {
     "about": "Footballer Vinicius Jr. nickname content",
     "fg_score": 1
   },
   "obelix": {
-    "about": "Astérix & Obélix French comic character fan content",
-    "fg_score": 2
+    "about": "Content related to the character Obelix from Asterix comics.",
+    "fg_score": 0
   },
   "✝️": {
     "about": "Christian cross emoji — Easter/Lent devotional content",
     "fg_score": 3
   },
   "sarahrivens": {
-    "about": "French influencer Sarah Rivens lifestyle content",
-    "fg_score": 3
+    "about": "Content related to the influencer Sarah Rivens and her work.",
+    "fg_score": 0
   },
   "portugaise": {
     "about": "Portuguese culture/lifestyle content (France context)",
     "fg_score": 2
   },
   "boue": {
-    "about": "Mud (French) — outdoor mess, nature adventure content",
-    "fg_score": 3
+    "about": "People sharing videos of vehicles stuck in mud or mud-related activities.",
+    "fg_score": 1
   },
   "رمضانيات": {
     "about": "Ramadan traditions — daily Ramadan lifestyle & food content",
@@ -560,24 +560,24 @@
     "fg_score": 2
   },
   "rants": {
-    "about": "Rant trend — opinion sharing & venting content",
-    "fg_score": 1
+    "about": "Users expressing strong opinions or frustrations on various topics.",
+    "fg_score": 0
   },
   "italienne🇮🇹🇮🇹": {
     "about": "Italian girl in France — cultural identity lifestyle content",
     "fg_score": 2
   },
   "animeclothing": {
-    "about": "Anime-inspired clothing & fashion content",
-    "fg_score": 2
+    "about": "People showcasing and styling clothing inspired by anime.",
+    "fg_score": 1
   },
   "greecetiktok": {
-    "about": "Greece TikTok community — travel & lifestyle content",
-    "fg_score": 3
+    "about": "Content from or related to Greece, often cultural or travel.",
+    "fg_score": 0
   },
   "romancereads": {
-    "about": "Romance book recommendations & #BookTok content",
-    "fg_score": 3
+    "about": "People discussing and recommending romance novels.",
+    "fg_score": 0
   },
   "asterix": {
     "about": "Astérix French comic/movie fan & nostalgia content",
@@ -628,7 +628,7 @@
     "fg_score": 4
   },
   "salat": {
-    "about": "Salat — Islamic daily prayer & Ramadan devotional content",
+    "about": "This trend is about various salad recipes and food photography.",
     "fg_score": 3
   },
   "biathlon": {
@@ -636,16 +636,16 @@
     "fg_score": 1
   },
   "assya": {
-    "about": "French/Algerian name — influencer or personal content",
-    "fg_score": 1
+    "about": "Videos featuring or about a person named Assya, often personal vlogs.",
+    "fg_score": 0
   },
   "شهر_رمضان": {
     "about": "Month of Ramadan (Arabic) — Islamic holy month content",
     "fg_score": 5
   },
   "tallgirl": {
-    "about": "Tall girl lifestyle & relatable content",
-    "fg_score": 2
+    "about": "Tall girls sharing experiences, fashion, or relatable struggles.",
+    "fg_score": 0
   },
   "fullblack": {
     "about": "All-black outfit style & fashion content",
@@ -656,16 +656,16 @@
     "fg_score": 1
   },
   "capcutfamília": {
-    "about": "CapCut family template videos — family moments content",
-    "fg_score": 6
+    "about": "Users creating family-themed videos using CapCut templates.",
+    "fg_score": 5
   },
   "jeremstar": {
     "about": "French YouTuber/influencer Jeremstar content",
     "fg_score": 1
   },
   "athens": {
-    "about": "Athens Greece travel & lifestyle content",
-    "fg_score": 3
+    "about": "Travel vlogs, cultural content, or daily life in Athens, Greece.",
+    "fg_score": 0
   },
   "رمضان_کریم": {
     "about": "Ramadan Kareem (Farsi/Arabic) — blessings & family content",
@@ -720,32 +720,32 @@
     "fg_score": 1
   },
   "etg": {
-    "about": "ETG acronym — unclear trend",
-    "fg_score": 1
+    "about": "Content related to the video game Enter the Gungeon.",
+    "fg_score": 0
   },
   "adrianalima": {
     "about": "Supermodel Adriana Lima content",
     "fg_score": 1
   },
   "gadgetdujour": {
-    "about": "Gadget of the day (French) — tech product review content",
-    "fg_score": 2
+    "about": "People showcasing and reviewing new or interesting gadgets daily.",
+    "fg_score": 1
   },
   "رمضان2026": {
     "about": "Ramadan 2026 — Islamic holy month family & food content",
     "fg_score": 5
   },
   "houdi": {
-    "about": "Hoodie fashion or name content",
-    "fg_score": 3
+    "about": "Content related to the artist Houdi, often music or fan edits.",
+    "fg_score": 0
   },
   "🤲": {
     "about": "Prayer hands emoji — Ramadan/spiritual devotional content",
     "fg_score": 3
   },
   "prier": {
-    "about": "To pray (French) — spiritual & Ramadan devotional content",
-    "fg_score": 3
+    "about": "People sharing moments of prayer and religious devotion.",
+    "fg_score": 1
   },
   "curling": {
     "about": "Curling Winter Olympics sport highlights content",
@@ -756,16 +756,16 @@
     "fg_score": 1
   },
   "sahur": {
-    "about": "Sahur — pre-dawn Ramadan meal, family food content",
-    "fg_score": 5
+    "about": "People sharing their sahur meals and Ramadan experiences.",
+    "fg_score": 3
   },
   "rosenmontag": {
     "about": "Rosenmontag — German Carnival Rose Monday parade content",
     "fg_score": 3
   },
   "babyboo": {
-    "about": "Cute baby/toddler content or term of endearment",
-    "fg_score": 5
+    "about": "People pranking others with a 'baby boo' sound.",
+    "fg_score": 1
   },
   "jeremyfragrance": {
     "about": "Jeremy Fragrance — influencer fragrance & lifestyle content",
@@ -796,16 +796,16 @@
     "fg_score": 1
   },
   "фк": {
-    "about": "FK (football club) Russian/NL sports content",
-    "fg_score": 1
+    "about": "Content related to football clubs (FC).",
+    "fg_score": 0
   },
   "mgk": {
     "about": "Machine Gun Kelly music & celebrity content",
     "fg_score": 1
   },
   "poppy": {
-    "about": "Poppy Playtime character or artist Poppy content",
-    "fg_score": 1
+    "about": "Videos featuring the name Poppy, often pets or personal content.",
+    "fg_score": 5
   },
   "блины": {
     "about": "Blini (Russian pancakes) — Maslenitsa food & recipe content",
@@ -852,20 +852,20 @@
     "fg_score": 3
   },
   "timgioh": {
-    "about": "Tim Gioh — German influencer/creator content",
-    "fg_score": 1
+    "about": "People sharing funny gaming moments and pranks.",
+    "fg_score": 0
   },
   "zartmann": {
     "about": "Zartmann — German influencer/person content",
     "fg_score": 1
   },
   "hwz": {
-    "about": "HWZ — German acronym/community content",
-    "fg_score": 1
+    "about": "People sharing funny fails and family moments.",
+    "fg_score": 5
   },
   "tan": {
-    "about": "Tan aesthetic, tan lines or British tan influencer content",
-    "fg_score": 2
+    "about": "This trend is about achieving a sun tan or self-tanning.",
+    "fg_score": 0
   },
   "fastenzeit": {
     "about": "Fastenzeit — Lent fasting period (German) lifestyle content",
@@ -884,7 +884,7 @@
     "fg_score": 8
   },
   "chapter5": {
-    "about": "Poppy Playtime Chapter 5 — horror game new chapter content",
+    "about": "People sharing updates and progress on their creative projects or stories.",
     "fg_score": 1
   },
   "fasting": {
@@ -900,8 +900,8 @@
     "fg_score": 1
   },
   "аделияпетросян": {
-    "about": "Adeliya Petrosyan — Russian figure skater content",
-    "fg_score": 1
+    "about": "Fans celebrating figure skater Adeliia Petrosian's performances.",
+    "fg_score": 0
   },
   "jasonderulo": {
     "about": "Jason Derulo music, dancing & social media content",
@@ -916,8 +916,8 @@
     "fg_score": 4
   },
   "8марта": {
-    "about": "8 March — International Women's Day (Russian) gifts & tributes",
-    "fg_score": 5
+    "about": "People celebrating International Women's Day with gifts and DIYs.",
+    "fg_score": 1
   },
   "electrician": {
     "about": "Electrician DIY & home improvement tutorial content",
@@ -932,8 +932,8 @@
     "fg_score": 4
   },
   "rs5": {
-    "about": "Audi RS5 car content or gaming content",
-    "fg_score": 1
+    "about": "Car enthusiasts showcasing their Audi RS5 vehicles.",
+    "fg_score": 0
   },
   "annoying": {
     "about": "Annoying habits & relatable pet peeves content",
@@ -952,8 +952,8 @@
     "fg_score": 4
   },
   "taraweeh": {
-    "about": "Taraweeh — nightly Ramadan prayers & mosque community content",
-    "fg_score": 3
+    "about": "Muslims sharing moments from Ramadan prayers and community.",
+    "fg_score": 5
   },
   "oruç": {
     "about": "Fasting (Turkish) — Ramadan dietary & spiritual content",
@@ -996,7 +996,7 @@
     "fg_score": 2
   },
   "garnier": {
-    "about": "Garnier — beauty brand product reviews & tutorials",
+    "about": "People reviewing or showcasing Garnier beauty products.",
     "fg_score": 1
   },
   "iliamalinin": {
@@ -1008,7 +1008,7 @@
     "fg_score": 2
   },
   "monaldi": {
-    "about": "Italian influencer Monaldi content",
+    "about": "Content featuring the Italian singer Monaldi.",
     "fg_score": 1
   },
   "viareggio": {
@@ -1024,16 +1024,16 @@
     "fg_score": 3
   },
   "mlp": {
-    "about": "My Little Pony — fan art & kids content",
-    "fg_score": 1
+    "about": "Content related to My Little Pony, often fan art or discussions.",
+    "fg_score": 0
   },
   "carnavaltiktok": {
     "about": "Carnival TikTok — Italian Carnival costumes & celebrations",
     "fg_score": 3
   },
   "digregorio": {
-    "about": "Italian personality DiGregorio content",
-    "fg_score": 1
+    "about": "This is about a specific person, likely a sports figure.",
+    "fg_score": 0
   },
   "città": {
     "about": "City life (Italian) — urban lifestyle & travel content",
@@ -1068,8 +1068,8 @@
     "fg_score": 2
   },
   "babydoll": {
-    "about": "Babydoll fashion style or song — aesthetic content",
-    "fg_score": 3
+    "about": "Fashion trends featuring 'babydoll' style dresses and aesthetics.",
+    "fg_score": 1
   },
   "james": {
     "about": "LeBron James or other James celebrity content",
@@ -1084,7 +1084,7 @@
     "fg_score": 3
   },
   "sweater": {
-    "about": "Sweater fashion & cozy knitwear outfit content",
+    "about": "This is about sweaters, fashion, and DIY crafts.",
     "fg_score": 5
   },
   "digiuno": {
@@ -1092,20 +1092,20 @@
     "fg_score": 3
   },
   "juventusfc": {
-    "about": "Juventus FC Italian football club fan content",
-    "fg_score": 1
+    "about": "Content related to the Juventus Football Club.",
+    "fg_score": 0
   },
   "bodysuit": {
-    "about": "Bodysuit fashion & outfit styling content",
-    "fg_score": 2
+    "about": "People styling or reviewing different bodysuits.",
+    "fg_score": 1
   },
   "8marzo": {
-    "about": "8 March International Women's Day (Italian) — tributes & content",
-    "fg_score": 5
+    "about": "This is about International Women's Day, celebrated on March 8th.",
+    "fg_score": 1
   },
   "insideout": {
-    "about": "Pixar's Inside Out 2 — emotional storytelling & movie content",
-    "fg_score": 3
+    "about": "People creating satisfying animations or art inspired by the movie.",
+    "fg_score": 1
   },
   "carneval": {
     "about": "Carnival festivities — costumes & celebration content",
@@ -1116,12 +1116,12 @@
     "fg_score": 2
   },
   "insicurezza": {
-    "about": "Insecurities (Italian) — mental health & relatable content",
-    "fg_score": 2
+    "about": "People sharing personal insecurities and vulnerabilities.",
+    "fg_score": 1
   },
   "insicurezze": {
-    "about": "Insecurities (Italian) — self-confidence & vulnerability content",
-    "fg_score": 2
+    "about": "People sharing their insecurities, often in a relatable or humorous way.",
+    "fg_score": 1
   },
   "amin": {
     "about": "Amin — Arabic/Islamic prayer response content or name",
@@ -1136,12 +1136,12 @@
     "fg_score": 1
   },
   "fisico": {
-    "about": "Physical body fitness (Italian) — workout & body content",
-    "fg_score": 1
+    "about": "This is about physical appearance, fitness, or body image.",
+    "fg_score": 0
   },
   "domenico": {
-    "about": "Italian name Domenico — influencer or lifestyle content",
-    "fg_score": 1
+    "about": "General content featuring or about someone named Domenico.",
+    "fg_score": 0
   },
   "italiashore": {
     "about": "Italia Shore — Italian version of Jersey Shore reality show",
@@ -1156,56 +1156,56 @@
     "fg_score": 3
   },
   "neza": {
-    "about": "Neza — Italian/Spanish name or niche content",
-    "fg_score": 1
+    "about": "This is about fashion, nail art, or recreational activities.",
+    "fg_score": 0
   },
   "fantasanremo": {
     "about": "FantaSanremo — Italian music fantasy game around Sanremo festival",
     "fg_score": 2
   },
   "mylittlepony": {
-    "about": "My Little Pony — animated series fan art & kids content",
-    "fg_score": 1
+    "about": "Content related to My Little Pony, often fan art or discussions.",
+    "fg_score": 0
   },
   "orgoglio": {
-    "about": "Pride/Orgoglio (Italian) — cultural identity & LGBTQ+ content",
-    "fg_score": 2
+    "about": "This is about pride, often related to personal achievements or identity.",
+    "fg_score": 0
   },
   "sweatsuitsetoutfit": {
-    "about": "Sweatsuit set outfit ideas — cozy matching loungewear content",
-    "fg_score": 7
+    "about": "People showcasing different sweatsuit set outfit ideas.",
+    "fg_score": 1
   },
   "therian": {
-    "about": "Therian — people who identify as animals, niche subculture",
-    "fg_score": 1
+    "about": "This is about people identifying as non-human animals.",
+    "fg_score": 0
   },
   "alessio": {
     "about": "Italian name Alessio — influencer or personality content",
     "fg_score": 1
   },
   "tuttopassa": {
-    "about": "'Everything passes' (Italian) — motivational & mental health content",
-    "fg_score": 2
+    "about": "This is about overcoming challenges or life's transient nature.",
+    "fg_score": 0
   },
   "trapianto": {
-    "about": "Hair/organ transplant (Italian) — medical or beauty content",
-    "fg_score": 1
+    "about": "Content related to hair transplants or other medical transplants.",
+    "fg_score": 0
   },
   "festadelladonna": {
-    "about": "Women's Day (Italian) — International Women's Day 8 March content",
-    "fg_score": 5
+    "about": "This is about International Women's Day celebrations and related content.",
+    "fg_score": 1
   },
   "anni": {
     "about": "Years/birthday (Italian) — birthday celebration content",
     "fg_score": 3
   },
   "☀️": {
-    "about": "Summer sun emoji — summer vibes & outdoor lifestyle content",
-    "fg_score": 3
+    "about": "People sharing sunny day activities, travel, and positive vibes.",
+    "fg_score": 1
   },
   "chickenjoe": {
-    "about": "Surf's Up movie character or meme content",
-    "fg_score": 1
+    "about": "Content related to the character Chicken Joe from Surf's Up.",
+    "fg_score": 0
   },
   "sopravvivereafebbraio": {
     "about": "'Surviving February' (Italian) — winter blues relatable content",
@@ -1248,16 +1248,16 @@
     "fg_score": 2
   },
   "ingrossojeans": {
-    "about": "Wholesale jeans — fashion business or budget clothing content",
-    "fg_score": 2
+    "about": "People showcasing bulk jeans purchases or fashion hauls.",
+    "fg_score": 1
   },
   "compleanni": {
     "about": "Birthdays (Italian) — party decoration & celebration content",
     "fg_score": 4
   },
   "stanza": {
-    "about": "Room/stanza (Italian) — interior design & room decor content",
-    "fg_score": 8
+    "about": "People showcasing their rooms or room makeovers.",
+    "fg_score": 5
   },
   "slimerant": {
     "about": "Slime rant trend — DIY slime making & creative content",
@@ -1268,8 +1268,8 @@
     "fg_score": 1
   },
   "alexandratrusova": {
-    "about": "Alexandra Trusova — Russian Olympic figure skater content",
-    "fg_score": 1
+    "about": "Content about Russian figure skater Alexandra Trusova and her performances.",
+    "fg_score": 0
   },
   "fateciandarevirali": {
     "about": "'Make us go viral' (Italian) — viral content creation meta-trend",
@@ -1284,8 +1284,8 @@
     "fg_score": 2
   },
   "sobrevivefebrero": {
-    "about": "Surviving February (Spanish) — winter blues relatable humor content",
-    "fg_score": 3
+    "about": "This trend is about surviving the challenges of February.",
+    "fg_score": 1
   },
   "lacasadelosfamosos": {
     "about": "La Casa de los Famosos — Spanish/Latin celebrity reality show",
@@ -1308,8 +1308,8 @@
     "fg_score": 4
   },
   "nickyjam": {
-    "about": "Nicky Jam — reggaeton artist music content",
-    "fg_score": 1
+    "about": "This trend is about the reggaeton artist Nicky Jam and his music.",
+    "fg_score": 0
   },
   "jhayco": {
     "about": "Jhayco — Latin urban music artist content",
@@ -1332,7 +1332,7 @@
     "fg_score": 9
   },
   "primeramusa": {
-    "about": "Primera Musa — Spanish music or creative content",
+    "about": "People sharing their first muse or inspiration.",
     "fg_score": 1
   },
   "pablovera": {
@@ -1344,8 +1344,8 @@
     "fg_score": 3
   },
   "correa": {
-    "about": "Spanish athlete or celebrity Correa content",
-    "fg_score": 1
+    "about": "People showing off their pets on leashes or collars.",
+    "fg_score": 5
   },
   "veneno": {
     "about": "Veneno (poison) — Spanish TV show or viral content",
@@ -1364,12 +1364,12 @@
     "fg_score": 1
   },
   "sirena": {
-    "about": "Mermaid (Spanish) — fantasy aesthetic & costume content",
-    "fg_score": 2
+    "about": "This trend is about mermaid costumes, makeup, and special effects.",
+    "fg_score": 1
   },
   "heartopiaparty": {
-    "about": "Heartopia Party — K-pop or pop music event content",
-    "fg_score": 1
+    "about": "People sharing their experiences at the Heartopia Party event.",
+    "fg_score": 0
   },
   "fakeland": {
     "about": "Fakeland — drama/revelation trend about fake people",
@@ -1380,16 +1380,16 @@
     "fg_score": 3
   },
   "incienso": {
-    "about": "Incense (Spanish) — home scent, wellness & cozy vibes content",
-    "fg_score": 6
+    "about": "This trend is about DIY incense making and funny fails.",
+    "fg_score": 1
   },
   "cuaresma✝️": {
     "about": "Lent cross (Spanish) — Christian fasting & faith content",
     "fg_score": 3
   },
   "womenswear": {
-    "about": "Women's fashion clothing & outfit styling content",
-    "fg_score": 3
+    "about": "This trend is about women's fashion and clothing styles.",
+    "fg_score": 1
   },
   "hoodies": {
     "about": "Hoodie fashion & cozy clothing haul content",
@@ -1424,8 +1424,8 @@
     "fg_score": 3
   },
   "therianthropy": {
-    "about": "Therianthropy — spiritual animal identity subculture content",
-    "fg_score": 1
+    "about": "This trend is about people identifying as non-human animals.",
+    "fg_score": 0
   },
   "añonuevochino": {
     "about": "Chinese New Year (Spanish) — dragon dance & celebration content",
@@ -1436,16 +1436,16 @@
     "fg_score": 3
   },
   "osasuna": {
-    "about": "CA Osasuna Spanish football club fan content",
-    "fg_score": 1
+    "about": "This trend is about the Spanish football club Osasuna.",
+    "fg_score": 0
   },
   "quetecalles": {
-    "about": "'Shut up' (Spanish) — confrontational viral drama content",
-    "fg_score": 1
+    "about": "This trend is about a viral sound clip meaning 'shut up'.",
+    "fg_score": 0
   },
   "cazzu": {
-    "about": "Cazzu — Argentine trap/urban music artist content",
-    "fg_score": 1
+    "about": "This trend is about the Argentine rapper Cazzu and her music.",
+    "fg_score": 0
   },
   "nyxcosmetics": {
     "about": "NYX Cosmetics — makeup brand tutorials & reviews",
@@ -1460,16 +1460,16 @@
     "fg_score": 1
   },
   "carnavaltenerife": {
-    "about": "Tenerife Carnival — famous Canary Islands Carnival content",
-    "fg_score": 3
+    "about": "Showcasing the vibrant costumes and celebrations of Tenerife Carnival.",
+    "fg_score": 1
   },
   "cartera": {
     "about": "Handbag/wallet (Spanish) — fashion accessories content",
     "fg_score": 2
   },
   "spring": {
-    "about": "Spring season — home refresh, garden & spring cleaning content",
-    "fg_score": 7
+    "about": "General content celebrating the spring season, often fashion or decor.",
+    "fg_score": 5
   },
   "lasamo": {
     "about": "Lasamo — music artist or viral audio content",
@@ -1484,16 +1484,16 @@
     "fg_score": 1
   },
   "walls": {
-    "about": "Walls — home decor, wall art & interior design content",
-    "fg_score": 8
+    "about": "People transforming or decorating their home walls.",
+    "fg_score": 5
   },
   "eclipse": {
     "about": "Eclipse — solar/lunar eclipse viral sky photography content",
     "fg_score": 2
   },
   "ñengo": {
-    "about": "Ñengo Flow — reggaeton artist music content",
-    "fg_score": 1
+    "about": "Fans of the Puerto Rican rapper Ñengo Flow.",
+    "fg_score": 0
   },
   "callate": {
     "about": "'Be quiet' (Spanish) — viral drama & confrontation content",
@@ -1504,15 +1504,15 @@
     "fg_score": 3
   },
   "oscuridad": {
-    "about": "Darkness (Spanish) — aesthetic or gothic content",
+    "about": "People sharing scary or creepy experiences and stories.",
     "fg_score": 1
   },
   "omarcoutz": {
-    "about": "Omar Coutz — Spanish influencer content",
+    "about": "This trend is about a creator sharing life hacks and tech tips.",
     "fg_score": 1
   },
   "cable": {
-    "about": "Cable management or cable knit fashion content",
+    "about": "People organizing or dealing with messy cables.",
     "fg_score": 3
   },
   "nathypeluso": {
@@ -1524,8 +1524,8 @@
     "fg_score": 4
   },
   "fastfashion": {
-    "about": "Fast fashion debate — sustainable vs. cheap clothing content",
-    "fg_score": 3
+    "about": "This trend is about discussions and critiques of fast fashion.",
+    "fg_score": 1
   },
   "gadgetsparahombres": {
     "about": "Men's gadgets & tech gifts content (Spanish)",
@@ -1544,8 +1544,8 @@
     "fg_score": 2
   },
   "tracksuits": {
-    "about": "Tracksuit matching set fashion & cozy outfit content",
-    "fg_score": 6
+    "about": "This trend is about tracksuit fashion and styling.",
+    "fg_score": 1
   },
   "eid": {
     "about": "Eid celebration — post-Ramadan festive food & family content",
@@ -1560,12 +1560,12 @@
     "fg_score": 1
   },
   "shorttrack": {
-    "about": "Short track speed skating Winter Olympics content",
-    "fg_score": 1
+    "about": "Short track speed skating races and highlights.",
+    "fg_score": 0
   },
   "олимпиада2026": {
-    "about": "2026 Olympics (Russian) — Winter Olympics coverage content",
-    "fg_score": 1
+    "about": "Content about the 2026 Olympic Games.",
+    "fg_score": 0
   },
   "moldova": {
     "about": "Moldova country — culture, travel & news content",
@@ -1584,15 +1584,15 @@
     "fg_score": 2
   },
   "skitrip": {
-    "about": "Ski trip — winter sports & snowy holiday content",
-    "fg_score": 3
+    "about": "People documenting their ski trips and travel experiences.",
+    "fg_score": 0
   },
   "nasheed": {
     "about": "Nasheed — Islamic devotional music & Ramadan content",
     "fg_score": 4
   },
   "km": {
-    "about": "KM — distance measurement or soccer content",
+    "about": "People sharing their daily vlogs and outdoor activities.",
     "fg_score": 1
   },
   "racism": {
@@ -1600,39 +1600,39 @@
     "fg_score": 1
   },
   "eidoutfit": {
-    "about": "Eid outfit ideas — festive fashion for Eid celebration",
-    "fg_score": 5
+    "about": "Showcasing and styling outfits for the Islamic holiday Eid.",
+    "fg_score": 1
   },
   "погода": {
-    "about": "Weather (Russian) — weather forecast & seasonal content",
-    "fg_score": 2
+    "about": "Content about weather, often educational or DIY related.",
+    "fg_score": 1
   },
   "skiën": {
-    "about": "Skiing (Dutch) — ski trip & winter sports content",
-    "fg_score": 2
+    "about": "Videos of people skiing, showing skills, resorts, and experiences.",
+    "fg_score": 1
   },
   "байкал": {
-    "about": "Lake Baikal (Russia) — nature travel & landscape content",
-    "fg_score": 2
+    "about": "Content about Lake Baikal, often educational or travel-related.",
+    "fg_score": 0
   },
   "skivakantie": {
-    "about": "Ski holiday (Dutch) — winter ski trip content",
-    "fg_score": 3
+    "about": "Sharing experiences and vlogs from ski holidays and trips.",
+    "fg_score": 1
   },
   "fortniteskins": {
-    "about": "Fortnite game skins — gaming cosmetics content",
-    "fg_score": 1
+    "about": "Showcasing and discussing cosmetic items in the video game Fortnite.",
+    "fg_score": 0
   },
   "намаз": {
     "about": "Namaz (Islamic prayer) — Ramadan devotional content",
     "fg_score": 3
   },
   "iloveher": {
-    "about": "Romantic 'I love her' content — relationship & couple content",
-    "fg_score": 2
+    "about": "Expressing affection or admiration for a female person or character.",
+    "fg_score": 1
   },
   "stranger": {
-    "about": "Stranger Things or stranger danger content",
+    "about": "Content about meeting strangers or unusual encounters.",
     "fg_score": 1
   },
   "galatasaray💛❤": {
@@ -1656,16 +1656,16 @@
     "fg_score": 1
   },
   "skien": {
-    "about": "Skiing (variant) — winter sports & ski holiday content",
-    "fg_score": 2
+    "about": "Content about the Norwegian city Skien, often travel-related.",
+    "fg_score": 0
   },
   "skitok": {
     "about": "Ski TikTok — skiing community & winter sports content",
     "fg_score": 2
   },
   "oostenrijk": {
-    "about": "Austria (Dutch) — skiing & travel in Austria content",
-    "fg_score": 3
+    "about": "Content about Austria, often related to travel or recreation.",
+    "fg_score": 0
   },
   "токсис": {
     "about": "Toxic (Russian) — toxic relationship warning content",
@@ -1696,20 +1696,20 @@
     "fg_score": 2
   },
   "олимпийскиеигры": {
-    "about": "Olympic Games (Russian) — Winter Olympics 2026 content",
-    "fg_score": 1
+    "about": "Content about the Olympic Games, athletes, and sports.",
+    "fg_score": 0
   },
   "спать": {
-    "about": "Sleeping (Russian) — cozy sleep & bedtime routine content",
-    "fg_score": 6
+    "about": "Relatable content about sleeping, sleep habits, and feeling tired.",
+    "fg_score": 1
   },
   "aknightofthesevenkingdoms": {
     "about": "A Knight of the Seven Kingdoms — Game of Thrones prequel fan content",
     "fg_score": 1
   },
   "shoulderlean": {
-    "about": "Shoulder lean trend — cozy couple or friend comfort content",
-    "fg_score": 4
+    "about": "A dance move or pose involving leaning the shoulder.",
+    "fg_score": 0
   },
   "tenerife": {
     "about": "Tenerife — Canary Islands travel & lifestyle content",
@@ -1720,8 +1720,8 @@
     "fg_score": 2
   },
   "needoh": {
-    "about": "Need Oh squishy stress toy — satisfying toy content",
-    "fg_score": 3
+    "about": "Showcasing and playing with NeeDoh stress balls and fidget toys.",
+    "fg_score": 0
   },
   "мелстройность": {
     "about": "Russian slim body/fitness content",
@@ -1732,12 +1732,12 @@
     "fg_score": 3
   },
   "growup": {
-    "about": "Growing up relatable content — adulting & nostalgia",
-    "fg_score": 3
+    "about": "Content about personal growth, family, and development.",
+    "fg_score": 5
   },
   "купер": {
-    "about": "Cooper — name content or Cooper Mini car content",
-    "fg_score": 1
+    "about": "Content related to the name Cooper, often in cosplay or sports.",
+    "fg_score": 0
   },
   "vasten": {
     "about": "Fasting (Dutch) — Lent or health fasting content",
@@ -1760,8 +1760,8 @@
     "fg_score": 4
   },
   "saturdaynight": {
-    "about": "Saturday night vibes — going out & weekend entertainment content",
-    "fg_score": 3
+    "about": "Sharing activities, plans, and vibes for Saturday evening.",
+    "fg_score": 1
   },
   "logeren": {
     "about": "Staying over (Dutch) — sleepover & guest hosting content",
@@ -1772,12 +1772,12 @@
     "fg_score": 1
   },
   "toxis": {
-    "about": "Toxic relationships — warning signs & healing content",
+    "about": "A viral sound or meme, often with a humorous or relatable context.",
     "fg_score": 1
   },
   "icehockey": {
-    "about": "Ice hockey — Winter Olympics & NHL sports content",
-    "fg_score": 1
+    "about": "Ice hockey game highlights, fan reactions, and player content.",
+    "fg_score": 0
   },
   "nationalitytrend": {
     "about": "Nationality trend — showing cultural background & heritage",
@@ -1792,7 +1792,7 @@
     "fg_score": 3
   },
   "andrew": {
-    "about": "Prince Andrew or name-based content",
+    "about": "Artists showcasing cosplay, graphic art, and other creative works.",
     "fg_score": 1
   },
   "pancakes": {
@@ -1804,8 +1804,8 @@
     "fg_score": 1
   },
   "thenextstep": {
-    "about": "The Next Step — Canadian dance show fan content",
-    "fg_score": 1
+    "about": "Content related to the TV show 'The Next Step' or dance challenges.",
+    "fg_score": 0
   },
   "salishmatter": {
     "about": "Salish Matter — YouTuber/influencer content",
@@ -1828,11 +1828,11 @@
     "fg_score": 2
   },
   "revert": {
-    "about": "Revert to Islam — religious conversion content",
-    "fg_score": 2
+    "about": "Muslim converts sharing their journey to Islam.",
+    "fg_score": 0
   },
   "lfw": {
-    "about": "London Fashion Week — runway & designer fashion content",
+    "about": "London Fashion Week, showcasing new collections and styles.",
     "fg_score": 3
   },
   "weezer": {
@@ -1840,16 +1840,16 @@
     "fg_score": 1
   },
   "eze": {
-    "about": "Eberechi Eze — Crystal Palace footballer content",
-    "fg_score": 1
+    "about": "People sharing their favorite songs by the artist EZE.",
+    "fg_score": 0
   },
   "londonfashionweek": {
-    "about": "London Fashion Week — designer runway & street style content",
-    "fg_score": 3
+    "about": "Content showcasing fashion, trends, and events from London Fashion Week.",
+    "fg_score": 0
   },
   "mothersdaygiftideas": {
-    "about": "Mother's Day gift ideas — home gifts, flowers & family content",
-    "fg_score": 8
+    "about": "Users sharing gift ideas for Mother's Day.",
+    "fg_score": 5
   },
   "cooplive": {
     "about": "Co-op Live Manchester arena — concerts & live events content",
@@ -1864,12 +1864,12 @@
     "fg_score": 6
   },
   "o2": {
-    "about": "O2 Arena London — concerts & live entertainment content",
-    "fg_score": 1
+    "about": "Content related to the O2 arena, often sports or music events.",
+    "fg_score": 0
   },
   "jamesarthurtour": {
-    "about": "James Arthur singer tour dates & concert content",
-    "fg_score": 1
+    "about": "Fans sharing experiences from James Arthur's concerts.",
+    "fg_score": 0
   },
   "goaway": {
     "about": "'Go away' — venting & frustration relatable content",
@@ -1888,28 +1888,28 @@
     "fg_score": 6
   },
   "december10": {
-    "about": "December 10 — Taylor Swift album release or date reference content",
-    "fg_score": 2
+    "about": "Commemorating Human Rights Day and related events.",
+    "fg_score": 0
   },
   "pancake": {
     "about": "Pancake recipe & Pancake Day UK food content",
     "fg_score": 3
   },
   "bellakay": {
-    "about": "Bella Kay — UK influencer or music content",
-    "fg_score": 1
+    "about": "Content related to a specific person or character named Bella Kay.",
+    "fg_score": 0
   },
   "ranter": {
-    "about": "UK ranter trend — opinion & venting content",
-    "fg_score": 1
+    "about": "A character or game related to ranting, often with satisfying visuals.",
+    "fg_score": 0
   },
   "shrovetuesday": {
     "about": "Shrove Tuesday (Pancake Day UK) — tradition & food content",
     "fg_score": 4
   },
   "tns": {
-    "about": "TNS — UK drama series The Next Step or brand content",
-    "fg_score": 1
+    "about": "Content related to theatre, stage performances, and entertainment news.",
+    "fg_score": 0
   },
   "hank": {
     "about": "Hank — Breaking Bad character or dog name content",
@@ -1924,24 +1924,24 @@
     "fg_score": 1
   },
   "philly": {
-    "about": "Philadelphia — city lifestyle, food & sports content",
-    "fg_score": 2
+    "about": "Content about Philadelphia, including sports, photography, and local life.",
+    "fg_score": 1
   },
   "blondes": {
     "about": "Blonde hair — hair color transformation & beauty content",
     "fg_score": 2
   },
   "d10": {
-    "about": "D10 — possibly sports or gaming content",
-    "fg_score": 1
+    "about": "Gaming content, often related to specific game challenges or plays.",
+    "fg_score": 0
   },
   "rantoftheday": {
-    "about": "Rant of the day — daily opinion & venting content",
-    "fg_score": 1
+    "about": "People sharing daily rants, often with an entertainment or horror twist.",
+    "fg_score": 0
   },
   "themoment": {
-    "about": "'The moment' — viral emotional or satisfying reveal content",
-    "fg_score": 3
+    "about": "Capturing significant or emotional moments, often with music.",
+    "fg_score": 5
   },
   "goli": {
     "about": "Goli gummies — supplement brand content",
@@ -1952,12 +1952,12 @@
     "fg_score": 3
   },
   "🐐": {
-    "about": "GOAT emoji — greatest of all time sports/culture content",
-    "fg_score": 1
+    "about": "People showcasing their 'greatest of all time' moments or achievements.",
+    "fg_score": 0
   },
   "весна": {
-    "about": "Spring (Russian) — spring season & home refresh content",
-    "fg_score": 6
+    "about": "People celebrating spring with nature, fashion, and lifestyle content.",
+    "fg_score": 1
   },
   "signlanguage": {
     "about": "Sign language tutorials & deaf community content",
@@ -1976,503 +1976,1583 @@
     "fg_score": 1
   },
   "gifs": {
-    "about": "GIF reactions — animated image sharing & reaction content",
-    "fg_score": 1
+    "about": "Users sharing funny or relatable GIFs.",
+    "fg_score": 0
   },
   "омарcoutz": {
     "about": "Omar Coutz — Spanish influencer content",
     "fg_score": 1
   },
+  "punchmonkey": {
+    "about": "This trend is about a viral zoo monkey named Punch.",
+    "fg_score": 0
+  },
+  "babymonkey": {
+    "about": "This trend is about cute videos of baby monkeys.",
+    "fg_score": 0
+  },
   "georgelopez": {
-    "about": "Trending clips and discussions related to actor George Lopez's work.",
+    "about": "This trend is about comedian and actor George Lopez.",
     "fg_score": 0
   },
   "jackhughes": {
-    "about": "Content about hockey player Jack Hughes, often game highlights or news.",
+    "about": "This trend is about ice hockey player Jack Hughes.",
     "fg_score": 0
   },
-  "punchmonkey": {
-    "about": "Viral videos of a specific monkey, often a toy or real animal.",
+  "premiolonuestro": {
+    "about": "This trend is about the Latin music awards show Premio Lo Nuestro.",
+    "fg_score": 0
+  },
+  "lilylovebraids": {
+    "about": "This trend is about a character or content related to braids.",
+    "fg_score": 0
+  },
+  "toystory5": {
+    "about": "This trend is about speculation and news for Toy Story 5.",
+    "fg_score": 0
+  },
+  "oscars": {
+    "about": "This trend is about the Academy Awards ceremony.",
+    "fg_score": 0
+  },
+  "stateoftheunion": {
+    "about": "This trend is about discussions and reactions to the State of the Union address.",
+    "fg_score": 0
+  },
+  "womenshockey": {
+    "about": "This trend is about women's ice hockey sports and news.",
+    "fg_score": 0
+  },
+  "bafta": {
+    "about": "This trend is about the British Academy Film Awards.",
+    "fg_score": 0
+  },
+  "varka": {
+    "about": "This trend is about a character from the game Genshin Impact.",
+    "fg_score": 0
+  },
+  "poppyplaytimeedit": {
+    "about": "This trend is about fan edits of the game Poppy Playtime.",
+    "fg_score": 0
+  },
+  "blizzard2026": {
+    "about": "This trend is about a fictional or predicted future blizzard event.",
+    "fg_score": 0
+  },
+  "lib": {
+    "about": "People sharing their favorite books and reading recommendations.",
+    "fg_score": 1
+  },
+  "seanstrickland": {
+    "about": "Content related to the UFC fighter and his fights.",
+    "fg_score": 0
+  },
+  "hearts2hearts": {
+    "about": "Users participating in a dance challenge with heart gestures.",
+    "fg_score": 1
+  },
+  "heartssoldseperately": {
+    "about": "Parents sharing funny or relatable moments with their babies.",
+    "fg_score": 5
+  },
+  "wishbone": {
+    "about": "People creating art and animations inspired by the dog character.",
+    "fg_score": 1
+  },
+  "supremecourt": {
+    "about": "Discussions and news about Supreme Court decisions.",
+    "fg_score": 0
+  },
+  "stockup": {
+    "about": "People sharing their bulk shopping hauls and pantry organization.",
+    "fg_score": 4
+  },
+  "pale": {
+    "about": "People sharing beauty tips for fair skin and makeup looks.",
+    "fg_score": 1
+  },
+  "theslap": {
+    "about": "Users participating in a viral dance challenge.",
+    "fg_score": 1
+  },
+  "blizzard": {
+    "about": "People sharing videos of heavy snow and winter weather.",
+    "fg_score": 1
+  },
+  "meganmoroney": {
+    "about": "Fans sharing content related to the country music singer.",
     "fg_score": 0
   },
   "livestory": {
-    "about": "Personal narratives shared in live streams or videos.",
+    "about": "Users sharing snippets of their daily lives and experiences.",
     "fg_score": 1
   },
-  "liveaccess": {
-    "about": "Gaining exclusive or real-time access to events/content.",
+  "#poppyplaytimechapter5": {
+    "about": "A horror video game series.",
     "fg_score": 0
   },
-  "goldmedal": {
-    "about": "Achievements in sports or competitions.",
+  "#hannahmontana": {
+    "about": "Nostalgia for the Disney Channel show.",
     "fg_score": 0
   },
-  "guadalajara": {
-    "about": "Content about the city of Guadalajara, Mexico.",
+  "#liveaccess": {
+    "about": "TikTok Live content and features.",
     "fg_score": 0
   },
-  "punchthemonkey": {
-    "about": "Viral videos featuring a zoo monkey named Punch.",
+  "#therians": {
+    "about": "People identifying as non-human animals.",
     "fg_score": 0
   },
-  "mencho": {
-    "about": "Content related to Mexican drug lord Nemesio Oseguera Cervantes.",
+  "#usahockey": {
+    "about": "USA Hockey team and games.",
     "fg_score": 0
   },
-  "puertovallarta": {
-    "about": "Content about the city of Puerto Vallarta, Mexico.",
+  "#ryangarcia": {
+    "about": "Professional boxer Ryan Garcia's life and career.",
     "fg_score": 0
   },
-  "twilightsparkle": {
-    "about": "Character from the My Little Pony franchise.",
+  "#goldmedal": {
+    "about": "Achievements in sports and competitions.",
     "fg_score": 0
   },
-  "наруто": {
-    "about": "Popular Japanese anime and manga series Naruto.",
+  "#guadalajara": {
+    "about": "Culture, travel, and life in Guadalajara, Mexico.",
     "fg_score": 0
   },
-  "nycsnow": {
-    "about": "Content related to snow events in New York City.",
-    "fg_score": 2
+  "#fluttershy": {
+    "about": "My Little Pony character content.",
+    "fg_score": 0
+  },
+  "#punchthemonkey": {
+    "about": "Viral videos of a zoo monkey named Punch.",
+    "fg_score": 0
+  },
+  "#mencho": {
+    "about": "Discussions and content related to a cartel leader.",
+    "fg_score": 0
+  },
+  "#mcsteamy": {
+    "about": "Nostalgia for Grey's Anatomy character Mark Sloan.",
+    "fg_score": 0
+  },
+  "#losbukis": {
+    "about": "Mexican musical group Los Bukis and their music.",
+    "fg_score": 0
+  },
+  "#puertovallarta": {
+    "about": "Travel and experiences in Puerto Vallarta, Mexico.",
+    "fg_score": 0
+  },
+  "#rainbowdash": {
+    "about": "My Little Pony character content.",
+    "fg_score": 0
+  },
+  "#prototype": {
+    "about": "Early versions of products or concepts.",
+    "fg_score": 0
+  },
+  "#jfkjr": {
+    "about": "Conspiracy theories about JFK Jr.",
+    "fg_score": 0
+  },
+  "#iftar": {
+    "about": "Breaking fast during Ramadan.",
+    "fg_score": 0
+  },
+  "#twilightsparkle": {
+    "about": "My Little Pony character content.",
+    "fg_score": 0
+  },
+  "#babykeem": {
+    "about": "Rapper Baby Keem's music and life.",
+    "fg_score": 0
+  },
+  "#chevere": {
+    "about": "Expressing something is cool or great.",
+    "fg_score": 0
+  },
+  "#rarity": {
+    "about": "My Little Pony character content.",
+    "fg_score": 0
+  },
+  "#als": {
+    "about": "Awareness and personal stories about ALS.",
+    "fg_score": 0
+  },
+  "#наруто": {
+    "about": "Naruto anime and manga content.",
+    "fg_score": 0
+  },
+  "#nycsnow": {
+    "about": "Snowfall and winter weather in NYC.",
+    "fg_score": 0
   },
   "luci4": {
-    "about": "Music artist known for phonk music.",
+    "about": "A trend featuring music and edits related to the artist Luci4.",
     "fg_score": 0
   },
   "nycblizzard": {
-    "about": "Content related to blizzard events in New York City.",
-    "fg_score": 2
-  },
-  "rondalemoore": {
-    "about": "Content by or about TikTok creator Ronda LeMoore.",
+    "about": "Users sharing experiences and visuals of a New York City blizzard.",
     "fg_score": 1
   },
+  "rondalemoore": {
+    "about": "Discussions and content related to the true crime case of Rondale Moore.",
+    "fg_score": 0
+  },
   "highcortisol": {
-    "about": "Discussions about stress, health, and the hormone cortisol.",
+    "about": "People discussing symptoms and effects of high cortisol levels.",
     "fg_score": 1
   },
   "poppyplaytime5": {
-    "about": "Chapter 5 of the horror video game Poppy Playtime.",
+    "about": "Fans discussing and creating content about the video game Poppy Playtime Chapter 5.",
     "fg_score": 0
   },
   "alysaliuedit": {
-    "about": "Fan edits of figure skater Alysa Liu.",
+    "about": "Edits and fan content featuring figure skater Alysa Liu.",
     "fg_score": 0
   },
   "applejack": {
-    "about": "Character from the My Little Pony franchise.",
+    "about": "Content related to the My Little Pony character Applejack.",
     "fg_score": 0
   },
   "amberglenn": {
-    "about": "Content about figure skater Amber Glenn.",
+    "about": "Discussions and content related to the true crime case of Amber Glenn.",
     "fg_score": 0
   },
   "verao": {
-    "about": "Portuguese for summer, often about summer activities or fashion.",
-    "fg_score": 3
+    "about": "People sharing summer-themed content, often related to fashion or travel.",
+    "fg_score": 1
   },
   "camdenbop": {
-    "about": "Specific dance trend or local music/events in Camden.",
+    "about": "People performing a specific dance or challenge originating from Camden.",
     "fg_score": 0
   },
   "claressashields": {
-    "about": "Content about professional boxer Claressa Shields.",
+    "about": "Content related to boxer Claressa Shields, often about her fights.",
     "fg_score": 0
   },
   "theprototype": {
-    "about": "Nickname for professional boxer Claressa Shields.",
+    "about": "A trend often featuring a specific sound or character called 'The Prototype'.",
     "fg_score": 0
   },
   "gambian_tiktok🇬🇲🇬🇲": {
-    "about": "Content from or about Gambia.",
-    "fg_score": 0
+    "about": "Content created by and for the Gambian TikTok community.",
+    "fg_score": 1
   },
   "pantene": {
-    "about": "Content about the hair care brand Pantene.",
-    "fg_score": 0
+    "about": "People showcasing their hair and using Pantene products.",
+    "fg_score": 1
   },
   "loveisblindseason10": {
-    "about": "Reality TV show Love Is Blind, specific season.",
-    "fg_score": 0
-  },
-  "#atardecerplantilla": {
-    "about": "Using video templates for sunset-themed content.",
+    "about": "Discussions and reactions to the reality show Love Is Blind Season 10.",
     "fg_score": 1
   },
-  "#sunburn": {
-    "about": "Sharing experiences, remedies, or humor related to sunburns.",
+  "atardecerplantilla": {
+    "about": "Users creating videos using a sunset-themed template.",
     "fg_score": 1
   },
-  "#tourettes": {
-    "about": "Individuals sharing experiences and raising awareness about Tourette's.",
-    "fg_score": 0
-  },
-  "#sunshine": {
-    "about": "DIY projects, positive vibes, or drink recipes.",
-    "fg_score": 4
-  },
-  "#alors": {
-    "about": "A popular meme, sound, or transition trend.",
+  "sunburn": {
+    "about": "People sharing their sunburn experiences, often humorously.",
     "fg_score": 1
   },
-  "#xyabc": {
-    "about": "School-related memes, education, or hilarious fails.",
+  "tourettes": {
+    "about": "Individuals sharing their experiences living with Tourette's syndrome.",
     "fg_score": 1
   },
-  "#modestclothing": {
-    "about": "Fashion trend showcasing modest outfits and styles.",
+  "#chroniqueemoji": {
+    "about": "People sharing funny or relatable emoji stories and situations.",
+    "fg_score": 1
+  },
+  "#samos": {
+    "about": "Content related to the Samos football club and its matches.",
     "fg_score": 0
   },
-  "#fitlife": {
-    "about": "Content about fitness, healthy living, and workout routines.",
-    "fg_score": 0
+  "#asterix": {
+    "about": "People sharing experiences and content from Parc Astérix theme park.",
+    "fg_score": 1
   },
-  "#quick": {
-    "about": "Sharing quick tips, hacks, or short tutorials.",
+  "#nyxcosmeticsfrance": {
+    "about": "Beauty content featuring makeup tutorials and product reviews from NYX.",
+    "fg_score": 1
+  },
+  "#survieenfévrier": {
+    "about": "People sharing tips and experiences for surviving February outdoors.",
     "fg_score": 3
   },
-  "#lip": {
-    "about": "Lip-syncing, lip art, or beauty trends.",
-    "fg_score": 0
-  },
-  "#fitfam": {
-    "about": "Community focused on fitness and healthy living.",
-    "fg_score": 0
-  },
-  "#montemanyes": {
-    "about": "Content related to a specific gamer or game character.",
-    "fg_score": 0
-  },
-  "#fanttik": {
-    "about": "Content featuring a specific tech or electronics brand.",
-    "fg_score": 0
-  },
-  "ihk": {
-    "about": "German vocational training, exams, or work-life content.",
-    "fg_score": 0
-  },
-  "souly": {
-    "about": "Content related to the artist Souly or soulful music.",
-    "fg_score": 0
-  },
-  "mensoutfit": {
-    "about": "Men's fashion, clothing, and style ideas.",
+  "#survieenfevrier": {
+    "about": "People sharing tips and experiences for surviving February, often related to wellness.",
     "fg_score": 1
   },
-  "тепло": {
-    "about": "Cozy, warm, and comforting feelings or aesthetics.",
+  "#ftour": {
+    "about": "People sharing recipes and experiences related to the Iftar meal.",
+    "fg_score": 3
+  },
+  "#rant": {
+    "about": "People sharing humorous or relatable rants about various topics.",
+    "fg_score": 1
+  },
+  "#gif": {
+    "about": "People sharing funny or relatable GIF-like short video clips.",
+    "fg_score": 1
+  },
+  "#manon": {
+    "about": "Content featuring a specific person named Manon, often dancing or entertaining.",
+    "fg_score": 0
+  },
+  "#crue": {
+    "about": "Content related to floods or rising water levels.",
+    "fg_score": 1
+  },
+  "#aid": {
+    "about": "People sharing content related to Eid celebrations, food, and traditions.",
+    "fg_score": 3
+  },
+  "#ademetbilal": {
+    "about": "Content featuring two individuals, Ademe and Bilal, often in humorous skits.",
+    "fg_score": 0
+  },
+  "#nohumour": {
+    "about": "People sharing serious or non-humorous content, often with a twist.",
+    "fg_score": 1
+  },
+  "#canette": {
+    "about": "People sharing funny or creative content involving beverage cans.",
+    "fg_score": 3
+  },
+  "#emoji": {
+    "about": "People sharing funny or relatable content using emojis.",
+    "fg_score": 1
+  },
+  "#dovecameron": {
+    "about": "Content featuring actress and singer Dove Cameron.",
+    "fg_score": 0
+  },
+  "#jeanfils": {
+    "about": "Content featuring a specific person named Jeanfils, often in gaming or magic.",
+    "fg_score": 0
+  },
+  "#tarawih": {
+    "about": "People sharing content related to Tarawih prayers during Ramadan.",
+    "fg_score": 1
+  },
+  "#descendants": {
+    "about": "Content related to Disney's Descendants franchise, often fan-made.",
+    "fg_score": 0
+  },
+  "#polak": {
+    "about": "Content related to Polish culture, people, or stereotypes.",
+    "fg_score": 0
+  },
+  "#jalouse": {
+    "about": "People sharing content about feeling jealous or envious.",
+    "fg_score": 1
+  },
+  "#shower": {
+    "about": "People sharing shower routines, hacks, or funny shower moments.",
+    "fg_score": 1
+  },
+  "#sia": {
+    "about": "Content featuring singer-songwriter Sia or her music.",
+    "fg_score": 0
+  },
+  "#yuma": {
+    "about": "Content related to the city of Yuma, Arizona, often travel or food.",
+    "fg_score": 0
+  },
+  "carnival": {
+    "about": "People sharing their experiences and outfits at carnivals and festivals.",
+    "fg_score": 1
+  },
+  "aizen": {
+    "about": "Fans discussing and creating content related to the anime character Aizen.",
+    "fg_score": 0
+  },
+  "abayagirls": {
+    "about": "Women showcasing abaya fashion and styling.",
+    "fg_score": 1
+  },
+  "pioupiou": {
+    "about": "People sharing funny and often clumsy moments or fails.",
+    "fg_score": 1
+  },
+  "strength": {
+    "about": "People sharing fitness journeys, workout routines, and motivational content.",
+    "fg_score": 1
+  },
+  "greysanatomyedits": {
+    "about": "Fans sharing edited clips and emotional moments from Grey's Anatomy.",
+    "fg_score": 0
+  },
+  "hennadesign": {
+    "about": "Artists showcasing intricate henna designs and application.",
+    "fg_score": 1
+  },
+  "cadeauxmaquillage": {
+    "about": "People unboxing and reviewing makeup gifts.",
+    "fg_score": 1
+  },
+  "jai15anstiktok⚠️⚠️": {
+    "about": "Teenagers sharing relatable content about being 15 on TikTok.",
+    "fg_score": 1
+  },
+  "ogfortnite": {
+    "about": "Gamers reminiscing and playing the original version of Fortnite.",
+    "fg_score": 0
+  },
+  "mosquée": {
+    "about": "People sharing content related to mosques, prayer, and Islamic culture.",
+    "fg_score": 1
+  },
+  "sunshine": {
+    "about": "People sharing positive vibes, sunny aesthetics, and outdoor activities.",
+    "fg_score": 1
+  },
+  "alors": {
+    "about": "People using a popular sound or meme to create humorous content.",
+    "fg_score": 1
+  },
+  "xyabc": {
+    "about": "A trending sound or meme used for various humorous or relatable situations.",
+    "fg_score": 1
+  },
+  "modestclothing": {
+    "about": "People showcasing and styling modest fashion outfits.",
+    "fg_score": 1
+  },
+  "fitlife": {
+    "about": "People sharing their fitness routines, healthy eating, and active lifestyles.",
+    "fg_score": 1
+  },
+  "teenfashion": {
+    "about": "Teenagers showcasing and discussing current fashion trends.",
+    "fg_score": 1
+  },
+  "darkromancereads": {
+    "about": "Readers sharing and reviewing dark romance books.",
+    "fg_score": 0
+  },
+  "tiktokgabon🇬🇦tiktok": {
+    "about": "Content from or related to Gabon, often cultural or daily life.",
+    "fg_score": 0
+  },
+  "contenu": {
+    "about": "Creators sharing their general content or asking for ideas.",
+    "fg_score": 0
+  },
+  "sortir": {
+    "about": "People sharing their outings, activities, or places to go.",
+    "fg_score": 0
+  },
+  "reflexaododia": {
+    "about": "Daily reflections, motivational quotes, or philosophical thoughts.",
+    "fg_score": 0
+  },
+  "laura": {
+    "about": "Videos featuring or about a person named Laura, often personal vlogs.",
+    "fg_score": 0
+  },
+  "maquillageguide": {
+    "about": "Makeup tutorials, tips, and product recommendations.",
+    "fg_score": 0
+  },
+  "gains": {
+    "about": "People sharing their fitness progress, muscle gains, or workouts.",
+    "fg_score": 0
+  },
+  "bravo": {
+    "about": "Content related to Bravo TV shows or general expressions of approval.",
+    "fg_score": 0
+  },
+  "freyaskye": {
+    "about": "Content featuring or about a person named Freya Skye.",
+    "fg_score": 0
+  },
+  "benoit": {
+    "about": "Videos featuring or about a person named Benoit, often personal vlogs.",
+    "fg_score": 0
+  },
+  "bafa": {
+    "about": "Content related to the BAFA certificate for youth animation in France.",
+    "fg_score": 0
+  },
+  "kingston": {
+    "about": "People sharing their lives and experiences in Kingston, Jamaica.",
+    "fg_score": 1
+  },
+  "shoppingnoel": {
+    "about": "People sharing their Christmas shopping hauls and gift ideas.",
+    "fg_score": 3
+  },
+  "srt": {
+    "about": "Car enthusiasts showcasing their SRT vehicles and modifications.",
+    "fg_score": 0
+  },
+  "ricardo": {
+    "about": "People sharing funny skits and memes featuring a character named Ricardo.",
+    "fg_score": 1
+  },
+  "innondations": {
+    "about": "People sharing videos and experiences related to floods.",
+    "fg_score": 1
+  },
+  "nino": {
+    "about": "People sharing videos of their pets, often a dog named Nino.",
     "fg_score": 5
   },
-  "ilahi": {
-    "about": "Islamic devotional songs and spiritual content.",
-    "fg_score": 0
-  },
-  "singingintheshower": {
-    "about": "People singing in the shower, often for comedic effect.",
+  "summeroutfits": {
+    "about": "People showcasing their summer fashion styles and outfit ideas.",
     "fg_score": 1
   },
-  "atalanta": {
-    "about": "Content related to the Italian football club Atalanta BC.",
-    "fg_score": 0
+  "quick": {
+    "about": "People sharing quick tips, hacks, and short-form content.",
+    "fg_score": 3
   },
-  "newroz": {
-    "about": "Celebrations and traditions of the Persian New Year.",
+  "lip": {
+    "about": "People showcasing lip art, makeup tutorials, and lip-sync videos.",
     "fg_score": 1
   },
-  "війнавукраїні": {
-    "about": "News, updates, and personal stories about the war in Ukraine.",
+  "fitfam": {
+    "about": "Fitness enthusiasts sharing their workout routines and healthy lifestyles.",
+    "fg_score": 1
+  },
+  "montemanyes": {
+    "about": "People sharing gaming content and funny pranks.",
     "fg_score": 0
   },
-  "مولانا": {
-    "about": "Content related to Mawlana Rumi's teachings or Islamic spirituality.",
+  "fanttik": {
+    "about": "People showcasing and reviewing Fanttik tech products.",
     "fg_score": 0
   },
-  "machinegunkelly": {
+  "klassenfahrt": {
+    "about": "Students sharing their school trip experiences and funny moments.",
+    "fg_score": 1
+  },
+  "війна": {
+    "about": "People sharing content related to the war in Ukraine.",
+    "fg_score": 0
+  },
+  "mexiko": {
+    "about": "People sharing travel experiences and pranks in Mexico.",
+    "fg_score": 1
+  },
+  "#токсис": {
+    "about": "People sharing funny or relatable 'toxic' moments, often with pets or school.",
+    "fg_score": 1
+  },
+  "#brawl_stars": {
+    "about": "Content related to the mobile game Brawl Stars, including gameplay and memes.",
+    "fg_score": 0
+  },
+  "#suhoor": {
+    "about": "People sharing their pre-dawn meals during Ramadan, often with recipes.",
+    "fg_score": 3
+  },
+  "#wpf": {
+    "about": "People lip-syncing and dancing, often with beauty filters.",
+    "fg_score": 1
+  },
+  "#perfekteliebe": {
+    "about": "Couples sharing romantic moments and travel vlogs.",
+    "fg_score": 1
+  },
+  "#signlanguage": {
+    "about": "People demonstrating sign language, often in creative or performance contexts.",
+    "fg_score": 1
+  },
+  "#faceit": {
+    "about": "Gamers sharing funny fails and highlights from competitive gaming.",
+    "fg_score": 0
+  },
+  "#tanning": {
+    "about": "People sharing their tanning routines and results, often with vlogs.",
+    "fg_score": 1
+  },
+  "#baklava": {
+    "about": "People making and sharing recipes for baklava.",
+    "fg_score": 3
+  },
+  "#ои2026": {
+    "about": "Content related to the 2026 Olympic Games, often extreme sports.",
+    "fg_score": 0
+  },
+  "#brawltalk": {
+    "about": "Updates and discussions about the game Brawl Stars.",
+    "fg_score": 0
+  },
+  "#spot": {
+    "about": "People sharing their favorite hangout spots, often on campus.",
+    "fg_score": 1
+  },
+  "#gracieabrams": {
+    "about": "Fans sharing content related to singer Gracie Abrams.",
+    "fg_score": 0
+  },
+  "#laufey": {
+    "about": "Fans sharing content related to singer Laufey.",
+    "fg_score": 0
+  },
+  "#meetmeatourspot": {
+    "about": "People sharing their favorite places to meet friends, often for drinks.",
+    "fg_score": 1
+  },
+  "#generationz": {
+    "about": "Content related to Gen Z culture, often funny fails or interviews.",
+    "fg_score": 1
+  },
+  "#gzuz187_official": {
+    "about": "Fans sharing content related to German rapper Gzuz.",
+    "fg_score": 0
+  },
+  "#галерея": {
+    "about": "People sharing videos from shopping malls or public galleries.",
+    "fg_score": 1
+  },
+  "#محمد_اللحيدان": {
+    "about": "Recitations of the Quran by Sheikh Mohammed Al-Luhaidan.",
+    "fg_score": 0
+  },
+  "#hassen": {
+    "about": "People sharing funny or relatable moments of 'hating' something.",
+    "fg_score": 1
+  },
+  "#xlov": {
+    "about": "People sharing dance videos, often in cosplay.",
+    "fg_score": 0
+  },
+  "#sultan": {
+    "about": "Content related to the historical figure Sultan, often with scenic views.",
+    "fg_score": 0
+  },
+  "#kastrationstatttötung": {
+    "about": "Advocacy for spaying/neutering pets instead of killing them.",
+    "fg_score": 5
+  },
+  "#danimocanu": {
+    "about": "Fans sharing content related to Romanian singer Dani Mocanu.",
+    "fg_score": 0
+  },
+  "#ои": {
+    "about": "Content related to the Olympic Games, often extreme sports.",
+    "fg_score": 0
+  },
+  "#misssummer": {
+    "about": "People sharing funny fails and mishaps related to summer activities.",
+    "fg_score": 3
+  },
+  "#damenoutfit": {
+    "about": "Women showcasing their fashion outfits and styling ideas.",
+    "fg_score": 0
+  },
+  "#hoodies": {
+    "about": "People showcasing different hoodie styles and outfits.",
+    "fg_score": 0
+  },
+  "#unisexoutfit": {
+    "about": "People sharing gender-neutral outfit ideas and fashion.",
+    "fg_score": 0
+  },
+  "#glowup?": {
+    "about": "People documenting their personal transformation journeys.",
+    "fg_score": 0
+  },
+  "#unisexfashion": {
+    "about": "People showcasing gender-neutral fashion trends and styles.",
+    "fg_score": 0
+  },
+  "#winterloungewear": {
+    "about": "People sharing cozy and comfortable winter loungewear outfits.",
+    "fg_score": 5
+  },
+  "#fpl": {
+    "about": "Discussions and content related to Fantasy Premier League.",
+    "fg_score": 0
+  },
+  "#олимпиада": {
+    "about": "Content related to the Olympic Games and sports.",
+    "fg_score": 0
+  },
+  "#блины": {
+    "about": "People sharing recipes and cooking videos for blini (pancakes).",
+    "fg_score": 3
+  },
+  "#ihk": {
+    "about": "Content related to the German Chambers of Commerce and Industry.",
+    "fg_score": 0
+  },
+  "#souly": {
+    "about": "Content related to the artist Souly and his music.",
+    "fg_score": 0
+  },
+  "#mgk": {
     "about": "Content related to the musician Machine Gun Kelly.",
     "fg_score": 0
   },
-  "linksversifft": {
-    "about": "Political discussions and commentary, often with a critical tone.",
+  "#jasonderulo": {
+    "about": "Content related to the artist Jason Derulo and his music/dance.",
     "fg_score": 0
   },
-  "مسلسلات_رمضان": {
-    "about": "Discussions and clips from TV series aired during Ramadan.",
+  "#lowcortisol": {
+    "about": "Tips and discussions on reducing cortisol levels for health.",
     "fg_score": 0
   },
-  "notes": {
-    "about": "Study notes, aesthetic note-taking, or personal reflections.",
-    "fg_score": 1
-  },
-  "myname": {
-    "about": "Trends sharing facts, jokes, or aesthetics related to names.",
-    "fg_score": 1
-  },
-  "emojistories": {
-    "about": "Creating narratives or jokes using only emojis.",
+  "#mensoutfit": {
+    "about": "Men showcasing their fashion outfits and styling ideas.",
     "fg_score": 0
   },
-  "familieg": {
-    "about": "Content featuring a specific family, often vlogs or daily life.",
+  "#freibad": {
+    "about": "People sharing experiences and fun at outdoor swimming pools.",
+    "fg_score": 0
+  },
+  "#schwimmbad": {
+    "about": "People sharing experiences and fun at swimming pools.",
+    "fg_score": 0
+  },
+  "#damenshirt": {
+    "about": "Women showcasing different shirt styles and outfits.",
+    "fg_score": 0
+  },
+  "#фудкорт": {
+    "about": "People sharing experiences and reviews of food courts.",
+    "fg_score": 3
+  },
+  "#sweatsuit": {
+    "about": "People showcasing different sweatsuit styles and outfits.",
     "fg_score": 5
   },
-  "🤲🤲🤲": {
-    "about": "Content related to prayer, blessings, or spiritual gratitude.",
+  "#electrician": {
+    "about": "Electricians sharing their work, tips, and daily life.",
     "fg_score": 0
   },
-  "sanremo": {
-    "about": "Content about the annual Sanremo Music Festival.",
+  "#oruç": {
+    "about": "Content related to fasting, particularly during Ramadan.",
     "fg_score": 0
   },
-  "festivaldisanremo": {
-    "about": "Content about the annual Sanremo Music Festival.",
+  "#summer26": {
+    "about": "People sharing aspirations and plans for summer 2026.",
     "fg_score": 0
   },
-  "elettralamborghini": {
-    "about": "Content related to the Italian singer Elettra Lamborghini.",
+  "#asl": {
+    "about": "Content related to American Sign Language.",
     "fg_score": 0
   },
-  "ritadecrescenzo": {
-    "about": "Content featuring the Italian TikTok personality Rita De Crescenzo.",
+  "#тепло": {
+    "about": "People sharing cozy moments and warm feelings.",
+    "fg_score": 5
+  },
+  "#ilahi": {
+    "about": "Islamic devotional songs and spiritual content.",
+    "fg_score": 0
+  },
+  "#mamiciinromania": {
+    "about": "Moms in Romania sharing parenting experiences.",
+    "fg_score": 5
+  },
+  "#singingintheshower": {
+    "about": "People humorously singing in the shower.",
+    "fg_score": 1
+  },
+  "#weezer": {
+    "about": "Fans celebrating the band Weezer and their music.",
+    "fg_score": 0
+  },
+  "#atalanta": {
+    "about": "Fans discussing the Italian football club Atalanta.",
+    "fg_score": 0
+  },
+  "#newroz": {
+    "about": "Celebrations and traditions of the Newroz spring festival.",
+    "fg_score": 1
+  },
+  "#війнавукраїні": {
+    "about": "News and personal stories about the war in Ukraine.",
+    "fg_score": 0
+  },
+  "#مولانا": {
+    "about": "Quotes and teachings of the poet Rumi (Mawlana).",
+    "fg_score": 0
+  },
+  "#machinegunkelly": {
+    "about": "Fans discussing musician Machine Gun Kelly.",
+    "fg_score": 0
+  },
+  "#linksversifft": {
+    "about": "Political discussions, often left-leaning content.",
+    "fg_score": 0
+  },
+  "#مسلسلات_رمضان": {
+    "about": "Discussions and clips from Ramadan TV series.",
+    "fg_score": 0
+  },
+  "#александратрусова": {
+    "about": "Fans celebrating figure skater Alexandra Trusova.",
+    "fg_score": 0
+  },
+  "#notes": {
+    "about": "People sharing aesthetic notes and study tips.",
+    "fg_score": 1
+  },
+  "#myname": {
+    "about": "People sharing facts or jokes about their names.",
+    "fg_score": 1
+  },
+  "#emojistories": {
+    "about": "People telling stories using only emojis.",
+    "fg_score": 1
+  },
+  "#familieg": {
+    "about": "Families sharing daily life and activities.",
+    "fg_score": 5
+  },
+  "#🤲🤲🤲": {
+    "about": "People sharing prayers and blessings.",
+    "fg_score": 0
+  },
+  "#sanremo": {
+    "about": "Content related to the Sanremo Music Festival.",
+    "fg_score": 0
+  },
+  "#festivaldisanremo": {
+    "about": "Content related to the Sanremo Music Festival.",
+    "fg_score": 0
+  },
+  "#fantasanremo": {
+    "about": "Fantasy game based on the Sanremo Music Festival.",
+    "fg_score": 0
+  },
+  "#elettralamborghini": {
+    "about": "Content about Italian singer Elettra Lamborghini.",
+    "fg_score": 0
+  },
+  "#sopravvivereafebbraio": {
+    "about": "Tips and humor about surviving the month of February.",
+    "fg_score": 1
+  },
+  "#ritadecrescenzo": {
+    "about": "Content featuring Italian influencer Rita De Crescenzo.",
+    "fg_score": 0
+  },
+  "#scream7": {
+    "about": "Discussions and theories about the movie Scream 7.",
     "fg_score": 0
   },
   "samuraijay": {
-    "about": "Content related to the German rapper Samurai Jay.",
+    "about": "This is about a musical artist named Samurai Jay.",
     "fg_score": 0
   },
   "festival": {
-    "about": "Content about various music, cultural, or entertainment festivals.",
+    "about": "This is about music festivals and entertainment events.",
     "fg_score": 0
   },
   "lda": {
-    "about": "Content related to the Italian singer Luca D'Alessio.",
+    "about": "This is about a musical artist named LDA.",
     "fg_score": 0
   },
   "sanremorai": {
-    "about": "Italian music festival Sanremo, broadcast by Rai.",
+    "about": "This is about the Sanremo Music Festival.",
     "fg_score": 0
   },
   "ariston": {
-    "about": "The Ariston Theatre, venue for Sanremo music festival.",
+    "about": "This is about the Ariston Theatre, venue for Sanremo Festival.",
     "fg_score": 0
   },
   "quadgod": {
-    "about": "Extreme sports content featuring quad bike stunts.",
+    "about": "This is about extreme sports and quad biking stunts.",
     "fg_score": 0
   },
   "tommasoparadiso": {
-    "about": "Content related to Italian singer-songwriter Tommaso Paradiso.",
+    "about": "This is about the Italian singer Tommaso Paradiso.",
     "fg_score": 0
   },
   "scuolasuperiore": {
-    "about": "High school life, experiences, humor, and relatable fails.",
-    "fg_score": 1
+    "about": "This is about high school life and funny student moments.",
+    "fg_score": 0
   },
   "uovadipasqua": {
-    "about": "Easter eggs, their preparation, display, or consumption.",
+    "about": "This is about Easter eggs, often chocolate or decorative.",
     "fg_score": 3
   },
   "labirinto": {
-    "about": "People exploring mazes or labyrinths, often with selfies.",
-    "fg_score": 1
+    "about": "This is about mazes and labyrinth challenges.",
+    "fg_score": 0
   },
   "fashionweek": {
-    "about": "Fashion shows, events, and related style content.",
+    "about": "This is about fashion shows and style trends.",
     "fg_score": 0
   },
   "milanfashionweek": {
-    "about": "Milan Fashion Week events, styles, and photography.",
+    "about": "This is about Milan Fashion Week events and styles.",
     "fg_score": 0
   },
   "bodoglimt": {
-    "about": "News and content related to Bodø/Glimt football club.",
+    "about": "This is about the Norwegian football club Bodø/Glimt.",
     "fg_score": 0
   },
   "festadelpapà": {
-    "about": "Celebrating Father's Day, gifts, and family moments.",
-    "fg_score": 6
+    "about": "This is about Father's Day celebrations and gifts.",
+    "fg_score": 5
   },
   "nightmarerotation": {
-    "about": "Visual content featuring surreal or abstract rotating graphics.",
+    "about": "This is about unsettling or oddly satisfying visual effects.",
     "fg_score": 0
   },
   "sombr": {
-    "about": "Artistic content, possibly related to a specific style or character.",
+    "about": "This is about artistic creations or performances.",
     "fg_score": 0
   },
   "sciacca": {
-    "about": "Fashion content, outfits, or a specific apparel brand/style.",
-    "fg_score": 0
+    "about": "People showing off their outfits and fashion choices.",
+    "fg_score": 1
   },
   "giovannifashion": {
-    "about": "Fashion content, outfits, or a specific apparel brand/designer.",
+    "about": "People sharing fashion content related to the brand Giovanni Fashion.",
+    "fg_score": 1
+  },
+  "primavera2026": {
+    "about": "People sharing spring fashion trends and outfit ideas for 2026.",
+    "fg_score": 1
+  },
+  "slimmingshapewear": {
+    "about": "People reviewing or showcasing slimming shapewear products.",
+    "fg_score": 1
+  },
+  "sanremo2026": {
+    "about": "Discussions and content related to the Sanremo Music Festival 2026.",
+    "fg_score": 0
+  },
+  "luche": {
+    "about": "Content related to the Italian rapper Luchè.",
+    "fg_score": 0
+  },
+  "arisa": {
+    "about": "Content related to the Italian singer Arisa.",
+    "fg_score": 0
+  },
+  "carloconti": {
+    "about": "Content related to the Italian television presenter Carlo Conti.",
+    "fg_score": 0
+  },
+  "luchè": {
+    "about": "Content related to the Italian rapper Luchè.",
+    "fg_score": 0
+  },
+  "saldavinci": {
+    "about": "Content related to the Italian comedian and actor Sal Da Vinci.",
+    "fg_score": 0
+  },
+  "chiello": {
+    "about": "Content related to the Italian singer Chiello.",
+    "fg_score": 0
+  },
+  "monkey": {
+    "about": "Videos featuring monkeys, often humorous or cute.",
     "fg_score": 0
   },
   "gymoutfit": {
-    "about": "Showcasing workout attire and fitness fashion.",
+    "about": "People sharing their gym outfits and activewear styles.",
     "fg_score": 1
   },
   "tizianoferro": {
-    "about": "Italian singer Tiziano Ferro's music and life.",
+    "about": "Content related to the Italian singer Tiziano Ferro.",
     "fg_score": 0
   },
   "sayf": {
-    "about": "A specific person, sound, or viral trend.",
+    "about": "General content featuring or about someone named Sayf.",
     "fg_score": 0
   },
   "fendi": {
-    "about": "Luxury fashion brand Fendi products and styling.",
-    "fg_score": 0
+    "about": "People showcasing Fendi luxury fashion items and outfits.",
+    "fg_score": 1
   },
   "23": {
-    "about": "Ambiguous; could be a number, year, song, or sports reference.",
+    "about": "People sharing significant life events or memories related to the age 23.",
+    "fg_score": 1
+  },
+  "jax": {
+    "about": "Fans reacting to the song 'Victoria's Secret' by Jax.",
+    "fg_score": 1
+  },
+  "serenabrancale": {
+    "about": "Content featuring the Italian singer Serena Brancale.",
+    "fg_score": 1
+  },
+  "mfw": {
+    "about": "People sharing 'My Face When' reaction memes.",
+    "fg_score": 1
+  },
+  "bodo": {
+    "about": "Content related to the Norwegian football club Bodø/Glimt.",
+    "fg_score": 0
+  },
+  "pushupleggings": {
+    "about": "Showcasing and reviewing push-up leggings.",
+    "fg_score": 1
+  },
+  "sanremo2025": {
+    "about": "Anticipation and discussions about the Sanremo Music Festival 2025.",
+    "fg_score": 1
+  },
+  "rogoredo": {
+    "about": "Content related to the Rogoredo area in Milan, Italy.",
+    "fg_score": 1
+  },
+  "ditonellapiaga": {
+    "about": "Content featuring the Italian singer Ditonellapiaga.",
+    "fg_score": 1
+  },
+  "nightmare": {
+    "about": "People sharing their scary or stressful experiences.",
+    "fg_score": 1
+  },
+  "nickelodeon": {
+    "about": "Nostalgia and content related to Nickelodeon shows.",
+    "fg_score": 1
+  },
+  "tg1": {
+    "about": "Content related to the Italian news program TG1.",
+    "fg_score": 0
+  },
+  "sanremo2024": {
+    "about": "Highlights and discussions from the Sanremo Music Festival 2024.",
+    "fg_score": 1
+  },
+  "barella": {
+    "about": "Content related to the Italian footballer Nicolò Barella.",
+    "fg_score": 0
+  },
+  "atalantanapoli": {
+    "about": "Content related to the football match between Atalanta and Napoli.",
+    "fg_score": 0
+  },
+  "easter": {
+    "about": "People sharing Easter celebrations, decorations, and activities.",
+    "fg_score": 5
+  },
+  "luché": {
+    "about": "Content featuring the Italian rapper Luchè.",
+    "fg_score": 1
+  },
+  "levante": {
+    "about": "Content featuring the Italian singer Levante.",
+    "fg_score": 1
+  },
+  "milanparma": {
+    "about": "Content related to the football match between Milan and Parma.",
+    "fg_score": 0
+  },
+  "affezionarsi": {
+    "about": "People sharing moments of becoming attached to someone or something.",
+    "fg_score": 1
+  },
+  "#ofertasparati": {
+    "about": "People sharing and finding deals on various products.",
+    "fg_score": 3
+  },
+  "#karinagarciaoficiall": {
+    "about": "Content related to the Mexican influencer Karina Garcia.",
+    "fg_score": 1
+  },
+  "#copaacb": {
+    "about": "Highlights and discussions about the Spanish basketball cup.",
     "fg_score": 0
   },
   "#бравлстарс": {
-    "about": "A popular mobile multiplayer online battle arena game.",
+    "about": "Content about the mobile game Brawl Stars.",
     "fg_score": 0
   },
   "#canelita": {
-    "about": "A character or funny situations, often involving fails.",
+    "about": "DIY crafts and life hacks, often with humorous fails.",
+    "fg_score": 3
+  },
+  "#pablovera": {
+    "about": "Content related to the Spanish comedian Pablo Vera.",
+    "fg_score": 1
+  },
+  "#quedada": {
+    "about": "Meetups and gatherings, often involving vehicles or food.",
+    "fg_score": 3
+  },
+  "#charlidamelio": {
+    "about": "Dance videos and lifestyle content by Charli D'Amelio.",
+    "fg_score": 1
+  },
+  "#easy": {
+    "about": "Simple life hacks and magic tricks, sometimes with fails.",
+    "fg_score": 3
+  },
+  "#eid": {
+    "about": "Celebrations and greetings for the Islamic holiday Eid.",
     "fg_score": 1
   },
   "#mammamia": {
-    "about": "The popular musical and movie featuring ABBA songs.",
+    "about": "Content related to the musical and movie Mamma Mia.",
     "fg_score": 1
   },
   "#porsimañanayanoestoy": {
-    "about": "An emotional song lyric for romantic or reflective content.",
-    "fg_score": 0
+    "about": "Emotional content about love and loss, often with music.",
+    "fg_score": 1
   },
   "#jk": {
-    "about": "Content related to K-pop idol Jungkook (JK).",
-    "fg_score": 0
+    "about": "Content related to BTS member Jungkook, often dance.",
+    "fg_score": 1
+  },
+  "#cartera": {
+    "about": "Content about wallets, often DIY or organization related.",
+    "fg_score": 3
+  },
+  "#veneno": {
+    "about": "Life hacks and food content, sometimes with a 'poison' twist.",
+    "fg_score": 3
   },
   "#electric": {
-    "about": "Electric vehicles, gadgets, or related life hacks.",
+    "about": "DIY projects and life hacks involving electricity or tools.",
+    "fg_score": 3
+  },
+  "#sebastianyatra": {
+    "about": "Content related to the Colombian singer Sebastián Yatra.",
     "fg_score": 1
   },
   "#malu": {
-    "about": "Content related to Spanish singer Malú or her music.",
-    "fg_score": 0
-  },
-  "#crida": {
-    "about": "The opening ceremony of the Fallas festival in Valencia.",
+    "about": "Content related to the Spanish singer Malú.",
     "fg_score": 1
   },
+  "#crida": {
+    "about": "Content related to calls to action or specific events.",
+    "fg_score": 1
+  },
+  "#callate": {
+    "about": "Humorous content about telling someone to be quiet.",
+    "fg_score": 1
+  },
+  "#gadgetsparahombres": {
+    "about": "Reviews and showcases of gadgets for men.",
+    "fg_score": 3
+  },
   "#rosita": {
-    "about": "A character or trend related to supernatural or horror content.",
-    "fg_score": 0
+    "about": "Content related to a character or person named Rosita.",
+    "fg_score": 1
+  },
+  "#fakeland": {
+    "about": "Content about creating fake scenarios or pranks.",
+    "fg_score": 1
   },
   "#eternidad": {
-    "about": "DIY projects, education, or business advice related to longevity.",
+    "about": "Content about lasting things, often DIY or motivational.",
     "fg_score": 3
   },
   "#omar": {
-    "about": "Content featuring a person named Omar, often with hilarious fails.",
+    "about": "Humorous fails and content related to a person named Omar.",
     "fg_score": 1
   },
-  "#fallasvalencia": {
-    "about": "The traditional Fallas festival celebrated in Valencia, Spain.",
+  "fallasvalencia": {
+    "about": "This trend is about the Fallas festival in Valencia, Spain.",
+    "fg_score": 3
+  },
+  "falles2026": {
+    "about": "This trend is about the Fallas festival in Valencia, Spain.",
+    "fg_score": 3
+  },
+  "long": {
+    "about": "This trend is about long hair transformations and cosplay.",
     "fg_score": 1
   },
-  "#falles2026": {
-    "about": "Future planning or fashion trends for the Fallas festival.",
+  "cachitodeluz": {
+    "about": "This trend is about photography tips and creative lighting.",
     "fg_score": 1
   },
-  "#diadelpadre": {
-    "about": "Celebrating Father's Day with family, gifts, and appreciation.",
-    "fg_score": 6
+  "buentiempo": {
+    "about": "This trend is about motivational content for work and personal development.",
+    "fg_score": 1
   },
-  "#ron": {
-    "about": "Content related to a person named Ron or a specific character.",
+  "textiles": {
+    "about": "This trend is about various textile art, crafts, and designs.",
+    "fg_score": 8
+  },
+  "liakali": {
+    "about": "This trend is about a creator sharing supernatural stories and satisfying content.",
+    "fg_score": 1
+  },
+  "caminata": {
+    "about": "This trend is about hiking, walking, and outdoor photography.",
+    "fg_score": 3
+  },
+  "gabontiktok🇬🇦": {
+    "about": "This trend is about general lifestyle and culture in Gabon.",
+    "fg_score": 1
+  },
+  "gabon🇬🇦": {
+    "about": "This trend is about general lifestyle and culture in Gabon.",
+    "fg_score": 1
+  },
+  "jerseyzara": {
+    "about": "This trend is about styling and reviewing Zara jerseys.",
+    "fg_score": 1
+  },
+  "mensfashion": {
+    "about": "This trend is about men's fashion and clothing styles.",
+    "fg_score": 1
+  },
+  "ventilador": {
+    "about": "People showing off their fans or creative uses for them.",
+    "fg_score": 1
+  },
+  "danirep": {
+    "about": "Fans and content related to the Spanish YouTuber DaniRep.",
     "fg_score": 0
   },
-  "#23f": {
-    "about": "Content related to the date February 23rd, often historical events.",
+  "diadelpadre": {
+    "about": "Celebrating Father's Day with gifts and family moments.",
+    "fg_score": 5
+  },
+  "ron": {
+    "about": "People making or enjoying rum-based drinks.",
+    "fg_score": 3
+  },
+  "23f": {
+    "about": "Commemorating the 1981 Spanish coup attempt.",
     "fg_score": 0
+  },
+  "vicio": {
+    "about": "People sharing their guilty pleasures or addictions.",
+    "fg_score": 1
+  },
+  "fk": {
+    "about": "A general abbreviation used in various contexts, often for emphasis.",
+    "fg_score": 0
+  },
+  "cetaphilrecomendadopordermatólogos": {
+    "about": "People reviewing and recommending Cetaphil skincare products.",
+    "fg_score": 1
+  },
+  "titi": {
+    "about": "People sharing funny or cute moments with their aunts.",
+    "fg_score": 1
+  },
+  "descansaenpaz": {
+    "about": "Tributes and memorials for deceased loved ones.",
+    "fg_score": 0
+  },
+  "gerardgibson": {
+    "about": "Fans and content related to the TikTok creator Gerard Gibson.",
+    "fg_score": 0
+  },
+  "melissagate": {
+    "about": "Discussions and reactions to a specific online drama involving Melissa.",
+    "fg_score": 0
+  },
+  "jalisco": {
+    "about": "Showcasing the culture, food, and beauty of Jalisco, Mexico.",
+    "fg_score": 1
+  },
+  "asencio": {
+    "about": "Fans and content related to the footballer Marco Asensio.",
+    "fg_score": 0
+  },
+  "paseos": {
+    "about": "People sharing their walks, strolls, or outings.",
+    "fg_score": 1
+  },
+  "ballibotmogis": {
+    "about": "People sharing funny fails and magic tricks with a robot.",
+    "fg_score": 0
+  },
+  "fortniteclips": {
+    "about": "Funny or impressive gameplay moments from Fortnite.",
+    "fg_score": 0
+  },
+  "margotrobbie": {
+    "about": "Content related to actress Margot Robbie and her movies.",
+    "fg_score": 0
+  },
+  "texas": {
+    "about": "Content about life, culture, and family in Texas.",
+    "fg_score": 5
+  },
+  "huishoudbeurs": {
+    "about": "A Dutch household fair featuring products and demonstrations.",
+    "fg_score": 5
+  },
+  "name": {
+    "about": "People sharing their names and related content.",
+    "fg_score": 1
+  },
+  "сатир": {
+    "about": "Content related to the mythical creature satyr or satire.",
+    "fg_score": 0
+  },
+  "warm": {
+    "about": "People showcasing warm clothing or cozy aesthetics.",
+    "fg_score": 5
+  },
+  "voorjaar": {
+    "about": "Content about spring, often related to home or nature.",
+    "fg_score": 5
+  },
+  "lana": {
+    "about": "Content related to the name Lana, often personal vlogs.",
+    "fg_score": 0
+  },
+  "visibilite": {
+    "about": "Content about increasing visibility, often for businesses.",
+    "fg_score": 1
+  },
+  "zon": {
+    "about": "Content about the sun, often related to weather or outdoors.",
+    "fg_score": 3
   },
   "lente": {
-    "about": "Content related to spring season, nature, and new beginnings.",
+    "about": "Celebrating the arrival of spring with nature, fashion, and outdoor activities.",
     "fg_score": 1
   },
   "tylerthecreator": {
-    "about": "Content featuring music, fashion, or persona of Tyler, The Creator.",
+    "about": "Content related to the musician Tyler, The Creator and his music.",
     "fg_score": 0
   },
   "umrah": {
-    "about": "Personal experiences and reflections on the Islamic pilgrimage to Mecca.",
-    "fg_score": 0
+    "about": "Sharing experiences and preparations for the Islamic pilgrimage Umrah.",
+    "fg_score": 1
   },
   "دعاء_يريح_القلوب": {
-    "about": "Sharing comforting Islamic prayers and supplications for peace.",
+    "about": "Sharing Islamic prayers and supplications for comfort and peace.",
+    "fg_score": 1
+  },
+  "возьмителефондетка": {
+    "about": "A trend where people react to a specific audio clip or challenge.",
+    "fg_score": 1
+  },
+  "dreamjob": {
+    "about": "People sharing their ideal or aspirational career paths and jobs.",
+    "fg_score": 1
+  },
+  "primadonna": {
+    "about": "Content related to the song 'Primadonna' by Marina and the Diamonds.",
     "fg_score": 0
   },
-  "#iftarideas": {
-    "about": "Sharing recipes and meal ideas for the Iftar meal.",
+  "rotterdamrave": {
+    "about": "Videos from the Rotterdam Rave techno music events and parties.",
+    "fg_score": 0
+  },
+  "isfad": {
+    "about": "A trend or meme, often with a humorous or relatable context.",
+    "fg_score": 1
+  },
+  "hateme": {
+    "about": "Content expressing self-deprecating humor or relatable struggles.",
+    "fg_score": 1
+  },
+  "buster": {
+    "about": "Content featuring a specific dog named Buster, often with funny antics.",
+    "fg_score": 1
+  },
+  "fantasm": {
+    "about": "Content related to the anime 'Fantasm' or similar fantasy themes.",
+    "fg_score": 0
+  },
+  "шаман": {
+    "about": "Content related to the Russian singer SHAMAN and his music.",
+    "fg_score": 0
+  },
+  "sunny": {
+    "about": "People sharing moments of sunshine and good weather.",
+    "fg_score": 5
+  },
+  "млп": {
+    "about": "My Little Pony content, often fan-made animations or discussions.",
+    "fg_score": 1
+  },
+  "мот": {
+    "about": "A Russian singer, sharing music and performance clips.",
+    "fg_score": 0
+  },
+  "flightattendant": {
+    "about": "Flight attendants sharing their work experiences and travel tips.",
     "fg_score": 3
   },
-  "#lospollostv": {
-    "about": "Content related to the Los Pollos TV gaming channel.",
+  "андрей": {
+    "about": "A Russian name, often used for personal vlogs or comedy skits.",
+    "fg_score": 1
+  },
+  "ceramics": {
+    "about": "Artists showcasing their ceramic creations and pottery processes.",
+    "fg_score": 5
+  },
+  "брайнмапс": {
+    "about": "A Russian YouTuber, sharing comedy skits and vlogs.",
     "fg_score": 0
   },
-  "#northlondonderby": {
-    "about": "Discussions and highlights of the North London football derby.",
+  "negenmaandenbeurs": {
+    "about": "A Dutch fair for pregnancy, babies, and young children.",
+    "fg_score": 5
+  },
+  "jalal": {
+    "about": "A creator sharing personal vlogs, selfies, and prank videos.",
+    "fg_score": 1
+  },
+  "baftas": {
+    "about": "Highlights and discussions from the British Academy Film Awards.",
     "fg_score": 0
   },
-  "#backtoschool": {
-    "about": "Students preparing for school, including supplies, outfits, and routines.",
-    "fg_score": 6
-  },
-  "#sehri": {
-    "about": "Recipes, meal prep, and routines for the pre-dawn Ramadan meal.",
-    "fg_score": 4
-  },
-  "#springiscoming": {
-    "about": "Seasonal refresh, including home decor, cleaning, and outdoor activities.",
-    "fg_score": 6
-  },
-  "#legallyblonde": {
-    "about": "Quotes, fashion, and appreciation for the movie \"Legally Blonde\".",
+  "arrested": {
+    "about": "Street interviews, social experiments, and magic performances.",
     "fg_score": 0
   },
-  "#iloveitiloveitiloveit": {
-    "about": "Expressing strong excitement or approval using a viral sound.",
-    "fg_score": 2
+  "springoutfit": {
+    "about": "People sharing their spring fashion choices and styling tips.",
+    "fg_score": 3
   },
-  "#bonnieblue": {
-    "about": "Content related to pets, often dogs or horses, named Bonnie Blue.",
-    "fg_score": 6
+  "iftarideas": {
+    "about": "Recipes and inspiration for Iftar meals during Ramadan.",
+    "fg_score": 3
   },
-  "#viewrush": {
-    "about": "Creators discussing strategies or celebrating videos getting many views.",
+  "lospollostv": {
+    "about": "A streamer sharing gaming content, pranks, and reactions.",
     "fg_score": 0
   },
-  "#signlanguage": {
-    "about": "Learning and using sign language for communication and education.",
-    "fg_score": 2
-  },
-  "#horizonglow": {
-    "about": "Aesthetic videos featuring sunsets, sunrises, and natural beauty.",
-    "fg_score": 2
-  },
-  "#brunettes": {
-    "about": "Celebrating brown hair, hair care, and fashion for brunettes.",
+  "northlondonderby": {
+    "about": "Football match content between Arsenal and Tottenham Hotspur.",
     "fg_score": 0
   },
-  "#forestsnap": {
-    "about": "Nature photography, aesthetic forest videos, and outdoor adventures.",
-    "fg_score": 4
+  "naturesnap": {
+    "about": "People sharing beautiful nature photography and outdoor scenes.",
+    "fg_score": 5
   },
-  "#nld": {
-    "about": "Content related to the North London Derby football match.",
+  "forestglow": {
+    "about": "People lip-syncing to a specific audio track.",
     "fg_score": 0
   },
-  "#oceanglow": {
-    "about": "Aesthetic videos featuring ocean views, bioluminescence, and beach scenes.",
-    "fg_score": 2
+  "angstyromance": {
+    "about": "Dramatic or humorous skits about angsty romantic situations.",
+    "fg_score": 0
   },
-  "#bgt": {
-    "about": "Content related to the TV show \"Britain's Got Talent\".",
+  "piscestour": {
+    "about": "A tour or event related to Pisces, often involving selfies and family.",
+    "fg_score": 0
+  },
+  "whychooseromance": {
+    "about": "Skit or discussion about choosing romance, often with a DIY or horror angle.",
+    "fg_score": 0
+  },
+  "viewsnap": {
+    "about": "People sharing quick snaps of their views, often motivational or sports-related.",
+    "fg_score": 0
+  },
+  "natureglow": {
+    "about": "People showcasing natural beauty and glowing effects.",
+    "fg_score": 0
+  },
+  "viewglow": {
+    "about": "People showcasing aesthetically pleasing views, often with filters or effects.",
+    "fg_score": 0
+  },
+  "skyrush": {
+    "about": "Content related to fast-paced activities or games in the sky.",
+    "fg_score": 0
+  },
+  "skydrift": {
+    "about": "Content related to drifting or flying in the sky.",
+    "fg_score": 0
+  },
+  "skyvibes": {
+    "about": "People sharing aesthetic sky views and related romantic or dramatic content.",
+    "fg_score": 0
+  },
+  "naturerush": {
+    "about": "People showcasing fast-paced nature experiences or food tours.",
+    "fg_score": 0
+  },
+  "wildvibes": {
+    "about": "People sharing content with a wild, free, or adventurous aesthetic.",
+    "fg_score": 0
+  },
+  "earthsnap": {
+    "about": "People sharing quick snaps of natural landscapes or earth-related content.",
+    "fg_score": 0
+  },
+  "hilldrift": {
+    "about": "Content related to drifting or driving on hills.",
+    "fg_score": 0
+  },
+  "skyglow": {
+    "about": "People showcasing beautiful sky glows, often with babies or transportation.",
+    "fg_score": 0
+  },
+  "earthdrift": {
+    "about": "Content related to drifting or moving across earthy landscapes.",
+    "fg_score": 0
+  },
+  "tanned": {
+    "about": "People showcasing their tanned skin or tanning routines.",
+    "fg_score": 0
+  },
+  "whitetoes": {
+    "about": "People showing off their white painted toenails.",
+    "fg_score": 0
+  },
+  "iloveit": {
+    "about": "People sharing things they love, often in a humorous way.",
+    "fg_score": 1
+  },
+  "holidayoutfit": {
+    "about": "Users showcasing their outfits for holiday celebrations.",
+    "fg_score": 1
+  },
+  "calmglow": {
+    "about": "People sharing their skincare routines for a calm, glowing complexion.",
+    "fg_score": 1
+  },
+  "backtoschool": {
+    "about": "Students preparing for or returning to school.",
+    "fg_score": 1
+  },
+  "sehri": {
+    "about": "Muslims sharing their pre-dawn meal during Ramadan.",
+    "fg_score": 0
+  },
+  "springiscoming": {
+    "about": "People sharing signs of spring and seasonal changes.",
+    "fg_score": 1
+  },
+  "legallyblonde": {
+    "about": "Fans recreating scenes or referencing the movie Legally Blonde.",
+    "fg_score": 0
+  },
+  "iloveitiloveitiloveit": {
+    "about": "People expressing extreme enthusiasm for something they love.",
+    "fg_score": 1
+  },
+  "bonnieblue": {
+    "about": "People sharing content related to the character Bonnie Blue Butler.",
+    "fg_score": 0
+  },
+  "viewrush": {
+    "about": "Users trying to get more views on their TikTok videos.",
+    "fg_score": 0
+  },
+  "signlangauge": {
+    "about": "People teaching or demonstrating sign language.",
+    "fg_score": 0
+  },
+  "horizonglow": {
+    "about": "People sharing beautiful sunset or sunrise views.",
+    "fg_score": 1
+  },
+  "brunettes": {
+    "about": "People celebrating or showcasing their brunette hair.",
+    "fg_score": 0
+  },
+  "forestsnap": {
+    "about": "People sharing aesthetic photos or videos taken in forests.",
+    "fg_score": 1
+  },
+  "nld": {
+    "about": "Fans discussing the North London Derby football match.",
+    "fg_score": 0
+  },
+  "oceanglow": {
+    "about": "People sharing beautiful ocean views, often at sunrise/sunset.",
+    "fg_score": 1
+  },
+  "bgt": {
+    "about": "Fans reacting to performances on Britain's Got Talent.",
     "fg_score": 0
   }
 }
