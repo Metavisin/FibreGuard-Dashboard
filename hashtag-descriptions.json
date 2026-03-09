@@ -1031,9 +1031,9 @@
     "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays, religious observances, or political topics to avoid controversy and respect brand neutrality."
   },
   "8марта": {
-    "about": "content featuring DIY & Handicrafts, School Education.",
+    "about": "International Women's Day (8th March) in Russian — flowers, gifts, and celebrating women",
     "fg_score": 5,
-    "fg_reason": "Home DIY and improvement content naturally aligns with sofa upgrades."
+    "fg_reason": "Gifting occasion with a home angle — \"give her a home she never has to worry about\" is a credible FibreGuard message for this audience."
   },
   "electrician": {
     "about": "Electrician trade content — home renovation, wiring, and improvement projects",
@@ -1232,9 +1232,9 @@
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "8marzo": {
-    "about": "content featuring Advertisement, Other Beauty.",
-    "fg_score": 2,
-    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+    "about": "International Women's Day (8th March) in Italian/Spanish — flowers, tributes, and appreciation content",
+    "fg_score": 5,
+    "fg_reason": "Same gifting and appreciation angle as 8марта — a premium home product as a meaningful, lasting gift for the women in your life."
   },
   "insideout": {
     "about": "Games content featuring Oddly Satisfying, School Education.",
@@ -3740,8 +3740,8 @@
   },
   "umrah": {
     "about": "Trending hashtag #umrah.",
-    "fg_score": 2,
-    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays or political topics."
   },
   "دعاء_يريح_القلوب": {
     "about": "Trending hashtag #دعاء_يريح_القلوب.",
@@ -4402,5 +4402,115 @@
     "about": "content featuring Hilarious Fails, Photography.",
     "fg_score": 2,
     "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "ramadan": {
+    "about": "Trending hashtag #ramadan",
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays or political topics."
+  },
+  "shabbat": {
+    "about": "Trending hashtag #shabbat",
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays or political topics."
+  },
+  "hanukkah": {
+    "about": "Trending hashtag #hanukkah",
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays or political topics."
+  },
+  "chanukah": {
+    "about": "Trending hashtag #chanukah",
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays or political topics."
+  },
+  "passover": {
+    "about": "Trending hashtag #passover",
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays or political topics."
+  },
+  "roshhashanah": {
+    "about": "Trending hashtag #roshhashanah",
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays or political topics."
+  },
+  "yomkippur": {
+    "about": "Trending hashtag #yomkippur",
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays or political topics."
+  },
+  "sukkot": {
+    "about": "Trending hashtag #sukkot",
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays or political topics."
+  },
+  "purim": {
+    "about": "Trending hashtag #purim",
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays or political topics."
+  },
+  "pesach": {
+    "about": "Trending hashtag #pesach",
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays or political topics."
+  },
+  "synagogue": {
+    "about": "Trending hashtag #synagogue",
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays or political topics."
+  },
+  "mosque": {
+    "about": "Trending hashtag #mosque",
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays or political topics."
+  },
+  "islamic": {
+    "about": "Trending hashtag #islamic",
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays or political topics."
+  },
+  "muslim": {
+    "about": "Trending hashtag #muslim",
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays or political topics."
+  },
+  "quran": {
+    "about": "Trending hashtag #quran",
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays or political topics."
+  },
+  "hajj": {
+    "about": "Trending hashtag #hajj",
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays or political topics."
+  },
+  "trump": {
+    "about": "Trending hashtag #trump",
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays or political topics."
+  },
+  "biden": {
+    "about": "Trending hashtag #biden",
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays or political topics."
+  },
+  "election": {
+    "about": "Trending hashtag #election",
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays or political topics."
+  },
+  "maga": {
+    "about": "Trending hashtag #maga",
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays or political topics."
+  },
+  "democrat": {
+    "about": "Trending hashtag #democrat",
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays or political topics."
+  },
+  "republican": {
+    "about": "Trending hashtag #republican",
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays or political topics."
   }
 }
