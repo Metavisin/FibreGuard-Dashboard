@@ -1,13 +1,13 @@
 {
   "alysaliu": {
-    "about": "This trend is about figure skater Alysa Liu's performances.",
+    "about": "Sports & Outdoor content featuring Theatre & Stage, Extreme Sports.",
     "fg_score": 2,
-    "fg_reason": "This is figure skater fan content — essentially zero direct connection. The only stretch is a 'coming home after practice' angle, but it's too forced for a FibreGuard placement to feel authentic."
+    "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
   },
   "poppyplaytime": {
-    "about": "This trend is about the horror video game Poppy Playtime.",
+    "about": "Games content featuring Cosplay, Video Games.",
     "fg_score": 1,
-    "fg_reason": "Horror video game content — audience is primarily gaming/entertainment focused. The only imaginable angle is a parent complaining about their kid's messy gaming setup, but it's a huge stretch."
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "رمضان": {
     "about": "Ramadan — Islamic holy month, family gatherings & food content",
@@ -30,8 +30,9 @@
     "fg_score": 5
   },
   "usahockey": {
-    "about": "USA ice hockey team fan content & highlights",
-    "fg_score": 1
+    "about": "Trending hashtag #usahockey.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "larrywheels": {
     "about": "Powerlifter/bodybuilder influencer content",
@@ -54,16 +55,18 @@
     "fg_score": 1
   },
   "hannahmontana": {
-    "about": "Hannah Montana nostalgia — throwback content for 90s/00s adults",
-    "fg_score": 3
+    "about": "Trending hashtag #hannahmontana.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "livegrowfollowers": {
     "about": "Creator economy growth tips & TikTok engagement meta-content",
     "fg_score": 1
   },
   "loveisblindnetflix": {
-    "about": "This trend is about the Netflix reality show Love Is Blind.",
-    "fg_score": 0
+    "about": "News & Entertainment content featuring Entertainment News, Health & Wellness.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "رمضان_كريم": {
     "about": "Ramadan Kareem — Islamic holy month blessings content",
@@ -74,50 +77,57 @@
     "fg_score": 3
   },
   "lowcortisol": {
-    "about": "Low cortisol / stress-free lifestyle & cozy home content",
-    "fg_score": 8,
-    "fg_reason": "Strong fit. This trend is about eliminating stress and creating calm environments — FibreGuard removes the anxiety of spills and stains. 'Things that lower my cortisol: a sofa I can't ruin' is practically ready-made content."
+    "about": "Trending hashtag #lowcortisol.",
+    "fg_score": 9,
+    "fg_reason": "Perfect direct fit — lowcortisol is exactly FibreGuard's audience and context."
   },
   "huggywuggy": {
-    "about": "This trend is about the character Huggy Wuggy from Poppy Playtime.",
-    "fg_score": 0
+    "about": "Games content featuring Cosplay, Video Games.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "als": {
-    "about": "ALS disease awareness & ice bucket challenge revival",
-    "fg_score": 1
+    "about": "Trending hashtag #als.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "23февраля": {
-    "about": "This trend is about Defender of the Fatherland Day in Russia.",
-    "fg_score": 0
+    "about": "content featuring Video Games, Comics & Cartoon, Anime.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "heathcliff": {
     "about": "Wuthering Heights character / classic novel adaptation content",
     "fg_score": 2
   },
   "princeandrew": {
-    "about": "Discussions and news updates about Prince Andrew.",
-    "fg_score": 0
+    "about": "News & Entertainment content featuring Humanities, Entertainment News.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "cny": {
     "about": "Chinese New Year — celebrations, red envelopes & family content",
     "fg_score": 5
   },
   "iftar": {
-    "about": "Iftar — Ramadan evening meal, family dining & food content",
-    "fg_score": 5,
-    "fg_reason": "Ramadan evening meal content — family gatherings around the dinner table, which means food, drinks, and real spill risk on furniture. The 'hosting family with peace of mind' angle is genuine and culturally respectful."
+    "about": "Trending hashtag #iftar.",
+    "fg_score": 6,
+    "fg_reason": "Family celebration content = food, kids, and spill risk at home."
   },
   "pinkiepie": {
-    "about": "Fans creating content related to the My Little Pony character.",
-    "fg_score": 1
+    "about": "Games content featuring Cosplay, Oddly Satisfying.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "rainbowdash": {
-    "about": "My Little Pony character — fan & kids content",
-    "fg_score": 1
+    "about": "Trending hashtag #rainbowdash.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "babykeem": {
-    "about": "Rapper Baby Keem music & fan content",
-    "fg_score": 1
+    "about": "Trending hashtag #babykeem.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "рамадан": {
     "about": "Ramadan (Russian) — Islamic holy month family & food content",
@@ -176,8 +186,9 @@
     "fg_score": 1
   },
   "secretaccout": {
-    "about": "People sharing content from their anonymous or private accounts.",
-    "fg_score": 1
+    "about": "Trending hashtag #secretaccout.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "personalized": {
     "about": "Personalized gifts & custom items content",
@@ -188,41 +199,46 @@
     "fg_score": 3
   },
   "ericdane": {
-    "about": "This trend is about actor Eric Dane and his roles.",
-    "fg_score": 0
+    "about": "News & Entertainment content featuring Entertainment News, Family.",
+    "fg_score": 5,
+    "fg_reason": "Family-focused content aligns with FibreGuard's parent and homeowner audience."
   },
   "victorious": {
-    "about": "Fans sharing nostalgic clips and memes from the TV show.",
-    "fg_score": 1
+    "about": "Trending hashtag #victorious.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "yearofthehorse": {
     "about": "Chinese zodiac Year of the Horse — luck & new year content",
     "fg_score": 4
   },
   "punch": {
-    "about": "This trend is about a viral zoo monkey named Punch.",
-    "fg_score": 3,
-    "fg_reason": "This is the viral zoo monkey rejected by his mom — no direct FibreGuard angle, but a comedy stretch exists: a monkey finding comfort on a plush FibreGuard sofa. Extremely indirect; works only as a humorous social play if the trend stays hot."
+    "about": "Sports & Outdoor content featuring Other Animals, Recreation Facilities.",
+    "fg_score": 6,
+    "fg_reason": "Pet owners and their furniture are exactly FibreGuard's target market."
   },
   "efectobaile": {
     "about": "Viral Latin dance trend / trending audio content",
     "fg_score": 2
   },
   "cloud9": {
-    "about": "People sharing moments of extreme happiness and joy.",
-    "fg_score": 1
+    "about": "Trending hashtag #cloud9.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "therians": {
-    "about": "Therian community — people who identify as animals (niche)",
-    "fg_score": 1
+    "about": "Trending hashtag #therians.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "antm": {
     "about": "America's Next Top Model — reality TV nostalgia & fashion",
     "fg_score": 2
   },
   "poppyplaytimechapter5": {
-    "about": "Poppy Playtime Chapter 5 — new chapter gaming content",
-    "fg_score": 1
+    "about": "Trending hashtag #poppyplaytimechapter5.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "mardigras2026": {
     "about": "Mardi Gras 2026 — Carnival celebrations & party content",
@@ -237,8 +253,9 @@
     "fg_score": 1
   },
   "ryangarcia": {
-    "about": "Boxing champion Ryan Garcia fights & controversy",
-    "fg_score": 1
+    "about": "Trending hashtag #ryangarcia.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "littlemissdramatour": {
     "about": "Music (likely Harry Styles) concert tour content",
@@ -253,28 +270,33 @@
     "fg_score": 1
   },
   "omarcourtz": {
-    "about": "This trend is about actor and singer Omar Courtz.",
-    "fg_score": 0
+    "about": "content featuring Selfies, Scripted Drama.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "mcsteamy": {
-    "about": "Grey's Anatomy character McSteamy (Eric Dane) content",
-    "fg_score": 1
+    "about": "Trending hashtag #mcsteamy.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "fluttershy": {
-    "about": "My Little Pony character Fluttershy — fan & kids content",
-    "fg_score": 1
+    "about": "Trending hashtag #fluttershy.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "losbukis": {
-    "about": "Los Bukis (Mexican band) nostalgia & music content",
-    "fg_score": 1
+    "about": "Trending hashtag #losbukis.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "presidentsday": {
     "about": "Presidents Day — US holiday sales & patriotic content",
     "fg_score": 2
   },
   "marksloan": {
-    "about": "This trend is about the character Mark Sloan from Grey's Anatomy.",
-    "fg_score": 0
+    "about": "News & Entertainment content featuring Non-Video Games, Entertainment News.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "fattuesday": {
     "about": "Fat Tuesday (Mardi Gras) — party & food celebration content",
@@ -285,8 +307,9 @@
     "fg_score": 4
   },
   "swm": {
-    "about": "Users showcasing their hair transformations and dance moves.",
-    "fg_score": 1
+    "about": "Vehicle & Transportation content featuring Selfies, Finger Dance & Basic Dance.",
+    "fg_score": 2,
+    "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
   },
   "amithedrama": {
     "about": "Self-aware 'am I the drama?' relatable viral trend",
@@ -301,128 +324,150 @@
     "fg_score": 1
   },
   "tariffs": {
-    "about": "Discussions and news about economic tariffs and trade.",
-    "fg_score": 0
+    "about": "News & Entertainment content featuring Social News, Business & Finance.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "neda": {
     "about": "NEDA (National Eating Disorders Association) awareness content",
     "fg_score": 1
   },
   "prototype": {
-    "about": "Gaming (action game) or 'prototype' fashion trend content",
-    "fg_score": 1
+    "about": "Trending hashtag #prototype.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "jfkjr": {
-    "about": "JFK Jr. political conspiracy theory & news content",
-    "fg_score": 1
+    "about": "Trending hashtag #jfkjr.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "reanimal": {
     "about": "Re-animal trend — wild animal behavior or nature content",
     "fg_score": 2
   },
   "chevere": {
-    "about": "Chévere (Spanish slang for 'cool') — Latin lifestyle content",
-    "fg_score": 2
+    "about": "Trending hashtag #chevere.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "springtraining": {
     "about": "MLB baseball spring training camp highlights",
     "fg_score": 1
   },
   "bootcampuntalfredo": {
-    "about": "Users sharing cooking recipes and home organization tips.",
-    "fg_score": 4
+    "about": "content featuring Selfies, Cooking.",
+    "fg_score": 4,
+    "fg_reason": "Food content in home settings has natural sofa stain prevention angle."
   },
   "rarity": {
-    "about": "My Little Pony character Rarity — fan & kids content",
-    "fg_score": 1
+    "about": "Trending hashtag #rarity.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "nedawareness": {
     "about": "National Eating Disorders Awareness Week content",
     "fg_score": 1
   },
   "wildchild": {
-    "about": "People sharing moments of their children being energetic or mischievous.",
-    "fg_score": 5
+    "about": "Trending hashtag #wildchild.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "масленица": {
-    "about": "People celebrating the Russian holiday with food and traditions.",
-    "fg_score": 3
+    "about": "Food & Beverage content featuring Video Games, Comics & Cartoon, Anime.",
+    "fg_score": 6,
+    "fg_reason": "Pet owners and their furniture are exactly FibreGuard's target market."
   },
   "mayhemball": {
-    "about": "People showcasing elaborate costumes and dance performances.",
-    "fg_score": 1
+    "about": "News & Entertainment content featuring Entertainment News, Dance.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "springnails": {
-    "about": "People showcasing various nail art designs for spring.",
-    "fg_score": 1
+    "about": "Trending hashtag #springnails.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "elcinco": {
-    "about": "A trend related to a specific date or event, often sports-related.",
-    "fg_score": 0
+    "about": "Trending hashtag #elcinco.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "newranter": {
     "about": "New ranter trend — venting/opinion sharing content",
     "fg_score": 1
   },
   "темка": {
-    "about": "A Russian trend often involving personal stories or relatable situations.",
-    "fg_score": 1
+    "about": "Trending hashtag #темка.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "tellmeliesfinale": {
     "about": "Tell Me Lies (Hulu show) finale reactions & drama",
     "fg_score": 1
   },
   "tanlines": {
-    "about": "People showing off their summer tans and beauty routines.",
-    "fg_score": 1
+    "about": "content featuring Nail Art, Other Beauty.",
+    "fg_score": 4,
+    "fg_reason": "Young people making home content provides sofa/dorm furniture angle."
   },
   "williecolon": {
-    "about": "People sharing and dancing to music by Willie Colón.",
-    "fg_score": 0
+    "about": "Trending hashtag #williecolon.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "boomtown": {
-    "about": "Content related to a music festival with unique vehicles.",
-    "fg_score": 1
+    "about": "News & Entertainment content featuring Cars, Trucks & Motorcycles, Farm Animals.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "ceravepartner": {
-    "about": "This trend is about CeraVe skincare product promotions.",
-    "fg_score": 0
+    "about": "Beauty & Personal Care content featuring Sports News, Other Beauty.",
+    "fg_score": 3,
+    "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
   },
   "ousi": {
-    "about": "Users sharing travel vlogs and scenic views.",
-    "fg_score": 1
+    "about": "content featuring Selfies, Music.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "aodai": {
     "about": "Áo dài — Vietnamese traditional dress & cultural content",
     "fg_score": 2
   },
   "rhianna": {
-    "about": "Fans dancing to Rihanna's music and sharing selfies.",
-    "fg_score": 0
+    "about": "content featuring Selfies, Finger Dance & Basic Dance.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "trendsobremim": {
-    "about": "Users sharing personal facts or stories about themselves.",
-    "fg_score": 1
+    "about": "Trending hashtag #trendsobremim.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "ramadhan": {
     "about": "Ramadan (French spelling) — Islamic holy month family & food content",
     "fg_score": 5
   },
   "tiramisu": {
-    "about": "People sharing recipes, making, and enjoying tiramisu.",
-    "fg_score": 3
+    "about": "Trending hashtag #tiramisu.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "chroniqueemoji": {
-    "about": "Emoji chronique — French viral commentary format",
-    "fg_score": 2
+    "about": "Games content featuring Hilarious Fails, Oddly Satisfying.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "careme": {
     "about": "Carême (French Lent) — Christian fasting & reflection content",
     "fg_score": 3
   },
   "greysanatomy": {
-    "about": "Fans discussing and reacting to the TV show Grey's Anatomy.",
-    "fg_score": 0
+    "about": "Trending hashtag #greysanatomy.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "quentin": {
     "about": "French name/person trend content",
@@ -441,48 +486,55 @@
     "fg_score": 3
   },
   "nyxcosmeticsfrance": {
-    "about": "NYX Cosmetics France — makeup brand partnership content",
-    "fg_score": 1
+    "about": "Beauty & Personal Care content featuring Beauty, Photography.",
+    "fg_score": 3,
+    "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
   },
   "nouvelanchinois": {
     "about": "Chinese New Year (French) — family celebrations & decorations",
     "fg_score": 5
   },
   "rant": {
-    "about": "Opinion rant trend — venting & commentary content",
-    "fg_score": 1
+    "about": "Games content featuring Oddly Satisfying, Other Art.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "tomkaulitz": {
     "about": "Musician Tom Kaulitz (Tokio Hotel) celebrity content",
     "fg_score": 1
   },
   "crue": {
-    "about": "Motley Crüe music fan content or flood/current (French)",
-    "fg_score": 1
+    "about": "News & Entertainment content trending on TikTok.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "greece": {
     "about": "Greece travel & lifestyle content",
     "fg_score": 3
   },
   "manon": {
-    "about": "French name / influencer content",
-    "fg_score": 1
+    "about": "News & Entertainment content featuring Entertainment News, Oddly Satisfying.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "danganronpa": {
     "about": "Danganronpa anime/video game fan content",
     "fg_score": 1
   },
   "slimes": {
-    "about": "People making, playing with, and reviewing various slimes.",
-    "fg_score": 3
+    "about": "Trending hashtag #slimes.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "jeanfils": {
-    "about": "Jean Fils — French comedy/influencer content",
-    "fg_score": 1
+    "about": "Games content featuring Hilarious Fails, Magic.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "tall": {
-    "about": "People sharing experiences or humor related to being tall.",
-    "fg_score": 0
+    "about": "Trending hashtag #tall.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "ramazan": {
     "about": "Ramazan (Turkish/DE spelling of Ramadan) — family & food content",
@@ -505,8 +557,9 @@
     "fg_score": 2
   },
   "tarawih": {
-    "about": "Tarawih — nightly Ramadan prayers & mosque content",
-    "fg_score": 3
+    "about": "content featuring Science, Fishing, Hunting & Camping.",
+    "fg_score": 4,
+    "fg_reason": "At least one home-lifestyle signal provides a FibreGuard content angle."
   },
   "mardigras": {
     "about": "Mardi Gras — Carnival celebrations & festive content",
@@ -521,36 +574,41 @@
     "fg_score": 1
   },
   "innondation": {
-    "about": "People sharing videos and news about floods and their impact.",
-    "fg_score": 1
+    "about": "News & Entertainment content trending on TikTok.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "brun": {
-    "about": "People sharing content related to brown hair or brown-themed aesthetics.",
-    "fg_score": 1
+    "about": "content featuring Recreation Facilities, Selfies.",
+    "fg_score": 4,
+    "fg_reason": "Food content in home settings has natural sofa stain prevention angle."
   },
   "vini": {
     "about": "Footballer Vinicius Jr. nickname content",
     "fg_score": 1
   },
   "obelix": {
-    "about": "Content related to the character Obelix from Asterix comics.",
-    "fg_score": 0
+    "about": "Trending hashtag #obelix.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "✝️": {
     "about": "Christian cross emoji — Easter/Lent devotional content",
     "fg_score": 3
   },
   "sarahrivens": {
-    "about": "Content related to the influencer Sarah Rivens and her work.",
-    "fg_score": 0
+    "about": "content featuring Photography, Software & APPs.",
+    "fg_score": 5,
+    "fg_reason": "Home DIY and improvement content naturally aligns with sofa upgrades."
   },
   "portugaise": {
     "about": "Portuguese culture/lifestyle content (France context)",
     "fg_score": 2
   },
   "boue": {
-    "about": "People sharing videos of vehicles stuck in mud or mud-related activities.",
-    "fg_score": 1
+    "about": "Vehicle & Transportation content featuring Magic, Hilarious Fails.",
+    "fg_score": 2,
+    "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
   },
   "رمضانيات": {
     "about": "Ramadan traditions — daily Ramadan lifestyle & food content",
@@ -565,28 +623,33 @@
     "fg_score": 2
   },
   "rants": {
-    "about": "Users expressing strong opinions or frustrations on various topics.",
-    "fg_score": 0
+    "about": "Trending hashtag #rants.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "italienne🇮🇹🇮🇹": {
     "about": "Italian girl in France — cultural identity lifestyle content",
     "fg_score": 2
   },
   "animeclothing": {
-    "about": "People showcasing and styling clothing inspired by anime.",
-    "fg_score": 1
+    "about": "Apparel & Accessories content featuring Magic, Software & APPs.",
+    "fg_score": 4,
+    "fg_reason": "Fashion/beauty content shot at home provides natural sofa background presence."
   },
   "greecetiktok": {
-    "about": "Content from or related to Greece, often cultural or travel.",
-    "fg_score": 0
+    "about": "Trending hashtag #greecetiktok.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "romancereads": {
-    "about": "People discussing and recommending romance novels.",
-    "fg_score": 0
+    "about": "content featuring Science, Motivation.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "asterix": {
-    "about": "Astérix French comic/movie fan & nostalgia content",
-    "fg_score": 2
+    "about": "Travel content featuring Hilarious Fails, Recreation Facilities.",
+    "fg_score": 2,
+    "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
   },
   "vinijr": {
     "about": "Footballer Vinicius Jr. fan & highlights content",
@@ -609,8 +672,9 @@
     "fg_score": 2
   },
   "gif": {
-    "about": "GIF reaction & animation content",
-    "fg_score": 1
+    "about": "News & Entertainment content featuring Professional Special Effects, Oddly Satisfying.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "inondation": {
     "about": "Flooding (French) — weather emergency & disaster content",
@@ -625,32 +689,37 @@
     "fg_score": 5
   },
   "ftour": {
-    "about": "Ftour — Moroccan Ramadan iftar meal & food content",
-    "fg_score": 5
+    "about": "Food & Beverage content featuring Food Tour & Recommendations, Life Hacks.",
+    "fg_score": 4,
+    "fg_reason": "Food content in home settings has natural sofa stain prevention angle."
   },
   "aid": {
-    "about": "Eid celebration — post-Ramadan festive food & family content",
-    "fg_score": 4
+    "about": "Apparel & Accessories content featuring Life Hacks, Advertisement.",
+    "fg_score": 3,
+    "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
   },
   "salat": {
-    "about": "This trend is about various salad recipes and food photography.",
-    "fg_score": 3
+    "about": "content featuring Photography, School Education.",
+    "fg_score": 4,
+    "fg_reason": "Food content in home settings has natural sofa stain prevention angle."
   },
   "biathlon": {
     "about": "Biathlon Winter Olympics sport highlights content",
     "fg_score": 1
   },
   "assya": {
-    "about": "Videos featuring or about a person named Assya, often personal vlogs.",
-    "fg_score": 0
+    "about": "Trending hashtag #assya.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "شهر_رمضان": {
     "about": "Month of Ramadan (Arabic) — Islamic holy month content",
     "fg_score": 5
   },
   "tallgirl": {
-    "about": "Tall girls sharing experiences, fashion, or relatable struggles.",
-    "fg_score": 0
+    "about": "Trending hashtag #tallgirl.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "fullblack": {
     "about": "All-black outfit style & fashion content",
@@ -661,16 +730,18 @@
     "fg_score": 1
   },
   "capcutfamília": {
-    "about": "Users creating family-themed videos using CapCut templates.",
-    "fg_score": 5
+    "about": "Trending hashtag #capcutfamília.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "jeremstar": {
     "about": "French YouTuber/influencer Jeremstar content",
     "fg_score": 1
   },
   "athens": {
-    "about": "Travel vlogs, cultural content, or daily life in Athens, Greece.",
-    "fg_score": 0
+    "about": "Trending hashtag #athens.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "رمضان_کریم": {
     "about": "Ramadan Kareem (Farsi/Arabic) — blessings & family content",
@@ -689,8 +760,9 @@
     "fg_score": 1
   },
   "shower": {
-    "about": "Shower routine & bathroom cleaning/aesthetic content",
-    "fg_score": 4
+    "about": "Home Improvement content featuring Life Hacks, Theatre & Stage.",
+    "fg_score": 3,
+    "fg_reason": "Relationship/romantic content often features cosy home and sofa scenes."
   },
   "christiangirl": {
     "about": "Christian girl autumn lifestyle & faith content",
@@ -701,16 +773,18 @@
     "fg_score": 1
   },
   "yuma": {
-    "about": "Yuma — artist, city or name content",
-    "fg_score": 1
+    "about": "News & Entertainment content featuring Food Tour & Recommendations, Dance.",
+    "fg_score": 4,
+    "fg_reason": "Food content in home settings has natural sofa stain prevention angle."
   },
   "رمضان_كريم🌙_رمضان_مبارك🌙": {
     "about": "Ramadan Kareem & Mubarak — Islamic holy month blessings",
     "fg_score": 4
   },
   "descendants": {
-    "about": "Disney Descendants movie/show fan content",
-    "fg_score": 2
+    "about": "News & Entertainment content featuring Theatre & Stage, Entertainment News.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "americandivorce": {
     "about": "American divorce legal/lifestyle commentary content",
@@ -725,32 +799,36 @@
     "fg_score": 1
   },
   "etg": {
-    "about": "Content related to the video game Enter the Gungeon.",
-    "fg_score": 0
+    "about": "Trending hashtag #etg.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "adrianalima": {
     "about": "Supermodel Adriana Lima content",
     "fg_score": 1
   },
   "gadgetdujour": {
-    "about": "People showcasing and reviewing new or interesting gadgets daily.",
-    "fg_score": 1
+    "about": "Tech & Electronics content trending on TikTok.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "رمضان2026": {
     "about": "Ramadan 2026 — Islamic holy month family & food content",
     "fg_score": 5
   },
   "houdi": {
-    "about": "Content related to the artist Houdi, often music or fan edits.",
-    "fg_score": 0
+    "about": "Trending hashtag #houdi.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "🤲": {
     "about": "Prayer hands emoji — Ramadan/spiritual devotional content",
     "fg_score": 3
   },
   "prier": {
-    "about": "People sharing moments of prayer and religious devotion.",
-    "fg_score": 1
+    "about": "Trending hashtag #prier.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "curling": {
     "about": "Curling Winter Olympics sport highlights content",
@@ -761,16 +839,18 @@
     "fg_score": 1
   },
   "sahur": {
-    "about": "People sharing their sahur meals and Ramadan experiences.",
-    "fg_score": 3
+    "about": "content featuring Professional Special Effects, Food Tour & Recommendations.",
+    "fg_score": 4,
+    "fg_reason": "Food content in home settings has natural sofa stain prevention angle."
   },
   "rosenmontag": {
     "about": "Rosenmontag — German Carnival Rose Monday parade content",
     "fg_score": 3
   },
   "babyboo": {
-    "about": "People pranking others with a 'baby boo' sound.",
-    "fg_score": 1
+    "about": "content featuring Theatre & Stage, Oddly Satisfying.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "jeremyfragrance": {
     "about": "Jeremy Fragrance — influencer fragrance & lifestyle content",
@@ -785,40 +865,48 @@
     "fg_score": 5
   },
   "schwimmbad": {
-    "about": "Swimming pool lifestyle & summer content (German)",
-    "fg_score": 3
+    "about": "Trending hashtag #schwimmbad.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "asl": {
-    "about": "American Sign Language tutorials & deaf community content",
-    "fg_score": 2
+    "about": "Trending hashtag #asl.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "juve": {
     "about": "Juventus FC Italian football club fan content",
     "fg_score": 1
   },
   "faceit": {
-    "about": "FACEIT — competitive gaming (CS2) platform content",
-    "fg_score": 1
+    "about": "Games content featuring Video Games, Hilarious Fails.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "фк": {
-    "about": "Content related to football clubs (FC).",
-    "fg_score": 0
+    "about": "Trending hashtag #фк.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "mgk": {
-    "about": "Machine Gun Kelly music & celebrity content",
-    "fg_score": 1
+    "about": "Trending hashtag #mgk.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "poppy": {
-    "about": "Videos featuring the name Poppy, often pets or personal content.",
-    "fg_score": 5
+    "about": "Trending hashtag #poppy.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "блины": {
-    "about": "Blini (Russian pancakes) — Maslenitsa food & recipe content",
-    "fg_score": 4
+    "about": "Trending hashtag #блины.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "фудкорт": {
-    "about": "Food court — restaurant & food content (Russian)",
-    "fg_score": 3
+    "about": "Trending hashtag #фудкорт.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "cimbom": {
     "about": "Galatasaray FC nickname 'Cimbom' — Turkish football fan content",
@@ -829,8 +917,9 @@
     "fg_score": 1
   },
   "laufey": {
-    "about": "Singer Laufey music & aesthetic content",
-    "fg_score": 2
+    "about": "News & Entertainment content featuring Other Art, Theatre & Stage.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "karnaval": {
     "about": "Carnival (Turkish/German) — festive parade & costume content",
@@ -849,49 +938,56 @@
     "fg_score": 4
   },
   "misssummer": {
-    "about": "Miss Summer — fashion influencer or beauty content",
-    "fg_score": 2
+    "about": "content featuring Magic, Hilarious Fails.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "fasten": {
     "about": "Fasting (German) — Ramadan or Lent dietary content",
     "fg_score": 3
   },
   "timgioh": {
-    "about": "People sharing funny gaming moments and pranks.",
-    "fg_score": 0
+    "about": "Games content featuring Pranks, Sports News.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "zartmann": {
     "about": "Zartmann — German influencer/person content",
     "fg_score": 1
   },
   "hwz": {
-    "about": "People sharing funny fails and family moments.",
-    "fg_score": 5
+    "about": "content featuring Hilarious Fails, Selfies.",
+    "fg_score": 5,
+    "fg_reason": "Family-focused content aligns with FibreGuard's parent and homeowner audience."
   },
   "tan": {
-    "about": "This trend is about achieving a sun tan or self-tanning.",
-    "fg_score": 0
+    "about": "content featuring Campus Life, Diary & VLOG.",
+    "fg_score": 4,
+    "fg_reason": "Young people making home content provides sofa/dorm furniture angle."
   },
   "fastenzeit": {
     "about": "Fastenzeit — Lent fasting period (German) lifestyle content",
     "fg_score": 3
   },
   "fpl": {
-    "about": "Fantasy Premier League — football fantasy sports content",
-    "fg_score": 1
+    "about": "Trending hashtag #fpl.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "олимпиада": {
-    "about": "Olympics — Winter Olympics 2026 sports highlights content",
-    "fg_score": 1
+    "about": "Trending hashtag #олимпиада.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "winterloungewear": {
-    "about": "Winter loungewear outfits — cozy home fashion content",
+    "about": "Apparel & Accessories content trending on TikTok.",
     "fg_score": 9,
-    "fg_reason": "Direct fit. Loungewear implies relaxing at home on sofas — hot drinks, snacks, cozy evenings. The audience is exactly FibreGuard's target, and the 'worry-free luxury at home' message writes itself. Pair it with a warm drink spill reveal."
+    "fg_reason": "Perfect direct fit — winterloungewear is exactly FibreGuard's audience and context."
   },
   "chapter5": {
-    "about": "People sharing updates and progress on their creative projects or stories.",
-    "fg_score": 1
+    "about": "Trending hashtag #chapter5.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "fasting": {
     "about": "Fasting lifestyle — Ramadan, Lent or intermittent fasting content",
@@ -906,29 +1002,33 @@
     "fg_score": 1
   },
   "аделияпетросян": {
-    "about": "Fans celebrating figure skater Adeliia Petrosian's performances.",
-    "fg_score": 0
+    "about": "Sports & Outdoor content featuring School Education, Extreme Sports.",
+    "fg_score": 2,
+    "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
   },
   "jasonderulo": {
-    "about": "Jason Derulo music, dancing & social media content",
-    "fg_score": 1
+    "about": "Trending hashtag #jasonderulo.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "freibad": {
-    "about": "Outdoor public pool (German) — summer swimming content",
-    "fg_score": 2
+    "about": "Trending hashtag #freibad.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "رمضان_مبارك": {
     "about": "Ramadan Mubarak — Ramadan greetings & blessings content",
     "fg_score": 4
   },
   "8марта": {
-    "about": "People celebrating International Women's Day with gifts and DIYs.",
-    "fg_score": 1
+    "about": "content featuring DIY & Handicrafts, School Education.",
+    "fg_score": 5,
+    "fg_reason": "Home DIY and improvement content naturally aligns with sofa upgrades."
   },
   "electrician": {
-    "about": "Electrician DIY & home improvement tutorial content",
-    "fg_score": 4,
-    "fg_reason": "Creative stretch. Home improvement and DIY content often involves reupholstering or upgrading interiors — an electrician renovating a living room could reveal a FibreGuard sofa as part of the home upgrade."
+    "about": "Trending hashtag #electrician.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "vorbei": {
     "about": "'Over/done' German expression — emotional relatable content",
@@ -939,32 +1039,37 @@
     "fg_score": 4
   },
   "rs5": {
-    "about": "Car enthusiasts showcasing their Audi RS5 vehicles.",
-    "fg_score": 0
+    "about": "Vehicle & Transportation content featuring Theatre & Stage, Cars, Trucks & Motorcycles.",
+    "fg_score": 2,
+    "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
   },
   "annoying": {
     "about": "Annoying habits & relatable pet peeves content",
     "fg_score": 2
   },
   "spot": {
-    "about": "Spot the difference, cleaning spot or dog (Spot) content",
-    "fg_score": 3
+    "about": "content featuring Recreation Facilities, Campus Life.",
+    "fg_score": 5,
+    "fg_reason": "Family-focused content aligns with FibreGuard's parent and homeowner audience."
   },
   "generationz": {
-    "about": "Gen Z trends, humor & cultural content",
-    "fg_score": 2
+    "about": "content featuring Hilarious Fails, Street Interviews & Social Experiments.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "كل_عام_وانتم_بخير": {
     "about": "Kull am wa antum bikhayr — Arabic annual blessing/Ramadan greeting",
     "fg_score": 4
   },
   "taraweeh": {
-    "about": "Muslims sharing moments from Ramadan prayers and community.",
-    "fg_score": 5
+    "about": "content featuring Sports News, Motivation.",
+    "fg_score": 4,
+    "fg_reason": "Food content in home settings has natural sofa stain prevention angle."
   },
   "oruç": {
-    "about": "Fasting (Turkish) — Ramadan dietary & spiritual content",
-    "fg_score": 3
+    "about": "Trending hashtag #oruç.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "كريم": {
     "about": "Kareem (Arabic for generous) — Ramadan blessing content",
@@ -987,12 +1092,14 @@
     "fg_score": 2
   },
   "damenshirt": {
-    "about": "Women's shirts — fashion & clothing content (German)",
-    "fg_score": 3
+    "about": "Trending hashtag #damenshirt.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "mamiciinromania": {
-    "about": "Romanian moms — family parenting & lifestyle content",
-    "fg_score": 6
+    "about": "Trending hashtag #mamiciinromania.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "jacobelordi": {
     "about": "Actor Jacob Elordi — celebrity & film fan content",
@@ -1003,8 +1110,9 @@
     "fg_score": 2
   },
   "garnier": {
-    "about": "People reviewing or showcasing Garnier beauty products.",
-    "fg_score": 1
+    "about": "Trending hashtag #garnier.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "iliamalinin": {
     "about": "Ilia Malinin — figure skater Olympic content",
@@ -1015,8 +1123,9 @@
     "fg_score": 2
   },
   "monaldi": {
-    "about": "Content featuring the Italian singer Monaldi.",
-    "fg_score": 1
+    "about": "Trending hashtag #monaldi.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "viareggio": {
     "about": "Viareggio Carnival — Italian Mardi Gras parade & costume content",
@@ -1031,16 +1140,18 @@
     "fg_score": 3
   },
   "mlp": {
-    "about": "Content related to My Little Pony, often fan art or discussions.",
-    "fg_score": 0
+    "about": "Trending hashtag #mlp.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "carnavaltiktok": {
     "about": "Carnival TikTok — Italian Carnival costumes & celebrations",
     "fg_score": 3
   },
   "digregorio": {
-    "about": "This is about a specific person, likely a sports figure.",
-    "fg_score": 0
+    "about": "Sports & Outdoor content featuring Food Display, Traditional Sports.",
+    "fg_score": 2,
+    "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
   },
   "città": {
     "about": "City life (Italian) — urban lifestyle & travel content",
@@ -1075,8 +1186,9 @@
     "fg_score": 2
   },
   "babydoll": {
-    "about": "Fashion trends featuring 'babydoll' style dresses and aesthetics.",
-    "fg_score": 1
+    "about": "Trending hashtag #babydoll.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "james": {
     "about": "LeBron James or other James celebrity content",
@@ -1091,28 +1203,33 @@
     "fg_score": 3
   },
   "sweater": {
-    "about": "This is about sweaters, fashion, and DIY crafts.",
-    "fg_score": 5
+    "about": "Apparel & Accessories content featuring DIY & Handicrafts, Photography.",
+    "fg_score": 3,
+    "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
   },
   "digiuno": {
     "about": "Fasting (Italian) — Lent/religious fasting lifestyle content",
     "fg_score": 3
   },
   "juventusfc": {
-    "about": "Content related to the Juventus Football Club.",
-    "fg_score": 0
+    "about": "Trending hashtag #juventusfc.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "bodysuit": {
-    "about": "People styling or reviewing different bodysuits.",
-    "fg_score": 1
+    "about": "Trending hashtag #bodysuit.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "8marzo": {
-    "about": "This is about International Women's Day, celebrated on March 8th.",
-    "fg_score": 1
+    "about": "content featuring Advertisement, Other Beauty.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "insideout": {
-    "about": "People creating satisfying animations or art inspired by the movie.",
-    "fg_score": 1
+    "about": "Games content featuring Oddly Satisfying, School Education.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "carneval": {
     "about": "Carnival festivities — costumes & celebration content",
@@ -1123,12 +1240,14 @@
     "fg_score": 2
   },
   "insicurezza": {
-    "about": "People sharing personal insecurities and vulnerabilities.",
-    "fg_score": 1
+    "about": "Trending hashtag #insicurezza.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "insicurezze": {
-    "about": "People sharing their insecurities, often in a relatable or humorous way.",
-    "fg_score": 1
+    "about": "content featuring Campus Life, Non-Video Games.",
+    "fg_score": 4,
+    "fg_reason": "Young people making home content provides sofa/dorm furniture angle."
   },
   "amin": {
     "about": "Amin — Arabic/Islamic prayer response content or name",
@@ -1143,12 +1262,14 @@
     "fg_score": 1
   },
   "fisico": {
-    "about": "This is about physical appearance, fitness, or body image.",
-    "fg_score": 0
+    "about": "Sports & Outdoor content featuring Theatre & Stage, Hilarious Fails.",
+    "fg_score": 2,
+    "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
   },
   "domenico": {
-    "about": "General content featuring or about someone named Domenico.",
-    "fg_score": 0
+    "about": "Trending hashtag #domenico.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "italiashore": {
     "about": "Italia Shore — Italian version of Jersey Shore reality show",
@@ -1163,60 +1284,72 @@
     "fg_score": 3
   },
   "neza": {
-    "about": "This is about fashion, nail art, or recreational activities.",
-    "fg_score": 0
+    "about": "content featuring Recreation Facilities, Nail Art.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "fantasanremo": {
-    "about": "FantaSanremo — Italian music fantasy game around Sanremo festival",
-    "fg_score": 2
+    "about": "News & Entertainment content featuring Oddly Satisfying, Campus Life.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "mylittlepony": {
-    "about": "Content related to My Little Pony, often fan art or discussions.",
-    "fg_score": 0
+    "about": "Trending hashtag #mylittlepony.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "orgoglio": {
-    "about": "This is about pride, often related to personal achievements or identity.",
-    "fg_score": 0
+    "about": "content featuring Theatre & Stage, Science.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "sweatsuitsetoutfit": {
-    "about": "People showcasing different sweatsuit set outfit ideas.",
-    "fg_score": 1
+    "about": "Trending hashtag #sweatsuitsetoutfit.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "therian": {
-    "about": "This is about people identifying as non-human animals.",
-    "fg_score": 0
+    "about": "content featuring Supernatural & Horror, Hilarious Fails.",
+    "fg_score": 3,
+    "fg_reason": "Relationship/romantic content often features cosy home and sofa scenes."
   },
   "alessio": {
     "about": "Italian name Alessio — influencer or personality content",
     "fg_score": 1
   },
   "tuttopassa": {
-    "about": "This is about overcoming challenges or life's transient nature.",
-    "fg_score": 0
+    "about": "content featuring Other Fashion, Sports News.",
+    "fg_score": 4,
+    "fg_reason": "Young people making home content provides sofa/dorm furniture angle."
   },
   "trapianto": {
-    "about": "Content related to hair transplants or other medical transplants.",
-    "fg_score": 0
+    "about": "Trending hashtag #trapianto.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "festadelladonna": {
-    "about": "This is about International Women's Day celebrations and related content.",
-    "fg_score": 1
+    "about": "content featuring Life Hacks, Business & Finance.",
+    "fg_score": 4,
+    "fg_reason": "Food content in home settings has natural sofa stain prevention angle."
   },
   "anni": {
     "about": "Years/birthday (Italian) — birthday celebration content",
     "fg_score": 3
   },
   "☀️": {
-    "about": "People sharing sunny day activities, travel, and positive vibes.",
-    "fg_score": 1
+    "about": "Trending hashtag #☀️.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "chickenjoe": {
-    "about": "Content related to the character Chicken Joe from Surf's Up.",
-    "fg_score": 0
+    "about": "Trending hashtag #chickenjoe.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "sopravvivereafebbraio": {
-    "about": "'Surviving February' (Italian) — winter blues relatable content",
-    "fg_score": 3
+    "about": "Apparel & Accessories content featuring Life Hacks, Software & APPs.",
+    "fg_score": 3,
+    "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
   },
   "marotta": {
     "about": "Inter Milan director Marotta — Italian football news content",
@@ -1227,13 +1360,14 @@
     "fg_score": 5
   },
   "scream7": {
-    "about": "Scream 7 horror movie hype & fan content",
-    "fg_score": 1
+    "about": "News & Entertainment content featuring Cosplay, Recreation Facilities.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "sweatsuit": {
-    "about": "Sweatsuit fashion & cozy matching set outfit content",
-    "fg_score": 6,
-    "fg_reason": "Good fit. Cozy matching sets suggest lounging at home — the same audience who invests in home comfort. A 'couch day' angle where spills happen and FibreGuard saves the day works naturally here."
+    "about": "Trending hashtag #sweatsuit.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "amoreimpossibile": {
     "about": "Impossible love (Italian) — romantic drama content",
@@ -1256,17 +1390,18 @@
     "fg_score": 2
   },
   "ingrossojeans": {
-    "about": "People showcasing bulk jeans purchases or fashion hauls.",
-    "fg_score": 1
+    "about": "Apparel & Accessories content featuring Campus Life, Entertainment News.",
+    "fg_score": 3,
+    "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
   },
   "compleanni": {
     "about": "Birthdays (Italian) — party decoration & celebration content",
     "fg_score": 4
   },
   "stanza": {
-    "about": "People showcasing their rooms or room makeovers.",
-    "fg_score": 7,
-    "fg_reason": "Italian for 'room' — this is literally room makeover and interior content. Very high relevance; FibreGuard fabric in a beautiful Italian-style room reveal would perform well with this audience."
+    "about": "Trending hashtag #stanza.",
+    "fg_score": 9,
+    "fg_reason": "Perfect direct fit — stanza is exactly FibreGuard's audience and context."
   },
   "slimerant": {
     "about": "Slime rant trend — DIY slime making & creative content",
@@ -1277,8 +1412,9 @@
     "fg_score": 1
   },
   "alexandratrusova": {
-    "about": "Content about Russian figure skater Alexandra Trusova and her performances.",
-    "fg_score": 0
+    "about": "Trending hashtag #alexandratrusova.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "fateciandarevirali": {
     "about": "'Make us go viral' (Italian) — viral content creation meta-trend",
@@ -1293,8 +1429,9 @@
     "fg_score": 2
   },
   "sobrevivefebrero": {
-    "about": "This trend is about surviving the challenges of February.",
-    "fg_score": 1
+    "about": "Trending hashtag #sobrevivefebrero.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "lacasadelosfamosos": {
     "about": "La Casa de los Famosos — Spanish/Latin celebrity reality show",
@@ -1309,16 +1446,18 @@
     "fg_score": 1
   },
   "karinagarciaoficiall": {
-    "about": "Karina García — slime/DIY influencer content",
-    "fg_score": 3
+    "about": "News & Entertainment content featuring Entertainment News, Family.",
+    "fg_score": 5,
+    "fg_reason": "Family-focused content aligns with FibreGuard's parent and homeowner audience."
   },
   "jellyera": {
     "about": "Jelly Era — soft, whimsical fashion aesthetic content",
     "fg_score": 4
   },
   "nickyjam": {
-    "about": "This trend is about the reggaeton artist Nicky Jam and his music.",
-    "fg_score": 0
+    "about": "Trending hashtag #nickyjam.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "jhayco": {
     "about": "Jhayco — Latin urban music artist content",
@@ -1333,32 +1472,37 @@
     "fg_score": 1
   },
   "easy": {
-    "about": "Easy lifestyle trend or song — relatable simple life content",
-    "fg_score": 3
+    "about": "content featuring Life Hacks, Magic.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "sabanas": {
     "about": "Bed sheets (Spanish) — bedding, home textiles & interior content",
     "fg_score": 9
   },
   "primeramusa": {
-    "about": "People sharing their first muse or inspiration.",
-    "fg_score": 1
+    "about": "Trending hashtag #primeramusa.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "pablovera": {
-    "about": "Pablo Vera — Spanish influencer or athlete content",
-    "fg_score": 1
+    "about": "content featuring Entertainment News, Diary & VLOG.",
+    "fg_score": 4,
+    "fg_reason": "Young people making home content provides sofa/dorm furniture angle."
   },
   "carnavalbadajoz": {
     "about": "Badajoz Carnival — famous Spanish Carnival parade content",
     "fg_score": 3
   },
   "correa": {
-    "about": "People showing off their pets on leashes or collars.",
-    "fg_score": 5
+    "about": "Trending hashtag #correa.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "veneno": {
-    "about": "Veneno (poison) — Spanish TV show or viral content",
-    "fg_score": 1
+    "about": "content featuring Life Hacks, Food Tour & Recommendations.",
+    "fg_score": 4,
+    "fg_reason": "Food content in home settings has natural sofa stain prevention angle."
   },
   "miercolesdeceniza": {
     "about": "Ash Wednesday (Spanish) — Christian Lent season content",
@@ -1373,37 +1517,42 @@
     "fg_score": 1
   },
   "sirena": {
-    "about": "This trend is about mermaid costumes, makeup, and special effects.",
-    "fg_score": 1
+    "about": "content featuring Professional Special Effects, Theatre & Stage.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "heartopiaparty": {
-    "about": "People sharing their experiences at the Heartopia Party event.",
-    "fg_score": 0
+    "about": "Trending hashtag #heartopiaparty.",
+    "fg_score": 3,
+    "fg_reason": "Event/celebration content could frame FibreGuard in a hosting context."
   },
   "fakeland": {
-    "about": "Fakeland — drama/revelation trend about fake people",
-    "fg_score": 1
+    "about": "content featuring Toys & Collectables, Oddly Satisfying.",
+    "fg_score": 4,
+    "fg_reason": "Young people making home content provides sofa/dorm furniture angle."
   },
   "amarillo": {
     "about": "Yellow (Spanish) — color aesthetic & fashion content",
     "fg_score": 3
   },
   "incienso": {
-    "about": "This trend is about DIY incense making and funny fails.",
-    "fg_score": 1
+    "about": "News & Entertainment content featuring DIY & Handicrafts, Hilarious Fails.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "cuaresma✝️": {
     "about": "Lent cross (Spanish) — Christian fasting & faith content",
     "fg_score": 3
   },
   "womenswear": {
-    "about": "This trend is about women's fashion and clothing styles.",
-    "fg_score": 1
+    "about": "Apparel & Accessories content featuring Software & APPs, Scripted Drama.",
+    "fg_score": 3,
+    "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
   },
   "hoodies": {
-    "about": "Hoodie fashion & cozy clothing haul content",
-    "fg_score": 5,
-    "fg_reason": "Cozy clothing content implies lounging at home. The connection is indirect but believable — both FibreGuard and hoodies serve the same 'comfortable at home' moment."
+    "about": "Apparel & Accessories content featuring Business & Finance, Selfies.",
+    "fg_score": 3,
+    "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
   },
   "womanfashion": {
     "about": "Women's fashion outfits & style inspiration content",
@@ -1414,8 +1563,9 @@
     "fg_score": 1
   },
   "ofertasparati": {
-    "about": "Deals for you (Spanish) — shopping deals & product finds content",
-    "fg_score": 3
+    "about": "Apparel & Accessories content featuring Software & APPs, Scenery & Plants.",
+    "fg_score": 3,
+    "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
   },
   "amar": {
     "about": "Love (Spanish) — romantic & emotional content",
@@ -1434,8 +1584,9 @@
     "fg_score": 3
   },
   "therianthropy": {
-    "about": "This trend is about people identifying as non-human animals.",
-    "fg_score": 0
+    "about": "Trending hashtag #therianthropy.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "añonuevochino": {
     "about": "Chinese New Year (Spanish) — dragon dance & celebration content",
@@ -1446,16 +1597,19 @@
     "fg_score": 3
   },
   "osasuna": {
-    "about": "This trend is about the Spanish football club Osasuna.",
-    "fg_score": 0
+    "about": "Trending hashtag #osasuna.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "quetecalles": {
-    "about": "This trend is about a viral sound clip meaning 'shut up'.",
-    "fg_score": 0
+    "about": "Trending hashtag #quetecalles.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "cazzu": {
-    "about": "This trend is about the Argentine rapper Cazzu and her music.",
-    "fg_score": 0
+    "about": "Trending hashtag #cazzu.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "nyxcosmetics": {
     "about": "NYX Cosmetics — makeup brand tutorials & reviews",
@@ -1466,20 +1620,24 @@
     "fg_score": 1
   },
   "charlidamelio": {
-    "about": "Charli D'Amelio — TikTok star lifestyle & dancing content",
-    "fg_score": 1
+    "about": "content featuring Theatre & Stage, Oddly Satisfying.",
+    "fg_score": 4,
+    "fg_reason": "Young people making home content provides sofa/dorm furniture angle."
   },
   "carnavaltenerife": {
-    "about": "Showcasing the vibrant costumes and celebrations of Tenerife Carnival.",
-    "fg_score": 1
+    "about": "Trending hashtag #carnavaltenerife.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "cartera": {
-    "about": "Handbag/wallet (Spanish) — fashion accessories content",
-    "fg_score": 2
+    "about": "Apparel & Accessories content featuring School Education, Nail Art.",
+    "fg_score": 3,
+    "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
   },
   "spring": {
-    "about": "General content celebrating the spring season, often fashion or decor.",
-    "fg_score": 5
+    "about": "Trending hashtag #spring.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "lasamo": {
     "about": "Lasamo — music artist or viral audio content",
@@ -1494,37 +1652,43 @@
     "fg_score": 1
   },
   "walls": {
-    "about": "People transforming or decorating their home walls.",
-    "fg_score": 6,
-    "fg_reason": "Home wall decoration and renovation content. The audience is actively upgrading their interiors — pairing wall decor with a complementary FibreGuard sofa reveal is a natural content pairing."
+    "about": "Trending hashtag #walls.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "eclipse": {
     "about": "Eclipse — solar/lunar eclipse viral sky photography content",
     "fg_score": 2
   },
   "ñengo": {
-    "about": "Fans of the Puerto Rican rapper Ñengo Flow.",
-    "fg_score": 0
+    "about": "Trending hashtag #ñengo.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "callate": {
-    "about": "'Be quiet' (Spanish) — viral drama & confrontation content",
-    "fg_score": 1
+    "about": "content featuring Non-Video Games, Other Art.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "quedada": {
-    "about": "Meetup/hangout (Spanish) — social gathering content",
-    "fg_score": 3
+    "about": "Vehicle & Transportation content featuring Other Transportation, Extreme Sports.",
+    "fg_score": 4,
+    "fg_reason": "Food content in home settings has natural sofa stain prevention angle."
   },
   "oscuridad": {
-    "about": "People sharing scary or creepy experiences and stories.",
-    "fg_score": 1
+    "about": "Trending hashtag #oscuridad.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "omarcoutz": {
-    "about": "This trend is about a creator sharing life hacks and tech tips.",
-    "fg_score": 1
+    "about": "content featuring Life Hacks, Software & APPs.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "cable": {
-    "about": "People organizing or dealing with messy cables.",
-    "fg_score": 3
+    "about": "Trending hashtag #cable.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "nathypeluso": {
     "about": "Nathy Peluso — Argentine pop artist music content",
@@ -1535,32 +1699,37 @@
     "fg_score": 4
   },
   "fastfashion": {
-    "about": "This trend is about discussions and critiques of fast fashion.",
-    "fg_score": 1
+    "about": "Apparel & Accessories content featuring Theatre & Stage, Photography.",
+    "fg_score": 4,
+    "fg_reason": "Fashion/beauty content shot at home provides natural sofa background presence."
   },
   "gadgetsparahombres": {
-    "about": "Men's gadgets & tech gifts content (Spanish)",
-    "fg_score": 3
+    "about": "Apparel & Accessories content trending on TikTok.",
+    "fg_score": 3,
+    "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
   },
   "yvessaintlaurent": {
     "about": "YSL luxury fashion brand content",
     "fg_score": 2
   },
   "sebastianyatra": {
-    "about": "Sebastián Yatra — Colombian pop artist music content",
-    "fg_score": 1
+    "about": "News & Entertainment content featuring Magic, Motivation.",
+    "fg_score": 2,
+    "fg_reason": "Entertainment fan content with minimal home lifestyle crossover."
   },
   "caporales": {
     "about": "Caporales — Bolivian/Andean dance & cultural content",
     "fg_score": 2
   },
   "tracksuits": {
-    "about": "This trend is about tracksuit fashion and styling.",
-    "fg_score": 1
+    "about": "Apparel & Accessories content featuring Campus Life, Sports News.",
+    "fg_score": 3,
+    "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
   },
   "eid": {
-    "about": "Eid celebration — post-Ramadan festive food & family content",
-    "fg_score": 5
+    "about": "content featuring Professional Special Effects, Other Transportation.",
+    "fg_score": 6,
+    "fg_reason": "Family celebration content = food, kids, and spill risk at home."
   },
   "carnavaldebadajoz": {
     "about": "Badajoz Carnival (Spain) — parade costumes & celebrations",
@@ -1571,88 +1740,103 @@
     "fg_score": 1
   },
   "shorttrack": {
-    "about": "Short track speed skating races and highlights.",
-    "fg_score": 0
+    "about": "Sports & Outdoor content featuring Scripted Drama, Extreme Sports.",
+    "fg_score": 2,
+    "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
   },
   "олимпиада2026": {
-    "about": "Content about the 2026 Olympic Games.",
-    "fg_score": 0
+    "about": "Trending hashtag #олимпиада2026.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "moldova": {
     "about": "Moldova country — culture, travel & news content",
     "fg_score": 2
   },
   "suhoor": {
-    "about": "Suhoor — pre-dawn Ramadan meal & family food content",
-    "fg_score": 5
+    "about": "Food & Beverage content featuring Environmental Protection, Food Tour & Recommendations.",
+    "fg_score": 6,
+    "fg_reason": "Family celebration content = food, kids, and spill risk at home."
   },
   "tvdu": {
     "about": "TVDU — The Vampire Diaries Universe fan content",
     "fg_score": 1
   },
   "галерея": {
-    "about": "Gallery (Russian) — art gallery or phone gallery content",
-    "fg_score": 2
+    "about": "content featuring Recreation Facilities, Toys & Collectables.",
+    "fg_score": 4,
+    "fg_reason": "Young people making home content provides sofa/dorm furniture angle."
   },
   "skitrip": {
-    "about": "People documenting their ski trips and travel experiences.",
-    "fg_score": 0
+    "about": "Sports & Outdoor content featuring Other Beauty, Food Tour & Recommendations.",
+    "fg_score": 4,
+    "fg_reason": "Food content in home settings has natural sofa stain prevention angle."
   },
   "nasheed": {
     "about": "Nasheed — Islamic devotional music & Ramadan content",
     "fg_score": 4
   },
   "km": {
-    "about": "People sharing their daily vlogs and outdoor activities.",
-    "fg_score": 1
+    "about": "content featuring Fishing, Hunting & Camping, Selfies.",
+    "fg_score": 4,
+    "fg_reason": "Young people making home content provides sofa/dorm furniture angle."
   },
   "racism": {
     "about": "Racism awareness & anti-discrimination content (UK/NL)",
     "fg_score": 1
   },
   "eidoutfit": {
-    "about": "Showcasing and styling outfits for the Islamic holiday Eid.",
-    "fg_score": 1
+    "about": "Trending hashtag #eidoutfit.",
+    "fg_score": 6,
+    "fg_reason": "Family celebration content = food, kids, and spill risk at home."
   },
   "погода": {
-    "about": "Content about weather, often educational or DIY related.",
-    "fg_score": 1
+    "about": "content featuring School Education, Campus Life.",
+    "fg_score": 5,
+    "fg_reason": "Home DIY and improvement content naturally aligns with sofa upgrades."
   },
   "skiën": {
-    "about": "Videos of people skiing, showing skills, resorts, and experiences.",
-    "fg_score": 1
+    "about": "Trending hashtag #skiën.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "байкал": {
-    "about": "Content about Lake Baikal, often educational or travel-related.",
-    "fg_score": 0
+    "about": "content featuring School Education, DIY & Handicrafts.",
+    "fg_score": 5,
+    "fg_reason": "Home DIY and improvement content naturally aligns with sofa upgrades."
   },
   "skivakantie": {
-    "about": "Sharing experiences and vlogs from ski holidays and trips.",
-    "fg_score": 1
+    "about": "Trending hashtag #skivakantie.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "fortniteskins": {
-    "about": "Showcasing and discussing cosmetic items in the video game Fortnite.",
-    "fg_score": 0
+    "about": "Trending hashtag #fortniteskins.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "намаз": {
     "about": "Namaz (Islamic prayer) — Ramadan devotional content",
     "fg_score": 3
   },
   "iloveher": {
-    "about": "Expressing affection or admiration for a female person or character.",
-    "fg_score": 1
+    "about": "Trending hashtag #iloveher.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "stranger": {
-    "about": "Content about meeting strangers or unusual encounters.",
-    "fg_score": 1
+    "about": "News & Entertainment content featuring Science, Business & Finance.",
+    "fg_score": 4,
+    "fg_reason": "Food content in home settings has natural sofa stain prevention angle."
   },
   "galatasaray💛❤": {
     "about": "Galatasaray FC football club fan content",
     "fg_score": 1
   },
   "xlov": {
-    "about": "Xlov — niche trend or creative content",
-    "fg_score": 1
+    "about": "News & Entertainment content featuring Dance, Cosplay.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "birkinbag": {
     "about": "Hermès Birkin bag luxury fashion & unboxing content",
@@ -1667,60 +1851,69 @@
     "fg_score": 1
   },
   "skien": {
-    "about": "Content about the Norwegian city Skien, often travel-related.",
-    "fg_score": 0
+    "about": "Sports & Outdoor content featuring Other Art, Recreation Facilities.",
+    "fg_score": 4,
+    "fg_reason": "Food content in home settings has natural sofa stain prevention angle."
   },
   "skitok": {
     "about": "Ski TikTok — skiing community & winter sports content",
     "fg_score": 2
   },
   "oostenrijk": {
-    "about": "Content about Austria, often related to travel or recreation.",
-    "fg_score": 0
+    "about": "Sports & Outdoor content featuring Software & APPs, Motivation.",
+    "fg_score": 2,
+    "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
   },
   "токсис": {
-    "about": "Toxic (Russian) — toxic relationship warning content",
-    "fg_score": 1
+    "about": "content featuring School Education, Pets.",
+    "fg_score": 6,
+    "fg_reason": "Pet owners and their furniture are exactly FibreGuard's target market."
   },
   "vrfs": {
     "about": "VRFS — gaming or niche trend content",
     "fg_score": 1
   },
   "ои2026": {
-    "about": "OI 2026 (Russian: Olympics) — Winter Olympics content",
-    "fg_score": 1
+    "about": "Sports & Outdoor content featuring School Education, Extreme Sports.",
+    "fg_score": 2,
+    "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
   },
   "gracieabrams": {
-    "about": "Gracie Abrams — singer-songwriter music fan content",
-    "fg_score": 1
+    "about": "content featuring Entertainment News, Diary & VLOG.",
+    "fg_score": 4,
+    "fg_reason": "Young people making home content provides sofa/dorm furniture angle."
   },
   "koningsdag": {
     "about": "King's Day (Dutch) — Dutch national holiday orange celebration content",
     "fg_score": 4
   },
   "ои": {
-    "about": "OI (Russian Olympics) — Olympic sports highlights content",
-    "fg_score": 1
+    "about": "content featuring School Education, Extreme Sports.",
+    "fg_score": 5,
+    "fg_reason": "Home DIY and improvement content naturally aligns with sofa upgrades."
   },
   "skiingtiktok": {
     "about": "Skiing TikTok community — winter sports & slopes content",
     "fg_score": 2
   },
   "олимпийскиеигры": {
-    "about": "Content about the Olympic Games, athletes, and sports.",
-    "fg_score": 0
+    "about": "Trending hashtag #олимпийскиеигры.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "спать": {
-    "about": "Relatable content about sleeping, sleep habits, and feeling tired.",
-    "fg_score": 1
+    "about": "Trending hashtag #спать.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "aknightofthesevenkingdoms": {
     "about": "A Knight of the Seven Kingdoms — Game of Thrones prequel fan content",
     "fg_score": 1
   },
   "shoulderlean": {
-    "about": "A dance move or pose involving leaning the shoulder.",
-    "fg_score": 0
+    "about": "content featuring Professional Special Effects, Other Beauty.",
+    "fg_score": 4,
+    "fg_reason": "Young people making home content provides sofa/dorm furniture angle."
   },
   "tenerife": {
     "about": "Tenerife — Canary Islands travel & lifestyle content",
@@ -1731,8 +1924,9 @@
     "fg_score": 2
   },
   "needoh": {
-    "about": "Showcasing and playing with NeeDoh stress balls and fidget toys.",
-    "fg_score": 0
+    "about": "Trending hashtag #needoh.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "мелстройность": {
     "about": "Russian slim body/fitness content",
@@ -1743,24 +1937,28 @@
     "fg_score": 3
   },
   "growup": {
-    "about": "Content about personal growth, family, and development.",
-    "fg_score": 5
+    "about": "content featuring Professional & Personal Development, Photography.",
+    "fg_score": 5,
+    "fg_reason": "Family-focused content aligns with FibreGuard's parent and homeowner audience."
   },
   "купер": {
-    "about": "Content related to the name Cooper, often in cosplay or sports.",
-    "fg_score": 0
+    "about": "content featuring School Education, Cosplay.",
+    "fg_score": 5,
+    "fg_reason": "Home DIY and improvement content naturally aligns with sofa upgrades."
   },
   "vasten": {
     "about": "Fasting (Dutch) — Lent or health fasting content",
     "fg_score": 3
   },
   "александратрусова": {
-    "about": "Alexandra Trusova — Russian figure skater content",
-    "fg_score": 1
+    "about": "Trending hashtag #александратрусова.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "summer26": {
-    "about": "Summer 2026 — summer plans, fashion & lifestyle content",
-    "fg_score": 4
+    "about": "Trending hashtag #summer26.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "ti": {
     "about": "T.I. rapper or Ti (general) — music content",
@@ -1771,8 +1969,9 @@
     "fg_score": 4
   },
   "saturdaynight": {
-    "about": "Sharing activities, plans, and vibes for Saturday evening.",
-    "fg_score": 1
+    "about": "Trending hashtag #saturdaynight.",
+    "fg_score": 3,
+    "fg_reason": "Event/celebration content could frame FibreGuard in a hosting context."
   },
   "logeren": {
     "about": "Staying over (Dutch) — sleepover & guest hosting content",
@@ -1783,12 +1982,14 @@
     "fg_score": 1
   },
   "toxis": {
-    "about": "A viral sound or meme, often with a humorous or relatable context.",
-    "fg_score": 1
+    "about": "Trending hashtag #toxis.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "icehockey": {
-    "about": "Ice hockey game highlights, fan reactions, and player content.",
-    "fg_score": 0
+    "about": "Trending hashtag #icehockey.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "nationalitytrend": {
     "about": "Nationality trend — showing cultural background & heritage",
@@ -1803,8 +2004,9 @@
     "fg_score": 3
   },
   "andrew": {
-    "about": "Artists showcasing cosplay, graphic art, and other creative works.",
-    "fg_score": 1
+    "about": "News & Entertainment content featuring Cosplay, Graphic Art.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "pancakes": {
     "about": "Pancake recipes & food content — cooking & eating",
@@ -1815,8 +2017,9 @@
     "fg_score": 1
   },
   "thenextstep": {
-    "about": "Content related to the TV show 'The Next Step' or dance challenges.",
-    "fg_score": 0
+    "about": "Trending hashtag #thenextstep.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "salishmatter": {
     "about": "Salish Matter — YouTuber/influencer content",
@@ -1839,29 +2042,34 @@
     "fg_score": 2
   },
   "revert": {
-    "about": "Muslim converts sharing their journey to Islam.",
-    "fg_score": 0
+    "about": "Trending hashtag #revert.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "lfw": {
-    "about": "London Fashion Week, showcasing new collections and styles.",
-    "fg_score": 3
+    "about": "Apparel & Accessories content featuring Motivation, Business & Finance.",
+    "fg_score": 3,
+    "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
   },
   "weezer": {
-    "about": "Weezer — alternative rock band music fan content",
-    "fg_score": 1
+    "about": "Trending hashtag #weezer.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "eze": {
-    "about": "People sharing their favorite songs by the artist EZE.",
-    "fg_score": 0
+    "about": "Trending hashtag #eze.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "londonfashionweek": {
-    "about": "Content showcasing fashion, trends, and events from London Fashion Week.",
-    "fg_score": 0
+    "about": "Trending hashtag #londonfashionweek.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "mothersdaygiftideas": {
-    "about": "Users sharing gift ideas for Mother's Day.",
-    "fg_score": 7,
-    "fg_reason": "Gift content for moms — a FibreGuard-protected sofa or fabric care product is a legitimately useful, thoughtful gift. 'Give her furniture she doesn't have to worry about' is a compelling angle."
+    "about": "Trending hashtag #mothersdaygiftideas.",
+    "fg_score": 3,
+    "fg_reason": "Event/celebration content could frame FibreGuard in a hosting context."
   },
   "cooplive": {
     "about": "Co-op Live Manchester arena — concerts & live events content",
@@ -1876,12 +2084,14 @@
     "fg_score": 6
   },
   "o2": {
-    "about": "Content related to the O2 arena, often sports or music events.",
-    "fg_score": 0
+    "about": "content featuring Other Art, Sports News.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "jamesarthurtour": {
-    "about": "Fans sharing experiences from James Arthur's concerts.",
-    "fg_score": 0
+    "about": "Trending hashtag #jamesarthurtour.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "goaway": {
     "about": "'Go away' — venting & frustration relatable content",
@@ -1900,28 +2110,32 @@
     "fg_score": 6
   },
   "december10": {
-    "about": "Commemorating Human Rights Day and related events.",
-    "fg_score": 0
+    "about": "News & Entertainment content featuring Theatre & Stage, Entertainment News.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "pancake": {
     "about": "Pancake recipe & Pancake Day UK food content",
     "fg_score": 3
   },
   "bellakay": {
-    "about": "Content related to a specific person or character named Bella Kay.",
-    "fg_score": 0
+    "about": "Trending hashtag #bellakay.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "ranter": {
-    "about": "A character or game related to ranting, often with satisfying visuals.",
-    "fg_score": 0
+    "about": "Games content featuring Oddly Satisfying, Toys & Collectables.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "shrovetuesday": {
     "about": "Shrove Tuesday (Pancake Day UK) — tradition & food content",
     "fg_score": 4
   },
   "tns": {
-    "about": "Content related to theatre, stage performances, and entertainment news.",
-    "fg_score": 0
+    "about": "News & Entertainment content featuring Theatre & Stage, Other Art.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "hank": {
     "about": "Hank — Breaking Bad character or dog name content",
@@ -1936,24 +2150,28 @@
     "fg_score": 1
   },
   "philly": {
-    "about": "Content about Philadelphia, including sports, photography, and local life.",
-    "fg_score": 1
+    "about": "content featuring Photography, Motivation.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "blondes": {
     "about": "Blonde hair — hair color transformation & beauty content",
     "fg_score": 2
   },
   "d10": {
-    "about": "Gaming content, often related to specific game challenges or plays.",
-    "fg_score": 0
+    "about": "Games content featuring Theatre & Stage, Photography.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "rantoftheday": {
-    "about": "People sharing daily rants, often with an entertainment or horror twist.",
-    "fg_score": 0
+    "about": "content featuring Oddly Satisfying, Supernatural & Horror.",
+    "fg_score": 3,
+    "fg_reason": "Event/celebration content could frame FibreGuard in a hosting context."
   },
   "themoment": {
-    "about": "Capturing significant or emotional moments, often with music.",
-    "fg_score": 5
+    "about": "content featuring Entertainment News, Theatre & Stage.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "goli": {
     "about": "Goli gummies — supplement brand content",
@@ -1964,16 +2182,19 @@
     "fg_score": 3
   },
   "🐐": {
-    "about": "People showcasing their 'greatest of all time' moments or achievements.",
-    "fg_score": 0
+    "about": "content featuring Selfies, Motivation.",
+    "fg_score": 4,
+    "fg_reason": "Young people making home content provides sofa/dorm furniture angle."
   },
   "весна": {
-    "about": "People celebrating spring with nature, fashion, and lifestyle content.",
-    "fg_score": 1
+    "about": "Trending hashtag #весна.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "signlanguage": {
-    "about": "Sign language tutorials & deaf community content",
-    "fg_score": 2
+    "about": "content featuring Graphic Art, Theatre & Stage.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "ashnikko": {
     "about": "Ashnikko — alternative pop artist music content",
@@ -1988,117 +2209,143 @@
     "fg_score": 1
   },
   "gifs": {
-    "about": "Users sharing funny or relatable GIFs.",
-    "fg_score": 0
+    "about": "Trending hashtag #gifs.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "омарcoutz": {
     "about": "Omar Coutz — Spanish influencer content",
     "fg_score": 1
   },
   "punchmonkey": {
-    "about": "This trend is about a viral zoo monkey named Punch.",
-    "fg_score": 3,
-    "fg_reason": "Same as #punch — viral zoo monkey content. The comedy angle of an animal seeking comfort on durable, soft fabric is a lateral creative hook, but not a natural product fit."
+    "about": "content featuring Other Animals, Toys & Collectables.",
+    "fg_score": 6,
+    "fg_reason": "Pet owners and their furniture are exactly FibreGuard's target market."
   },
   "babymonkey": {
-    "about": "This trend is about cute videos of baby monkeys.",
-    "fg_score": 0
+    "about": "content featuring Other Animals, Scripted Drama.",
+    "fg_score": 6,
+    "fg_reason": "Pet owners and their furniture are exactly FibreGuard's target market."
   },
   "georgelopez": {
-    "about": "This trend is about comedian and actor George Lopez.",
-    "fg_score": 0
+    "about": "News & Entertainment content featuring Scripted Drama, Non-Video Games.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "jackhughes": {
-    "about": "This trend is about ice hockey player Jack Hughes.",
-    "fg_score": 0
+    "about": "Sports & Outdoor content featuring Sports News, Extreme Sports.",
+    "fg_score": 2,
+    "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
   },
   "premiolonuestro": {
-    "about": "This trend is about the Latin music awards show Premio Lo Nuestro.",
-    "fg_score": 0
+    "about": "News & Entertainment content featuring Entertainment News, Selfies.",
+    "fg_score": 2,
+    "fg_reason": "Entertainment fan content with minimal home lifestyle crossover."
   },
   "lilylovebraids": {
-    "about": "This trend is about a character or content related to braids.",
-    "fg_score": 0
+    "about": "Games content featuring Cosplay, Oddly Satisfying.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "toystory5": {
-    "about": "This trend is about speculation and news for Toy Story 5.",
-    "fg_score": 0
+    "about": "Games content featuring Cosplay, Toys & Collectables.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "oscars": {
-    "about": "This trend is about the Academy Awards ceremony.",
-    "fg_score": 0
+    "about": "News & Entertainment content featuring Entertainment News, Humanities.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "stateoftheunion": {
-    "about": "This trend is about discussions and reactions to the State of the Union address.",
-    "fg_score": 0
+    "about": "News & Entertainment content featuring Social News, Humanities.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "womenshockey": {
-    "about": "This trend is about women's ice hockey sports and news.",
-    "fg_score": 0
+    "about": "Sports & Outdoor content featuring Entertainment News, Sports News.",
+    "fg_score": 2,
+    "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
   },
   "bafta": {
-    "about": "This trend is about the British Academy Film Awards.",
-    "fg_score": 0
+    "about": "News & Entertainment content featuring Entertainment News, Humanities.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "varka": {
-    "about": "This trend is about a character from the game Genshin Impact.",
-    "fg_score": 0
+    "about": "Games content featuring Cosplay, Oddly Satisfying.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "poppyplaytimeedit": {
-    "about": "This trend is about fan edits of the game Poppy Playtime.",
-    "fg_score": 0
+    "about": "Games content featuring Cosplay, Video Games.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "blizzard2026": {
-    "about": "This trend is about a fictional or predicted future blizzard event.",
-    "fg_score": 0
+    "about": "content featuring Babies, Humanities.",
+    "fg_score": 5,
+    "fg_reason": "Families stuck indoors during winter weather are the perfect FibreGuard audience."
   },
   "lib": {
-    "about": "People sharing their favorite books and reading recommendations.",
-    "fg_score": 1
+    "about": "content featuring Entertainment News, Health & Wellness.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "seanstrickland": {
-    "about": "Content related to the UFC fighter and his fights.",
-    "fg_score": 0
+    "about": "Sports & Outdoor content featuring Sports News, Extreme Sports.",
+    "fg_score": 2,
+    "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
   },
   "hearts2hearts": {
-    "about": "Users participating in a dance challenge with heart gestures.",
-    "fg_score": 1
+    "about": "News & Entertainment content featuring Dance, Oddly Satisfying.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "heartssoldseperately": {
-    "about": "Parents sharing funny or relatable moments with their babies.",
-    "fg_score": 5
+    "about": "News & Entertainment content featuring Hair, Nail Art.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "wishbone": {
-    "about": "People creating art and animations inspired by the dog character.",
-    "fg_score": 1
+    "about": "News & Entertainment content featuring Graphic Art, Dance.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "supremecourt": {
-    "about": "Discussions and news about Supreme Court decisions.",
-    "fg_score": 0
+    "about": "content featuring Humanities, Social News.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "stockup": {
-    "about": "People sharing their bulk shopping hauls and pantry organization.",
-    "fg_score": 4
+    "about": "Games content featuring Scripted Drama, Other Talent.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "pale": {
-    "about": "People sharing beauty tips for fair skin and makeup looks.",
-    "fg_score": 1
+    "about": "content featuring Nail Art, Beauty.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "theslap": {
-    "about": "Users participating in a viral dance challenge.",
-    "fg_score": 1
+    "about": "Games content featuring Beauty, Nail Art.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "blizzard": {
-    "about": "People sharing videos of heavy snow and winter weather.",
-    "fg_score": 1
+    "about": "Trending hashtag #blizzard.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "meganmoroney": {
-    "about": "Fans sharing content related to the country music singer.",
-    "fg_score": 0
+    "about": "Trending hashtag #meganmoroney.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "livestory": {
-    "about": "Users sharing snippets of their daily lives and experiences.",
-    "fg_score": 1
+    "about": "Trending hashtag #livestory.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "#poppyplaytimechapter5": {
     "about": "A horror video game series.",
@@ -2201,76 +2448,94 @@
     "fg_score": 0
   },
   "luci4": {
-    "about": "A trend featuring music and edits related to the artist Luci4.",
-    "fg_score": 0
+    "about": "Trending hashtag #luci4.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "nycblizzard": {
-    "about": "Users sharing experiences and visuals of a New York City blizzard.",
-    "fg_score": 1
+    "about": "Trending hashtag #nycblizzard.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "rondalemoore": {
-    "about": "Discussions and content related to the true crime case of Rondale Moore.",
-    "fg_score": 0
+    "about": "Trending hashtag #rondalemoore.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "highcortisol": {
-    "about": "People discussing symptoms and effects of high cortisol levels.",
-    "fg_score": 1
+    "about": "Trending hashtag #highcortisol.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "poppyplaytime5": {
-    "about": "Fans discussing and creating content about the video game Poppy Playtime Chapter 5.",
-    "fg_score": 0
+    "about": "Trending hashtag #poppyplaytime5.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "alysaliuedit": {
-    "about": "Edits and fan content featuring figure skater Alysa Liu.",
-    "fg_score": 0
+    "about": "Trending hashtag #alysaliuedit.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "applejack": {
-    "about": "Content related to the My Little Pony character Applejack.",
-    "fg_score": 0
+    "about": "Trending hashtag #applejack.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "amberglenn": {
-    "about": "Discussions and content related to the true crime case of Amber Glenn.",
-    "fg_score": 0
+    "about": "Trending hashtag #amberglenn.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "verao": {
-    "about": "People sharing summer-themed content, often related to fashion or travel.",
-    "fg_score": 1
+    "about": "Trending hashtag #verao.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "camdenbop": {
-    "about": "People performing a specific dance or challenge originating from Camden.",
-    "fg_score": 0
+    "about": "Trending hashtag #camdenbop.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "claressashields": {
-    "about": "Content related to boxer Claressa Shields, often about her fights.",
-    "fg_score": 0
+    "about": "Trending hashtag #claressashields.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "theprototype": {
-    "about": "A trend often featuring a specific sound or character called 'The Prototype'.",
-    "fg_score": 0
+    "about": "Trending hashtag #theprototype.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "gambian_tiktok🇬🇲🇬🇲": {
-    "about": "Content created by and for the Gambian TikTok community.",
-    "fg_score": 1
+    "about": "Trending hashtag #gambian_tiktok🇬🇲🇬🇲.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "pantene": {
-    "about": "People showcasing their hair and using Pantene products.",
-    "fg_score": 1
+    "about": "Trending hashtag #pantene.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "loveisblindseason10": {
-    "about": "Discussions and reactions to the reality show Love Is Blind Season 10.",
-    "fg_score": 1
+    "about": "Trending hashtag #loveisblindseason10.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "atardecerplantilla": {
-    "about": "Users creating videos using a sunset-themed template.",
-    "fg_score": 1
+    "about": "Trending hashtag #atardecerplantilla.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "sunburn": {
-    "about": "People sharing their sunburn experiences, often humorously.",
-    "fg_score": 1
+    "about": "Trending hashtag #sunburn.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "tourettes": {
-    "about": "Individuals sharing their experiences living with Tourette's syndrome.",
-    "fg_score": 1
+    "about": "Trending hashtag #tourettes.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "#chroniqueemoji": {
     "about": "People sharing funny or relatable emoji stories and situations.",
@@ -2373,180 +2638,224 @@
     "fg_score": 0
   },
   "carnival": {
-    "about": "People sharing their experiences and outfits at carnivals and festivals.",
-    "fg_score": 1
+    "about": "content featuring Theatre & Stage, Other Art.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "aizen": {
-    "about": "Fans discussing and creating content related to the anime character Aizen.",
-    "fg_score": 0
+    "about": "Games content featuring Science, Supernatural & Horror.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "abayagirls": {
-    "about": "Women showcasing abaya fashion and styling.",
-    "fg_score": 1
+    "about": "Apparel & Accessories content featuring Advertisement, Other Beauty.",
+    "fg_score": 3,
+    "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
   },
   "pioupiou": {
-    "about": "People sharing funny and often clumsy moments or fails.",
-    "fg_score": 1
+    "about": "content featuring Other Art, Hilarious Fails.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "strength": {
-    "about": "People sharing fitness journeys, workout routines, and motivational content.",
-    "fg_score": 1
+    "about": "Sports & Outdoor content featuring Other Art, Life Hacks.",
+    "fg_score": 2,
+    "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
   },
   "greysanatomyedits": {
-    "about": "Fans sharing edited clips and emotional moments from Grey's Anatomy.",
-    "fg_score": 0
+    "about": "News & Entertainment content featuring Entertainment News, Family.",
+    "fg_score": 5,
+    "fg_reason": "Family-focused content aligns with FibreGuard's parent and homeowner audience."
   },
   "hennadesign": {
-    "about": "Artists showcasing intricate henna designs and application.",
-    "fg_score": 1
+    "about": "Apparel & Accessories content featuring Advertisement, Other Fashion.",
+    "fg_score": 3,
+    "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
   },
   "cadeauxmaquillage": {
-    "about": "People unboxing and reviewing makeup gifts.",
-    "fg_score": 1
+    "about": "Beauty & Personal Care content featuring Advertisement, Photography.",
+    "fg_score": 3,
+    "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
   },
   "jai15anstiktok⚠️⚠️": {
-    "about": "Teenagers sharing relatable content about being 15 on TikTok.",
-    "fg_score": 1
+    "about": "content featuring Magic, Hilarious Fails.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "ogfortnite": {
-    "about": "Gamers reminiscing and playing the original version of Fortnite.",
-    "fg_score": 0
+    "about": "Games content featuring Motivation, Business & Finance.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "mosquée": {
-    "about": "People sharing content related to mosques, prayer, and Islamic culture.",
-    "fg_score": 1
+    "about": "content featuring Humanities, Recreation Facilities.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "sunshine": {
-    "about": "People sharing positive vibes, sunny aesthetics, and outdoor activities.",
-    "fg_score": 1
+    "about": "content featuring DIY & Handicrafts, Business & Finance.",
+    "fg_score": 5,
+    "fg_reason": "Home DIY and improvement content naturally aligns with sofa upgrades."
   },
   "alors": {
-    "about": "People using a popular sound or meme to create humorous content.",
-    "fg_score": 1
+    "about": "content featuring Software & APPs, Scenery & Plants.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "xyabc": {
-    "about": "A trending sound or meme used for various humorous or relatable situations.",
-    "fg_score": 1
+    "about": "content featuring Hilarious Fails, Science.",
+    "fg_score": 5,
+    "fg_reason": "Home DIY and improvement content naturally aligns with sofa upgrades."
   },
   "modestclothing": {
-    "about": "People showcasing and styling modest fashion outfits.",
-    "fg_score": 1
+    "about": "Apparel & Accessories content featuring Other Fashion, Humanities.",
+    "fg_score": 4,
+    "fg_reason": "Fashion/beauty content shot at home provides natural sofa background presence."
   },
   "fitlife": {
-    "about": "People sharing their fitness routines, healthy eating, and active lifestyles.",
-    "fg_score": 1
+    "about": "Sports & Outdoor content featuring School Education, Other Beauty.",
+    "fg_score": 2,
+    "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
   },
   "teenfashion": {
-    "about": "Teenagers showcasing and discussing current fashion trends.",
-    "fg_score": 1
+    "about": "Apparel & Accessories content featuring Business & Finance, Nail Art.",
+    "fg_score": 4,
+    "fg_reason": "Fashion/beauty content shot at home provides natural sofa background presence."
   },
   "darkromancereads": {
-    "about": "Readers sharing and reviewing dark romance books.",
-    "fg_score": 0
+    "about": "content featuring Fishing, Hunting & Camping, Professional & Personal Development.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "tiktokgabon🇬🇦tiktok": {
-    "about": "Content from or related to Gabon, often cultural or daily life.",
-    "fg_score": 0
+    "about": "Trending hashtag #tiktokgabon🇬🇦tiktok.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "contenu": {
-    "about": "Creators sharing their general content or asking for ideas.",
-    "fg_score": 0
+    "about": "Trending hashtag #contenu.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "sortir": {
-    "about": "People sharing their outings, activities, or places to go.",
-    "fg_score": 0
+    "about": "Trending hashtag #sortir.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "reflexaododia": {
-    "about": "Daily reflections, motivational quotes, or philosophical thoughts.",
-    "fg_score": 0
+    "about": "Trending hashtag #reflexaododia.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "laura": {
-    "about": "Videos featuring or about a person named Laura, often personal vlogs.",
-    "fg_score": 0
+    "about": "Trending hashtag #laura.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "maquillageguide": {
-    "about": "Makeup tutorials, tips, and product recommendations.",
-    "fg_score": 0
+    "about": "Trending hashtag #maquillageguide.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "gains": {
-    "about": "People sharing their fitness progress, muscle gains, or workouts.",
-    "fg_score": 0
+    "about": "Trending hashtag #gains.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "bravo": {
-    "about": "Content related to Bravo TV shows or general expressions of approval.",
-    "fg_score": 0
+    "about": "Trending hashtag #bravo.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "freyaskye": {
-    "about": "Content featuring or about a person named Freya Skye.",
-    "fg_score": 0
+    "about": "Trending hashtag #freyaskye.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "benoit": {
-    "about": "Videos featuring or about a person named Benoit, often personal vlogs.",
-    "fg_score": 0
+    "about": "Trending hashtag #benoit.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "bafa": {
-    "about": "Content related to the BAFA certificate for youth animation in France.",
-    "fg_score": 0
+    "about": "Trending hashtag #bafa.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "kingston": {
-    "about": "People sharing their lives and experiences in Kingston, Jamaica.",
-    "fg_score": 1
+    "about": "Trending hashtag #kingston.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "shoppingnoel": {
-    "about": "People sharing their Christmas shopping hauls and gift ideas.",
-    "fg_score": 3
+    "about": "Trending hashtag #shoppingnoel.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "srt": {
-    "about": "Car enthusiasts showcasing their SRT vehicles and modifications.",
-    "fg_score": 0
+    "about": "Trending hashtag #srt.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "ricardo": {
-    "about": "People sharing funny skits and memes featuring a character named Ricardo.",
-    "fg_score": 1
+    "about": "Trending hashtag #ricardo.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "innondations": {
-    "about": "People sharing videos and experiences related to floods.",
-    "fg_score": 1
+    "about": "Trending hashtag #innondations.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "nino": {
-    "about": "People sharing videos of their pets, often a dog named Nino.",
-    "fg_score": 5
+    "about": "Trending hashtag #nino.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "summeroutfits": {
-    "about": "People showcasing their summer fashion styles and outfit ideas.",
-    "fg_score": 1
+    "about": "Trending hashtag #summeroutfits.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "quick": {
-    "about": "People sharing quick tips, hacks, and short-form content.",
-    "fg_score": 3
+    "about": "Trending hashtag #quick.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "lip": {
-    "about": "People showcasing lip art, makeup tutorials, and lip-sync videos.",
-    "fg_score": 1
+    "about": "Trending hashtag #lip.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "fitfam": {
-    "about": "Fitness enthusiasts sharing their workout routines and healthy lifestyles.",
-    "fg_score": 1
+    "about": "Trending hashtag #fitfam.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "montemanyes": {
-    "about": "People sharing gaming content and funny pranks.",
-    "fg_score": 0
+    "about": "Games content featuring Pranks, Diary & VLOG.",
+    "fg_score": 4,
+    "fg_reason": "Food content in home settings has natural sofa stain prevention angle."
   },
   "fanttik": {
-    "about": "People showcasing and reviewing Fanttik tech products.",
-    "fg_score": 0
+    "about": "Tech & Electronics content trending on TikTok.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "klassenfahrt": {
-    "about": "Students sharing their school trip experiences and funny moments.",
-    "fg_score": 1
+    "about": "content featuring Recreation Facilities, Campus Life.",
+    "fg_score": 4,
+    "fg_reason": "Young people making home content provides sofa/dorm furniture angle."
   },
   "війна": {
-    "about": "People sharing content related to the war in Ukraine.",
-    "fg_score": 0
+    "about": "content featuring Theatre & Stage, Professional & Personal Development.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "mexiko": {
-    "about": "People sharing travel experiences and pranks in Mexico.",
-    "fg_score": 1
+    "about": "Travel content featuring Pranks, Oddly Satisfying.",
+    "fg_score": 2,
+    "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
   },
   "#токсис": {
     "about": "People sharing funny or relatable 'toxic' moments, often with pets or school.",
@@ -2849,213 +3158,264 @@
     "fg_score": 0
   },
   "samuraijay": {
-    "about": "This is about a musical artist named Samurai Jay.",
-    "fg_score": 0
+    "about": "content featuring Non-Video Games, Other Fashion.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "festival": {
-    "about": "This is about music festivals and entertainment events.",
-    "fg_score": 0
+    "about": "News & Entertainment content featuring Photography, Entertainment News.",
+    "fg_score": 2,
+    "fg_reason": "Entertainment fan content with minimal home lifestyle crossover."
   },
   "lda": {
-    "about": "This is about a musical artist named LDA.",
-    "fg_score": 0
+    "about": "Sports & Outdoor content featuring Entertainment News, Music.",
+    "fg_score": 2,
+    "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
   },
   "sanremorai": {
-    "about": "This is about the Sanremo Music Festival.",
-    "fg_score": 0
+    "about": "News & Entertainment content featuring Entertainment News, Non-Video Games.",
+    "fg_score": 2,
+    "fg_reason": "Entertainment fan content with minimal home lifestyle crossover."
   },
   "ariston": {
-    "about": "This is about the Ariston Theatre, venue for Sanremo Festival.",
-    "fg_score": 0
+    "about": "News & Entertainment content featuring Non-Video Games, Graphic Art.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "quadgod": {
-    "about": "This is about extreme sports and quad biking stunts.",
-    "fg_score": 0
+    "about": "Sports & Outdoor content featuring Extreme Sports, Other Art.",
+    "fg_score": 2,
+    "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
   },
   "tommasoparadiso": {
-    "about": "This is about the Italian singer Tommaso Paradiso.",
-    "fg_score": 0
+    "about": "News & Entertainment content featuring School Education, Business & Finance.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "scuolasuperiore": {
-    "about": "This is about high school life and funny student moments.",
-    "fg_score": 0
+    "about": "Education content featuring Campus Life, Non-Video Games.",
+    "fg_score": 4,
+    "fg_reason": "Young people making home content provides sofa/dorm furniture angle."
   },
   "uovadipasqua": {
-    "about": "This is about Easter eggs, often chocolate or decorative.",
-    "fg_score": 3
+    "about": "Food & Beverage content featuring Theatre & Stage, Advertisement.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "labirinto": {
-    "about": "This is about mazes and labyrinth challenges.",
-    "fg_score": 0
+    "about": "content featuring Campus Life, Selfies.",
+    "fg_score": 4,
+    "fg_reason": "Young people making home content provides sofa/dorm furniture angle."
   },
   "fashionweek": {
-    "about": "This is about fashion shows and style trends.",
-    "fg_score": 0
+    "about": "Apparel & Accessories content featuring Entertainment News, Travel.",
+    "fg_score": 4,
+    "fg_reason": "Fashion/beauty content shot at home provides natural sofa background presence."
   },
   "milanfashionweek": {
-    "about": "This is about Milan Fashion Week events and styles.",
-    "fg_score": 0
+    "about": "Apparel & Accessories content featuring Other Art, Entertainment News.",
+    "fg_score": 4,
+    "fg_reason": "Fashion/beauty content shot at home provides natural sofa background presence."
   },
   "bodoglimt": {
-    "about": "This is about the Norwegian football club Bodø/Glimt.",
-    "fg_score": 0
+    "about": "Sports & Outdoor content featuring Sports News, Life Hacks.",
+    "fg_score": 2,
+    "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
   },
   "festadelpapà": {
-    "about": "This is about Father's Day celebrations and gifts.",
-    "fg_score": 5
+    "about": "Baby, Kids & Maternity content featuring Advertisement, Health & Wellness.",
+    "fg_score": 6,
+    "fg_reason": "Family celebration content = food, kids, and spill risk at home."
   },
   "nightmarerotation": {
-    "about": "This is about unsettling or oddly satisfying visual effects.",
-    "fg_score": 0
+    "about": "content featuring Oddly Satisfying, Campus Life.",
+    "fg_score": 4,
+    "fg_reason": "Young people making home content provides sofa/dorm furniture angle."
   },
   "sombr": {
-    "about": "This is about artistic creations or performances.",
-    "fg_score": 0
+    "about": "content featuring Other Art, Entertainment News.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "sciacca": {
-    "about": "People showing off their outfits and fashion choices.",
-    "fg_score": 1
+    "about": "Apparel & Accessories content featuring Outfits.",
+    "fg_score": 3,
+    "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
   },
   "giovannifashion": {
-    "about": "People sharing fashion content related to the brand Giovanni Fashion.",
-    "fg_score": 1
+    "about": "Apparel & Accessories content trending on TikTok.",
+    "fg_score": 4,
+    "fg_reason": "Fashion/beauty content shot at home provides natural sofa background presence."
   },
   "primavera2026": {
-    "about": "People sharing spring fashion trends and outfit ideas for 2026.",
-    "fg_score": 1
+    "about": "Apparel & Accessories content featuring Recreation Facilities, Motivation.",
+    "fg_score": 3,
+    "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
   },
   "slimmingshapewear": {
-    "about": "People reviewing or showcasing slimming shapewear products.",
-    "fg_score": 1
+    "about": "Apparel & Accessories content trending on TikTok.",
+    "fg_score": 3,
+    "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
   },
   "sanremo2026": {
-    "about": "Discussions and content related to the Sanremo Music Festival 2026.",
-    "fg_score": 0
+    "about": "Trending hashtag #sanremo2026.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "luche": {
-    "about": "Content related to the Italian rapper Luchè.",
-    "fg_score": 0
+    "about": "Trending hashtag #luche.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "arisa": {
-    "about": "Content related to the Italian singer Arisa.",
-    "fg_score": 0
+    "about": "Trending hashtag #arisa.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "carloconti": {
-    "about": "Content related to the Italian television presenter Carlo Conti.",
-    "fg_score": 0
+    "about": "Trending hashtag #carloconti.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "luchè": {
-    "about": "Content related to the Italian rapper Luchè.",
-    "fg_score": 0
+    "about": "Trending hashtag #luchè.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "saldavinci": {
-    "about": "Content related to the Italian comedian and actor Sal Da Vinci.",
-    "fg_score": 0
+    "about": "Trending hashtag #saldavinci.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "chiello": {
-    "about": "Content related to the Italian singer Chiello.",
-    "fg_score": 0
+    "about": "Trending hashtag #chiello.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "monkey": {
-    "about": "Videos featuring monkeys, often humorous or cute.",
-    "fg_score": 0
+    "about": "Trending hashtag #monkey.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "gymoutfit": {
-    "about": "People sharing their gym outfits and activewear styles.",
-    "fg_score": 1
+    "about": "Trending hashtag #gymoutfit.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "tizianoferro": {
-    "about": "Content related to the Italian singer Tiziano Ferro.",
-    "fg_score": 0
+    "about": "Trending hashtag #tizianoferro.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "sayf": {
-    "about": "General content featuring or about someone named Sayf.",
-    "fg_score": 0
+    "about": "Trending hashtag #sayf.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "fendi": {
-    "about": "People showcasing Fendi luxury fashion items and outfits.",
-    "fg_score": 1
+    "about": "Trending hashtag #fendi.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "23": {
-    "about": "People sharing significant life events or memories related to the age 23.",
-    "fg_score": 1
+    "about": "Trending hashtag #23.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "jax": {
-    "about": "Fans reacting to the song 'Victoria's Secret' by Jax.",
-    "fg_score": 1
+    "about": "Trending hashtag #jax.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "serenabrancale": {
-    "about": "Content featuring the Italian singer Serena Brancale.",
-    "fg_score": 1
+    "about": "Trending hashtag #serenabrancale.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "mfw": {
-    "about": "People sharing 'My Face When' reaction memes.",
-    "fg_score": 1
+    "about": "Trending hashtag #mfw.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "bodo": {
-    "about": "Content related to the Norwegian football club Bodø/Glimt.",
-    "fg_score": 0
+    "about": "Trending hashtag #bodo.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "pushupleggings": {
-    "about": "Showcasing and reviewing push-up leggings.",
-    "fg_score": 1
+    "about": "Trending hashtag #pushupleggings.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "sanremo2025": {
-    "about": "Anticipation and discussions about the Sanremo Music Festival 2025.",
-    "fg_score": 1
+    "about": "Trending hashtag #sanremo2025.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "rogoredo": {
-    "about": "Content related to the Rogoredo area in Milan, Italy.",
-    "fg_score": 1
+    "about": "Trending hashtag #rogoredo.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "ditonellapiaga": {
-    "about": "Content featuring the Italian singer Ditonellapiaga.",
-    "fg_score": 1
+    "about": "Trending hashtag #ditonellapiaga.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "nightmare": {
-    "about": "People sharing their scary or stressful experiences.",
-    "fg_score": 1
+    "about": "Trending hashtag #nightmare.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "nickelodeon": {
-    "about": "Nostalgia and content related to Nickelodeon shows.",
-    "fg_score": 1
+    "about": "Trending hashtag #nickelodeon.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "tg1": {
-    "about": "Content related to the Italian news program TG1.",
-    "fg_score": 0
+    "about": "Trending hashtag #tg1.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "sanremo2024": {
-    "about": "Highlights and discussions from the Sanremo Music Festival 2024.",
-    "fg_score": 1
+    "about": "Trending hashtag #sanremo2024.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "barella": {
-    "about": "Content related to the Italian footballer Nicolò Barella.",
-    "fg_score": 0
+    "about": "Trending hashtag #barella.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "atalantanapoli": {
-    "about": "Content related to the football match between Atalanta and Napoli.",
-    "fg_score": 0
+    "about": "Trending hashtag #atalantanapoli.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "easter": {
-    "about": "People sharing Easter celebrations, decorations, and activities.",
+    "about": "Trending hashtag #easter.",
     "fg_score": 6,
-    "fg_reason": "Easter family gatherings bring kids, chocolate, and drinks — exactly the scenario FibreGuard is built for. Showing a pristine sofa surviving Easter chaos is relatable family content."
+    "fg_reason": "Family celebration content = food, kids, and spill risk at home."
   },
   "luché": {
-    "about": "Content featuring the Italian rapper Luchè.",
-    "fg_score": 1
+    "about": "Trending hashtag #luché.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "levante": {
-    "about": "Content featuring the Italian singer Levante.",
-    "fg_score": 1
+    "about": "Trending hashtag #levante.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "milanparma": {
-    "about": "Content related to the football match between Milan and Parma.",
-    "fg_score": 0
+    "about": "Trending hashtag #milanparma.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "affezionarsi": {
-    "about": "People sharing moments of becoming attached to someone or something.",
-    "fg_score": 1
+    "about": "Trending hashtag #affezionarsi.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "#ofertasparati": {
     "about": "People sharing and finding deals on various products.",
@@ -3158,418 +3518,873 @@
     "fg_score": 1
   },
   "fallasvalencia": {
-    "about": "This trend is about the Fallas festival in Valencia, Spain.",
-    "fg_score": 3
+    "about": "content featuring Life Hacks, Business & Finance.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "falles2026": {
-    "about": "This trend is about the Fallas festival in Valencia, Spain.",
-    "fg_score": 3
+    "about": "Apparel & Accessories content featuring Business & Finance, Recreation Facilities.",
+    "fg_score": 3,
+    "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
   },
   "long": {
-    "about": "This trend is about long hair transformations and cosplay.",
-    "fg_score": 1
+    "about": "content featuring Theatre & Stage, Oddly Satisfying.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "cachitodeluz": {
-    "about": "This trend is about photography tips and creative lighting.",
-    "fg_score": 1
+    "about": "content featuring Software & APPs, Photography.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "buentiempo": {
-    "about": "This trend is about motivational content for work and personal development.",
-    "fg_score": 1
+    "about": "content featuring Professional & Personal Development, Work & Jobs.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "textiles": {
-    "about": "This trend is about various textile art, crafts, and designs.",
-    "fg_score": 8,
-    "fg_reason": "High relevance — fabric, weaves, and material content is core FibreGuard territory. Audience is already interested in textiles, so showcasing FibreGuard's stain-resistant technology feels native and educational."
+    "about": "Apparel & Accessories content featuring Other Talent, Scenery & Plants.",
+    "fg_score": 9,
+    "fg_reason": "Perfect direct fit — textiles is exactly FibreGuard's audience and context."
   },
   "liakali": {
-    "about": "This trend is about a creator sharing supernatural stories and satisfying content.",
-    "fg_score": 1
+    "about": "News & Entertainment content featuring Supernatural & Horror, Motivation.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "caminata": {
-    "about": "This trend is about hiking, walking, and outdoor photography.",
-    "fg_score": 3
+    "about": "content featuring Theatre & Stage, Magic.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "gabontiktok🇬🇦": {
-    "about": "This trend is about general lifestyle and culture in Gabon.",
-    "fg_score": 1
+    "about": "content featuring Sports News, Professional & Personal Development.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "gabon🇬🇦": {
-    "about": "This trend is about general lifestyle and culture in Gabon.",
-    "fg_score": 1
+    "about": "content featuring Professional & Personal Development, Sports News.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "jerseyzara": {
-    "about": "This trend is about styling and reviewing Zara jerseys.",
-    "fg_score": 1
+    "about": "Apparel & Accessories content featuring Pranks, Travel.",
+    "fg_score": 6,
+    "fg_reason": "Pet owners and their furniture are exactly FibreGuard's target market."
   },
   "mensfashion": {
-    "about": "This trend is about men's fashion and clothing styles.",
-    "fg_score": 1
+    "about": "Trending hashtag #mensfashion.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "ventilador": {
-    "about": "People showing off their fans or creative uses for them.",
-    "fg_score": 1
+    "about": "Trending hashtag #ventilador.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "danirep": {
-    "about": "Fans and content related to the Spanish YouTuber DaniRep.",
-    "fg_score": 0
+    "about": "Trending hashtag #danirep.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "diadelpadre": {
-    "about": "Celebrating Father's Day with gifts and family moments.",
-    "fg_score": 5
+    "about": "Trending hashtag #diadelpadre.",
+    "fg_score": 6,
+    "fg_reason": "Family celebration content = food, kids, and spill risk at home."
   },
   "ron": {
-    "about": "People making or enjoying rum-based drinks.",
-    "fg_score": 3
+    "about": "Trending hashtag #ron.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "23f": {
-    "about": "Commemorating the 1981 Spanish coup attempt.",
-    "fg_score": 0
+    "about": "Trending hashtag #23f.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "vicio": {
-    "about": "People sharing their guilty pleasures or addictions.",
-    "fg_score": 1
+    "about": "Trending hashtag #vicio.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "fk": {
-    "about": "A general abbreviation used in various contexts, often for emphasis.",
-    "fg_score": 0
+    "about": "Trending hashtag #fk.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "cetaphilrecomendadopordermatólogos": {
-    "about": "People reviewing and recommending Cetaphil skincare products.",
-    "fg_score": 1
+    "about": "Trending hashtag #cetaphilrecomendadopordermatólogos.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "titi": {
-    "about": "People sharing funny or cute moments with their aunts.",
-    "fg_score": 1
+    "about": "Trending hashtag #titi.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "descansaenpaz": {
-    "about": "Tributes and memorials for deceased loved ones.",
-    "fg_score": 0
+    "about": "Trending hashtag #descansaenpaz.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "gerardgibson": {
-    "about": "Fans and content related to the TikTok creator Gerard Gibson.",
-    "fg_score": 0
+    "about": "Trending hashtag #gerardgibson.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "melissagate": {
-    "about": "Discussions and reactions to a specific online drama involving Melissa.",
-    "fg_score": 0
+    "about": "Trending hashtag #melissagate.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "jalisco": {
-    "about": "Showcasing the culture, food, and beauty of Jalisco, Mexico.",
-    "fg_score": 1
+    "about": "Trending hashtag #jalisco.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "asencio": {
-    "about": "Fans and content related to the footballer Marco Asensio.",
-    "fg_score": 0
+    "about": "Trending hashtag #asencio.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "paseos": {
-    "about": "People sharing their walks, strolls, or outings.",
-    "fg_score": 1
+    "about": "Trending hashtag #paseos.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "ballibotmogis": {
-    "about": "People sharing funny fails and magic tricks with a robot.",
-    "fg_score": 0
+    "about": "content featuring Professional Special Effects, Hilarious Fails.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "fortniteclips": {
-    "about": "Funny or impressive gameplay moments from Fortnite.",
-    "fg_score": 0
+    "about": "Games content featuring Magic, Hilarious Fails.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "margotrobbie": {
-    "about": "Content related to actress Margot Robbie and her movies.",
-    "fg_score": 0
+    "about": "News & Entertainment content featuring Other Art, Entertainment News.",
+    "fg_score": 4,
+    "fg_reason": "Food content in home settings has natural sofa stain prevention angle."
   },
   "texas": {
-    "about": "Content about life, culture, and family in Texas.",
-    "fg_score": 5
+    "about": "content featuring Motivation, Pranks.",
+    "fg_score": 5,
+    "fg_reason": "Family-focused content aligns with FibreGuard's parent and homeowner audience."
   },
   "huishoudbeurs": {
-    "about": "A Dutch household fair featuring products and demonstrations.",
-    "fg_score": 7,
-    "fg_reason": "Dutch household fair — home products, furniture, and domestic lifestyle content. Perfect FibreGuard audience actively shopping for home improvements and quality household products."
+    "about": "content featuring Advertisement, Business & Finance.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "name": {
-    "about": "People sharing their names and related content.",
-    "fg_score": 1
+    "about": "content featuring Life Hacks, Business & Finance.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "сатир": {
-    "about": "Content related to the mythical creature satyr or satire.",
-    "fg_score": 0
+    "about": "News & Entertainment content featuring School Education, Hilarious Fails.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "warm": {
-    "about": "People showcasing warm clothing or cozy aesthetics.",
-    "fg_score": 5
+    "about": "Apparel & Accessories content featuring Oddly Satisfying, Other Fashion.",
+    "fg_score": 3,
+    "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
   },
   "voorjaar": {
-    "about": "Content about spring, often related to home or nature.",
-    "fg_score": 5
+    "about": "Home Improvement content featuring Mukbangs & Tasting, Social Issues.",
+    "fg_score": 4,
+    "fg_reason": "Food content in home settings has natural sofa stain prevention angle."
   },
   "lana": {
-    "about": "Content related to the name Lana, often personal vlogs.",
-    "fg_score": 0
+    "about": "content featuring Sports News, Street Interviews & Social Experiments.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "visibilite": {
-    "about": "Content about increasing visibility, often for businesses.",
-    "fg_score": 1
+    "about": "content featuring Magic, Other Art.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "zon": {
-    "about": "Content about the sun, often related to weather or outdoors.",
-    "fg_score": 3
+    "about": "Trending hashtag #zon.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "lente": {
-    "about": "Celebrating the arrival of spring with nature, fashion, and outdoor activities.",
-    "fg_score": 1
+    "about": "Trending hashtag #lente.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "tylerthecreator": {
-    "about": "Content related to the musician Tyler, The Creator and his music.",
-    "fg_score": 0
+    "about": "Trending hashtag #tylerthecreator.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "umrah": {
-    "about": "Sharing experiences and preparations for the Islamic pilgrimage Umrah.",
-    "fg_score": 1
+    "about": "Trending hashtag #umrah.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "دعاء_يريح_القلوب": {
-    "about": "Sharing Islamic prayers and supplications for comfort and peace.",
-    "fg_score": 1
+    "about": "Trending hashtag #دعاء_يريح_القلوب.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "возьмителефондетка": {
-    "about": "A trend where people react to a specific audio clip or challenge.",
-    "fg_score": 1
+    "about": "Trending hashtag #возьмителефондетка.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "dreamjob": {
-    "about": "People sharing their ideal or aspirational career paths and jobs.",
-    "fg_score": 1
+    "about": "Trending hashtag #dreamjob.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "primadonna": {
-    "about": "Content related to the song 'Primadonna' by Marina and the Diamonds.",
-    "fg_score": 0
+    "about": "Trending hashtag #primadonna.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "rotterdamrave": {
-    "about": "Videos from the Rotterdam Rave techno music events and parties.",
-    "fg_score": 0
+    "about": "Trending hashtag #rotterdamrave.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "isfad": {
-    "about": "A trend or meme, often with a humorous or relatable context.",
-    "fg_score": 1
+    "about": "Trending hashtag #isfad.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "hateme": {
-    "about": "Content expressing self-deprecating humor or relatable struggles.",
-    "fg_score": 1
+    "about": "Trending hashtag #hateme.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "buster": {
-    "about": "Content featuring a specific dog named Buster, often with funny antics.",
-    "fg_score": 1
+    "about": "Trending hashtag #buster.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "fantasm": {
-    "about": "Content related to the anime 'Fantasm' or similar fantasy themes.",
-    "fg_score": 0
+    "about": "Trending hashtag #fantasm.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "шаман": {
-    "about": "Content related to the Russian singer SHAMAN and his music.",
-    "fg_score": 0
+    "about": "Trending hashtag #шаман.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "sunny": {
-    "about": "People sharing moments of sunshine and good weather.",
-    "fg_score": 5
+    "about": "Trending hashtag #sunny.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "млп": {
-    "about": "My Little Pony content, often fan-made animations or discussions.",
-    "fg_score": 1
+    "about": "Trending hashtag #млп.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "мот": {
-    "about": "A Russian singer, sharing music and performance clips.",
-    "fg_score": 0
+    "about": "Trending hashtag #мот.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "flightattendant": {
-    "about": "Flight attendants sharing their work experiences and travel tips.",
-    "fg_score": 3
+    "about": "Trending hashtag #flightattendant.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "андрей": {
-    "about": "A Russian name, often used for personal vlogs or comedy skits.",
-    "fg_score": 1
+    "about": "Trending hashtag #андрей.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "ceramics": {
-    "about": "Artists showcasing their ceramic creations and pottery processes.",
-    "fg_score": 5,
-    "fg_reason": "Pottery and ceramic creation involves mess, clay, and spills. The creative-messy-hands audience appreciates durability and care — a 'clumsy artist meets stain-proof sofa' angle has potential."
+    "about": "Trending hashtag #ceramics.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "брайнмапс": {
-    "about": "A Russian YouTuber, sharing comedy skits and vlogs.",
-    "fg_score": 0
+    "about": "Trending hashtag #брайнмапс.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "negenmaandenbeurs": {
-    "about": "A Dutch fair for pregnancy, babies, and young children.",
-    "fg_score": 5
+    "about": "Trending hashtag #negenmaandenbeurs.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "jalal": {
-    "about": "A creator sharing personal vlogs, selfies, and prank videos.",
-    "fg_score": 1
+    "about": "content featuring Diary & VLOG, Selfies.",
+    "fg_score": 4,
+    "fg_reason": "Young people making home content provides sofa/dorm furniture angle."
   },
   "baftas": {
-    "about": "Highlights and discussions from the British Academy Film Awards.",
-    "fg_score": 0
+    "about": "News & Entertainment content featuring Entertainment News, Sports News.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "arrested": {
-    "about": "Street interviews, social experiments, and magic performances.",
-    "fg_score": 0
+    "about": "News & Entertainment content featuring Traditional Culture, Magic.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "springoutfit": {
-    "about": "People sharing their spring fashion choices and styling tips.",
-    "fg_score": 3
+    "about": "Apparel & Accessories content featuring Other Art, Food Tour & Recommendations.",
+    "fg_score": 4,
+    "fg_reason": "Fashion/beauty content shot at home provides natural sofa background presence."
   },
   "iftarideas": {
-    "about": "Recipes and inspiration for Iftar meals during Ramadan.",
-    "fg_score": 3
+    "about": "Food & Beverage content featuring Food Tour & Recommendations, Cooking.",
+    "fg_score": 6,
+    "fg_reason": "Family celebration content = food, kids, and spill risk at home."
   },
   "lospollostv": {
-    "about": "A streamer sharing gaming content, pranks, and reactions.",
-    "fg_score": 0
+    "about": "Games content featuring Sports News, Business & Finance.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
   },
   "northlondonderby": {
-    "about": "Football match content between Arsenal and Tottenham Hotspur.",
-    "fg_score": 0
+    "about": "Sports & Outdoor content featuring Sports News, Traditional Sports.",
+    "fg_score": 4,
+    "fg_reason": "Food content in home settings has natural sofa stain prevention angle."
   },
   "naturesnap": {
-    "about": "People sharing beautiful nature photography and outdoor scenes.",
-    "fg_score": 5
+    "about": "content featuring Humanities, Food Tour & Recommendations.",
+    "fg_score": 4,
+    "fg_reason": "Food content in home settings has natural sofa stain prevention angle."
   },
   "forestglow": {
-    "about": "People lip-syncing to a specific audio track.",
-    "fg_score": 0
+    "about": "content featuring Lip-sync.",
+    "fg_score": 3,
+    "fg_reason": "Relaxation vibe has some home/sofa connection but needs a creative angle."
   },
   "angstyromance": {
-    "about": "Dramatic or humorous skits about angsty romantic situations.",
-    "fg_score": 0
+    "about": "content featuring Hilarious Fails, Theatre & Stage.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "piscestour": {
-    "about": "A tour or event related to Pisces, often involving selfies and family.",
-    "fg_score": 0
+    "about": "News & Entertainment content featuring Tech Products & Infos, Family.",
+    "fg_score": 5,
+    "fg_reason": "Family-focused content aligns with FibreGuard's parent and homeowner audience."
   },
   "whychooseromance": {
-    "about": "Skit or discussion about choosing romance, often with a DIY or horror angle.",
-    "fg_score": 0
+    "about": "content featuring Theatre & Stage, DIY & Handicrafts.",
+    "fg_score": 5,
+    "fg_reason": "Home DIY and improvement content naturally aligns with sofa upgrades."
   },
   "viewsnap": {
-    "about": "People sharing quick snaps of their views, often motivational or sports-related.",
-    "fg_score": 0
+    "about": "content featuring Professional & Personal Development, Selfies.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "natureglow": {
-    "about": "People showcasing natural beauty and glowing effects.",
-    "fg_score": 0
+    "about": "Trending hashtag #natureglow.",
+    "fg_score": 3,
+    "fg_reason": "Relaxation vibe has some home/sofa connection but needs a creative angle."
   },
   "viewglow": {
-    "about": "People showcasing aesthetically pleasing views, often with filters or effects.",
-    "fg_score": 0
+    "about": "content featuring Software & APPs, Humanities.",
+    "fg_score": 3,
+    "fg_reason": "Relaxation vibe has some home/sofa connection but needs a creative angle."
   },
   "skyrush": {
-    "about": "Content related to fast-paced activities or games in the sky.",
-    "fg_score": 0
+    "about": "Trending hashtag #skyrush.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "skydrift": {
-    "about": "Content related to drifting or flying in the sky.",
-    "fg_score": 0
+    "about": "Trending hashtag #skydrift.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "skyvibes": {
-    "about": "People sharing aesthetic sky views and related romantic or dramatic content.",
-    "fg_score": 0
+    "about": "content featuring Scripted Drama, Cooking.",
+    "fg_score": 4,
+    "fg_reason": "Food content in home settings has natural sofa stain prevention angle."
   },
   "naturerush": {
-    "about": "People showcasing fast-paced nature experiences or food tours.",
-    "fg_score": 0
+    "about": "content featuring Humanities, Nail Art.",
+    "fg_score": 4,
+    "fg_reason": "Food content in home settings has natural sofa stain prevention angle."
   },
   "wildvibes": {
-    "about": "People sharing content with a wild, free, or adventurous aesthetic.",
-    "fg_score": 0
+    "about": "Trending hashtag #wildvibes.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "earthsnap": {
-    "about": "People sharing quick snaps of natural landscapes or earth-related content.",
-    "fg_score": 0
+    "about": "Trending hashtag #earthsnap.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "hilldrift": {
-    "about": "Content related to drifting or driving on hills.",
-    "fg_score": 0
+    "about": "Trending hashtag #hilldrift.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "skyglow": {
-    "about": "People showcasing beautiful sky glows, often with babies or transportation.",
-    "fg_score": 0
+    "about": "content featuring Other Transportation, Social News.",
+    "fg_score": 3,
+    "fg_reason": "Relaxation vibe has some home/sofa connection but needs a creative angle."
   },
   "earthdrift": {
-    "about": "Content related to drifting or moving across earthy landscapes.",
-    "fg_score": 0
+    "about": "Trending hashtag #earthdrift.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "tanned": {
-    "about": "People showcasing their tanned skin or tanning routines.",
-    "fg_score": 0
+    "about": "Trending hashtag #tanned.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "whitetoes": {
-    "about": "People showing off their white painted toenails.",
-    "fg_score": 0
+    "about": "Trending hashtag #whitetoes.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "iloveit": {
-    "about": "People sharing things they love, often in a humorous way.",
-    "fg_score": 1
+    "about": "Trending hashtag #iloveit.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "holidayoutfit": {
-    "about": "Users showcasing their outfits for holiday celebrations.",
-    "fg_score": 1
+    "about": "Trending hashtag #holidayoutfit.",
+    "fg_score": 5,
+    "fg_reason": "Holiday family gathering content with natural home and sofa context."
   },
   "calmglow": {
-    "about": "People sharing their skincare routines for a calm, glowing complexion.",
-    "fg_score": 1
+    "about": "Trending hashtag #calmglow.",
+    "fg_score": 3,
+    "fg_reason": "Relaxation vibe has some home/sofa connection but needs a creative angle."
   },
   "backtoschool": {
-    "about": "Students preparing for or returning to school.",
-    "fg_score": 1
+    "about": "Trending hashtag #backtoschool.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "sehri": {
-    "about": "Muslims sharing their pre-dawn meal during Ramadan.",
-    "fg_score": 0
+    "about": "Trending hashtag #sehri.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "springiscoming": {
-    "about": "People sharing signs of spring and seasonal changes.",
-    "fg_score": 1
+    "about": "Trending hashtag #springiscoming.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "legallyblonde": {
-    "about": "Fans recreating scenes or referencing the movie Legally Blonde.",
-    "fg_score": 0
+    "about": "Trending hashtag #legallyblonde.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "iloveitiloveitiloveit": {
-    "about": "People expressing extreme enthusiasm for something they love.",
-    "fg_score": 1
+    "about": "Trending hashtag #iloveitiloveitiloveit.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "bonnieblue": {
-    "about": "People sharing content related to the character Bonnie Blue Butler.",
-    "fg_score": 0
+    "about": "Trending hashtag #bonnieblue.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "viewrush": {
-    "about": "Users trying to get more views on their TikTok videos.",
-    "fg_score": 0
+    "about": "Trending hashtag #viewrush.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "signlangauge": {
-    "about": "People teaching or demonstrating sign language.",
-    "fg_score": 0
+    "about": "Trending hashtag #signlangauge.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "horizonglow": {
-    "about": "People sharing beautiful sunset or sunrise views.",
-    "fg_score": 1
+    "about": "Trending hashtag #horizonglow.",
+    "fg_score": 3,
+    "fg_reason": "Relaxation vibe has some home/sofa connection but needs a creative angle."
   },
   "brunettes": {
-    "about": "People celebrating or showcasing their brunette hair.",
-    "fg_score": 0
+    "about": "Trending hashtag #brunettes.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "forestsnap": {
-    "about": "People sharing aesthetic photos or videos taken in forests.",
-    "fg_score": 1
+    "about": "Trending hashtag #forestsnap.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "nld": {
-    "about": "Fans discussing the North London Derby football match.",
-    "fg_score": 0
+    "about": "Trending hashtag #nld.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   },
   "oceanglow": {
-    "about": "People sharing beautiful ocean views, often at sunrise/sunset.",
-    "fg_score": 1
+    "about": "Trending hashtag #oceanglow.",
+    "fg_score": 3,
+    "fg_reason": "Relaxation vibe has some home/sofa connection but needs a creative angle."
   },
   "bgt": {
-    "about": "Fans reacting to performances on Britain's Got Talent.",
-    "fg_score": 0
+    "about": "Trending hashtag #bgt.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "liveaccess": {
+    "about": "Trending hashtag #liveaccess.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "goldmedal": {
+    "about": "Trending hashtag #goldmedal.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "guadalajara": {
+    "about": "Trending hashtag #guadalajara.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "punchthemonkey": {
+    "about": "Trending hashtag #punchthemonkey.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "mencho": {
+    "about": "Trending hashtag #mencho.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "puertovallarta": {
+    "about": "Trending hashtag #puertovallarta.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "twilightsparkle": {
+    "about": "Trending hashtag #twilightsparkle.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "наруто": {
+    "about": "Trending hashtag #наруто.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "nycsnow": {
+    "about": "Trending hashtag #nycsnow.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "samos": {
+    "about": "content featuring Sports News, Video Games.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "survieenfévrier": {
+    "about": "Apparel & Accessories content featuring Magic, Fishing, Hunting & Camping.",
+    "fg_score": 3,
+    "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
+  },
+  "survieenfevrier": {
+    "about": "Apparel & Accessories content featuring Software & APPs, Tech Products & Infos.",
+    "fg_score": 3,
+    "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
+  },
+  "ademetbilal": {
+    "about": "content featuring Hilarious Fails, Video Games.",
+    "fg_score": 4,
+    "fg_reason": "Food content in home settings has natural sofa stain prevention angle."
+  },
+  "nohumour": {
+    "about": "content featuring Hilarious Fails, Photography.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "canette": {
+    "about": "Food & Beverage content featuring Hilarious Fails, Recreation Facilities.",
+    "fg_score": 4,
+    "fg_reason": "Food content in home settings has natural sofa stain prevention angle."
+  },
+  "emoji": {
+    "about": "content featuring Magic, Hilarious Fails.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "dovecameron": {
+    "about": "News & Entertainment content featuring Theatre & Stage, Entertainment News.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
+  },
+  "polak": {
+    "about": "News & Entertainment content featuring Graphic Art, Supernatural & Horror.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
+  },
+  "jalouse": {
+    "about": "content featuring Nail Art, Hair.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "sia": {
+    "about": "News & Entertainment content featuring Advertisement, Software & APPs.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
+  },
+  "brawl_stars": {
+    "about": "Games content featuring Professional Special Effects, Toys & Collectables.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
+  },
+  "wpf": {
+    "about": "Sports & Outdoor content featuring Beauty, Romance.",
+    "fg_score": 2,
+    "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
+  },
+  "perfekteliebe": {
+    "about": "content featuring Photography, Travel.",
+    "fg_score": 4,
+    "fg_reason": "Young people making home content provides sofa/dorm furniture angle."
+  },
+  "tanning": {
+    "about": "Beauty & Personal Care content featuring Other Art, Diary & VLOG.",
+    "fg_score": 3,
+    "fg_reason": "Fashion/beauty content has some home filming potential but no direct angle."
+  },
+  "baklava": {
+    "about": "Food & Beverage content featuring Food Tour & Recommendations, Cooking.",
+    "fg_score": 4,
+    "fg_reason": "Food content in home settings has natural sofa stain prevention angle."
+  },
+  "brawltalk": {
+    "about": "Games content featuring Science, Video Games.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
+  },
+  "meetmeatourspot": {
+    "about": "News & Entertainment content featuring Drinks, Campus Life.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
+  },
+  "gzuz187_official": {
+    "about": "News & Entertainment content featuring Supernatural & Horror, Pranks.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
+  },
+  "محمد_اللحيدان": {
+    "about": "content featuring Motivation, Scenery & Plants.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "hassen": {
+    "about": "content featuring Non-Video Games, Recreation Facilities.",
+    "fg_score": 4,
+    "fg_reason": "Young people making home content provides sofa/dorm furniture angle."
+  },
+  "sultan": {
+    "about": "content featuring Environmental Protection, Photography.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "kastrationstatttötung": {
+    "about": "Pets content featuring Non-Video Games, Pranks.",
+    "fg_score": 5,
+    "fg_reason": "Family-focused content aligns with FibreGuard's parent and homeowner audience."
+  },
+  "danimocanu": {
+    "about": "content featuring Advertisement, Fishing, Hunting & Camping.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "damenoutfit": {
+    "about": "Apparel & Accessories content trending on TikTok.",
+    "fg_score": 4,
+    "fg_reason": "Fashion/beauty content shot at home provides natural sofa background presence."
+  },
+  "unisexoutfit": {
+    "about": "Apparel & Accessories content featuring Motivation, Social News.",
+    "fg_score": 4,
+    "fg_reason": "Fashion/beauty content shot at home provides natural sofa background presence."
+  },
+  "glowup?": {
+    "about": "content featuring Recreation Facilities, Diary & VLOG.",
+    "fg_score": 3,
+    "fg_reason": "Relaxation vibe has some home/sofa connection but needs a creative angle."
+  },
+  "unisexfashion": {
+    "about": "Apparel & Accessories content featuring Recreation Facilities, Street Interviews & Social Experiments.",
+    "fg_score": 4,
+    "fg_reason": "Fashion/beauty content shot at home provides natural sofa background presence."
+  },
+  "ihk": {
+    "about": "Trending hashtag #ihk.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "souly": {
+    "about": "Trending hashtag #souly.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "mensoutfit": {
+    "about": "Trending hashtag #mensoutfit.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "тепло": {
+    "about": "Trending hashtag #тепло.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "ilahi": {
+    "about": "Trending hashtag #ilahi.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "singingintheshower": {
+    "about": "Trending hashtag #singingintheshower.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "atalanta": {
+    "about": "Trending hashtag #atalanta.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "newroz": {
+    "about": "Trending hashtag #newroz.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "війнавукраїні": {
+    "about": "Trending hashtag #війнавукраїні.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "مولانا": {
+    "about": "Trending hashtag #مولانا.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "machinegunkelly": {
+    "about": "Trending hashtag #machinegunkelly.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "linksversifft": {
+    "about": "Trending hashtag #linksversifft.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "مسلسلات_رمضان": {
+    "about": "Trending hashtag #مسلسلات_رمضان.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "notes": {
+    "about": "Trending hashtag #notes.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "myname": {
+    "about": "Trending hashtag #myname.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "emojistories": {
+    "about": "Trending hashtag #emojistories.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "familieg": {
+    "about": "Trending hashtag #familieg.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "🤲🤲🤲": {
+    "about": "Trending hashtag #🤲🤲🤲.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "sanremo": {
+    "about": "News & Entertainment content featuring Music, Celebrity Clips & Variety Show.",
+    "fg_score": 2,
+    "fg_reason": "Entertainment fan content with minimal home lifestyle crossover."
+  },
+  "festivaldisanremo": {
+    "about": "News & Entertainment content featuring Entertainment News, Oddly Satisfying.",
+    "fg_score": 2,
+    "fg_reason": "Entertainment fan content with minimal home lifestyle crossover."
+  },
+  "elettralamborghini": {
+    "about": "News & Entertainment content featuring Non-Video Games, Campus Life.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
+  },
+  "ritadecrescenzo": {
+    "about": "content featuring Oddly Satisfying, Nail Art.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "copaacb": {
+    "about": "Sports & Outdoor content featuring Sports News, Other Beauty.",
+    "fg_score": 2,
+    "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
+  },
+  "бравлстарс": {
+    "about": "Games content featuring Video Games, Toys & Collectables.",
+    "fg_score": 1,
+    "fg_reason": "Pure gaming/entertainment content unlikely to integrate FibreGuard naturally."
+  },
+  "canelita": {
+    "about": "content featuring DIY & Handicrafts, Life Hacks.",
+    "fg_score": 5,
+    "fg_reason": "Home DIY and improvement content naturally aligns with sofa upgrades."
+  },
+  "mammamia": {
+    "about": "content featuring Theatre & Stage, Diary & VLOG.",
+    "fg_score": 4,
+    "fg_reason": "Young people making home content provides sofa/dorm furniture angle."
+  },
+  "porsimañanayanoestoy": {
+    "about": "content featuring Music, Romance.",
+    "fg_score": 3,
+    "fg_reason": "Relationship/romantic content often features cosy home and sofa scenes."
+  },
+  "jk": {
+    "about": "content featuring Environmental Protection, Dance.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "electric": {
+    "about": "Vehicle & Transportation content featuring Other Art, Life Hacks.",
+    "fg_score": 2,
+    "fg_reason": "Outdoor/travel content has no direct home or sofa connection."
+  },
+  "malu": {
+    "about": "content featuring Theatre & Stage, Software & APPs.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "crida": {
+    "about": "content featuring Humanities, Non-Video Games.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+  },
+  "rosita": {
+    "about": "content featuring Entertainment News, Supernatural & Horror.",
+    "fg_score": 3,
+    "fg_reason": "Relationship/romantic content often features cosy home and sofa scenes."
+  },
+  "eternidad": {
+    "about": "content featuring DIY & Handicrafts, School Education.",
+    "fg_score": 5,
+    "fg_reason": "Home DIY and improvement content naturally aligns with sofa upgrades."
+  },
+  "omar": {
+    "about": "content featuring Hilarious Fails, Photography.",
+    "fg_score": 2,
+    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
   }
 }
