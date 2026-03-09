@@ -11,7 +11,8 @@
   },
   "رمضان": {
     "about": "Ramadan content in Arabic — family, food, home traditions",
-    "fg_score": 5
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays, religious observances, or political topics to avoid controversy and respect brand neutrality."
   },
   "lunarnewyear": {
     "about": "Lunar New Year — family celebrations, home decoration, and traditional food",
@@ -27,7 +28,8 @@
   },
   "رمضان_يجمعنا": {
     "about": "Ramadan brings us together — family iftar & community content",
-    "fg_score": 5
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays, religious observances, or political topics to avoid controversy and respect brand neutrality."
   },
   "usahockey": {
     "about": "Trending hashtag #usahockey.",
@@ -70,7 +72,8 @@
   },
   "رمضان_كريم": {
     "about": "Ramadan Kareem — Islamic holy month blessings content",
-    "fg_score": 4
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays, religious observances, or political topics to avoid controversy and respect brand neutrality."
   },
   "ashwednesday": {
     "about": "Ash Wednesday — start of Christian Lent season content",
@@ -111,8 +114,8 @@
   },
   "iftar": {
     "about": "Ramadan evening meal — family gathering at home to break the fast",
-    "fg_score": 5,
-    "fg_reason": "Family gatherings with food and drinks at home — real spill risk, hosting pressure. 'Host 20 people for iftar without a single sofa worry' is a culturally respectful and genuinely useful FibreGuard angle."
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays, religious observances, or political topics to avoid controversy and respect brand neutrality."
   },
   "pinkiepie": {
     "about": "Games content featuring Cosplay, Oddly Satisfying.",
@@ -131,7 +134,8 @@
   },
   "рамадан": {
     "about": "Ramadan content in Russian — family, community, and home gatherings",
-    "fg_score": 5
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays, religious observances, or political topics to avoid controversy and respect brand neutrality."
   },
   "cuaresma": {
     "about": "Cuaresma (Lent in Spanish) — Christian fasting season content",
@@ -612,7 +616,8 @@
   },
   "رمضانيات": {
     "about": "Ramadan traditions — daily Ramadan lifestyle & food content",
-    "fg_score": 5
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays, religious observances, or political topics to avoid controversy and respect brand neutrality."
   },
   "ramdanmubarak": {
     "about": "Ramadan Mubarak — Ramadan greetings & celebration content",
@@ -690,8 +695,8 @@
   },
   "ftour": {
     "about": "Moroccan Ramadan iftar — breaking the fast with traditional family food",
-    "fg_score": 5,
-    "fg_reason": "Moroccan iftar — same family gathering, food, and home context. Relevant for the same reasons as #iftar."
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays, religious observances, or political topics to avoid controversy and respect brand neutrality."
   },
   "aid": {
     "about": "Apparel & Accessories content featuring Life Hacks, Advertisement.",
@@ -714,7 +719,8 @@
   },
   "شهر_رمضان": {
     "about": "Month of Ramadan (Arabic) — Islamic holy month content",
-    "fg_score": 5
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays, religious observances, or political topics to avoid controversy and respect brand neutrality."
   },
   "tallgirl": {
     "about": "Trending hashtag #tallgirl.",
@@ -745,7 +751,8 @@
   },
   "رمضان_کریم": {
     "about": "Ramadan Kareem (Farsi/Arabic) — blessings & family content",
-    "fg_score": 4
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays, religious observances, or political topics to avoid controversy and respect brand neutrality."
   },
   "teamboys": {
     "about": "Team boys — gender reveal or boy parent content",
@@ -779,7 +786,8 @@
   },
   "رمضان_كريم🌙_رمضان_مبارك🌙": {
     "about": "Ramadan Kareem & Mubarak — Islamic holy month blessings",
-    "fg_score": 4
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays, religious observances, or political topics to avoid controversy and respect brand neutrality."
   },
   "descendants": {
     "about": "News & Entertainment content featuring Theatre & Stage, Entertainment News.",
@@ -814,7 +822,8 @@
   },
   "رمضان2026": {
     "about": "Ramadan 2026 — Islamic holy month family & food content",
-    "fg_score": 5
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays, religious observances, or political topics to avoid controversy and respect brand neutrality."
   },
   "houdi": {
     "about": "Trending hashtag #houdi.",
@@ -1018,7 +1027,8 @@
   },
   "رمضان_مبارك": {
     "about": "Ramadan Mubarak — Ramadan greetings & blessings content",
-    "fg_score": 4
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays, religious observances, or political topics to avoid controversy and respect brand neutrality."
   },
   "8марта": {
     "about": "content featuring DIY & Handicrafts, School Education.",
@@ -1063,8 +1073,8 @@
   },
   "taraweeh": {
     "about": "Ramadan evening prayers — community and family faith content",
-    "fg_score": 4,
-    "fg_reason": "Ramadan prayer gathering content — community and family focused. Less direct than iftar/suhoor, but shared home and gathering context still applies."
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays, religious observances, or political topics to avoid controversy and respect brand neutrality."
   },
   "oruç": {
     "about": "Trending hashtag #oruç.",
@@ -1729,8 +1739,8 @@
   },
   "eid": {
     "about": "Eid celebrations — post-Ramadan festivities, family visits, and home gatherings",
-    "fg_score": 5,
-    "fg_reason": "Post-Ramadan celebration — family gatherings, guests visiting the home, food and drinks. A perfect scenario for showing off stain-resistant fabric without stress."
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays, religious observances, or political topics to avoid controversy and respect brand neutrality."
   },
   "carnavaldebadajoz": {
     "about": "Badajoz Carnival (Spain) — parade costumes & celebrations",
@@ -1756,8 +1766,8 @@
   },
   "suhoor": {
     "about": "Pre-dawn Ramadan meal eaten at home before fasting begins",
-    "fg_score": 5,
-    "fg_reason": "Pre-dawn Ramadan meal — same family-at-home context as iftar. Spill moments and shared home spaces make FibreGuard relevant."
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays, religious observances, or political topics to avoid controversy and respect brand neutrality."
   },
   "tvdu": {
     "about": "TVDU — The Vampire Diaries Universe fan content",
@@ -1788,8 +1798,8 @@
   },
   "eidoutfit": {
     "about": "Trending hashtag #eidoutfit.",
-    "fg_score": 6,
-    "fg_reason": "Family celebration content = food, kids, and spill risk at home."
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays, religious observances, or political topics to avoid controversy and respect brand neutrality."
   },
   "погода": {
     "about": "content featuring School Education, Campus Life.",
@@ -1964,7 +1974,8 @@
   },
   "ti": {
     "about": "T.I. rapper or Ti (general) — music content",
-    "fg_score": 1
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays, religious observances, or political topics to avoid controversy and respect brand neutrality."
   },
   "summertime": {
     "about": "Summertime vibes — outdoor, pool & summer lifestyle content",
@@ -2565,7 +2576,8 @@
   },
   "#ftour": {
     "about": "People sharing recipes and experiences related to the Iftar meal.",
-    "fg_score": 3
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays, religious observances, or political topics to avoid controversy and respect brand neutrality."
   },
   "#rant": {
     "about": "People sharing humorous or relatable rants about various topics.",
@@ -2869,7 +2881,8 @@
   },
   "#suhoor": {
     "about": "People sharing their pre-dawn meals during Ramadan, often with recipes.",
-    "fg_score": 3
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays, religious observances, or political topics to avoid controversy and respect brand neutrality."
   },
   "#wpf": {
     "about": "People lip-syncing and dancing, often with beauty filters.",
@@ -3457,7 +3470,8 @@
   },
   "#eid": {
     "about": "Celebrations and greetings for the Islamic holiday Eid.",
-    "fg_score": 1
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays, religious observances, or political topics to avoid controversy and respect brand neutrality."
   },
   "#mammamia": {
     "about": "Content related to the musical and movie Mamma Mia.",
@@ -3841,8 +3855,8 @@
   },
   "iftarideas": {
     "about": "Food & Beverage content featuring Food Tour & Recommendations, Cooking.",
-    "fg_score": 6,
-    "fg_reason": "Family celebration content = food, kids, and spill risk at home."
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays, religious observances, or political topics to avoid controversy and respect brand neutrality."
   },
   "lospollostv": {
     "about": "Games content featuring Sports News, Business & Finance.",
@@ -4281,8 +4295,8 @@
   },
   "مسلسلات_رمضان": {
     "about": "Trending hashtag #مسلسلات_رمضان.",
-    "fg_score": 2,
-    "fg_reason": "Limited home or lifestyle context makes FibreGuard integration difficult."
+    "fg_score": 0,
+    "fg_reason": "Brand safety exclusion — religious or political content. FibreGuard does not activate on faith-based holidays, religious observances, or political topics to avoid controversy and respect brand neutrality."
   },
   "notes": {
     "about": "Trending hashtag #notes.",

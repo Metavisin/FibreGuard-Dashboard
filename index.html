@@ -380,7 +380,30 @@ function autoAbout(item) {
   return parts.length ? parts.join(' · ') : '—';
 }
 
+// ─── BRAND SAFETY EXCLUSION LIST ───────────────────────────────────────────
+// Religious (Islamic, Jewish) and political content → FG score forced to 0.
+// FibreGuard does not activate on faith-based or political topics.
+const FG_EXCLUSION_KEYWORDS = [
+  // Islamic religious
+  'ramadan','iftar','suhoor','ftour','eid','taraweeh','eidalfitr','eidaladha',
+  'hajj','hijab','mosque','islamic','muslim','quran','salah','umrah',
+  // Jewish religious
+  'shabbat','hanukkah','chanukah','passover','roshhashanah','yomkippur',
+  'sukkot','purim','jewishholiday','pesach','synagogue',
+  // Political
+  'stateoftheunion','democrat','republican','trump','biden','election',
+  'congress','senate','whitehouse','protest','maga','reelect',
+];
+function isFGExcluded(hashtag) {
+  const h = (hashtag || '').toLowerCase().replace(/[^a-z0-9]/g, '');
+  return FG_EXCLUSION_KEYWORDS.some(kw => h.includes(kw) || kw.includes(h) && kw === h);
+}
+// ─────────────────────────────────────────────────────────────────────────────
+
 function scoreFG(hashtag, item = null) {
+  // Brand safety: excluded topics always score 0
+  if (isFGExcluded(hashtag)) return { score: 0, cats: [], topCat: null };
+
   const h = (hashtag || '').toLowerCase().replace(/[^a-z0-9]/g, '');
   let totalScore = 0;
   let matchedCats = [];
@@ -492,7 +515,7 @@ function computeFGPicks() {
     .map(item => {
       const fg = scoreFG(item.hashtag, item);
       const jsonScore = parseInt(HASHTAG_DESCS[item.hashtag]?.fg_score);
-      const effectiveScore = !isNaN(jsonScore) ? jsonScore : fg.score; // JSON wins
+      const effectiveScore = isFGExcluded(item.hashtag) ? 0 : (!isNaN(jsonScore) ? jsonScore : fg.score); // exclusions always 0, else JSON wins
       const rank = (effectiveScore * 20)
                  + Math.log10(Math.max(item.views, 1)) * 0.3
                  + Math.log10(Math.max(item.posts, 1)) * 0.3;
