@@ -422,6 +422,16 @@ function scoreFG(hashtag, item = null) {
   if (h.includes('sofa') || h.includes('couch')) totalScore += 1.5;
   if (h.includes('petproof') || h.includes('stainproof')) totalScore += 2;
 
+  // PENALTY: FibreGuard makes UPHOLSTERY fabric, not clothing.
+  // Apparel/fashion-industry items get a hard cap — the audience overlaps
+  // but the product doesn't, so max score is 4.
+  if (item) {
+    const ind = (item.industry || '').toLowerCase();
+    if (ind.includes('apparel') || ind.includes('fashion') || ind.includes('clothing') || ind.includes('footwear')) {
+      totalScore = Math.min(totalScore, 4);
+    }
+  }
+
   return { score: totalScore, cats: [...new Set(matchedCats)], topCat };
 }
 

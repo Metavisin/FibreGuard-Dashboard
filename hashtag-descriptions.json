@@ -981,8 +981,8 @@
   },
   "winterloungewear": {
     "about": "Winter loungewear outfits — cosy home fashion, matching sets worn while relaxing at home",
-    "fg_score": 9,
-    "fg_reason": "Perfect fit. Loungewear implies relaxing at home on sofas — hot drinks, snacks, cosy evenings with real spill risk. FibreGuard's 'worry-free luxury at home' message writes itself alongside this trend."
+    "fg_score": 4,
+    "fg_reason": "This is a clothing trend — matching sets and outfits people wear, not fabric for sofas. FibreGuard doesn't make clothing. The indirect angle: the same person in their loungewear is sitting on a sofa, so the audience overlaps, but it's a stretch to activate here."
   },
   "chapter5": {
     "about": "Trending hashtag #chapter5.",
@@ -1204,8 +1204,8 @@
   },
   "sweater": {
     "about": "Apparel & Accessories content featuring DIY & Handicrafts, Photography.",
-    "fg_score": 5,
-    "fg_reason": "Knitwear and cosy fashion — home comfort adjacent. The lounging-at-home context makes FibreGuard a natural product in frame."
+    "fg_score": 3,
+    "fg_reason": "Knitwear fashion content — not FibreGuard's product category. Audience is cosy-home adjacent but the trend is about clothing, not furniture fabric."
   },
   "digiuno": {
     "about": "Fasting (Italian) — Lent/religious fasting lifestyle content",
@@ -1366,8 +1366,8 @@
   },
   "sweatsuit": {
     "about": "Trending hashtag #sweatsuit.",
-    "fg_score": 7,
-    "fg_reason": "Cosy matching-set fashion implies lounging at home — same audience that invests in home comfort. A 'couch day' with a spill reveal works naturally here."
+    "fg_score": 4,
+    "fg_reason": "Clothing/fashion trend about matching sweat sets. FibreGuard doesn't make apparel. The audience is home-comfort focused which overlaps, but the content angle requires a pivot — 'match your sweatsuit energy with a sofa that's equally low-maintenance.'"
   },
   "amoreimpossibile": {
     "about": "Impossible love (Italian) — romantic drama content",
@@ -1552,8 +1552,8 @@
   },
   "hoodies": {
     "about": "Apparel & Accessories content featuring Business & Finance, Selfies.",
-    "fg_score": 5,
-    "fg_reason": "Cosy clothing content implies lounging at home. The FibreGuard connection is indirect but believable — both serve the same 'comfortable and worry-free at home' moment."
+    "fg_score": 3,
+    "fg_reason": "Fashion content about knitwear — FibreGuard doesn't make clothing. The only angle is the at-home context where the audience is lounging, but it's a weak connection."
   },
   "womanfashion": {
     "about": "Women's fashion outfits & style inspiration content",
@@ -3546,8 +3546,8 @@
   },
   "textiles": {
     "about": "Apparel & Accessories content featuring Other Talent, Scenery & Plants.",
-    "fg_score": 8,
-    "fg_reason": "Fabric, weaves, and material content is core FibreGuard territory. Audience already interested in textiles will respond well to showcasing stain-resistant technology as a quality material story."
+    "fg_score": 7,
+    "fg_reason": "Textile art, craft, and fabric appreciation content — genuinely close to FibreGuard's product story. Audience interested in material quality and fabric properties is a natural fit for premium upholstery fabric."
   },
   "liakali": {
     "about": "News & Entertainment content featuring Supernatural & Horror, Motivation.",
