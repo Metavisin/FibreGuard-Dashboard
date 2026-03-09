@@ -721,7 +721,8 @@ function buildGlobalOverlap() {
   for (const item of euCombined) euMap[item.hashtag] = item;
 
   const result = [];
-  for (const usItem of US_DATA) {
+  const usTop50 = [...US_DATA].sort((a,b) => b.views - a.views).slice(0, 50);
+  for (const usItem of usTop50) {
     if (euMap[usItem.hashtag]) {
       const euItem = euMap[usItem.hashtag];
       const viewsCombined = usItem.views + euItem.views;
@@ -826,7 +827,7 @@ function renderUSTable(){
     let va=a[st.col],vb=b[st.col];
     if(typeof va==='string') return st.asc?va.localeCompare(vb):vb.localeCompare(va);
     return st.asc?(va-vb):(vb-va);
-  }).slice(0,200);
+  }).slice(0,50);
 
   const arrow = (col)=> st.col===col ? (st.asc?'↑':'↓') : '↕';
   const cls = (col)=> st.col===col ? 'active' : '';
@@ -898,7 +899,7 @@ function buildEUCombined() {
   }
   return Object.values(map)
     .sort((a, b) => b.views - a.views)
-    .slice(0, 100)
+    .slice(0, 50)
     .map(item => ({ ...item, fg_score: parseInt(HASHTAG_DESCS[item.hashtag]?.fg_score) || 0 }));
 }
 
@@ -910,7 +911,7 @@ function renderEUTable(){
     let va=a[st.col],vb=b[st.col];
     if(typeof va==='string') return st.asc?va.localeCompare(vb):vb.localeCompare(va);
     return st.asc?(va-vb):(vb-va);
-  }).slice(0,100);
+  }).slice(0,50);
 
   const arrow = (col)=> st.col===col ? (st.asc?'↑':'↓') : '↕';
   const cls = (col)=> st.col===col ? 'active' : '';
