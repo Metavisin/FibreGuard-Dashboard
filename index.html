@@ -598,42 +598,59 @@ function explainFGScore(hashtag) {
 }
 
 function scoreTooltipHTML(hashtag, fgScore) {
-  const s = parseInt(fgScore) || 0;
-  const explanation = explainFGScore(hashtag);
+  const s = parseInt(fgScore);
   const desc = HASHTAG_DESCS[hashtag] || {};
 
-  let level, levelColor, levelBg;
-  if (s >= 7) { level = 'High Fit'; levelColor = 'var(--green)'; levelBg = 'var(--green-d)'; }
-  else if (s >= 4) { level = 'Medium Fit'; levelColor = 'var(--yellow)'; levelBg = 'var(--yellow-d)'; }
-  else if (s >= 1) { level = 'Low Fit'; levelColor = 'var(--orange)'; levelBg = 'var(--orange-d)'; }
-  else { level = 'No Fit'; levelColor = 'var(--text3)'; levelBg = 'var(--bg3)'; }
+  let level, levelColor, levelBg, levelEmoji;
+  if (s >= 9)      { level = 'Perfect Fit';  levelColor = 'var(--green)';  levelBg = 'var(--green-d)';  levelEmoji = '🎯'; }
+  else if (s >= 7) { level = 'Strong Fit';   levelColor = 'var(--green)';  levelBg = 'var(--green-d)';  levelEmoji = '✅'; }
+  else if (s >= 5) { level = 'Good Fit';     levelColor = 'var(--yellow)'; levelBg = 'var(--yellow-d)'; levelEmoji = '👍'; }
+  else if (s >= 3) { level = 'Creative Stretch'; levelColor = 'var(--orange)'; levelBg = 'var(--orange-d)'; levelEmoji = '💡'; }
+  else if (s >= 1) { level = 'Big Reach';    levelColor = 'var(--red)';    levelBg = 'var(--red-d)';    levelEmoji = '🤏'; }
+  else             { level = 'No Fit';       levelColor = 'var(--text3)';  levelBg = 'var(--bg3)';      levelEmoji = '✗'; }
 
-  let html = `<div class="tt-title">#${hashtag} <span class="tt-score" style="background:${levelBg};color:${levelColor}">${s}/10 · ${level}</span></div>`;
+  let html = `<div class="tt-title">${levelEmoji} #${hashtag} <span class="tt-score" style="background:${levelBg};color:${levelColor}">${isNaN(s)?'?':s}/10 · ${level}</span></div>`;
 
+  // What the trend is about
   if (desc.about) {
-    html += `<div style="margin-bottom:8px;font-size:11px;color:var(--text2)">${desc.about}</div>`;
+    html += `<div style="margin-bottom:12px;font-size:12px;color:var(--text2);background:var(--bg3);padding:8px 10px;border-radius:6px;line-height:1.5">
+      <span style="color:var(--text3);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;display:block;margin-bottom:3px">What this trend is about</span>
+      ${desc.about}
+    </div>`;
   }
 
-  if (explanation.matches.length > 0) {
-    html += `<div class="tt-cats">`;
-    explanation.matches.forEach(m => {
-      const catLabel = m.cat.charAt(0).toUpperCase() + m.cat.slice(1);
-      html += `<div class="tt-cat">${m.emoji} <span class="tt-cat-name">${catLabel}</span> <span class="tt-cat-weight">(+${m.weight} weight)</span> <span class="tt-kw">matched "${m.keyword}"</span></div>`;
-    });
-    html += `</div>`;
-    if (explanation.bonuses.length) {
-      html += `<div style="font-size:10px;color:var(--cyan);margin-bottom:6px">⭐ ${explanation.bonuses.join(' · ')}</div>`;
-    }
+  // Gemini creative marketing reasoning (primary)
+  if (desc.fg_reason) {
+    html += `<div style="margin-bottom:10px;font-size:12px;color:var(--text);background:${levelBg};padding:10px 12px;border-radius:8px;line-height:1.6;border-left:3px solid ${levelColor}">
+      <span style="color:${levelColor};font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.3px;display:block;margin-bottom:4px">🧠 FibreGuard Score Reasoning</span>
+      ${desc.fg_reason}
+    </div>`;
   } else {
-    html += `<div class="tt-none">No direct FibreGuard category keyword matches detected.</div>`;
+    // Fallback: keyword-based explanation
+    const explanation = explainFGScore(hashtag);
+    if (explanation.matches.length > 0) {
+      html += `<div class="tt-cats">`;
+      explanation.matches.forEach(m => {
+        const catLabel = m.cat.charAt(0).toUpperCase() + m.cat.slice(1);
+        html += `<div class="tt-cat">${m.emoji} <span class="tt-cat-name">${catLabel}</span> <span class="tt-cat-weight">(+${m.weight})</span> <span class="tt-kw">matched "${m.keyword}"</span></div>`;
+      });
+      html += `</div>`;
+    } else {
+      const fallback = isNaN(s) ? 'Score not yet generated.' :
+        s >= 7 ? 'Strong FibreGuard relevance — directly relates to home, furniture, cleaning, or family/pet life.' :
+        s >= 4 ? 'Moderate relevance — touches on lifestyle themes FibreGuard can connect with.' :
+        s >= 1 ? 'Low relevance — tangential connection. Could work with a creative angle.' :
+        'No obvious FibreGuard connection.';
+      html += `<div class="tt-none">${fallback}</div>`;
+    }
   }
 
-  html += `<div class="tt-summary">`;
-  if (s >= 7) html += `Strong FibreGuard relevance — directly relates to home, furniture, cleaning, or family/pet life.`;
-  else if (s >= 4) html += `Moderate relevance — touches on lifestyle themes FibreGuard can connect with (home, comfort, aesthetics).`;
-  else if (s >= 1) html += `Low relevance — tangential connection. Could work with creative angle but not a natural fit.`;
-  else html += `No obvious FibreGuard connection detected in this hashtag.`;
-  html += `</div>`;
+  // Scale reference
+  html += `<div style="margin-top:10px;padding-top:8px;border-top:1px solid var(--border);font-size:10px;color:var(--text3);line-height:1.7">
+    <span style="font-weight:700;color:var(--text2)">Score scale:</span><br>
+    🎯 9-10 Direct demo · ✅ 7-8 Strong fit · 👍 5-6 Good fit<br>
+    💡 3-4 Creative stretch · 🤏 1-2 Big reach · ✗ 0 No fit
+  </div>`;
 
   return html;
 }

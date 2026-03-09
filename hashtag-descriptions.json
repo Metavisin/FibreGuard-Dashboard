@@ -1,11 +1,13 @@
 {
   "alysaliu": {
     "about": "This trend is about figure skater Alysa Liu's performances.",
-    "fg_score": 0
+    "fg_score": 2,
+    "fg_reason": "This is figure skater fan content — essentially zero direct connection. The only stretch is a 'coming home after practice' angle, but it's too forced for a FibreGuard placement to feel authentic."
   },
   "poppyplaytime": {
     "about": "This trend is about the horror video game Poppy Playtime.",
-    "fg_score": 0
+    "fg_score": 1,
+    "fg_reason": "Horror video game content — audience is primarily gaming/entertainment focused. The only imaginable angle is a parent complaining about their kid's messy gaming setup, but it's a huge stretch."
   },
   "رمضان": {
     "about": "Ramadan — Islamic holy month, family gatherings & food content",
@@ -73,7 +75,8 @@
   },
   "lowcortisol": {
     "about": "Low cortisol / stress-free lifestyle & cozy home content",
-    "fg_score": 7
+    "fg_score": 8,
+    "fg_reason": "Strong fit. This trend is about eliminating stress and creating calm environments — FibreGuard removes the anxiety of spills and stains. 'Things that lower my cortisol: a sofa I can't ruin' is practically ready-made content."
   },
   "huggywuggy": {
     "about": "This trend is about the character Huggy Wuggy from Poppy Playtime.",
@@ -101,7 +104,8 @@
   },
   "iftar": {
     "about": "Iftar — Ramadan evening meal, family dining & food content",
-    "fg_score": 5
+    "fg_score": 5,
+    "fg_reason": "Ramadan evening meal content — family gatherings around the dinner table, which means food, drinks, and real spill risk on furniture. The 'hosting family with peace of mind' angle is genuine and culturally respectful."
   },
   "pinkiepie": {
     "about": "Fans creating content related to the My Little Pony character.",
@@ -197,7 +201,8 @@
   },
   "punch": {
     "about": "This trend is about a viral zoo monkey named Punch.",
-    "fg_score": 0
+    "fg_score": 3,
+    "fg_reason": "This is the viral zoo monkey rejected by his mom — no direct FibreGuard angle, but a comedy stretch exists: a monkey finding comfort on a plush FibreGuard sofa. Extremely indirect; works only as a humorous social play if the trend stays hot."
   },
   "efectobaile": {
     "about": "Viral Latin dance trend / trending audio content",
@@ -881,7 +886,8 @@
   },
   "winterloungewear": {
     "about": "Winter loungewear outfits — cozy home fashion content",
-    "fg_score": 8
+    "fg_score": 9,
+    "fg_reason": "Direct fit. Loungewear implies relaxing at home on sofas — hot drinks, snacks, cozy evenings. The audience is exactly FibreGuard's target, and the 'worry-free luxury at home' message writes itself. Pair it with a warm drink spill reveal."
   },
   "chapter5": {
     "about": "People sharing updates and progress on their creative projects or stories.",
@@ -921,7 +927,8 @@
   },
   "electrician": {
     "about": "Electrician DIY & home improvement tutorial content",
-    "fg_score": 5
+    "fg_score": 4,
+    "fg_reason": "Creative stretch. Home improvement and DIY content often involves reupholstering or upgrading interiors — an electrician renovating a living room could reveal a FibreGuard sofa as part of the home upgrade."
   },
   "vorbei": {
     "about": "'Over/done' German expression — emotional relatable content",
@@ -1225,7 +1232,8 @@
   },
   "sweatsuit": {
     "about": "Sweatsuit fashion & cozy matching set outfit content",
-    "fg_score": 7
+    "fg_score": 6,
+    "fg_reason": "Good fit. Cozy matching sets suggest lounging at home — the same audience who invests in home comfort. A 'couch day' angle where spills happen and FibreGuard saves the day works naturally here."
   },
   "amoreimpossibile": {
     "about": "Impossible love (Italian) — romantic drama content",
@@ -1257,7 +1265,8 @@
   },
   "stanza": {
     "about": "People showcasing their rooms or room makeovers.",
-    "fg_score": 5
+    "fg_score": 7,
+    "fg_reason": "Italian for 'room' — this is literally room makeover and interior content. Very high relevance; FibreGuard fabric in a beautiful Italian-style room reveal would perform well with this audience."
   },
   "slimerant": {
     "about": "Slime rant trend — DIY slime making & creative content",
@@ -1393,7 +1402,8 @@
   },
   "hoodies": {
     "about": "Hoodie fashion & cozy clothing haul content",
-    "fg_score": 5
+    "fg_score": 5,
+    "fg_reason": "Cozy clothing content implies lounging at home. The connection is indirect but believable — both FibreGuard and hoodies serve the same 'comfortable at home' moment."
   },
   "womanfashion": {
     "about": "Women's fashion outfits & style inspiration content",
@@ -1485,7 +1495,8 @@
   },
   "walls": {
     "about": "People transforming or decorating their home walls.",
-    "fg_score": 5
+    "fg_score": 6,
+    "fg_reason": "Home wall decoration and renovation content. The audience is actively upgrading their interiors — pairing wall decor with a complementary FibreGuard sofa reveal is a natural content pairing."
   },
   "eclipse": {
     "about": "Eclipse — solar/lunar eclipse viral sky photography content",
@@ -1849,7 +1860,8 @@
   },
   "mothersdaygiftideas": {
     "about": "Users sharing gift ideas for Mother's Day.",
-    "fg_score": 5
+    "fg_score": 7,
+    "fg_reason": "Gift content for moms — a FibreGuard-protected sofa or fabric care product is a legitimately useful, thoughtful gift. 'Give her furniture she doesn't have to worry about' is a compelling angle."
   },
   "cooplive": {
     "about": "Co-op Live Manchester arena — concerts & live events content",
@@ -1985,7 +1997,8 @@
   },
   "punchmonkey": {
     "about": "This trend is about a viral zoo monkey named Punch.",
-    "fg_score": 0
+    "fg_score": 3,
+    "fg_reason": "Same as #punch — viral zoo monkey content. The comedy angle of an animal seeking comfort on durable, soft fabric is a lateral creative hook, but not a natural product fit."
   },
   "babymonkey": {
     "about": "This trend is about cute videos of baby monkeys.",
@@ -3025,7 +3038,8 @@
   },
   "easter": {
     "about": "People sharing Easter celebrations, decorations, and activities.",
-    "fg_score": 5
+    "fg_score": 6,
+    "fg_reason": "Easter family gatherings bring kids, chocolate, and drinks — exactly the scenario FibreGuard is built for. Showing a pristine sofa surviving Easter chaos is relatable family content."
   },
   "luché": {
     "about": "Content featuring the Italian rapper Luchè.",
@@ -3165,7 +3179,8 @@
   },
   "textiles": {
     "about": "This trend is about various textile art, crafts, and designs.",
-    "fg_score": 8
+    "fg_score": 8,
+    "fg_reason": "High relevance — fabric, weaves, and material content is core FibreGuard territory. Audience is already interested in textiles, so showcasing FibreGuard's stain-resistant technology feels native and educational."
   },
   "liakali": {
     "about": "This trend is about a creator sharing supernatural stories and satisfying content.",
@@ -3269,7 +3284,8 @@
   },
   "huishoudbeurs": {
     "about": "A Dutch household fair featuring products and demonstrations.",
-    "fg_score": 5
+    "fg_score": 7,
+    "fg_reason": "Dutch household fair — home products, furniture, and domestic lifestyle content. Perfect FibreGuard audience actively shopping for home improvements and quality household products."
   },
   "name": {
     "about": "People sharing their names and related content.",
@@ -3373,7 +3389,8 @@
   },
   "ceramics": {
     "about": "Artists showcasing their ceramic creations and pottery processes.",
-    "fg_score": 5
+    "fg_score": 5,
+    "fg_reason": "Pottery and ceramic creation involves mess, clay, and spills. The creative-messy-hands audience appreciates durability and care — a 'clumsy artist meets stain-proof sofa' angle has potential."
   },
   "брайнмапс": {
     "about": "A Russian YouTuber, sharing comedy skits and vlogs.",
