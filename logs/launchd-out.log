@@ -188,3 +188,13 @@
 [2026-03-28 07:33:55 CET] ✅ Pushed — GitHub Pages will update in ~1 min
 [2026-03-28 07:33:55 CET] 🌐 Dashboard: https://metavisin.github.io/FibreGuard-Dashboard/
 [2026-03-28 07:33:55 CET] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[2026-03-29 07:30:00 CET] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+[2026-03-29 07:30:00 CET] 🔄 Starting FibreGuard daily refresh
+[2026-03-29 07:30:00 CET] ✅ Loaded env from .env
+[2026-03-29 07:30:00 CET] 📥 Pulling latest from GitHub...
+[2026-03-29 07:30:01 CET] 📡 Fetching TikTok data for US, FR, DE, IT, ES, NL, GB...
+[2026-03-29 07:33:41 CET] ✅ Data fetch complete
+[2026-03-29 07:33:41 CET] 📤 Committing and pushing to GitHub...
+[2026-03-29 07:33:43 CET] ✅ Pushed — GitHub Pages will update in ~1 min
+[2026-03-29 07:33:43 CET] 🌐 Dashboard: https://metavisin.github.io/FibreGuard-Dashboard/
+[2026-03-29 07:33:43 CET] ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
